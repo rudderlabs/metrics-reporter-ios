@@ -1,0 +1,25 @@
+{
+  "configurations" : [
+    {
+      "id" : "72A43DF6-8177-4855-9F5E-EEADB47032F5",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:MetricsReporter.xcodeproj",
+        "identifier" : "EDEDB6212A66523E005C670A",
+        "name" : "MetricsReporterTests-iOS"
+      }
+    }
+  ],
+  "version" : 1
+}
