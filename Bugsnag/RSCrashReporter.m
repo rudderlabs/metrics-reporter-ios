@@ -24,7 +24,7 @@
 // THE SOFTWARE.
 //
 
-#import "Bugsnag.h"
+#import "RSCrashReporter.h"
 
 #import "BSGStorageMigratorV0V1.h"
 #import "Bugsnag+Private.h"
@@ -36,7 +36,7 @@
 static BugsnagClient *bsg_g_bugsnag_client = NULL;
 
 BSG_OBJC_DIRECT_MEMBERS
-@implementation Bugsnag
+@implementation RSCrashReporter
 
 + (BugsnagClient *_Nonnull)start {
     BugsnagConfiguration *configuration = [BugsnagConfiguration loadConfig];

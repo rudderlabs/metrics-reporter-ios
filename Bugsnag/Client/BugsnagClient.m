@@ -46,7 +46,7 @@
 #import "BSGUtils.h"
 #import "BSG_KSCrashC.h"
 #import "BSG_KSSystemInfo.h"
-#import "Bugsnag.h"
+#import "RSCrashReporter.h"
 #import "BugsnagApp+Private.h"
 #import "BugsnagAppWithState+Private.h"
 #import "BugsnagBreadcrumb+Private.h"

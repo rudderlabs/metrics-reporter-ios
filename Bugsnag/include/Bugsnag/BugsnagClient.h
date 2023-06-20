@@ -26,12 +26,12 @@
 
 #import <Foundation/Foundation.h>
 
-#import <Bugsnag/BugsnagConfiguration.h>
-#import <Bugsnag/BugsnagDefines.h>
-#import <Bugsnag/BugsnagLastRunInfo.h>
-#import <Bugsnag/BugsnagFeatureFlagStore.h>
-#import <Bugsnag/BugsnagMetadata.h>
-#import <Bugsnag/BugsnagMetadataStore.h>
+#import <RSCrashReporter/BugsnagConfiguration.h>
+#import <RSCrashReporter/BugsnagDefines.h>
+#import <RSCrashReporter/BugsnagLastRunInfo.h>
+#import <RSCrashReporter/BugsnagFeatureFlagStore.h>
+#import <RSCrashReporter/BugsnagMetadata.h>
+#import <RSCrashReporter/BugsnagMetadataStore.h>
 
 @class BugsnagSessionTracker;
 

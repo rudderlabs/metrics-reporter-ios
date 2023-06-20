@@ -1,5 +1,5 @@
 //
-//  Bugsnag.h
+//  RSCrashReporter.h
 //
 //  Created by Conrad Irwin on 2014-10-01.
 //
@@ -25,30 +25,30 @@
 //
 #import <Foundation/Foundation.h>
 
-#import <Bugsnag/BugsnagApp.h>
-#import <Bugsnag/BugsnagAppWithState.h>
-#import <Bugsnag/BugsnagClient.h>
-#import <Bugsnag/BugsnagConfiguration.h>
-#import <Bugsnag/BugsnagDefines.h>
-#import <Bugsnag/BugsnagDevice.h>
-#import <Bugsnag/BugsnagDeviceWithState.h>
-#import <Bugsnag/BugsnagEndpointConfiguration.h>
-#import <Bugsnag/BugsnagError.h>
-#import <Bugsnag/BugsnagErrorTypes.h>
-#import <Bugsnag/BugsnagEvent.h>
-#import <Bugsnag/BugsnagFeatureFlag.h>
-#import <Bugsnag/BugsnagLastRunInfo.h>
-#import <Bugsnag/BugsnagMetadata.h>
-#import <Bugsnag/BugsnagPlugin.h>
-#import <Bugsnag/BugsnagSession.h>
-#import <Bugsnag/BugsnagStackframe.h>
-#import <Bugsnag/BugsnagThread.h>
+#import <RSCrashReporter/BugsnagApp.h>
+#import <RSCrashReporter/BugsnagAppWithState.h>
+#import <RSCrashReporter/BugsnagClient.h>
+#import <RSCrashReporter/BugsnagConfiguration.h>
+#import <RSCrashReporter/BugsnagDefines.h>
+#import <RSCrashReporter/BugsnagDevice.h>
+#import <RSCrashReporter/BugsnagDeviceWithState.h>
+#import <RSCrashReporter/BugsnagEndpointConfiguration.h>
+#import <RSCrashReporter/BugsnagError.h>
+#import <RSCrashReporter/BugsnagErrorTypes.h>
+#import <RSCrashReporter/BugsnagEvent.h>
+#import <RSCrashReporter/BugsnagFeatureFlag.h>
+#import <RSCrashReporter/BugsnagLastRunInfo.h>
+#import <RSCrashReporter/BugsnagMetadata.h>
+#import <RSCrashReporter/BugsnagPlugin.h>
+#import <RSCrashReporter/BugsnagSession.h>
+#import <RSCrashReporter/BugsnagStackframe.h>
+#import <RSCrashReporter/BugsnagThread.h>
 
 /**
  * Static access to a Bugsnag Client, the easiest way to use Bugsnag in your app.
  */
 BUGSNAG_EXTERN
-@interface Bugsnag : NSObject <BugsnagClassLevelMetadataStore>
+@interface RSCrashReporter : NSObject <BugsnagClassLevelMetadataStore>
 
 /**
  * All Bugsnag access is class-level.  Prevent the creation of instances.

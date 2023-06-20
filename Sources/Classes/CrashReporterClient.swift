@@ -9,10 +9,9 @@ import Foundation
 import RSCrashReporter
 
 public class CrashReporterClient {
-//    let sdf = KSCrashInstallationStandard.sharedInstance()
     
     public init() {
-//        Bugsnag.start(withApiKey: "df5da4234cd9883c66557a2b9b75c082")
+        RSCrashReporter.start(withApiKey: "df5da4234cd9883c66557a2b9b75c082")
     }
     
     
