@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "00AD1CAC24869C1200A27979"
-               BuildableName = "Bugsnag.framework"
-               BlueprintName = "Bugsnag-macOS"
-               ReferencedContainer = "container:Bugsnag.xcodeproj">
+               BlueprintIdentifier = "00AD1CC824869C2400A27979"
+               BuildableName = "RSCrashReporter.framework"
+               BlueprintName = "RSCrashReporter-tvOS"
+               ReferencedContainer = "container:RSCrashReporter.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -26,31 +26,8 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      disableMainThreadChecker = "YES"
-      codeCoverageEnabled = "YES"
-      shouldUseLaunchSchemeArgsEnv = "YES">
-      <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "00AD1CB424869C1200A27979"
-               BuildableName = "Bugsnag-macOSTests.xctest"
-               BlueprintName = "Bugsnag-macOSTests"
-               ReferencedContainer = "container:Bugsnag.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CB487A8426D7B144004F6B87"
-               BuildableName = "BugsnagNetworkRequestPlugin-macOSTests.xctest"
-               BlueprintName = "BugsnagNetworkRequestPlugin-macOSTests"
-               ReferencedContainer = "container:BugsnagNetworkRequestPlugin/BugsnagNetworkRequestPlugin.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-      </Testables>
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      codeCoverageEnabled = "YES">
       <AdditionalOptions>
          <AdditionalOption
             key = "MallocScribble"
@@ -58,6 +35,28 @@
             isEnabled = "YES">
          </AdditionalOption>
       </AdditionalOptions>
+      <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "00AD1CD024869C2400A27979"
+               BuildableName = "RSCrashReporter-tvOSTests.xctest"
+               BlueprintName = "RSCrashReporter-tvOSTests"
+               ReferencedContainer = "container:RSCrashReporter.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "CB487AA426D7B172004F6B87"
+               BuildableName = "BugsnagNetworkRequestPlugin-tvOSTests.xctest"
+               BlueprintName = "BugsnagNetworkRequestPlugin-tvOSTests"
+               ReferencedContainer = "container:BugsnagNetworkRequestPlugin/BugsnagNetworkRequestPlugin.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+      </Testables>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
@@ -69,17 +68,6 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "00AD1CAC24869C1200A27979"
-            BuildableName = "Bugsnag.framework"
-            BlueprintName = "Bugsnag-macOS"
-            ReferencedContainer = "container:Bugsnag.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
-      <AdditionalOptions>
-      </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -90,10 +78,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "00AD1CAC24869C1200A27979"
-            BuildableName = "Bugsnag.framework"
-            BlueprintName = "Bugsnag-macOS"
-            ReferencedContainer = "container:Bugsnag.xcodeproj">
+            BlueprintIdentifier = "00AD1CC824869C2400A27979"
+            BuildableName = "RSCrashReporter.framework"
+            BlueprintName = "RSCrashReporter-tvOS"
+            ReferencedContainer = "container:RSCrashReporter.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>
