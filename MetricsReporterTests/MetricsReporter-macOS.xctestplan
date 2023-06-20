@@ -1,0 +1,25 @@
+{
+  "configurations" : [
+    {
+      "id" : "4CF1A2CE-C5EC-4F13-B4A8-4D10EB47D9E9",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : false
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:MetricsReporter.xcodeproj",
+        "identifier" : "ED9226782A65338900734372",
+        "name" : "MetricsReporterTests-macOS"
+      }
+    }
+  ],
+  "version" : 1
+}

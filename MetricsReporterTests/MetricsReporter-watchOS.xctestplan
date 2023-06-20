@@ -1,0 +1,25 @@
+{
+  "configurations" : [
+    {
+      "id" : "8226EC6A-9A77-43A0-AF87-29C437758A00",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:MetricsReporter.xcodeproj",
+        "identifier" : "ED9226622A65337300734372",
+        "name" : "MetricsReporterTests-watchOS"
+      }
+    }
+  ],
+  "version" : 1
+}
