@@ -186,7 +186,7 @@ __attribute__((annotate("oclint:suppress[too many methods]")))
 BSG_OBJC_DIRECT_MEMBERS
 @implementation BugsnagClient
 
-- (instancetype)initWithConfiguration:(BugsnagConfiguration *)configuration delegate:(id<RSCrashReporterNotifyDelegate>)delegate {
+- (instancetype)initWithConfiguration:(BugsnagConfiguration *)configuration delegate:(id<RSCrashReporterNotifyDelegate> _Nullable)delegate {
     if ((self = [super init])) {
         // Take a shallow copy of the configuration
         _configuration = [configuration copy];

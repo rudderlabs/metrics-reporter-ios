@@ -50,6 +50,10 @@ BSG_OBJC_DIRECT_MEMBERS
     }
 }
 
++ (BOOL)isStarted {
+    return bsg_g_bugsnag_client.isStarted;
+}
+
 /**
  * Purge the global client so that it will be regenerated on the next call to start.
  * This is only used by the unit tests.
@@ -61,6 +65,38 @@ BSG_OBJC_DIRECT_MEMBERS
 
 + (BugsnagClient *)client {
     return bsg_g_bugsnag_client;
+}
+
++ (BOOL)appDidCrashLastLaunch {
+    if ([self bugsnagReadyForInternalCalls]) {
+        return [self.client appDidCrashLastLaunch];
+    }
+    return NO;
+}
+
++ (BugsnagLastRunInfo *)lastRunInfo {
+    if ([self bugsnagReadyForInternalCalls]) {
+        return self.client.lastRunInfo;
+    }
+    return nil;
+}
+
++ (void)markLaunchCompleted {
+    if ([self bugsnagReadyForInternalCalls]) {
+        [self.client markLaunchCompleted];
+    }
+}
+
++ (void)notify:(NSException *)exception {
+    if ([self bugsnagReadyForInternalCalls]) {
+        [self.client notify:exception];
+    }
+}
+
++ (void)notify:(NSException *)exception block:(BugsnagOnErrorBlock)block {
+    if ([self bugsnagReadyForInternalCalls]) {
+        [self.client notify:exception block:block];
+    }
 }
 
 + (void)notifyError:(NSError *)error {
@@ -119,6 +155,199 @@ BSG_OBJC_DIRECT_MEMBERS
     } else {
         return @[];
     }
+}
+
+
++ (void)startSession {
+    /*if ([self bugsnagReadyForInternalCalls]) {
+        [self.client startSession];
+    }*/
+}
+
++ (void)pauseSession {
+    /*if ([self bugsnagReadyForInternalCalls]) {
+        [self.client pauseSession];
+    }*/
+}
+
++ (BOOL)resumeSession {
+    /*if ([self bugsnagReadyForInternalCalls]) {
+        return [self.client resumeSession];
+    } else {*/
+        return false;
+    //}
+}
+
+// =============================================================================
+// MARK: - <BugsnagFeatureFlagStore>
+// =============================================================================
+
++ (void)addFeatureFlagWithName:(NSString *)name variant:(nullable NSString *)variant {
+    if ([self bugsnagReadyForInternalCalls]) {
+        [self.client addFeatureFlagWithName:name variant:variant];
+    }
+}
+
++ (void)addFeatureFlagWithName:(NSString *)name {
+    /*if ([self bugsnagReadyForInternalCalls]) {
+        [self.client addFeatureFlagWithName:name];
+    }*/
+}
+
++ (void)addFeatureFlags:(NSArray<BugsnagFeatureFlag *> *)featureFlags {
+    /*if ([self bugsnagReadyForInternalCalls]) {
+        [self.client addFeatureFlags:featureFlags];
+    }*/
+}
+
++ (void)clearFeatureFlagWithName:(NSString *)name {
+    /*if ([self bugsnagReadyForInternalCalls]) {
+        [self.client clearFeatureFlagWithName:name];
+    }*/
+}
+
++ (void)clearFeatureFlags {
+    /*if ([self bugsnagReadyForInternalCalls]) {
+        [self.client clearFeatureFlags];
+    }*/
+}
+
+// =============================================================================
+// MARK: - <BugsnagClassLevelMetadataStore>
+// =============================================================================
+
+/**
+ * Add custom data to send to Bugsnag with every exception. If value is nil,
+ * delete the current value for attributeName
+ *
+ * @param metadata The metadata to add
+ * @param key The key for the metadata
+ * @param section The top-level section to add the keyed metadata to
+ */
++ (void)addMetadata:(id _Nullable)metadata
+            withKey:(NSString *_Nonnull)key
+          toSection:(NSString *_Nonnull)section
+{
+    if ([self bugsnagReadyForInternalCalls]) {
+        [self.client addMetadata:metadata
+                         withKey:key
+                       toSection:section];
+    }
+}
+
++ (void)addMetadata:(id _Nonnull)metadata
+          toSection:(NSString *_Nonnull)section
+{
+    if ([self bugsnagReadyForInternalCalls]) {
+        [self.client addMetadata:metadata
+                       toSection:section];
+    }
+}
+
++ (NSMutableDictionary *)getMetadataFromSection:(NSString *)section
+{
+    if ([self bugsnagReadyForInternalCalls]) {
+        return [[self.client getMetadataFromSection:section] mutableCopy];
+    }
+    return nil;
+}
+
++ (id _Nullable )getMetadataFromSection:(NSString *_Nonnull)section
+                                withKey:(NSString *_Nonnull)key
+{
+    if ([self bugsnagReadyForInternalCalls]) {
+        return [[self.client getMetadataFromSection:section withKey:key] mutableCopy];
+    }
+    return nil;
+}
+
++ (void)clearMetadataFromSection:(NSString *)section
+{
+    if ([self bugsnagReadyForInternalCalls]) {
+        [self.client clearMetadataFromSection:section];
+    }
+}
+
++ (void)clearMetadataFromSection:(NSString *_Nonnull)sectionName
+                         withKey:(NSString *_Nonnull)key
+{
+    if ([self bugsnagReadyForInternalCalls]) {
+        [self.client clearMetadataFromSection:sectionName
+                                      withKey:key];
+    }
+}
+
+// MARK: -
+
++ (void)setContext:(NSString *_Nullable)context {
+    /*if ([self bugsnagReadyForInternalCalls]) {
+        [self.client setContext:context];
+    }*/
+}
+
++ (NSString *_Nullable)context {
+    /*if ([self bugsnagReadyForInternalCalls]) {
+        return self.client.context;
+    }*/
+    return nil;
+}
+
++ (BugsnagUser *)user {
+    return self.client.user;
+}
+
++ (void)setUser:(NSString *_Nullable)userId
+      withEmail:(NSString *_Nullable)email
+        andName:(NSString *_Nullable)name {
+    /*if ([self bugsnagReadyForInternalCalls]) {
+        [self.client setUser:userId withEmail:email andName:name];
+    }*/
+}
+
++ (nonnull BugsnagOnSessionRef)addOnSessionBlock:(nonnull BugsnagOnSessionBlock)block {
+    /*if ([self bugsnagReadyForInternalCalls]) {
+        return [self.client addOnSessionBlock:block];
+    } else {*/
+        // We need to return something from this nonnull method; simulate what would have happened.
+        return [block copy];
+    //}
+}
+
++ (void)removeOnSession:(nonnull BugsnagOnSessionRef)callback {
+    /*if ([self bugsnagReadyForInternalCalls]) {
+        [self.client removeOnSession:callback];
+    }*/
+}
+
++ (void)removeOnSessionBlock:(BugsnagOnSessionBlock _Nonnull )block {
+    /*if ([self bugsnagReadyForInternalCalls]) {
+        [self.client removeOnSessionBlock:block];
+    }*/
+}
+
+// =============================================================================
+// MARK: - OnBreadcrumb
+// =============================================================================
+
++ (nonnull BugsnagOnBreadcrumbRef)addOnBreadcrumbBlock:(nonnull BugsnagOnBreadcrumbBlock)block {
+    /*if ([self bugsnagReadyForInternalCalls]) {
+        return [self.client addOnBreadcrumbBlock:block];
+    } else {*/
+        // We need to return something from this nonnull method; simulate what would have happened.
+        return [block copy];
+    //}
+}
+
++ (void)removeOnBreadcrumb:(nonnull BugsnagOnBreadcrumbRef)callback {
+    /*if ([self bugsnagReadyForInternalCalls]) {
+        [self.client removeOnBreadcrumb:callback];
+    }*/
+}
+
++ (void)removeOnBreadcrumbBlock:(BugsnagOnBreadcrumbBlock _Nonnull)block {
+    /*if ([self bugsnagReadyForInternalCalls]) {
+        [self.client removeOnBreadcrumbBlock:block];
+    }*/
 }
 
 @end

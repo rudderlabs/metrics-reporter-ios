@@ -18,6 +18,7 @@ public class CrashReporterClient {
     init() {
         //        RSCrashReporter.start(withApiKey: "df5da4234cd9883c66557a2b9b75c082")
         RSCrashReporter.start(with: self)
+//        RSCrashReporter
     }
     
     public func print() {

@@ -1679,6 +1679,7 @@
 			isa = PBXGroup;
 			children = (
 				01ABD8782786DF9A009A5CA2 /* BSG_KSCrashReportTests.m */,
+				CB37449F28475EA800A3955E /* BSG_KSCrashStringConversionTest.m */,
 				01B74E9B27903326004B9765 /* BSG_KSFileTests.m */,
 				008966D82486D43700DC48C2 /* BSG_KSMachHeadersTests.m */,
 				008966EA2486D43700DC48C2 /* BSG_KSMachTests.m */,
@@ -1699,7 +1700,6 @@
 				008966D92486D43700DC48C2 /* RFC3339DateTool_Tests.m */,
 				008966E22486D43700DC48C2 /* XCTestCase+KSCrash.h */,
 				008966D72486D43700DC48C2 /* XCTestCase+KSCrash.m */,
-				CB37449F28475EA800A3955E /* BSG_KSCrashStringConversionTest.m */,
 			);
 			path = KSCrashTests;
 			sourceTree = "<group>";

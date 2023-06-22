@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/pallabmaiti/Documents/Rudder/rudder-crash-reporter-ios/RSCrashReporter.xcodeproj">
+      location = "group:RSCrashReporter.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:MetricsReporter.xcodeproj">
