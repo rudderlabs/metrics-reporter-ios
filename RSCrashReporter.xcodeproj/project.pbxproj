@@ -486,8 +486,8 @@
 		00896A452486DBF000DC48C2 /* BugsnagConfigurationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00896A432486DBF000DC48C2 /* BugsnagConfigurationTests.m */; };
 		00896A462486DBF000DC48C2 /* BugsnagConfigurationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00896A432486DBF000DC48C2 /* BugsnagConfigurationTests.m */; };
 		00AD1C7C24869B0E00A27979 /* RSCrashReporter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00AD1C7224869B0E00A27979 /* RSCrashReporter.framework */; };
-		00AD1CB624869C1200A27979 /* Bugsnag.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00AD1CAD24869C1200A27979 /* Bugsnag.framework */; };
-		00AD1CD224869C2400A27979 /* Bugsnag.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00AD1CC924869C2400A27979 /* Bugsnag.framework */; };
+		00AD1CB624869C1200A27979 /* RSCrashReporter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00AD1CAD24869C1200A27979 /* RSCrashReporter.framework */; };
+		00AD1CD224869C2400A27979 /* RSCrashReporter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00AD1CC924869C2400A27979 /* RSCrashReporter.framework */; };
 		00AD1F102486A17900A27979 /* BugsnagSessionTracker.h in Headers */ = {isa = PBXBuildFile; fileRef = 00AD1EF82486A17700A27979 /* BugsnagSessionTracker.h */; };
 		00AD1F112486A17900A27979 /* BugsnagSessionTracker.h in Headers */ = {isa = PBXBuildFile; fileRef = 00AD1EF82486A17700A27979 /* BugsnagSessionTracker.h */; };
 		00AD1F122486A17900A27979 /* BugsnagSessionTracker.h in Headers */ = {isa = PBXBuildFile; fileRef = 00AD1EF82486A17700A27979 /* BugsnagSessionTracker.h */; };
@@ -916,7 +916,7 @@
 		CBB092902519F891007698BC /* BugsnagSystemState.h in Headers */ = {isa = PBXBuildFile; fileRef = CBB0928B2519F891007698BC /* BugsnagSystemState.h */; };
 		CBB092912519F891007698BC /* BugsnagSystemState.h in Headers */ = {isa = PBXBuildFile; fileRef = CBB0928B2519F891007698BC /* BugsnagSystemState.h */; };
 		CBB092922519F891007698BC /* BugsnagSystemState.h in Headers */ = {isa = PBXBuildFile; fileRef = CBB0928B2519F891007698BC /* BugsnagSystemState.h */; };
-		CBBDE902280067AB0070DCD3 /* Bugsnag.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBBDE8F8280067AB0070DCD3 /* Bugsnag.framework */; };
+		CBBDE902280067AB0070DCD3 /* RSCrashReporter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBBDE8F8280067AB0070DCD3 /* RSCrashReporter.framework */; };
 		CBBDE90F280068560070DCD3 /* BugsnagFeatureFlag.m in Sources */ = {isa = PBXBuildFile; fileRef = 01099392273D123800128BBE /* BugsnagFeatureFlag.m */; };
 		CBBDE910280068560070DCD3 /* BugsnagSessionTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 00AD1F012486A17900A27979 /* BugsnagSessionTracker.m */; };
 		CBBDE911280068560070DCD3 /* BSGCrashSentry.h in Headers */ = {isa = PBXBuildFile; fileRef = 00AD1F002486A17900A27979 /* BSGCrashSentry.h */; };
@@ -1411,12 +1411,12 @@
 		00896A3F2486DBDD00DC48C2 /* BSGConfigurationBuilderTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSGConfigurationBuilderTests.m; sourceTree = "<group>"; };
 		00896A432486DBF000DC48C2 /* BugsnagConfigurationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BugsnagConfigurationTests.m; sourceTree = "<group>"; };
 		00AD1C7224869B0E00A27979 /* RSCrashReporter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RSCrashReporter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		00AD1C7B24869B0E00A27979 /* Bugsnag-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Bugsnag-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		00AD1CAD24869C1200A27979 /* Bugsnag.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Bugsnag.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		00AD1CB524869C1200A27979 /* Bugsnag-macOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Bugsnag-macOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		00AD1CC924869C2400A27979 /* Bugsnag.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Bugsnag.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		00AD1CD124869C2400A27979 /* Bugsnag-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Bugsnag-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		00AD1CE424869C6C00A27979 /* libBugsnagStatic.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libBugsnagStatic.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		00AD1C7B24869B0E00A27979 /* RSCrashReporter-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "RSCrashReporter-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		00AD1CAD24869C1200A27979 /* RSCrashReporter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RSCrashReporter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		00AD1CB524869C1200A27979 /* RSCrashReporter-macOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "RSCrashReporter-macOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		00AD1CC924869C2400A27979 /* RSCrashReporter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RSCrashReporter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		00AD1CD124869C2400A27979 /* RSCrashReporter-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "RSCrashReporter-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		00AD1CE424869C6C00A27979 /* libRSCrashReporterStatic.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRSCrashReporterStatic.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		00AD1EF82486A17700A27979 /* BugsnagSessionTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BugsnagSessionTracker.h; sourceTree = "<group>"; };
 		00AD1EFE2486A17800A27979 /* RSCrashReporter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSCrashReporter.m; sourceTree = "<group>"; };
 		00AD1EFF2486A17900A27979 /* BSGCrashSentry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSGCrashSentry.m; sourceTree = "<group>"; };
@@ -1459,7 +1459,7 @@
 		0154E20128070AEA009044E4 /* BSGRunContext.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BSGRunContext.m; sourceTree = "<group>"; };
 		015F528325C15BB7000D1915 /* MRCCanary.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MRCCanary.m; sourceTree = "<group>"; };
 		0163BF5825823D8D008DC28B /* BSGNotificationBreadcrumbsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BSGNotificationBreadcrumbsTests.m; sourceTree = "<group>"; };
-		017824BD262D65A000D18AFA /* Bugsnag.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Bugsnag.xcconfig; sourceTree = "<group>"; };
+		017824BD262D65A000D18AFA /* RSCrashReporter.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = RSCrashReporter.xcconfig; sourceTree = "<group>"; };
 		017DCF8A2874212F000ECB22 /* BSGTelemetry.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BSGTelemetry.h; sourceTree = "<group>"; };
 		017DCF8B2874212F000ECB22 /* BSGTelemetry.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BSGTelemetry.m; sourceTree = "<group>"; };
 		017DCF9A287422BB000ECB22 /* BSGTelemetryTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BSGTelemetryTests.m; sourceTree = "<group>"; };
@@ -1548,8 +1548,8 @@
 		CBA2249A251E429C00B87416 /* TestSupport.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestSupport.m; sourceTree = "<group>"; };
 		CBB0928A2519F891007698BC /* BugsnagSystemState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BugsnagSystemState.m; sourceTree = "<group>"; };
 		CBB0928B2519F891007698BC /* BugsnagSystemState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BugsnagSystemState.h; sourceTree = "<group>"; };
-		CBBDE8F8280067AB0070DCD3 /* Bugsnag.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Bugsnag.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		CBBDE901280067AB0070DCD3 /* Bugsnag-watchOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Bugsnag-watchOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CBBDE8F8280067AB0070DCD3 /* RSCrashReporter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RSCrashReporter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CBBDE901280067AB0070DCD3 /* RSCrashReporter-watchOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "RSCrashReporter-watchOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBBDE9C3280069D10070DCD3 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "Platforms/WatchOS.platform/Developer/SDKs/WatchOS8.3.sdk/usr/lib/libc++.tbd"; sourceTree = DEVELOPER_DIR; };
 		CBBDE9C5280069D90070DCD3 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS8.3.sdk/usr/lib/libz.tbd; sourceTree = DEVELOPER_DIR; };
 		CBBDE9C7280069E40070DCD3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS8.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
@@ -1577,6 +1577,7 @@
 		E746293624890C6B00F92D67 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS13.4.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
 		E746293824890C7000F92D67 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS13.4.sdk/usr/lib/libc++.tbd"; sourceTree = DEVELOPER_DIR; };
 		E746293A24890C7900F92D67 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS13.4.sdk/usr/lib/libz.tbd; sourceTree = DEVELOPER_DIR; };
+		ED1116422A4346B10008F1AF /* RSCrashReporter.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = RSCrashReporter.podspec; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1614,7 +1615,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00AD1CB624869C1200A27979 /* Bugsnag.framework in Frameworks */,
+				00AD1CB624869C1200A27979 /* RSCrashReporter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1633,7 +1634,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00AD1CD224869C2400A27979 /* Bugsnag.framework in Frameworks */,
+				00AD1CD224869C2400A27979 /* RSCrashReporter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1667,7 +1668,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CBBDE902280067AB0070DCD3 /* Bugsnag.framework in Frameworks */,
+				CBBDE902280067AB0070DCD3 /* RSCrashReporter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1836,7 +1837,8 @@
 		00AD1C6824869B0E00A27979 = {
 			isa = PBXGroup;
 			children = (
-				017824BD262D65A000D18AFA /* Bugsnag.xcconfig */,
+				017824BD262D65A000D18AFA /* RSCrashReporter.xcconfig */,
+				ED1116422A4346B10008F1AF /* RSCrashReporter.podspec */,
 				00AD1C7424869B0E00A27979 /* Bugsnag */,
 				01A617662733CF2D00024A0B /* Tests */,
 				00AD1C7324869B0E00A27979 /* Products */,
@@ -1848,15 +1850,15 @@
 			isa = PBXGroup;
 			children = (
 				00AD1C7224869B0E00A27979 /* RSCrashReporter.framework */,
-				00AD1C7B24869B0E00A27979 /* Bugsnag-iOSTests.xctest */,
-				00AD1CAD24869C1200A27979 /* Bugsnag.framework */,
-				00AD1CB524869C1200A27979 /* Bugsnag-macOSTests.xctest */,
-				00AD1CC924869C2400A27979 /* Bugsnag.framework */,
-				00AD1CD124869C2400A27979 /* Bugsnag-tvOSTests.xctest */,
-				00AD1CE424869C6C00A27979 /* libBugsnagStatic.a */,
+				00AD1C7B24869B0E00A27979 /* RSCrashReporter-iOSTests.xctest */,
+				00AD1CAD24869C1200A27979 /* RSCrashReporter.framework */,
+				00AD1CB524869C1200A27979 /* RSCrashReporter-macOSTests.xctest */,
+				00AD1CC924869C2400A27979 /* RSCrashReporter.framework */,
+				00AD1CD124869C2400A27979 /* RSCrashReporter-tvOSTests.xctest */,
+				00AD1CE424869C6C00A27979 /* libRSCrashReporterStatic.a */,
 				01A6176B2733CFEA00024A0B /* TestHost-iOS.app */,
-				CBBDE8F8280067AB0070DCD3 /* Bugsnag.framework */,
-				CBBDE901280067AB0070DCD3 /* Bugsnag-watchOSTests.xctest */,
+				CBBDE8F8280067AB0070DCD3 /* RSCrashReporter.framework */,
+				CBBDE901280067AB0070DCD3 /* RSCrashReporter-watchOSTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2154,7 +2156,6 @@
 			isa = PBXGroup;
 			children = (
 				3A700A8624A63A8E0068CD1B /* BSG_KSCrashReportWriter.h */,
-				3A700A8C24A63A8E0068CD1B /* RSCrashReporter.h */,
 				3A700A9024A63A8E0068CD1B /* BugsnagApp.h */,
 				3A700A8B24A63A8E0068CD1B /* BugsnagAppWithState.h */,
 				3A700A8524A63A8E0068CD1B /* BugsnagBreadcrumb.h */,
@@ -2177,6 +2178,7 @@
 				3A700A8224A63A8E0068CD1B /* BugsnagStackframe.h */,
 				3A700A8024A63A8E0068CD1B /* BugsnagThread.h */,
 				3A700A8A24A63A8E0068CD1B /* BugsnagUser.h */,
+				3A700A8C24A63A8E0068CD1B /* RSCrashReporter.h */,
 			);
 			path = Bugsnag;
 			sourceTree = "<group>";
@@ -2618,9 +2620,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		00AD1C7124869B0E00A27979 /* Bugsnag-iOS */ = {
+		00AD1C7124869B0E00A27979 /* RSCrashReporter-iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 00AD1C8624869B0E00A27979 /* Build configuration list for PBXNativeTarget "Bugsnag-iOS" */;
+			buildConfigurationList = 00AD1C8624869B0E00A27979 /* Build configuration list for PBXNativeTarget "RSCrashReporter-iOS" */;
 			buildPhases = (
 				00AD1C6D24869B0E00A27979 /* Headers */,
 				00AD1C6E24869B0E00A27979 /* Sources */,
@@ -2631,14 +2633,14 @@
 			);
 			dependencies = (
 			);
-			name = "Bugsnag-iOS";
+			name = "RSCrashReporter-iOS";
 			productName = Bugsnag;
 			productReference = 00AD1C7224869B0E00A27979 /* RSCrashReporter.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		00AD1C7A24869B0E00A27979 /* Bugsnag-iOSTests */ = {
+		00AD1C7A24869B0E00A27979 /* RSCrashReporter-iOSTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 00AD1C8924869B0E00A27979 /* Build configuration list for PBXNativeTarget "Bugsnag-iOSTests" */;
+			buildConfigurationList = 00AD1C8924869B0E00A27979 /* Build configuration list for PBXNativeTarget "RSCrashReporter-iOSTests" */;
 			buildPhases = (
 				00AD1C7724869B0E00A27979 /* Sources */,
 				00AD1C7824869B0E00A27979 /* Frameworks */,
@@ -2650,14 +2652,14 @@
 				00AD1C7E24869B0E00A27979 /* PBXTargetDependency */,
 				01A6178D2733D1EF00024A0B /* PBXTargetDependency */,
 			);
-			name = "Bugsnag-iOSTests";
+			name = "RSCrashReporter-iOSTests";
 			productName = BugsnagTests;
-			productReference = 00AD1C7B24869B0E00A27979 /* Bugsnag-iOSTests.xctest */;
+			productReference = 00AD1C7B24869B0E00A27979 /* RSCrashReporter-iOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		00AD1CAC24869C1200A27979 /* Bugsnag-macOS */ = {
+		00AD1CAC24869C1200A27979 /* RSCrashReporter-macOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 00AD1CBE24869C1200A27979 /* Build configuration list for PBXNativeTarget "Bugsnag-macOS" */;
+			buildConfigurationList = 00AD1CBE24869C1200A27979 /* Build configuration list for PBXNativeTarget "RSCrashReporter-macOS" */;
 			buildPhases = (
 				00AD1CA824869C1200A27979 /* Headers */,
 				00AD1CA924869C1200A27979 /* Sources */,
@@ -2668,14 +2670,14 @@
 			);
 			dependencies = (
 			);
-			name = "Bugsnag-macOS";
+			name = "RSCrashReporter-macOS";
 			productName = "Bugsnag-macOS";
-			productReference = 00AD1CAD24869C1200A27979 /* Bugsnag.framework */;
+			productReference = 00AD1CAD24869C1200A27979 /* RSCrashReporter.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		00AD1CB424869C1200A27979 /* Bugsnag-macOSTests */ = {
+		00AD1CB424869C1200A27979 /* RSCrashReporter-macOSTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 00AD1CC124869C1200A27979 /* Build configuration list for PBXNativeTarget "Bugsnag-macOSTests" */;
+			buildConfigurationList = 00AD1CC124869C1200A27979 /* Build configuration list for PBXNativeTarget "RSCrashReporter-macOSTests" */;
 			buildPhases = (
 				00AD1CB124869C1200A27979 /* Sources */,
 				00AD1CB224869C1200A27979 /* Frameworks */,
@@ -2686,14 +2688,14 @@
 			dependencies = (
 				00AD1CB824869C1200A27979 /* PBXTargetDependency */,
 			);
-			name = "Bugsnag-macOSTests";
+			name = "RSCrashReporter-macOSTests";
 			productName = "Bugsnag-macOSTests";
-			productReference = 00AD1CB524869C1200A27979 /* Bugsnag-macOSTests.xctest */;
+			productReference = 00AD1CB524869C1200A27979 /* RSCrashReporter-macOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		00AD1CC824869C2400A27979 /* Bugsnag-tvOS */ = {
+		00AD1CC824869C2400A27979 /* RSCrashReporter-tvOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 00AD1CDA24869C2400A27979 /* Build configuration list for PBXNativeTarget "Bugsnag-tvOS" */;
+			buildConfigurationList = 00AD1CDA24869C2400A27979 /* Build configuration list for PBXNativeTarget "RSCrashReporter-tvOS" */;
 			buildPhases = (
 				00AD1CC424869C2400A27979 /* Headers */,
 				00AD1CC524869C2400A27979 /* Sources */,
@@ -2704,14 +2706,14 @@
 			);
 			dependencies = (
 			);
-			name = "Bugsnag-tvOS";
+			name = "RSCrashReporter-tvOS";
 			productName = "Bugsnag-tvOS";
-			productReference = 00AD1CC924869C2400A27979 /* Bugsnag.framework */;
+			productReference = 00AD1CC924869C2400A27979 /* RSCrashReporter.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		00AD1CD024869C2400A27979 /* Bugsnag-tvOSTests */ = {
+		00AD1CD024869C2400A27979 /* RSCrashReporter-tvOSTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 00AD1CDD24869C2400A27979 /* Build configuration list for PBXNativeTarget "Bugsnag-tvOSTests" */;
+			buildConfigurationList = 00AD1CDD24869C2400A27979 /* Build configuration list for PBXNativeTarget "RSCrashReporter-tvOSTests" */;
 			buildPhases = (
 				00AD1CCD24869C2400A27979 /* Sources */,
 				00AD1CCE24869C2400A27979 /* Frameworks */,
@@ -2722,14 +2724,14 @@
 			dependencies = (
 				00AD1CD424869C2400A27979 /* PBXTargetDependency */,
 			);
-			name = "Bugsnag-tvOSTests";
+			name = "RSCrashReporter-tvOSTests";
 			productName = "Bugsnag-tvOSTests";
-			productReference = 00AD1CD124869C2400A27979 /* Bugsnag-tvOSTests.xctest */;
+			productReference = 00AD1CD124869C2400A27979 /* RSCrashReporter-tvOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		00AD1CE324869C6C00A27979 /* BugsnagStatic */ = {
+		00AD1CE324869C6C00A27979 /* RSCrashReporterStatic */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 00AD1CEA24869C6D00A27979 /* Build configuration list for PBXNativeTarget "BugsnagStatic" */;
+			buildConfigurationList = 00AD1CEA24869C6D00A27979 /* Build configuration list for PBXNativeTarget "RSCrashReporterStatic" */;
 			buildPhases = (
 				00AD1CE024869C6C00A27979 /* Sources */,
 				00AD1CE124869C6C00A27979 /* Frameworks */,
@@ -2739,9 +2741,9 @@
 			);
 			dependencies = (
 			);
-			name = BugsnagStatic;
+			name = RSCrashReporterStatic;
 			productName = BugsnagStatic;
-			productReference = 00AD1CE424869C6C00A27979 /* libBugsnagStatic.a */;
+			productReference = 00AD1CE424869C6C00A27979 /* libRSCrashReporterStatic.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		01A6176A2733CFEA00024A0B /* TestHost-iOS */ = {
@@ -2763,9 +2765,9 @@
 			productReference = 01A6176B2733CFEA00024A0B /* TestHost-iOS.app */;
 			productType = "com.apple.product-type.application";
 		};
-		CBBDE8F7280067AB0070DCD3 /* Bugsnag-watchOS */ = {
+		CBBDE8F7280067AB0070DCD3 /* RSCrashReporter-watchOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CBBDE90D280067AB0070DCD3 /* Build configuration list for PBXNativeTarget "Bugsnag-watchOS" */;
+			buildConfigurationList = CBBDE90D280067AB0070DCD3 /* Build configuration list for PBXNativeTarget "RSCrashReporter-watchOS" */;
 			buildPhases = (
 				CBBDE8F3280067AB0070DCD3 /* Headers */,
 				CBBDE8F4280067AB0070DCD3 /* Sources */,
@@ -2776,14 +2778,14 @@
 			);
 			dependencies = (
 			);
-			name = "Bugsnag-watchOS";
+			name = "RSCrashReporter-watchOS";
 			productName = Bugsnag;
-			productReference = CBBDE8F8280067AB0070DCD3 /* Bugsnag.framework */;
+			productReference = CBBDE8F8280067AB0070DCD3 /* RSCrashReporter.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		CBBDE900280067AB0070DCD3 /* Bugsnag-watchOSTests */ = {
+		CBBDE900280067AB0070DCD3 /* RSCrashReporter-watchOSTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CBBDE90E280067AB0070DCD3 /* Build configuration list for PBXNativeTarget "Bugsnag-watchOSTests" */;
+			buildConfigurationList = CBBDE90E280067AB0070DCD3 /* Build configuration list for PBXNativeTarget "RSCrashReporter-watchOSTests" */;
 			buildPhases = (
 				CBBDE8FD280067AB0070DCD3 /* Sources */,
 				CBBDE8FE280067AB0070DCD3 /* Frameworks */,
@@ -2794,9 +2796,9 @@
 			dependencies = (
 				CBBDE904280067AB0070DCD3 /* PBXTargetDependency */,
 			);
-			name = "Bugsnag-watchOSTests";
+			name = "RSCrashReporter-watchOSTests";
 			productName = BugsnagTests;
-			productReference = CBBDE901280067AB0070DCD3 /* Bugsnag-watchOSTests.xctest */;
+			productReference = CBBDE901280067AB0070DCD3 /* RSCrashReporter-watchOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -2807,7 +2809,7 @@
 			attributes = {
 				DefaultBuildSystemTypeForWorkspace = Original;
 				LastUpgradeCheck = 1140;
-				ORGANIZATIONNAME = "Bugsnag Inc.";
+				ORGANIZATIONNAME = RudderStack;
 				TargetAttributes = {
 					00AD1C7124869B0E00A27979 = {
 						CreatedOnToolsVersion = 11.4.1;
@@ -2842,7 +2844,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 00AD1C6C24869B0E00A27979 /* Build configuration list for PBXProject "Bugsnag" */;
+			buildConfigurationList = 00AD1C6C24869B0E00A27979 /* Build configuration list for PBXProject "RSCrashReporter" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -2855,15 +2857,15 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				00AD1C7124869B0E00A27979 /* Bugsnag-iOS */,
-				00AD1CAC24869C1200A27979 /* Bugsnag-macOS */,
-				00AD1CC824869C2400A27979 /* Bugsnag-tvOS */,
-				CBBDE8F7280067AB0070DCD3 /* Bugsnag-watchOS */,
-				00AD1CE324869C6C00A27979 /* BugsnagStatic */,
-				00AD1C7A24869B0E00A27979 /* Bugsnag-iOSTests */,
-				00AD1CB424869C1200A27979 /* Bugsnag-macOSTests */,
-				00AD1CD024869C2400A27979 /* Bugsnag-tvOSTests */,
-				CBBDE900280067AB0070DCD3 /* Bugsnag-watchOSTests */,
+				00AD1C7124869B0E00A27979 /* RSCrashReporter-iOS */,
+				00AD1CAC24869C1200A27979 /* RSCrashReporter-macOS */,
+				00AD1CC824869C2400A27979 /* RSCrashReporter-tvOS */,
+				CBBDE8F7280067AB0070DCD3 /* RSCrashReporter-watchOS */,
+				00AD1CE324869C6C00A27979 /* RSCrashReporterStatic */,
+				00AD1C7A24869B0E00A27979 /* RSCrashReporter-iOSTests */,
+				00AD1CB424869C1200A27979 /* RSCrashReporter-macOSTests */,
+				00AD1CD024869C2400A27979 /* RSCrashReporter-tvOSTests */,
+				CBBDE900280067AB0070DCD3 /* RSCrashReporter-watchOSTests */,
 				01A6176A2733CFEA00024A0B /* TestHost-iOS */,
 			);
 		};
@@ -3737,22 +3739,22 @@
 /* Begin PBXTargetDependency section */
 		00AD1C7E24869B0E00A27979 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 00AD1C7124869B0E00A27979 /* Bugsnag-iOS */;
+			target = 00AD1C7124869B0E00A27979 /* RSCrashReporter-iOS */;
 			targetProxy = 00AD1C7D24869B0E00A27979 /* PBXContainerItemProxy */;
 		};
 		00AD1CB824869C1200A27979 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 00AD1CAC24869C1200A27979 /* Bugsnag-macOS */;
+			target = 00AD1CAC24869C1200A27979 /* RSCrashReporter-macOS */;
 			targetProxy = 00AD1CB724869C1200A27979 /* PBXContainerItemProxy */;
 		};
 		00AD1CD424869C2400A27979 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 00AD1CC824869C2400A27979 /* Bugsnag-tvOS */;
+			target = 00AD1CC824869C2400A27979 /* RSCrashReporter-tvOS */;
 			targetProxy = 00AD1CD324869C2400A27979 /* PBXContainerItemProxy */;
 		};
 		01A617882733D15C00024A0B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 00AD1C7124869B0E00A27979 /* Bugsnag-iOS */;
+			target = 00AD1C7124869B0E00A27979 /* RSCrashReporter-iOS */;
 			targetProxy = 01A617872733D15C00024A0B /* PBXContainerItemProxy */;
 		};
 		01A6178D2733D1EF00024A0B /* PBXTargetDependency */ = {
@@ -3762,7 +3764,7 @@
 		};
 		CBBDE904280067AB0070DCD3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = CBBDE8F7280067AB0070DCD3 /* Bugsnag-watchOS */;
+			target = CBBDE8F7280067AB0070DCD3 /* RSCrashReporter-watchOS */;
 			targetProxy = CBBDE903280067AB0070DCD3 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -3825,7 +3827,7 @@
 					"-lz",
 					"-ObjC",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.bugsnag.Bugsnag;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rudderstack.rscrashreporter;
 				PRODUCT_NAME = Bugsnag;
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				SDKROOT = iphoneos;
@@ -3867,7 +3869,7 @@
 					"-lz",
 					"-ObjC",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.bugsnag.Bugsnag;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rudderstack.rscrashreporter;
 				PRODUCT_NAME = Bugsnag;
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				SDKROOT = iphoneos;
@@ -3881,7 +3883,7 @@
 		};
 		00AD1C8724869B0E00A27979 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 017824BD262D65A000D18AFA /* Bugsnag.xcconfig */;
+			baseConfigurationReference = 017824BD262D65A000D18AFA /* RSCrashReporter.xcconfig */;
 			buildSettings = {
 				CLANG_MODULES_AUTOLINK = NO;
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
@@ -3901,6 +3903,7 @@
 					"@loader_path/Frameworks",
 				);
 				MODULEMAP_FILE = "$(PROJECT_DIR)/Framework/module.modulemap";
+				PRODUCT_BUNDLE_IDENTIFIER = com.rudderstack.rscrashreporter;
 				PRODUCT_NAME = RSCrashReporter;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -3909,7 +3912,7 @@
 		};
 		00AD1C8824869B0E00A27979 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 017824BD262D65A000D18AFA /* Bugsnag.xcconfig */;
+			baseConfigurationReference = 017824BD262D65A000D18AFA /* RSCrashReporter.xcconfig */;
 			buildSettings = {
 				CLANG_MODULES_AUTOLINK = NO;
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
@@ -3925,6 +3928,7 @@
 					"@loader_path/Frameworks",
 				);
 				MODULEMAP_FILE = "$(PROJECT_DIR)/Framework/module.modulemap";
+				PRODUCT_BUNDLE_IDENTIFIER = com.rudderstack.rscrashreporter;
 				PRODUCT_NAME = RSCrashReporter;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -3946,7 +3950,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.bugsnag.BugsnagTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rudderstack.rscrashreporterTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Tests/BugsnagTests/Tests-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
@@ -3966,7 +3970,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.bugsnag.BugsnagTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rudderstack.rscrashreporterTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Tests/BugsnagTests/Tests-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
@@ -3977,7 +3981,7 @@
 		};
 		00AD1CBF24869C1200A27979 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 017824BD262D65A000D18AFA /* Bugsnag.xcconfig */;
+			baseConfigurationReference = 017824BD262D65A000D18AFA /* RSCrashReporter.xcconfig */;
 			buildSettings = {
 				CLANG_MODULES_AUTOLINK = NO;
 				CODE_SIGN_STYLE = Automatic;
@@ -3996,7 +4000,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_NAME = Bugsnag;
+				PRODUCT_NAME = RSCrashReporter;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 			};
@@ -4004,7 +4008,7 @@
 		};
 		00AD1CC024869C1200A27979 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 017824BD262D65A000D18AFA /* Bugsnag.xcconfig */;
+			baseConfigurationReference = 017824BD262D65A000D18AFA /* RSCrashReporter.xcconfig */;
 			buildSettings = {
 				CLANG_MODULES_AUTOLINK = NO;
 				CODE_SIGN_STYLE = Automatic;
@@ -4019,7 +4023,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_NAME = Bugsnag;
+				PRODUCT_NAME = RSCrashReporter;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 			};
@@ -4040,7 +4044,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.bugsnag.Bugsnag-macOSTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.rudderstack.rscrashreporter-macOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SWIFT_OBJC_BRIDGING_HEADER = "Tests/BugsnagTests/Tests-Bridging-Header.h";
@@ -4059,7 +4063,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.bugsnag.Bugsnag-macOSTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.rudderstack.rscrashreporter-macOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SWIFT_OBJC_BRIDGING_HEADER = "Tests/BugsnagTests/Tests-Bridging-Header.h";
@@ -4069,7 +4073,7 @@
 		};
 		00AD1CDB24869C2400A27979 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 017824BD262D65A000D18AFA /* Bugsnag.xcconfig */;
+			baseConfigurationReference = 017824BD262D65A000D18AFA /* RSCrashReporter.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -4086,7 +4090,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_NAME = Bugsnag;
+				PRODUCT_NAME = RSCrashReporter;
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 3;
@@ -4095,7 +4099,7 @@
 		};
 		00AD1CDC24869C2400A27979 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 017824BD262D65A000D18AFA /* Bugsnag.xcconfig */;
+			baseConfigurationReference = 017824BD262D65A000D18AFA /* RSCrashReporter.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -4108,7 +4112,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_NAME = Bugsnag;
+				PRODUCT_NAME = RSCrashReporter;
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 3;
@@ -4129,7 +4133,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.bugsnag.Bugsnag-tvOSTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.rudderstack.rscrashreporter-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				SWIFT_OBJC_BRIDGING_HEADER = "Tests/BugsnagTests/Tests-Bridging-Header.h";
@@ -4148,7 +4152,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.bugsnag.Bugsnag-tvOSTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.rudderstack.rscrashreporter-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				SWIFT_OBJC_BRIDGING_HEADER = "Tests/BugsnagTests/Tests-Bridging-Header.h";
@@ -4159,7 +4163,7 @@
 		};
 		00AD1CEB24869C6D00A27979 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 017824BD262D65A000D18AFA /* Bugsnag.xcconfig */;
+			baseConfigurationReference = 017824BD262D65A000D18AFA /* RSCrashReporter.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -4170,7 +4174,7 @@
 		};
 		00AD1CEC24869C6D00A27979 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 017824BD262D65A000D18AFA /* Bugsnag.xcconfig */;
+			baseConfigurationReference = 017824BD262D65A000D18AFA /* RSCrashReporter.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -4266,8 +4270,8 @@
 					"@loader_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.bugsnag.Bugsnag;
-				PRODUCT_NAME = Bugsnag;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rudderstack.rscrashreporter;
+				PRODUCT_NAME = RSCrashReporter;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -4324,8 +4328,8 @@
 					"@loader_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.bugsnag.Bugsnag;
-				PRODUCT_NAME = Bugsnag;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rudderstack.rscrashreporter;
+				PRODUCT_NAME = RSCrashReporter;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -4374,7 +4378,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.bugsnag.BugsnagTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rudderstack.rscrashreporterTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SWIFT_EMIT_LOC_STRINGS = NO;
@@ -4421,7 +4425,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.bugsnag.BugsnagTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rudderstack.rscrashreporterTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SWIFT_EMIT_LOC_STRINGS = NO;
@@ -4434,7 +4438,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		00AD1C6C24869B0E00A27979 /* Build configuration list for PBXProject "Bugsnag" */ = {
+		00AD1C6C24869B0E00A27979 /* Build configuration list for PBXProject "RSCrashReporter" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				00AD1C8424869B0E00A27979 /* Debug */,
@@ -4443,7 +4447,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		00AD1C8624869B0E00A27979 /* Build configuration list for PBXNativeTarget "Bugsnag-iOS" */ = {
+		00AD1C8624869B0E00A27979 /* Build configuration list for PBXNativeTarget "RSCrashReporter-iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				00AD1C8724869B0E00A27979 /* Debug */,
@@ -4452,7 +4456,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		00AD1C8924869B0E00A27979 /* Build configuration list for PBXNativeTarget "Bugsnag-iOSTests" */ = {
+		00AD1C8924869B0E00A27979 /* Build configuration list for PBXNativeTarget "RSCrashReporter-iOSTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				00AD1C8A24869B0E00A27979 /* Debug */,
@@ -4461,7 +4465,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		00AD1CBE24869C1200A27979 /* Build configuration list for PBXNativeTarget "Bugsnag-macOS" */ = {
+		00AD1CBE24869C1200A27979 /* Build configuration list for PBXNativeTarget "RSCrashReporter-macOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				00AD1CBF24869C1200A27979 /* Debug */,
@@ -4470,7 +4474,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		00AD1CC124869C1200A27979 /* Build configuration list for PBXNativeTarget "Bugsnag-macOSTests" */ = {
+		00AD1CC124869C1200A27979 /* Build configuration list for PBXNativeTarget "RSCrashReporter-macOSTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				00AD1CC224869C1200A27979 /* Debug */,
@@ -4479,7 +4483,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		00AD1CDA24869C2400A27979 /* Build configuration list for PBXNativeTarget "Bugsnag-tvOS" */ = {
+		00AD1CDA24869C2400A27979 /* Build configuration list for PBXNativeTarget "RSCrashReporter-tvOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				00AD1CDB24869C2400A27979 /* Debug */,
@@ -4488,7 +4492,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		00AD1CDD24869C2400A27979 /* Build configuration list for PBXNativeTarget "Bugsnag-tvOSTests" */ = {
+		00AD1CDD24869C2400A27979 /* Build configuration list for PBXNativeTarget "RSCrashReporter-tvOSTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				00AD1CDE24869C2400A27979 /* Debug */,
@@ -4497,7 +4501,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		00AD1CEA24869C6D00A27979 /* Build configuration list for PBXNativeTarget "BugsnagStatic" */ = {
+		00AD1CEA24869C6D00A27979 /* Build configuration list for PBXNativeTarget "RSCrashReporterStatic" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				00AD1CEB24869C6D00A27979 /* Debug */,
@@ -4515,7 +4519,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CBBDE90D280067AB0070DCD3 /* Build configuration list for PBXNativeTarget "Bugsnag-watchOS" */ = {
+		CBBDE90D280067AB0070DCD3 /* Build configuration list for PBXNativeTarget "RSCrashReporter-watchOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CBBDE909280067AB0070DCD3 /* Debug */,
@@ -4524,7 +4528,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CBBDE90E280067AB0070DCD3 /* Build configuration list for PBXNativeTarget "Bugsnag-watchOSTests" */ = {
+		CBBDE90E280067AB0070DCD3 /* Build configuration list for PBXNativeTarget "RSCrashReporter-watchOSTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CBBDE90B280067AB0070DCD3 /* Debug */,

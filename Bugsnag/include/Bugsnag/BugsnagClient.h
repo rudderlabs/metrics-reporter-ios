@@ -41,12 +41,19 @@
  * Use the static access provided by the Bugsnag class instead.
  */
 BUGSNAG_EXTERN
+
+@protocol RSCrashReporterNotifyDelegate
+
+- (void)notifyCrashEvent:(BugsnagEvent *_Nullable)event withRequestPayload:(NSMutableDictionary *_Nullable)requestPayload;
+
+@end
+
 @interface BugsnagClient : NSObject<BugsnagFeatureFlagStore, BugsnagMetadataStore>
 
 /**
  * Initializes the client with the provided configuration.
  */
-- (instancetype _Nonnull)initWithConfiguration:(BugsnagConfiguration *_Nonnull)configuration;
+- (instancetype _Nonnull)initWithConfiguration:(BugsnagConfiguration *_Nonnull)configuration delegate:(id<RSCrashReporterNotifyDelegate> _Nullable)delegate;
 
 // =============================================================================
 // MARK: - Notify

@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "CBBDE8F7280067AB0070DCD3"
-               BuildableName = "Bugsnag.framework"
-               BlueprintName = "Bugsnag-watchOS"
-               ReferencedContainer = "container:Bugsnag.xcodeproj">
+               BuildableName = "RSCrashReporter.framework"
+               BlueprintName = "RSCrashReporter-watchOS"
+               ReferencedContainer = "container:RSCrashReporter.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "CBBDE900280067AB0070DCD3"
-               BuildableName = "Bugsnag-watchOSTests.xctest"
-               BlueprintName = "Bugsnag-watchOSTests"
-               ReferencedContainer = "container:Bugsnag.xcodeproj">
+               BuildableName = "RSCrashReporter-watchOSTests.xctest"
+               BlueprintName = "RSCrashReporter-watchOSTests"
+               ReferencedContainer = "container:RSCrashReporter.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -61,9 +61,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CBBDE8F7280067AB0070DCD3"
-            BuildableName = "Bugsnag.framework"
-            BlueprintName = "Bugsnag-watchOS"
-            ReferencedContainer = "container:Bugsnag.xcodeproj">
+            BuildableName = "RSCrashReporter.framework"
+            BlueprintName = "RSCrashReporter-watchOS"
+            ReferencedContainer = "container:RSCrashReporter.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>
