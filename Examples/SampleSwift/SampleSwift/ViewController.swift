@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MetricsReporter
 
 class ViewController: UIViewController {
 
@@ -14,6 +15,12 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
-
+    @IBAction func onButtonTap(_ button: UIButton) {
+        CrashReporterClient.shared.testCrash()
+        
+        
+//        let arr: NSMutableArray = NSMutableArray()
+//        _ = arr.object(at: 5)
+    }
 }
 
