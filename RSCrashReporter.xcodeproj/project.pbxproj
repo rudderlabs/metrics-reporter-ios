@@ -1577,6 +1577,7 @@
 		E746293624890C6B00F92D67 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS13.4.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
 		E746293824890C7000F92D67 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS13.4.sdk/usr/lib/libc++.tbd"; sourceTree = DEVELOPER_DIR; };
 		E746293A24890C7900F92D67 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS13.4.sdk/usr/lib/libz.tbd; sourceTree = DEVELOPER_DIR; };
+		ED1116422A4346B10008F1AF /* RSCrashReporter.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = RSCrashReporter.podspec; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1837,6 +1838,7 @@
 			isa = PBXGroup;
 			children = (
 				017824BD262D65A000D18AFA /* RSCrashReporter.xcconfig */,
+				ED1116422A4346B10008F1AF /* RSCrashReporter.podspec */,
 				00AD1C7424869B0E00A27979 /* Bugsnag */,
 				01A617662733CF2D00024A0B /* Tests */,
 				00AD1C7324869B0E00A27979 /* Products */,
@@ -2154,7 +2156,6 @@
 			isa = PBXGroup;
 			children = (
 				3A700A8624A63A8E0068CD1B /* BSG_KSCrashReportWriter.h */,
-				3A700A8C24A63A8E0068CD1B /* RSCrashReporter.h */,
 				3A700A9024A63A8E0068CD1B /* BugsnagApp.h */,
 				3A700A8B24A63A8E0068CD1B /* BugsnagAppWithState.h */,
 				3A700A8524A63A8E0068CD1B /* BugsnagBreadcrumb.h */,
@@ -2177,6 +2178,7 @@
 				3A700A8224A63A8E0068CD1B /* BugsnagStackframe.h */,
 				3A700A8024A63A8E0068CD1B /* BugsnagThread.h */,
 				3A700A8A24A63A8E0068CD1B /* BugsnagUser.h */,
+				3A700A8C24A63A8E0068CD1B /* RSCrashReporter.h */,
 			);
 			path = Bugsnag;
 			sourceTree = "<group>";
@@ -3825,7 +3827,7 @@
 					"-lz",
 					"-ObjC",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.bugsnag.Bugsnag;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rudderstack.rscrashreporter;
 				PRODUCT_NAME = Bugsnag;
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				SDKROOT = iphoneos;
@@ -3867,7 +3869,7 @@
 					"-lz",
 					"-ObjC",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.bugsnag.Bugsnag;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rudderstack.rscrashreporter;
 				PRODUCT_NAME = Bugsnag;
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				SDKROOT = iphoneos;
@@ -3901,6 +3903,7 @@
 					"@loader_path/Frameworks",
 				);
 				MODULEMAP_FILE = "$(PROJECT_DIR)/Framework/module.modulemap";
+				PRODUCT_BUNDLE_IDENTIFIER = com.rudderstack.rscrashreporter;
 				PRODUCT_NAME = RSCrashReporter;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -3925,6 +3928,7 @@
 					"@loader_path/Frameworks",
 				);
 				MODULEMAP_FILE = "$(PROJECT_DIR)/Framework/module.modulemap";
+				PRODUCT_BUNDLE_IDENTIFIER = com.rudderstack.rscrashreporter;
 				PRODUCT_NAME = RSCrashReporter;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -3946,7 +3950,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.bugsnag.BugsnagTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rudderstack.rscrashreporterTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Tests/BugsnagTests/Tests-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
@@ -3966,7 +3970,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.bugsnag.BugsnagTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rudderstack.rscrashreporterTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Tests/BugsnagTests/Tests-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
@@ -4040,7 +4044,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.bugsnag.Bugsnag-macOSTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.rudderstack.rscrashreporter-macOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SWIFT_OBJC_BRIDGING_HEADER = "Tests/BugsnagTests/Tests-Bridging-Header.h";
@@ -4059,7 +4063,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.bugsnag.Bugsnag-macOSTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.rudderstack.rscrashreporter-macOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SWIFT_OBJC_BRIDGING_HEADER = "Tests/BugsnagTests/Tests-Bridging-Header.h";
@@ -4129,7 +4133,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.bugsnag.Bugsnag-tvOSTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.rudderstack.rscrashreporter-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				SWIFT_OBJC_BRIDGING_HEADER = "Tests/BugsnagTests/Tests-Bridging-Header.h";
@@ -4148,7 +4152,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.bugsnag.Bugsnag-tvOSTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.rudderstack.rscrashreporter-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				SWIFT_OBJC_BRIDGING_HEADER = "Tests/BugsnagTests/Tests-Bridging-Header.h";
@@ -4266,7 +4270,7 @@
 					"@loader_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.bugsnag.Bugsnag;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rudderstack.rscrashreporter;
 				PRODUCT_NAME = RSCrashReporter;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -4324,7 +4328,7 @@
 					"@loader_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.bugsnag.Bugsnag;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rudderstack.rscrashreporter;
 				PRODUCT_NAME = RSCrashReporter;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -4374,7 +4378,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.bugsnag.BugsnagTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rudderstack.rscrashreporterTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SWIFT_EMIT_LOC_STRINGS = NO;
@@ -4421,7 +4425,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.bugsnag.BugsnagTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rudderstack.rscrashreporterTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SWIFT_EMIT_LOC_STRINGS = NO;

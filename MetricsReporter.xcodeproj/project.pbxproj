@@ -7,26 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		082317B965753B9A018B747B /* Pods_MetricsReporter_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08A2793D950123B93FA8D00B /* Pods_MetricsReporter_iOS.framework */; };
 		ED1110112A403A320008F1AF /* CrashReporterClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1110102A403A320008F1AF /* CrashReporterClient.swift */; };
 		ED8F18DF2A4024A300462392 /* MetricsReporter.h in Headers */ = {isa = PBXBuildFile; fileRef = ED8F18D32A4024A300462392 /* MetricsReporter.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FCA3E911A50D02541337A07C /* Pods_MetricsReporter_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D379343B966497A2DB08B9F /* Pods_MetricsReporter_iOS.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0564B8B7964E8B44956C693E /* Pods-CrashReporter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CrashReporter.debug.xcconfig"; path = "Target Support Files/Pods-CrashReporter/Pods-CrashReporter.debug.xcconfig"; sourceTree = "<group>"; };
-		2D379343B966497A2DB08B9F /* Pods_MetricsReporter_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MetricsReporter_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8A3FB264151701EF51DF89E0 /* Pods-MetricsReporter-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MetricsReporter-iOS.release.xcconfig"; path = "Target Support Files/Pods-MetricsReporter-iOS/Pods-MetricsReporter-iOS.release.xcconfig"; sourceTree = "<group>"; };
-		B6C05A811F3E78DEDD738BED /* Pods-CrashReporter-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CrashReporter-iOS.debug.xcconfig"; path = "Target Support Files/Pods-CrashReporter-iOS/Pods-CrashReporter-iOS.debug.xcconfig"; sourceTree = "<group>"; };
-		C80D6A362A67DE963C35FDAE /* Pods-CrashReporter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CrashReporter.release.xcconfig"; path = "Target Support Files/Pods-CrashReporter/Pods-CrashReporter.release.xcconfig"; sourceTree = "<group>"; };
-		E7E2A4372BE23DC55B0939E0 /* Pods-MetricsReporter-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MetricsReporter-iOS.debug.xcconfig"; path = "Target Support Files/Pods-MetricsReporter-iOS/Pods-MetricsReporter-iOS.debug.xcconfig"; sourceTree = "<group>"; };
+		08A2793D950123B93FA8D00B /* Pods_MetricsReporter_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MetricsReporter_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		868722AB8A451BF33FCA55AC /* Pods-MetricsReporter-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MetricsReporter-iOS.release.xcconfig"; path = "Target Support Files/Pods-MetricsReporter-iOS/Pods-MetricsReporter-iOS.release.xcconfig"; sourceTree = "<group>"; };
+		AE0FC66EE333A623F410D313 /* Pods-MetricsReporter-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MetricsReporter-iOS.debug.xcconfig"; path = "Target Support Files/Pods-MetricsReporter-iOS/Pods-MetricsReporter-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		ED110EEA2A40359A0008F1AF /* sonar-project.properties */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "sonar-project.properties"; sourceTree = "<group>"; };
 		ED110EEB2A40359A0008F1AF /* MetricsReporter.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MetricsReporter.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		ED110EEC2A40359A0008F1AF /* package.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = package.json; sourceTree = "<group>"; };
 		ED110EED2A40359A0008F1AF /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		ED110EEE2A40359A0008F1AF /* Package.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		ED1110102A403A320008F1AF /* CrashReporterClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrashReporterClient.swift; sourceTree = "<group>"; };
-		ED1116412A41FC0F0008F1AF /* RSCrashReporter.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = RSCrashReporter.podspec; sourceTree = "<group>"; };
-		ED4C0DBB069488376D777AF7 /* Pods-CrashReporter-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CrashReporter-iOS.release.xcconfig"; path = "Target Support Files/Pods-CrashReporter-iOS/Pods-CrashReporter-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		ED8F18D02A4024A300462392 /* MetricsReporter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MetricsReporter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED8F18D32A4024A300462392 /* MetricsReporter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MetricsReporter.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -36,7 +31,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FCA3E911A50D02541337A07C /* Pods_MetricsReporter_iOS.framework in Frameworks */,
+				082317B965753B9A018B747B /* Pods_MetricsReporter_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -46,14 +41,18 @@
 		A3CCDDDA0BC71242BDFC2FD0 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				0564B8B7964E8B44956C693E /* Pods-CrashReporter.debug.xcconfig */,
-				C80D6A362A67DE963C35FDAE /* Pods-CrashReporter.release.xcconfig */,
-				B6C05A811F3E78DEDD738BED /* Pods-CrashReporter-iOS.debug.xcconfig */,
-				ED4C0DBB069488376D777AF7 /* Pods-CrashReporter-iOS.release.xcconfig */,
-				E7E2A4372BE23DC55B0939E0 /* Pods-MetricsReporter-iOS.debug.xcconfig */,
-				8A3FB264151701EF51DF89E0 /* Pods-MetricsReporter-iOS.release.xcconfig */,
+				AE0FC66EE333A623F410D313 /* Pods-MetricsReporter-iOS.debug.xcconfig */,
+				868722AB8A451BF33FCA55AC /* Pods-MetricsReporter-iOS.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		B0C15BEB588847C0E2A0FEDD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				08A2793D950123B93FA8D00B /* Pods_MetricsReporter_iOS.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		ED110EE92A40355F0008F1AF /* Classes */ = {
@@ -64,27 +63,18 @@
 			path = Classes;
 			sourceTree = "<group>";
 		};
-		ED1111AD2A4055B30008F1AF /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				2D379343B966497A2DB08B9F /* Pods_MetricsReporter_iOS.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		ED8F18C62A4024A300462392 = {
 			isa = PBXGroup;
 			children = (
 				ED110EEB2A40359A0008F1AF /* MetricsReporter.podspec */,
-				ED1116412A41FC0F0008F1AF /* RSCrashReporter.podspec */,
 				ED110EEC2A40359A0008F1AF /* package.json */,
 				ED110EEE2A40359A0008F1AF /* Package.swift */,
 				ED110EED2A40359A0008F1AF /* Podfile */,
 				ED110EEA2A40359A0008F1AF /* sonar-project.properties */,
 				ED8F18D22A4024A300462392 /* Sources */,
 				ED8F18D12A4024A300462392 /* Products */,
-				ED1111AD2A4055B30008F1AF /* Frameworks */,
 				A3CCDDDA0BC71242BDFC2FD0 /* Pods */,
+				B0C15BEB588847C0E2A0FEDD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -123,7 +113,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = ED8F18E22A4024A300462392 /* Build configuration list for PBXNativeTarget "MetricsReporter-iOS" */;
 			buildPhases = (
-				D164EDBDF67608F3B0A5F288 /* [CP] Check Pods Manifest.lock */,
+				8B87533DA8529F5F3E8566A6 /* [CP] Check Pods Manifest.lock */,
 				ED8F18CB2A4024A300462392 /* Headers */,
 				ED8F18CC2A4024A300462392 /* Sources */,
 				ED8F18CD2A4024A300462392 /* Frameworks */,
@@ -183,7 +173,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		D164EDBDF67608F3B0A5F288 /* [CP] Check Pods Manifest.lock */ = {
+		8B87533DA8529F5F3E8566A6 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -273,6 +263,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "$(inherited)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -327,6 +318,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				OTHER_LDFLAGS = "$(inherited)";
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -336,7 +328,7 @@
 		};
 		ED8F18E32A4024A300462392 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E7E2A4372BE23DC55B0939E0 /* Pods-MetricsReporter-iOS.debug.xcconfig */;
+			baseConfigurationReference = AE0FC66EE333A623F410D313 /* Pods-MetricsReporter-iOS.debug.xcconfig */;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CLANG_ENABLE_MODULES = YES;
@@ -372,10 +364,7 @@
 				MODULEMAP_FILE = "";
 				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "";
 				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "";
-				OTHER_LDFLAGS = (
-					"-lc++",
-					"-ObjC",
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rudderstack.CrashReporter;
 				PRODUCT_NAME = MetricsReporter;
 				SDKROOT = auto;
@@ -386,26 +375,13 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				WARNING_CFLAGS = (
-					"-Wno-unknown-warning-option",
-					"-Wmissing-variable-declarations",
-					"-Wincomplete-implementation",
-					"-Wimport-preprocessor-directive-pedantic",
-					"-Wimplicit-int-float-conversion",
-					"-Widiomatic-parentheses",
-					"-Wformat-nonliteral",
-					"-Wdocumentation-unknown-command",
-					"-Wdirect-ivar-access",
-					"-Wcustom-atomic-properties",
-					"-Wconditional-uninitialized",
-					"-Wcast-qual",
-				);
+				WARNING_CFLAGS = "";
 			};
 			name = Debug;
 		};
 		ED8F18E42A4024A300462392 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8A3FB264151701EF51DF89E0 /* Pods-MetricsReporter-iOS.release.xcconfig */;
+			baseConfigurationReference = 868722AB8A451BF33FCA55AC /* Pods-MetricsReporter-iOS.release.xcconfig */;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CLANG_ENABLE_MODULES = YES;
@@ -437,10 +413,7 @@
 				MODULEMAP_FILE = "";
 				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "";
 				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "";
-				OTHER_LDFLAGS = (
-					"-lc++",
-					"-ObjC",
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rudderstack.CrashReporter;
 				PRODUCT_NAME = MetricsReporter;
 				SDKROOT = auto;
@@ -450,20 +423,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				WARNING_CFLAGS = (
-					"-Wno-unknown-warning-option",
-					"-Wmissing-variable-declarations",
-					"-Wincomplete-implementation",
-					"-Wimport-preprocessor-directive-pedantic",
-					"-Wimplicit-int-float-conversion",
-					"-Widiomatic-parentheses",
-					"-Wformat-nonliteral",
-					"-Wdocumentation-unknown-command",
-					"-Wdirect-ivar-access",
-					"-Wcustom-atomic-properties",
-					"-Wconditional-uninitialized",
-					"-Wcast-qual",
-				);
+				WARNING_CFLAGS = "";
 			};
 			name = Release;
 		};

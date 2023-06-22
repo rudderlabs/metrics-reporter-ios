@@ -23,5 +23,6 @@ end
 target 'SampleObjC' do
     project 'Examples/SampleObjC/SampleObjC.xcodeproj'
     platform :ios, '12.0'
-#    shared_pods
+    shared_pods
+    pod 'RSCrashReporter', :path => '.'
 end
