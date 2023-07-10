@@ -23,13 +23,13 @@ jobs:
       - name: Install xcpretty
         run: gem install xcpretty
 
-      - name: Run build-wrapper
-        run: |
-          build-wrapper-macosx-x86 --out-dir ${{ env.BUILD_WRAPPER_OUT_DIR }} xcodebuild -workspace <workspace-name>.xcworkspace -scheme <scheme-name> -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 13' | xcpretty
+#      - name: Run build-wrapper
+#        run: |
+#          build-wrapper-macosx-x86 --out-dir ${{ env.BUILD_WRAPPER_OUT_DIR }} xcodebuild -workspace MetricsReporter.xcworkspace -scheme MetricsReporter-iOS -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 14' | xcpretty
           
       - name: Run tests(suite)
         run: |
-          xcodebuild -scheme <scheme-name> test -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 13' -enableCodeCoverage YES -derivedDataPath build | xcpretty
+          xcodebuild -workspace MetricsReporter.xcworkspace -scheme MetricsReporterTests test -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 14' -enableCodeCoverage YES -derivedDataPath build | xcpretty
       - name: Collect coverage into one XML report
         run: |
           bash xccov-to-generic.sh build/Logs/Test/*.xcresult/ > generic-coverage.xml

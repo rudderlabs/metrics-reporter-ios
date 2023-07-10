@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import RSCrashReporter
 
 public class CrashReporterClient {
     
@@ -17,7 +16,7 @@ public class CrashReporterClient {
     
     init() {
         //        RSCrashReporter.start(withApiKey: "df5da4234cd9883c66557a2b9b75c082")
-        RSCrashReporter.start(with: self)
+//        RSCrashReporter.start(with: self)
 //        RSCrashReporter
     }
     
@@ -31,29 +30,29 @@ public class CrashReporterClient {
     }
 }
 
-extension CrashReporterClient: RSCrashReporterNotifyDelegate {
-    public func notifyCrash(_ event: BugsnagEvent?, withRequestPayload requestPayload: NSMutableDictionary?) {
-        var isRudderCrash = false
-        if let event = event {
-            for error in event.errors {
-                for stacktrace in error.stacktrace {
-                    if let machoFile = stacktrace.machoFile {
-                        if let url = URL(string: machoFile) {
-                            if sdks.contains(url.lastPathComponent) {
-                                isRudderCrash = true
-                                break
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        
-        if isRudderCrash {
-            
-        }
-        
-    }
-    
-    
-}
+//extension CrashReporterClient: RSCrashReporterNotifyDelegate {
+//    public func notifyCrash(_ event: BugsnagEvent?, withRequestPayload requestPayload: NSMutableDictionary?) {
+//        var isRudderCrash = false
+//        if let event = event {
+//            for error in event.errors {
+//                for stacktrace in error.stacktrace {
+//                    if let machoFile = stacktrace.machoFile {
+//                        if let url = URL(string: machoFile) {
+//                            if sdks.contains(url.lastPathComponent) {
+//                                isRudderCrash = true
+//                                break
+//                            }
+//                        }
+//                    }
+//                }
+//            }
+//        }
+//
+//        if isRudderCrash {
+//
+//        }
+//
+//    }
+//
+//
+//}
