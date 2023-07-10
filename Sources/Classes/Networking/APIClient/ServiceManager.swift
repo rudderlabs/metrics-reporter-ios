@@ -42,16 +42,16 @@ struct ServiceManager: ServiceType {
 }
 
 extension ServiceManager {
-    func request<T: Codable>(_ API: API, _ completion: @escaping Handler<T>) {
-        let urlString = [baseURL(API), path(API)].joined().addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
+    func request<T: Codable>(_ api: API, _ completion: @escaping Handler<T>) {
+        let urlString = [baseURL(api), path(api)].joined().addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
 //        client.log(message: "URL: \(urlString ?? "")", logLevel: .debug)
         var request = URLRequest(url: URL(string: urlString ?? "")!)
-        request.httpMethod = method(API).value
-        if let headers = headers(API) {
+        request.httpMethod = method(api).value
+        if let headers = headers(api) {
             request.allHTTPHeaderFields = headers
 //            client.log(message: "HTTPHeaderFields: \(headers)", logLevel: .debug)
         }
-        if let httpBody = httpBody(API) {
+        if let httpBody = httpBody(api) {
             request.httpBody = httpBody
 //            client.log(message: "HTTPBody: \(httpBody)", logLevel: .debug)
         }
@@ -65,7 +65,7 @@ extension ServiceManager {
                 let apiClientStatus = APIClientStatus(statusCode)
                 switch apiClientStatus {
                 case .success:
-                    switch API {
+                    switch api {
                     case .sdkMetrics:
                         completion(.success(true as! T)) // swiftlint:disable:this force_cast
                     }
@@ -96,39 +96,39 @@ extension ServiceManager {
 }
 
 extension ServiceManager {
-    func headers(_ API: API) -> [String: String]? {
+    func headers(_ api: API) -> [String: String]? {
         var headers = ["Content-Type": "Application/json",
                        "Content-Encoding": "gzip"]
-        switch API {
+        switch api {
         case .sdkMetrics:
             headers["Content-Encoding"] = "gzip"
         }
         return headers
     }
     
-    func baseURL(_ API: API) -> String {
-        switch API {
+    func baseURL(_ api: API) -> String {
+        switch api {
         case .sdkMetrics:
             return "https://sdkmetrics.rudderstack.com"
         }
     }
     
-    func httpBody(_ API: API) -> Data? {
-        switch API {
+    func httpBody(_ api: API) -> Data? {
+        switch api {
         case .sdkMetrics(let params):
             return params.data(using: .utf8)
         }
     }
     
-    func method(_ API: API) -> Method {
-        switch API {
+    func method(_ api: API) -> Method {
+        switch api {
         case .sdkMetrics:
             return .post
         }
     }
     
-    func path(_ API: API) -> String {
-        switch API {
+    func path(_ api: API) -> String {
+        switch api {
         case .sdkMetrics:
             return "/sdkmetrics"
         }
