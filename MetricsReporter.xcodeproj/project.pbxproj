@@ -73,7 +73,6 @@
 		EDA530072A5BE10F00D58747 /* dependabot.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = dependabot.yml; sourceTree = "<group>"; };
 		EDA5301B2A5C0B1800D58747 /* MetricsReporterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MetricsReporterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDA5302A2A5C0B7500D58747 /* MetricsReporterTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = MetricsReporterTests.xctestplan; sourceTree = "<group>"; };
-		EDA5302B2A5C7AC900D58747 /* codecov.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = codecov.yml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -205,7 +204,6 @@
 			children = (
 				EDA530022A5BE10F00D58747 /* build-and-quality-checks.yml */,
 				EDA52FFC2A5BE10F00D58747 /* check-pr-title.yml */,
-				EDA5302B2A5C7AC900D58747 /* codecov.yml */,
 				EDA52FFD2A5BE10F00D58747 /* create-hotfix-branch.yml */,
 				EDA530002A5BE10F00D58747 /* deploy-cocoapods-manual.yml */,
 				EDA52FF92A5BE10F00D58747 /* deploy-cocoapods.yml */,
