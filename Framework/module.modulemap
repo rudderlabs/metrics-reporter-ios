@@ -1,6 +1,0 @@
-framework module RSCrashReporter {
-    umbrella header "RSCrashReporter.h"
-
-    export *
-    module * { export * }
-}

@@ -1,22 +1,16 @@
 PODS:
-  - MetricsReporter (1.0.0):
-    - RSCrashReporter
-  - RSCrashReporter (1.0.0)
+  - MetricsReporter (1.0.0)
 
 DEPENDENCIES:
   - MetricsReporter (from `.`)
-  - RSCrashReporter (from `.`)
 
 EXTERNAL SOURCES:
   MetricsReporter:
     :path: "."
-  RSCrashReporter:
-    :path: "."
 
 SPEC CHECKSUMS:
-  MetricsReporter: c9949d299762922358d62d60c6f7ecd15e78da3c
-  RSCrashReporter: a2f4e7fdd4a82497b58affe0491a5e215385996f
+  MetricsReporter: 5e019193dc4ef83cbcf0b0039ca15c16a8b41672
 
-PODFILE CHECKSUM: 72b2d8e5de950f50ad6c2b384b217987e9c0ed02
+PODFILE CHECKSUM: 78601f09f0cfad15db01fcbda8e0bd4737e94b32
 
 COCOAPODS: 1.12.1

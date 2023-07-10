@@ -10,19 +10,19 @@ end
 target 'MetricsReporter-iOS' do
     project 'MetricsReporter.xcodeproj'
     platform :ios, '12.0'
-    pod 'RSCrashReporter', :path => '.'
+#    pod 'RSCrashReporter', :path => '.'
 end
 
 target 'SampleSwift' do
     project 'Examples/SampleSwift/SampleSwift.xcodeproj'
     platform :ios, '12.0'
     shared_pods
-    pod 'RSCrashReporter', :path => '.'
+#    pod 'RSCrashReporter', :path => '.'
 end
 
 target 'SampleObjC' do
     project 'Examples/SampleObjC/SampleObjC.xcodeproj'
     platform :ios, '12.0'
     shared_pods
-    pod 'RSCrashReporter', :path => '.'
+#    pod 'RSCrashReporter', :path => '.'
 end

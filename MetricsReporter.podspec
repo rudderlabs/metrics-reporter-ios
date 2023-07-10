@@ -25,5 +25,5 @@ Pod::Spec.new do |s|
   
   s.source_files = 'Sources/**/*.swift'
   
-  s.dependency 'RSCrashReporter'
+#  s.dependency 'RSCrashReporter'
 end
