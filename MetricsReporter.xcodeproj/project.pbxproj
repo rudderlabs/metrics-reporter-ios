@@ -73,6 +73,7 @@
 		EDA530072A5BE10F00D58747 /* dependabot.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = dependabot.yml; sourceTree = "<group>"; };
 		EDA5301B2A5C0B1800D58747 /* MetricsReporterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MetricsReporterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDA5302A2A5C0B7500D58747 /* MetricsReporterTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = MetricsReporterTests.xctestplan; sourceTree = "<group>"; };
+		EDA5302B2A5C7AC900D58747 /* codecov.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = codecov.yml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +147,7 @@
 		ED8F18C62A4024A300462392 = {
 			isa = PBXGroup;
 			children = (
+				EDA5302B2A5C7AC900D58747 /* codecov.yml */,
 				EDA5302A2A5C0B7500D58747 /* MetricsReporterTests.xctestplan */,
 				EDA52FF72A5BE10F00D58747 /* .github */,
 				ED110EEB2A40359A0008F1AF /* MetricsReporter.podspec */,
