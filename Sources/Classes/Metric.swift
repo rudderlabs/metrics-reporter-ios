@@ -21,16 +21,6 @@ extension String {
     }
 }
 
-struct Attribute: Equatable {
-    let name: String
-    let value: String
-    
-    init(name: String, value: String) {
-        self.name = name
-        self.value = value
-    }
-}
-
 protocol Metric: Equatable {
     var name: String { get set }
     var attributes: [String: String]? { get set }

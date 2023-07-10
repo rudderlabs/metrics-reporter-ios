@@ -51,4 +51,9 @@ final class MetricTests: XCTestCase {
         XCTAssertEqual(gauge2.value, 2.0)
         XCTAssertEqual(gauge2.type, .gauge)
     }
+    
+    func test_getMetricType() {
+        XCTAssertEqual("count".getMetricType(), .count)
+        XCTAssertEqual("gauge".getMetricType(), .gauge)
+    }
 }
