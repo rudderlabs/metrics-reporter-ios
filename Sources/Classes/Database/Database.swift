@@ -7,6 +7,7 @@
 
 import Foundation
 import SQLite3
+import RudderKit
 
 protocol TableOperator {
     func createTable()
@@ -36,9 +37,9 @@ class Database: DatabaseOperator {
     private var metricOperator: MetricOperator!
     private var labelOperator: LabelOperator!
     
-    init(database: OpaquePointer?) {
-        metricOperator = MetricEntityOperator(database: database)
-        labelOperator = LabelEntityOperator(database: database)
+    init(database: OpaquePointer?, logger: Logger? = nil) {
+        metricOperator = MetricEntityOperator(database: database, logger: logger)
+        labelOperator = LabelEntityOperator(database: database, logger: logger)
         metricOperator.createTable()
         labelOperator.createTable()
     }

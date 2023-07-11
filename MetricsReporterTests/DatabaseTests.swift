@@ -18,8 +18,8 @@ final class DatabaseTests: XCTestCase {
     override func setUp() {
         super.setUp()
         let database = openDatabase()
-        metricOperator = MetricEntityOperator(database: database)
-        labelOperator = LabelEntityOperator(database: database)
+        metricOperator = MetricEntityOperator(database: database, logger: nil)
+        labelOperator = LabelEntityOperator(database: database, logger: nil)
         metricOperator.createTable()
         labelOperator.createTable()
         databaseOperator = Database(database: database)

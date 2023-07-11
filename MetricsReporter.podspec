@@ -16,6 +16,7 @@ Pod::Spec.new do |s|
   s.source           = { :git => "https://github.com/rudderlabs/rudder-crash-reporter-ios", :tag => "v#{s.version}" }
 
   s.swift_version = '5.3'
+  
   s.ios.deployment_target = '12.0'
   s.tvos.deployment_target = '11.0'
   s.watchos.deployment_target = '7.0'
@@ -24,6 +25,7 @@ Pod::Spec.new do |s|
   s.frameworks = 'UserNotifications'
   
   s.source_files = 'Sources/**/*.swift'
+
+  s.dependency 'RudderKit'
   
-#  s.dependency 'RSCrashReporter'
 end

@@ -7,6 +7,16 @@ def shared_pods
     pod 'MetricsReporter', :path => '.'
 end
 
+target 'MetricsReporter-iOS' do
+    project 'MetricsReporter.xcodeproj'
+    platform :ios, '12.0'
+    pod 'RudderKit'
+    target 'MetricsReporterTests' do
+        inherit! :search_paths
+        pod 'RudderKit'
+    end
+end
+
 target 'SampleSwift' do
     project 'Examples/SampleSwift/SampleSwift.xcodeproj'
     platform :ios, '12.0'

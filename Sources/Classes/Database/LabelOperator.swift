@@ -7,6 +7,7 @@
 
 import Foundation
 import SQLite3
+import RudderKit
 
 struct LabelEntity {
     let id: Int
@@ -23,24 +24,26 @@ struct LabelEntity {
 class LabelEntityOperator: LabelOperator {    
     private let database: OpaquePointer?
     private let syncQueue = DispatchQueue(label: "rudder.database.label")
-    
-    init(database: OpaquePointer?) {
+    private let logger: Logger?
+
+    init(database: OpaquePointer?, logger: Logger?) {
         self.database = database
+        self.logger = logger
     }
     
     func createTable() {
         var createTableStatement: OpaquePointer?
         let createTableString = "CREATE TABLE IF NOT EXISTS label(id INTEGER NOT NULL, name TEXT NOT NULL, value TEXT NOT NULL, PRIMARY KEY(name, value));"
-        //        client.log(message: "createTableSQL: \(createTableString)", logLevel: .debug)
+        logger?.logDebug("createTableSQL: \(createTableString)")
         if sqlite3_prepare_v2(database, createTableString, -1, &createTableStatement, nil) == SQLITE_OK {
             if sqlite3_step(createTableStatement) == SQLITE_DONE {
-                //                client.log(message: ("DB Schema created"), logLevel: .debug)
+                logger?.logDebug("DB Schema created")
             } else {
-                //                client.log(message: "DB Schema creation error", logLevel: .error)
+                logger?.logError("DB Schema creation error")
             }
         } else {
             let errorMessage = String(cString: sqlite3_errmsg(database))
-            //            client.log(message: "DB Schema CREATE statement is not prepared, Reason: \(errorMessage)", logLevel: .error)
+            logger?.logError("DB Schema CREATE statement is not prepared, Reason: \(errorMessage)")
         }
         sqlite3_finalize(createTableStatement)
     }
@@ -56,18 +59,16 @@ class LabelEntityOperator: LabelOperator {
             if sqlite3_prepare_v2(self.database, insertStatementString, -1, &insertStatement, nil) == SQLITE_OK {
                 sqlite3_bind_text(insertStatement, 1, (name as NSString).utf8String, -1, nil)
                 sqlite3_bind_text(insertStatement, 2, (value as NSString).utf8String, -1, nil)
-                //            client.log(message: "saveEventSQL: \(insertStatementString)", logLevel: .debug)
-                
+                logger?.logDebug("saveLabelSQL: \(insertStatementString)")
                 if sqlite3_step(insertStatement) == SQLITE_DONE {
-                    //                client.log(message: "Event inserted to table", logLevel: .debug)
+                    logger?.logDebug("Label inserted to table")
                     valueInserted = true
                 } else {
-                    //                client.log(message: "Event insertion error", logLevel: .error)
+                    logger?.logError("Label insertion error")
                 }
-                
             } else {
                 let errorMessage = String(cString: sqlite3_errmsg(self.database))
-                //            client.log(message: "Event INSERT statement is not prepared, Reason: \(errorMessage)", logLevel: .error)
+                logger?.logError("Label INSERT statement is not prepared, Reason: \(errorMessage)")
             }
             sqlite3_finalize(insertStatement)
             
@@ -79,9 +80,13 @@ class LabelEntityOperator: LabelOperator {
                     if sqlite3_step(sqlStatement) == SQLITE_ROW {
                         let rowId = Int(sqlite3_column_int(sqlStatement, 0))
                         label = LabelEntity(id: rowId, name: name, value: value)
+                        logger?.logDebug("Label rowId returned")
+                    } else {
+                        logger?.logError("Label rowId return error")
                     }
                 } else {
                     let errorMessage = String(cString: sqlite3_errmsg(self.database))
+                    logger?.logError("Label SELECT last_insert_rowid() statement is not prepared, Reason: \(errorMessage)")
                 }
                 sqlite3_finalize(sqlStatement)
             }
@@ -95,17 +100,20 @@ class LabelEntityOperator: LabelOperator {
             var queryStatement: OpaquePointer?
             var label: LabelEntity?
             let queryStatementString = "SELECT * FROM label WHERE name=\"\(name)\" AND value=\"\(value)\";"
-            //        client.log(message: "countSQL: \(queryStatementString)", logLevel: .debug)
+            logger?.logDebug("countSQL: \(queryStatementString)")
             if sqlite3_prepare_v2(self.database, queryStatementString, -1, &queryStatement, nil) == SQLITE_OK {
                 if sqlite3_step(queryStatement) == SQLITE_ROW {
                     let id = Int(sqlite3_column_int(queryStatement, 0))
                     let name = String(cString: sqlite3_column_text(queryStatement, 1))
                     let value = String(cString: sqlite3_column_text(queryStatement, 2))
                     label = LabelEntity(id: id, name: name, value: value)
+                    logger?.logDebug("Label returned")
+                } else {
+                    logger?.logError("Label not returned")
                 }
             } else {
                 let errorMessage = String(cString: sqlite3_errmsg(self.database))
-                //            client.log(message: "Event SELECT statement is not prepared, Reason: \(errorMessage)", logLevel: .error)
+                logger?.logError("Label SELECT statement is not prepared, Reason: \(errorMessage)")
             }
             sqlite3_finalize(queryStatement)
             return label
@@ -118,7 +126,7 @@ class LabelEntityOperator: LabelOperator {
             var queryStatement: OpaquePointer?
             var labelList: [LabelEntity]?
             let queryStatementString = "SELECT * FROM label WHERE \(coulmnName) IN (\(value));"
-            //        client.log(message: "countSQL: \(queryStatementString)", logLevel: .debug)
+            logger?.logDebug("countSQL: \(queryStatementString)")
             if sqlite3_prepare_v2(self.database, queryStatementString, -1, &queryStatement, nil) == SQLITE_OK {
                 labelList = [LabelEntity]()
                 while sqlite3_step(queryStatement) == SQLITE_ROW {
@@ -130,7 +138,7 @@ class LabelEntityOperator: LabelOperator {
                 }
             } else {
                 let errorMessage = String(cString: sqlite3_errmsg(self.database))
-                //            client.log(message: "Event SELECT statement is not prepared, Reason: \(errorMessage)", logLevel: .error)
+                logger?.logError("Label SELECT statement is not prepared, Reason: \(errorMessage)")
             }
             sqlite3_finalize(queryStatement)
             return labelList
@@ -143,15 +151,15 @@ class LabelEntityOperator: LabelOperator {
             var deleteStatement: OpaquePointer?
             let deleteStatementString = "DELETE FROM label;"
             if sqlite3_prepare_v2(self.database, deleteStatementString, -1, &deleteStatement, nil) == SQLITE_OK {
-                //            client.log(message: "deleteEventSQL: \(deleteStatementString)", logLevel: .debug)
+                logger?.logDebug("deleteEventSQL: \(deleteStatementString)")
                 if sqlite3_step(deleteStatement) == SQLITE_DONE {
-                    //                client.log(message: "Events deleted from DB", logLevel: .debug)
+                    logger?.logDebug("Labels deleted from DB")
                 } else {
-                    //                client.log(message: "Event deletion error", logLevel: .error)
+                    logger?.logError("Label deletion error")
                 }
             } else {
                 let errorMessage = String(cString: sqlite3_errmsg(self.database))
-                //            client.log(message: "Event DELETE statement is not prepared, Reason: \(errorMessage)", logLevel: .error)
+                logger?.logError("Label DELETE statement is not prepared, Reason: \(errorMessage)")
             }
             sqlite3_finalize(deleteStatement)
         }
