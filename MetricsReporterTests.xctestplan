@@ -1,7 +1,7 @@
 {
   "configurations" : [
     {
-      "id" : "AA0370C0-3792-4D6D-81A9-32C9ABDF26A8",
+      "id" : "A553622F-9CCB-4813-AA1D-39855F55BFCE",
       "name" : "Configuration 1",
       "options" : {
 
@@ -16,7 +16,7 @@
       "parallelizable" : true,
       "target" : {
         "containerPath" : "container:MetricsReporter.xcodeproj",
-        "identifier" : "EDA5301A2A5C0B1800D58747",
+        "identifier" : "ED74EF4B2A5D8AE70075C583",
         "name" : "MetricsReporterTests"
       }
     }

@@ -3,26 +3,32 @@
 import PackageDescription
 
 let package = Package(
-    name: "<package-name>",
+    name: "MetricsReporter",
     platforms: [
-        .iOS(.v9), .tvOS(.v10), .macOS("10.13"), .watchOS("7.0")
+        .iOS(.v12), .tvOS(.v11), .macOS("10.13"), .watchOS("7.0")
     ],
     products: [
         .library(
-            name: "<library-name>",
-            targets: ["<target-name>"]
+            name: "MetricsReporter",
+            targets: ["MetricsReporter"]
         )
+    ],
+    dependencies: [
+        .package(name: "RudderKit", url: "https://github.com/rudderlabs/rudder-ios-kit", from: "1.0.0"),
     ],
     targets: [
         .target(
-            name: "<target-name>",
+            name: "MetricsReporter",
+            dependencies: [
+                .product(name: "RudderKit", package: "RudderKit"),
+            ],
             path: "Sources",
             sources: ["Classes/"]
         ),
         .testTarget(
-            name: "<test-target-name>",
-            dependencies: ["<dependency-name>"],
-            path: "Tests"
+            name: "MetricsReporterTests",
+            dependencies: ["MetricsReporter", "RudderKit"],
+            path: "MetricsReporterTests"
         ),
     ]
 )

@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "ED8F18CF2A4024A300462392"
+               BlueprintIdentifier = "ED74EF432A5D8AE70075C583"
                BuildableName = "MetricsReporter.framework"
-               BlueprintName = "MetricsReporter-iOS"
+               BlueprintName = "MetricsReporter"
                ReferencedContainer = "container:MetricsReporter.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -54,9 +54,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "ED8F18CF2A4024A300462392"
+            BlueprintIdentifier = "ED74EF432A5D8AE70075C583"
             BuildableName = "MetricsReporter.framework"
-            BlueprintName = "MetricsReporter-iOS"
+            BlueprintName = "MetricsReporter"
             ReferencedContainer = "container:MetricsReporter.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

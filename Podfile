@@ -7,7 +7,7 @@ def shared_pods
     pod 'MetricsReporter', :path => '.'
 end
 
-target 'MetricsReporter-iOS' do
+target 'MetricsReporter' do
     project 'MetricsReporter.xcodeproj'
     platform :ios, '12.0'
     pod 'RudderKit'
