@@ -10,15 +10,15 @@
 		22EC6E03AD8C84C48BB35399 /* Pods_MetricsReporterTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60C7FAFDC6DA35D3D92D4317 /* Pods_MetricsReporterTests.framework */; };
 		7459802BB904FBD40FDC6AD4 /* Pods_MetricsReporter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B1802DD9D964EC3348CEC2 /* Pods_MetricsReporter.framework */; };
 		ED1A22682A5D9F59007031FF /* MetricsReporter.h in Headers */ = {isa = PBXBuildFile; fileRef = ED74EF472A5D8AE70075C583 /* MetricsReporter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		ED1A22752A5DB9F5007031FF /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED74EF692A5D8B9B0075C583 /* Database.swift */; };
+		ED1A22762A5DB9F5007031FF /* LabelOperator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED74EF682A5D8B9B0075C583 /* LabelOperator.swift */; };
+		ED1A22772A5DB9F5007031FF /* MetricOperator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED74EF672A5D8B9B0075C583 /* MetricOperator.swift */; };
+		ED1A22782A5DBA02007031FF /* MetricsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED74EF6F2A5D8B9B0075C583 /* MetricsClient.swift */; };
+		ED1A22792A5DBA02007031FF /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED74EF6E2A5D8B9B0075C583 /* API.swift */; };
+		ED1A227A2A5DBA02007031FF /* ServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED74EF6D2A5D8B9B0075C583 /* ServiceManager.swift */; };
+		ED1A227B2A5DBA02007031FF /* ServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED74EF6B2A5D8B9B0075C583 /* ServiceType.swift */; };
+		ED1A227C2A5DBA02007031FF /* Metric.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED74EF652A5D8B9B0075C583 /* Metric.swift */; };
 		ED74EF4D2A5D8AE70075C583 /* MetricsReporter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED74EF442A5D8AE70075C583 /* MetricsReporter.framework */; };
-		ED74EF702A5D8B9B0075C583 /* Metric.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED74EF652A5D8B9B0075C583 /* Metric.swift */; };
-		ED74EF712A5D8B9B0075C583 /* MetricOperator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED74EF672A5D8B9B0075C583 /* MetricOperator.swift */; };
-		ED74EF722A5D8B9B0075C583 /* LabelOperator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED74EF682A5D8B9B0075C583 /* LabelOperator.swift */; };
-		ED74EF732A5D8B9B0075C583 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED74EF692A5D8B9B0075C583 /* Database.swift */; };
-		ED74EF742A5D8B9B0075C583 /* ServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED74EF6B2A5D8B9B0075C583 /* ServiceType.swift */; };
-		ED74EF752A5D8B9B0075C583 /* ServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED74EF6D2A5D8B9B0075C583 /* ServiceManager.swift */; };
-		ED74EF762A5D8B9B0075C583 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED74EF6E2A5D8B9B0075C583 /* API.swift */; };
-		ED74EF772A5D8B9B0075C583 /* MetricsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED74EF6F2A5D8B9B0075C583 /* MetricsClient.swift */; };
 		ED74EF842A5D9D7C0075C583 /* MockURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED74EF7F2A5D9D7C0075C583 /* MockURLProtocol.swift */; };
 		ED74EF852A5D9D7C0075C583 /* ServiceManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED74EF802A5D9D7C0075C583 /* ServiceManagerTests.swift */; };
 		ED74EF862A5D9D7C0075C583 /* DatabaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED74EF812A5D9D7C0075C583 /* DatabaseTests.swift */; };
@@ -196,9 +196,9 @@
 		ED74EF662A5D8B9B0075C583 /* Database */ = {
 			isa = PBXGroup;
 			children = (
-				ED74EF672A5D8B9B0075C583 /* MetricOperator.swift */,
-				ED74EF682A5D8B9B0075C583 /* LabelOperator.swift */,
 				ED74EF692A5D8B9B0075C583 /* Database.swift */,
+				ED74EF682A5D8B9B0075C583 /* LabelOperator.swift */,
+				ED74EF672A5D8B9B0075C583 /* MetricOperator.swift */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -206,8 +206,8 @@
 		ED74EF6A2A5D8B9B0075C583 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				ED74EF6B2A5D8B9B0075C583 /* ServiceType.swift */,
 				ED74EF6C2A5D8B9B0075C583 /* APIClient */,
+				ED74EF6B2A5D8B9B0075C583 /* ServiceType.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -397,6 +397,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED1A22782A5DBA02007031FF /* MetricsClient.swift in Sources */,
+				ED1A22772A5DB9F5007031FF /* MetricOperator.swift in Sources */,
+				ED1A22762A5DB9F5007031FF /* LabelOperator.swift in Sources */,
+				ED1A227C2A5DBA02007031FF /* Metric.swift in Sources */,
+				ED1A22752A5DB9F5007031FF /* Database.swift in Sources */,
+				ED1A22792A5DBA02007031FF /* API.swift in Sources */,
+				ED1A227A2A5DBA02007031FF /* ServiceManager.swift in Sources */,
+				ED1A227B2A5DBA02007031FF /* ServiceType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -404,19 +412,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ED74EF752A5D8B9B0075C583 /* ServiceManager.swift in Sources */,
-				ED74EF712A5D8B9B0075C583 /* MetricOperator.swift in Sources */,
-				ED74EF722A5D8B9B0075C583 /* LabelOperator.swift in Sources */,
 				ED74EF842A5D9D7C0075C583 /* MockURLProtocol.swift in Sources */,
-				ED74EF742A5D8B9B0075C583 /* ServiceType.swift in Sources */,
-				ED74EF772A5D8B9B0075C583 /* MetricsClient.swift in Sources */,
 				ED74EF872A5D9D7C0075C583 /* MetricsReporterTests.swift in Sources */,
-				ED74EF702A5D8B9B0075C583 /* Metric.swift in Sources */,
 				ED74EF882A5D9D7C0075C583 /* MetricTests.swift in Sources */,
 				ED74EF862A5D9D7C0075C583 /* DatabaseTests.swift in Sources */,
 				ED74EF852A5D9D7C0075C583 /* ServiceManagerTests.swift in Sources */,
-				ED74EF732A5D8B9B0075C583 /* Database.swift in Sources */,
-				ED74EF762A5D8B9B0075C583 /* API.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -627,6 +627,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = ED9585A2E61D393835555F75 /* Pods-MetricsReporterTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = WPX9KRKA8B;
@@ -644,6 +645,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E1E959DF4C10C3C56C639514 /* Pods-MetricsReporterTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = WPX9KRKA8B;
