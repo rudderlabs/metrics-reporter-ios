@@ -52,17 +52,17 @@ class LabelEntityOperator: LabelOperator {
     func saveLabel(name: String, value: String) -> LabelEntity? {
         syncQueue.sync { [weak self] in
             guard let self = self else { return nil }
-            var valueInserted = false
             var label: LabelEntity?
-            let insertStatementString = "INSERT INTO label(id, name, value) VALUES ((SELECT count(*) FROM label) + 1, ?, ?);"
+            let insertStatementString = "INSERT INTO label(id, name, value) VALUES ((SELECT count(*) FROM label) + 1, ?, ?) RETURNING id;"
             var insertStatement: OpaquePointer?
             if sqlite3_prepare_v2(self.database, insertStatementString, -1, &insertStatement, nil) == SQLITE_OK {
                 sqlite3_bind_text(insertStatement, 1, (name as NSString).utf8String, -1, nil)
                 sqlite3_bind_text(insertStatement, 2, (value as NSString).utf8String, -1, nil)
                 logger?.logDebug("saveLabelSQL: \(insertStatementString)")
-                if sqlite3_step(insertStatement) == SQLITE_DONE {
+                if sqlite3_step(insertStatement) == SQLITE_ROW {
+                    let rowId = Int(sqlite3_column_int(insertStatement, 0))
+                    label = LabelEntity(id: rowId, name: name, value: value)
                     logger?.logDebug("Label inserted to table")
-                    valueInserted = true
                 } else {
                     logger?.logError("Label insertion error")
                 }
@@ -71,25 +71,6 @@ class LabelEntityOperator: LabelOperator {
                 logger?.logError("Label INSERT statement is not prepared, Reason: \(errorMessage)")
             }
             sqlite3_finalize(insertStatement)
-            
-            if valueInserted {
-                var sqlStatement: OpaquePointer?
-                let versionSqlQueryString = "SELECT last_insert_rowid();"
-                
-                if sqlite3_prepare_v2(self.database, versionSqlQueryString, -1, &sqlStatement, nil) == SQLITE_OK {
-                    if sqlite3_step(sqlStatement) == SQLITE_ROW {
-                        let rowId = Int(sqlite3_column_int(sqlStatement, 0))
-                        label = LabelEntity(id: rowId, name: name, value: value)
-                        logger?.logDebug("Label rowId returned")
-                    } else {
-                        logger?.logError("Label rowId return error")
-                    }
-                } else {
-                    let errorMessage = String(cString: sqlite3_errmsg(self.database))
-                    logger?.logError("Label SELECT last_insert_rowid() statement is not prepared, Reason: \(errorMessage)")
-                }
-                sqlite3_finalize(sqlStatement)
-            }
             return label
         }
     }

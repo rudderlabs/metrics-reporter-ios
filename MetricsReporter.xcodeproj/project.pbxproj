@@ -53,6 +53,7 @@
 		ED1A22722A5DA23B007031FF /* slack-notify.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = "slack-notify.yml"; sourceTree = "<group>"; };
 		ED1A22732A5DA23B007031FF /* build-and-quality-checks.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = "build-and-quality-checks.yml"; sourceTree = "<group>"; };
 		ED1A22742A5DA23B007031FF /* draft-new-release.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = "draft-new-release.yml"; sourceTree = "<group>"; };
+		ED1A227D2A5DBE1D007031FF /* MetricsReporterTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = MetricsReporterTests.xctestplan; sourceTree = "<group>"; };
 		ED74EF442A5D8AE70075C583 /* MetricsReporter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MetricsReporter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED74EF472A5D8AE70075C583 /* MetricsReporter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MetricsReporter.h; sourceTree = "<group>"; };
 		ED74EF4C2A5D8AE70075C583 /* MetricsReporterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MetricsReporterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -64,9 +65,8 @@
 		ED74EF6D2A5D8B9B0075C583 /* ServiceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceManager.swift; sourceTree = "<group>"; };
 		ED74EF6E2A5D8B9B0075C583 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		ED74EF6F2A5D8B9B0075C583 /* MetricsClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetricsClient.swift; sourceTree = "<group>"; };
-		ED74EF782A5D93D90075C583 /* MetricsReporterTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = MetricsReporterTests.xctestplan; sourceTree = "<group>"; };
 		ED74EF792A5D94090075C583 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		ED74EF7A2A5D94090075C583 /* MetricsReporter.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MetricsReporter.podspec; sourceTree = "<group>"; };
+		ED74EF7A2A5D94090075C583 /* MetricsReporter.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MetricsReporter.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		ED74EF7B2A5D94090075C583 /* Package.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		ED74EF7F2A5D9D7C0075C583 /* MockURLProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockURLProtocol.swift; sourceTree = "<group>"; };
 		ED74EF802A5D9D7C0075C583 /* ServiceManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceManagerTests.swift; sourceTree = "<group>"; };
@@ -141,7 +141,6 @@
 			children = (
 				ED1A22692A5DA23B007031FF /* workflows */,
 				ED74EF7A2A5D94090075C583 /* MetricsReporter.podspec */,
-				ED74EF782A5D93D90075C583 /* MetricsReporterTests.xctestplan */,
 				ED74EF7B2A5D94090075C583 /* Package.swift */,
 				ED74EF792A5D94090075C583 /* Podfile */,
 				ED74EF462A5D8AE70075C583 /* Sources */,
@@ -173,6 +172,7 @@
 		ED74EF502A5D8AE70075C583 /* MetricsReporterTests */ = {
 			isa = PBXGroup;
 			children = (
+				ED1A227D2A5DBE1D007031FF /* MetricsReporterTests.xctestplan */,
 				ED74EF812A5D9D7C0075C583 /* DatabaseTests.swift */,
 				ED74EF822A5D9D7C0075C583 /* MetricsReporterTests.swift */,
 				ED74EF832A5D9D7C0075C583 /* MetricTests.swift */,

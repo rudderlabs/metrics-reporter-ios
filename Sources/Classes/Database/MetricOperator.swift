@@ -57,9 +57,8 @@ class MetricEntityOperator: MetricOperator {
     func saveMetric(name: String, value: Float, type: String, labels: String) -> MetricEntity? {
         syncQueue.sync { [weak self] in
             guard let self = self else { return nil }
-            var valueInserted = false
             var metric: MetricEntity?
-            let insertStatementString = "INSERT INTO metric(id, name, value, type, labels) VALUES ((SELECT count(*) FROM metric) + 1, ?, ?, ?, ?) ON CONFLICT(name, type, labels) DO UPDATE SET value=value+excluded.value;"
+            let insertStatementString = "INSERT INTO metric(id, name, value, type, labels) VALUES ((SELECT count(*) FROM metric) + 1, ?, ?, ?, ?) ON CONFLICT(name, type, labels) DO UPDATE SET value=value+excluded.value RETURNING id;"
             var insertStatement: OpaquePointer?
             if sqlite3_prepare_v2(self.database, insertStatementString, -1, &insertStatement, nil) == SQLITE_OK {
                 sqlite3_bind_text(insertStatement, 1, (name as NSString).utf8String, -1, nil)
@@ -67,9 +66,10 @@ class MetricEntityOperator: MetricOperator {
                 sqlite3_bind_text(insertStatement, 3, (type as NSString).utf8String, -1, nil)
                 sqlite3_bind_text(insertStatement, 4, (labels as NSString).utf8String, -1, nil)
                 logger?.logDebug("saveEventSQL: \(insertStatementString)")
-                if sqlite3_step(insertStatement) == SQLITE_DONE {
+                if sqlite3_step(insertStatement) == SQLITE_ROW {
+                    let rowId = Int(sqlite3_column_int(insertStatement, 0))
+                    metric = MetricEntity(id: rowId, name: name, value: value, type: type, labels: labels)
                     logger?.logDebug("Metric inserted to table")
-                    valueInserted = true
                 } else {
                     logger?.logError("Metric insertion error")
                 }
@@ -79,25 +79,6 @@ class MetricEntityOperator: MetricOperator {
                 logger?.logError("Metric INSERT statement is not prepared, Reason: \(errorMessage)")
             }
             sqlite3_finalize(insertStatement)
-            
-            if valueInserted {
-                var sqlStatement: OpaquePointer?
-                let versionSqlQueryString = "SELECT last_insert_rowid();"
-                
-                if sqlite3_prepare_v2(self.database, versionSqlQueryString, -1, &sqlStatement, nil) == SQLITE_OK {
-                    if sqlite3_step(sqlStatement) == SQLITE_ROW {
-                        let rowId = Int(sqlite3_column_int(sqlStatement, 0))
-                        metric = MetricEntity(id: rowId, name: name, value: value, type: type, labels: labels)
-                        logger?.logDebug("Metric rowId returned")
-                    } else {
-                        logger?.logError("Metric rowId return error")
-                    }
-                } else {
-                    let errorMessage = String(cString: sqlite3_errmsg(self.database))
-                    logger?.logError("Metric SELECT last_insert_rowid() statement is not prepared, Reason: \(errorMessage)")
-                }
-                sqlite3_finalize(sqlStatement)
-            }
             return metric
         }
     }

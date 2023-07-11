@@ -29,7 +29,7 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <TestPlans>
          <TestPlanReference
-            reference = "container:MetricsReporterTests.xctestplan"
+            reference = "container:MetricsReporterTests/MetricsReporterTests.xctestplan"
             default = "YES">
          </TestPlanReference>
       </TestPlans>

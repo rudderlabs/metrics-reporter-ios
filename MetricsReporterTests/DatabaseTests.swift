@@ -7,7 +7,6 @@
 
 import XCTest
 import SQLite3
-import RudderKit
 @testable import MetricsReporter
 
 final class DatabaseTests: XCTestCase {
@@ -19,9 +18,8 @@ final class DatabaseTests: XCTestCase {
     override func setUp() {
         super.setUp()
         let database = openDatabase()
-        let logger = Logger(logLevel: .none)
-        metricOperator = MetricEntityOperator(database: database, logger: logger)
-        labelOperator = LabelEntityOperator(database: database, logger: logger)
+        metricOperator = MetricEntityOperator(database: database, logger: nil)
+        labelOperator = LabelEntityOperator(database: database, logger: nil)
         metricOperator.createTable()
         labelOperator.createTable()
         databaseOperator = Database(database: database)
