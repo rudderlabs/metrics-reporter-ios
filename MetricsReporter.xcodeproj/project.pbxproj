@@ -18,12 +18,14 @@
 		ED1A227A2A5DBA02007031FF /* ServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED74EF6D2A5D8B9B0075C583 /* ServiceManager.swift */; };
 		ED1A227B2A5DBA02007031FF /* ServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED74EF6B2A5D8B9B0075C583 /* ServiceType.swift */; };
 		ED1A227C2A5DBA02007031FF /* Metric.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED74EF652A5D8B9B0075C583 /* Metric.swift */; };
+		ED1A227F2A5DC34D007031FF /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1A227E2A5DC34D007031FF /* Configuration.swift */; };
 		ED74EF4D2A5D8AE70075C583 /* MetricsReporter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED74EF442A5D8AE70075C583 /* MetricsReporter.framework */; };
 		ED74EF842A5D9D7C0075C583 /* MockURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED74EF7F2A5D9D7C0075C583 /* MockURLProtocol.swift */; };
 		ED74EF852A5D9D7C0075C583 /* ServiceManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED74EF802A5D9D7C0075C583 /* ServiceManagerTests.swift */; };
 		ED74EF862A5D9D7C0075C583 /* DatabaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED74EF812A5D9D7C0075C583 /* DatabaseTests.swift */; };
 		ED74EF872A5D9D7C0075C583 /* MetricsReporterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED74EF822A5D9D7C0075C583 /* MetricsReporterTests.swift */; };
 		ED74EF882A5D9D7C0075C583 /* MetricTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED74EF832A5D9D7C0075C583 /* MetricTests.swift */; };
+		ED9225FB2A5E7B1900734372 /* MetricsUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9225FA2A5E7B1900734372 /* MetricsUploader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +56,7 @@
 		ED1A22732A5DA23B007031FF /* build-and-quality-checks.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = "build-and-quality-checks.yml"; sourceTree = "<group>"; };
 		ED1A22742A5DA23B007031FF /* draft-new-release.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = "draft-new-release.yml"; sourceTree = "<group>"; };
 		ED1A227D2A5DBE1D007031FF /* MetricsReporterTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = MetricsReporterTests.xctestplan; sourceTree = "<group>"; };
+		ED1A227E2A5DC34D007031FF /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		ED74EF442A5D8AE70075C583 /* MetricsReporter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MetricsReporter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED74EF472A5D8AE70075C583 /* MetricsReporter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MetricsReporter.h; sourceTree = "<group>"; };
 		ED74EF4C2A5D8AE70075C583 /* MetricsReporterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MetricsReporterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -73,6 +76,7 @@
 		ED74EF812A5D9D7C0075C583 /* DatabaseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseTests.swift; sourceTree = "<group>"; };
 		ED74EF822A5D9D7C0075C583 /* MetricsReporterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetricsReporterTests.swift; sourceTree = "<group>"; };
 		ED74EF832A5D9D7C0075C583 /* MetricTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetricTests.swift; sourceTree = "<group>"; };
+		ED9225FA2A5E7B1900734372 /* MetricsUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricsUploader.swift; sourceTree = "<group>"; };
 		ED9585A2E61D393835555F75 /* Pods-MetricsReporterTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MetricsReporterTests.debug.xcconfig"; path = "Target Support Files/Pods-MetricsReporterTests/Pods-MetricsReporterTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -185,10 +189,11 @@
 		ED74EF642A5D8B9B0075C583 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				ED74EF662A5D8B9B0075C583 /* Database */,
-				ED74EF6A2A5D8B9B0075C583 /* Networking */,
-				ED74EF652A5D8B9B0075C583 /* Metric.swift */,
 				ED74EF6F2A5D8B9B0075C583 /* MetricsClient.swift */,
+				ED9225FA2A5E7B1900734372 /* MetricsUploader.swift */,
+				ED74EF662A5D8B9B0075C583 /* Database */,
+				ED9225F92A5E7A5300734372 /* Models */,
+				ED74EF6A2A5D8B9B0075C583 /* Networking */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -219,6 +224,15 @@
 				ED74EF6E2A5D8B9B0075C583 /* API.swift */,
 			);
 			path = APIClient;
+			sourceTree = "<group>";
+		};
+		ED9225F92A5E7A5300734372 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				ED1A227E2A5DC34D007031FF /* Configuration.swift */,
+				ED74EF652A5D8B9B0075C583 /* Metric.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -400,6 +414,8 @@
 				ED1A22782A5DBA02007031FF /* MetricsClient.swift in Sources */,
 				ED1A22772A5DB9F5007031FF /* MetricOperator.swift in Sources */,
 				ED1A22762A5DB9F5007031FF /* LabelOperator.swift in Sources */,
+				ED9225FB2A5E7B1900734372 /* MetricsUploader.swift in Sources */,
+				ED1A227F2A5DC34D007031FF /* Configuration.swift in Sources */,
 				ED1A227C2A5DBA02007031FF /* Metric.swift in Sources */,
 				ED1A22752A5DB9F5007031FF /* Database.swift in Sources */,
 				ED1A22792A5DBA02007031FF /* API.swift in Sources */,
@@ -561,6 +577,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D0F123AC8CEEC4AD6B97EDCF /* Pods-MetricsReporter.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -594,6 +611,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6C39C08A4AA8DB5D03392A35 /* Pods-MetricsReporter.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;

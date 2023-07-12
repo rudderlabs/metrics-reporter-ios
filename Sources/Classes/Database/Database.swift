@@ -9,56 +9,47 @@ import Foundation
 import SQLite3
 import RudderKit
 
-protocol TableOperator {
+protocol TableOperations {
     func createTable()
     func clearAll()
 }
 
-protocol MetricOperator: TableOperator {
+protocol MetricOperations: TableOperations {
     @discardableResult func saveMetric(name: String, value: Float, type: String, labels: String) -> MetricEntity?
     @discardableResult func updateMetric(_ metric: MetricEntity?) -> Int?
     func fetchMetric(where name: String, type: String, labels: String) -> MetricEntity?
     func fetchMetrics(where columnName: String, from valueFrom: Int, to valueTo: Int) -> [MetricEntity]?
 }
 
-protocol LabelOperator: TableOperator {
+protocol LabelOperations: TableOperations {
     @discardableResult func saveLabel(name: String, value: String) -> LabelEntity?
     func fetchLabel(where name: String, value: String) -> LabelEntity?
     func fetchLabels(where coulmnName: String, in value: String) -> [LabelEntity]?
 }
 
-protocol DatabaseOperator {
-    @discardableResult func saveCount(_ metric: Count) -> MetricEntity?
-    @discardableResult func saveGauge(_ metric: Gauge) -> MetricEntity?
-    func fetchMetrics(from valueFrom: Int, to valueTo: Int) -> [any Metric]?
+protocol DatabaseOperations {
+    @discardableResult func saveMetric<M: Metric>(_ metric: M) -> MetricEntity?
+    func fetchMetrics(from valueFrom: Int, to valueTo: Int) -> MetricList
+    @discardableResult func updateMetric<M: Metric>(_ metric: M) -> Int?
 }
 
-class Database: DatabaseOperator {
-    private var metricOperator: MetricOperator!
-    private var labelOperator: LabelOperator!
+class Database: DatabaseOperations {
+    private var metricOperator: MetricOperations!
+    private var labelOperator: LabelOperations!
     
-    init(database: OpaquePointer?, logger: Logger? = nil) {
-        metricOperator = MetricEntityOperator(database: database, logger: logger)
-        labelOperator = LabelEntityOperator(database: database, logger: logger)
+    init(database: OpaquePointer?) {
+        metricOperator = MetricOperator(database: database)
+        labelOperator = LabelOperator(database: database)
         metricOperator.createTable()
         labelOperator.createTable()
     }
     
     @discardableResult
-    func saveCount(_ metric: Count) -> MetricEntity? {
-        return saveMetric(metric)
-    }
-    
-    @discardableResult
-    func saveGauge(_ metric: Gauge) -> MetricEntity? {
-        return saveMetric(metric)
-    }
-    
-    private func saveMetric(_ metric: any Metric) -> MetricEntity? {
+    func saveMetric<M: Metric>(_ metric: M) -> MetricEntity? {
         var labelIdList: [Int]?
-        if let attributes = metric.attributes {
+        if let labels = metric.labels {
             labelIdList = [Int]()
-            for (name, value) in attributes {
+            for (name, value) in labels {
                 if let labelEntity = labelOperator.saveLabel(name: name, value: value) {
                     labelIdList?.append(labelEntity.id)
                 } else {
@@ -84,48 +75,41 @@ class Database: DatabaseOperator {
         return metricOperator.saveMetric(name: metric.name, value: value, type: metric.type.rawValue, labels: labels)
     }
     
-    func fetchMetrics(from valueFrom: Int, to valueTo: Int) -> [any Metric]? {
-        var metricList: [any Metric]?
+    func fetchMetrics(from valueFrom: Int, to valueTo: Int) -> MetricList {
+        var countList: [Count]?
+        var gaugeList: [Gauge]?
         if let metricEntityList = metricOperator.fetchMetrics(where: "id", from: valueFrom, to: valueTo) {
-            metricList = [any Metric]()
+            countList = [Count]()
+            gaugeList = [Gauge]()
             for metricEntity in metricEntityList {
-                var attributes: [String: String]?
+                var labels: [String: String]?
                 if let labelEntityList = labelOperator.fetchLabels(where: "id", in: metricEntity.labels) {
-                    attributes = [String: String]()
+                    labels = [String: String]()
                     for labelEntity in labelEntityList {
-                        attributes?[labelEntity.name] = labelEntity.value
+                        labels?[labelEntity.name] = labelEntity.value
                     }
                 }
                 switch metricEntity.type {
                     case MetricType.count.rawValue:
-                        let count = Count(name: metricEntity.name, attributes: attributes, value: Int(metricEntity.value))
-                        metricList?.append(count)
+                        let count = Count(name: metricEntity.name, labels: labels, value: Int(metricEntity.value))
+                        countList?.append(count)
                     case MetricType.gauge.rawValue:
-                        let gauge = Gauge(name: metricEntity.name, attributes: attributes, value: metricEntity.value)
-                        metricList?.append(gauge)
+                        let gauge = Gauge(name: metricEntity.name, labels: labels, value: metricEntity.value)
+                        gaugeList?.append(gauge)
                     default:
                         break
                 }
             }
         }
-        return metricList
+        return MetricList(countList: countList, gaugeList: gaugeList)
     }
     
     @discardableResult
-    func updateCount(_ metric: Count) -> Int? {
-        return updateMetric(metric)
-    }
-    
-    @discardableResult
-    func updateGauge(_ metric: Gauge) -> Int? {
-        return updateMetric(metric)
-    }
-    
-    private func updateMetric(_ metric: any Metric) -> Int? {
+    func updateMetric<M: Metric>(_ metric: M) -> Int? {
         var labelIdList: [Int]?
-        if let attributes = metric.attributes {
+        if let labels = metric.labels {
             labelIdList = [Int]()
-            for (name, value) in attributes {
+            for (name, value) in labels {
                 if let labelEntity = labelOperator.fetchLabel(where: name, value: value) {
                     labelIdList?.append(labelEntity.id)
                 }
@@ -138,38 +122,6 @@ class Database: DatabaseOperator {
         let metricEntity = metricOperator.fetchMetric(where: metric.name, type: metric.type.rawValue, labels: labels)
         return metricOperator.updateMetric(metricEntity)
     }
-    
-    /*private func getSQLiteVersion(database: OpaquePointer?) -> String? {
-        var sqliteVersion: String?
-        var sqlStatement: OpaquePointer?
-        let versionSqlQueryString = "SELECT sqlite_version();"
-        
-        if sqlite3_prepare_v2(database, versionSqlQueryString, -1, &sqlStatement, nil) == SQLITE_OK {
-            if sqlite3_step(sqlStatement) == SQLITE_DONE {
-                if let version = sqlite3_column_text(sqlStatement, 0) {
-                    sqliteVersion = String(cString: version)
-                }
-            }
-        } else {
-            let errorMessage = String(cString: sqlite3_errmsg(database))
-        }
-        sqlite3_finalize(sqlStatement)
-        return sqliteVersion
-    }
-    
-    private func isReturnExists(database: OpaquePointer?) -> Bool {
-        if let sqliteVersion = getSQLiteVersion(database: database) {
-            let result = sqliteVersion.compare("3.35.0", options: .numeric)
-            if result == .orderedDescending {
-                return true
-            } else if result == .orderedAscending {
-                return false
-            } else {
-                return true
-            }
-        }
-        return false
-    }*/
 }
 
 extension Database {

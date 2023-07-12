@@ -11,15 +11,15 @@ import SQLite3
 
 final class DatabaseTests: XCTestCase {
 
-    var metricOperator: MetricOperator!
-    var labelOperator: LabelOperator!
-    var databaseOperator: DatabaseOperator!
+    var metricOperator: MetricOperations!
+    var labelOperator: LabelOperations!
+    var databaseOperator: DatabaseOperations!
     
     override func setUp() {
         super.setUp()
         let database = openDatabase()
-        metricOperator = MetricEntityOperator(database: database, logger: nil)
-        labelOperator = LabelEntityOperator(database: database, logger: nil)
+        metricOperator = MetricOperator(database: database)
+        labelOperator = LabelOperator(database: database)
         metricOperator.createTable()
         labelOperator.createTable()
         databaseOperator = Database(database: database)
@@ -49,8 +49,8 @@ final class DatabaseTests: XCTestCase {
     }
     
     func test_saveCountMetric() {
-        let metric = Count(name: "test_count", attributes: ["key_1": "value_1", "key_2": "value_2"], value: 2)
-        let metricEntity = databaseOperator.saveCount(metric)
+        let metric = Count(name: "test_count", labels: ["key_1": "value_1", "key_2": "value_2"], value: 2)
+        let metricEntity = databaseOperator.saveMetric(metric)
         
         XCTAssertNotNil(metricEntity)
         XCTAssertNotNil(metricEntity)
@@ -64,7 +64,7 @@ final class DatabaseTests: XCTestCase {
     
     func test_saveGaugeMetric() {
         let metric = Gauge(name: "test_gauge", value: 11.3)
-        let metricEntity = databaseOperator.saveGauge(metric)
+        let metricEntity = databaseOperator.saveMetric(metric)
         
         XCTAssertNotNil(metricEntity)
         XCTAssertNotNil(metricEntity)
@@ -77,14 +77,14 @@ final class DatabaseTests: XCTestCase {
     }
     
     func test_saveMultipleMetrics() {
-        let count = Count(name: "test_count", attributes: ["key_1": "value_1", "key_2": "value_2"], value: 2)
-        databaseOperator.saveCount(count)
+        let count = Count(name: "test_count", labels: ["key_1": "value_1", "key_2": "value_2"], value: 2)
+        databaseOperator.saveMetric(count)
         
-        let count2 = Count(name: "test_count", attributes: ["key_1": "value_1", "key_2": "value_2"], value: 4)
-        databaseOperator.saveCount(count2)
+        let count2 = Count(name: "test_count", labels: ["key_1": "value_1", "key_2": "value_2"], value: 4)
+        databaseOperator.saveMetric(count2)
         
-        let gauge = Gauge(name: "test_gauge", attributes: ["key_1": "value_3", "key_3": "value_3"], value: 11.3)
-        databaseOperator.saveGauge(gauge)
+        let gauge = Gauge(name: "test_gauge", labels: ["key_1": "value_3", "key_3": "value_3"], value: 11.3)
+        databaseOperator.saveMetric(gauge)
         
         let metricList = databaseOperator.fetchMetrics(from: 1, to: 10)
         XCTAssertNotNil(metricList)
@@ -95,14 +95,14 @@ final class DatabaseTests: XCTestCase {
                     XCTAssertNotNil(m.name)
                     XCTAssertNotNil(m.value)
                     XCTAssertEqual(m.name, "test_count")
-                    XCTAssertEqual(m.attributes, ["key_1": "value_1", "key_2": "value_2"])
+                    XCTAssertEqual(m.labels, ["key_1": "value_1", "key_2": "value_2"])
                     XCTAssertEqual(m.value, 6)
                     XCTAssertEqual(m.type, .count)
                 case let m as Gauge:
                     XCTAssertNotNil(m.name)
                     XCTAssertNotNil(m.value)
                     XCTAssertEqual(m.name, "test_gauge")
-                    XCTAssertEqual(m.attributes, ["key_1": "value_3", "key_3": "value_3"])
+                    XCTAssertEqual(m.labels, ["key_1": "value_3", "key_3": "value_3"])
                     XCTAssertEqual(m.value, 11.3)
                     XCTAssertEqual(m.type, .gauge)
                 default:

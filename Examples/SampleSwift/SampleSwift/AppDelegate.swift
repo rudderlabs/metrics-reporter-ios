@@ -7,6 +7,7 @@
 
 import UIKit
 import MetricsReporter
+import RudderKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,8 +16,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        let client = CrashReporterClient.shared
-        client.print()
+        let configuration = Configuration(logLevel: .debug, writeKey: "WRITE_KEY")
+        let client = MetricsClient(configuration: configuration)
+        
+        client.count(name: "", labels: nil, value: 0)
+        
         return true
     }
 
