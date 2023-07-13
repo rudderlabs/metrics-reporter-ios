@@ -89,27 +89,26 @@ final class DatabaseTests: XCTestCase {
         let metricList = databaseOperator.fetchMetrics(from: 1, to: 10)
         XCTAssertNotNil(metricList)
         
-        for metric in metricList! {
-            switch metric {
-                case let m as Count:
-                    XCTAssertNotNil(m.name)
-                    XCTAssertNotNil(m.value)
-                    XCTAssertEqual(m.name, "test_count")
-                    XCTAssertEqual(m.labels, ["key_1": "value_1", "key_2": "value_2"])
-                    XCTAssertEqual(m.value, 6)
-                    XCTAssertEqual(m.type, .count)
-                case let m as Gauge:
-                    XCTAssertNotNil(m.name)
-                    XCTAssertNotNil(m.value)
-                    XCTAssertEqual(m.name, "test_gauge")
-                    XCTAssertEqual(m.labels, ["key_1": "value_3", "key_3": "value_3"])
-                    XCTAssertEqual(m.value, 11.3)
-                    XCTAssertEqual(m.type, .gauge)
-                default:
-                    XCTFail("There should not be any other metric other than Count or Gauge")
-            }
-        }
-                
+        XCTAssertTrue(!metricList.countList!.isEmpty)
+        XCTAssertNotNil(metricList.countList?.first)
+        let c = metricList.countList!.first!
+        XCTAssertNotNil(c.name)
+        XCTAssertNotNil(c.value)
+        XCTAssertEqual(c.name, "test_count")
+        XCTAssertEqual(c.labels, ["key_1": "value_1", "key_2": "value_2"])
+        XCTAssertEqual(c.value, 6)
+        XCTAssertEqual(c.type, .count)
+        
+        XCTAssertTrue(!metricList.gaugeList!.isEmpty)
+        XCTAssertNotNil(metricList.gaugeList?.first)
+        let g = metricList.gaugeList!.first!
+        XCTAssertNotNil(g.name)
+        XCTAssertNotNil(g.value)
+        XCTAssertEqual(g.name, "test_gauge")
+        XCTAssertEqual(g.labels, ["key_1": "value_3", "key_3": "value_3"])
+        XCTAssertEqual(g.value, 11.3)
+        XCTAssertEqual(g.type, .gauge)
+        
         clearAll()
     }
     

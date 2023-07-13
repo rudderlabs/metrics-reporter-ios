@@ -81,7 +81,7 @@ struct MetricList {
         return metrics
     }
     
-    func getMetricsDict<M: Metric>(metricList: [M]) -> [[String: Any]] {
+    private func getMetricsDict<M: Metric>(metricList: [M]) -> [[String: Any]] {
         var metrics = [[String: Any]]()
         for list in metricList {
             var metric: [String: Any] = [
@@ -93,14 +93,21 @@ struct MetricList {
             }
             switch list {
                 case let m as Count:
-                    metric["value"] = Float(m.value)
+                    metric["value"] = "\(Float(m.value).rounded(to: 2))"
                 case let m as Gauge:
-                    metric["value"] = m.value
+                    metric["value"] = "\(m.value.rounded(to: 2))"
                 default:
                     break
             }
             metrics.append(metric)
         }
         return metrics
+    }
+}
+
+extension Float {
+    func rounded(to places: Int) -> Float {
+        let divisor = pow(10.0, Float(places))
+        return (self * divisor).rounded() / divisor
     }
 }

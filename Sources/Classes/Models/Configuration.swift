@@ -12,12 +12,10 @@ public struct Configuration {
     let logLevel: LogLevel
     let writeKey: String
     let sdkVersion: String
-    let installType: String
     
-    public init(logLevel: LogLevel, writeKey: String, sdkVersion: String, installType: String) {
+    public init(logLevel: LogLevel, writeKey: String, sdkVersion: String) {
         self.logLevel = logLevel
         self.writeKey = writeKey
         self.sdkVersion = sdkVersion
-        self.installType = installType
     }
 }

@@ -56,4 +56,39 @@ final class MetricTests: XCTestCase {
         XCTAssertEqual("count".getMetricType(), .count)
         XCTAssertEqual("gauge".getMetricType(), .gauge)
     }
+    
+    func test_metricList() {
+        let countList = [Count(name: "test_count", labels: ["key_1": "value_1", "key_2": "value_2"], value: 2)]
+        let gaugeList = [Gauge(name: "test_gauge", labels: ["key_1": "value_1"], value: 12)]
+        let metricList = MetricList(countList: countList, gaugeList: gaugeList)
+        let metricListDict = metricList.toDict()
+        
+        XCTAssertNotNil(metricListDict)
+        
+        let expectation: [[String: Any]] = [
+            [
+                "name": "test_count",
+                "type": "count",
+                "value": 2,
+                "labels": [
+                    "key_1": "value_1",
+                    "key_2": "value_2"
+                ]
+            ],
+            [
+                "name": "test_gauge",
+                "type": "gauge",
+                "value": 12,
+                "labels": [
+                    "key_1": "value_1"
+                ]
+            ]
+        ]
+        
+        XCTAssertTrue(metricListDict! == expectation)
+    }
+}
+
+func ==(lhs: [[String: Any]], rhs: [[String: Any]]) -> Bool {
+    return NSArray(array: lhs).isEqual(to: rhs)
 }
