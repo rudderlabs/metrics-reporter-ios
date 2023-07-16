@@ -99,12 +99,15 @@ class LabelOperator: LabelOperations {
         }
     }
     
-    func fetchLabels(where coulmnName: String, in value: String) -> [LabelEntity]? {
+    func fetchLabels(where coulmnName: String, in values: [String]) -> [LabelEntity]? {
         syncQueue.sync { [weak self] in
             guard let self = self else { return nil }
             var queryStatement: OpaquePointer?
             var labelList: [LabelEntity]?
-            let queryStatementString = "SELECT * FROM label WHERE \(coulmnName) IN (\(value));"
+            let value =  NSArray(array: values.map { str in
+                "\"\(str)\""
+            }).componentsJoined(by: ",")
+            let queryStatementString = "SELECT * FROM label WHERE \"\(coulmnName)\" IN (\(value));"
             Logger.logDebug("countSQL: \(queryStatementString)")
             if sqlite3_prepare_v2(self.database, queryStatementString, -1, &queryStatement, nil) == SQLITE_OK {
                 labelList = [LabelEntity]()
@@ -120,7 +123,7 @@ class LabelOperator: LabelOperations {
                 Logger.logError("Label SELECT statement is not prepared, Reason: \(errorMessage)")
             }
             sqlite3_finalize(queryStatement)
-            return labelList
+            return (labelList?.isEmpty ?? true) ? nil : labelList
         }
     }
     

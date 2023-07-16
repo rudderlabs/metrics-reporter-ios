@@ -1,5 +1,5 @@
 //
-//  MetricTests.swift
+//  ModelTests.swift
 //  MetricsReporterTests
 //
 //  Created by Pallab Maiti on 27/06/23.
@@ -8,7 +8,7 @@
 import XCTest
 @testable import MetricsReporter
 
-final class MetricTests: XCTestCase {
+final class ModelTests: XCTestCase {
 
     func test_count() {
         let count1 = Count(name: "test_count", value: 1)
@@ -69,7 +69,7 @@ final class MetricTests: XCTestCase {
             [
                 "name": "test_count",
                 "type": "count",
-                "value": 2,
+                "value": "2.0",
                 "labels": [
                     "key_1": "value_1",
                     "key_2": "value_2"
@@ -78,7 +78,7 @@ final class MetricTests: XCTestCase {
             [
                 "name": "test_gauge",
                 "type": "gauge",
-                "value": 12,
+                "value": "12.0",
                 "labels": [
                     "key_1": "value_1"
                 ]

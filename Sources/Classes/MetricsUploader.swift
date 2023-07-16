@@ -10,26 +10,20 @@ import RudderKit
 
 let MAX_METRICS_IN_A_BATCH = 20
 let START_FROM = 1
+let FLUSH_INTERVAL = 30
 
 class MetricsUploader {
-    private let database: DatabaseOperations?
+    private let database: DatabaseOperations
     private let configuration: Configuration
     private var flushTimer: RepeatingTimer?
-    private var serviceManger: ServiceType?
+    private let serviceManger: ServiceType
     private let syncQueue = DispatchQueue(label: "uploadQueue.rudder.com")
     
-    init(database: DatabaseOperations?, configuration: Configuration) {
+    init(database: DatabaseOperations, configuration: Configuration, serviceManger: ServiceType) {
         self.database = database
         self.configuration = configuration
-        let session: URLSession = {
-            let configuration = URLSessionConfiguration.default
-            configuration.timeoutIntervalForRequest = 30
-            configuration.timeoutIntervalForResource = 30
-            configuration.requestCachePolicy = .useProtocolCachePolicy
-            return URLSession(configuration: configuration)
-        }()
-        serviceManger = ServiceManager(urlSession: session)
-        flushTimer = RepeatingTimer(interval: TimeInterval(30)) { [weak self] in
+        self.serviceManger = serviceManger
+        flushTimer = RepeatingTimer(interval: TimeInterval(FLUSH_INTERVAL)) { [weak self] in
             guard let self = self else { return }
             self.flushMetrics(from: START_FROM, to: MAX_METRICS_IN_A_BATCH)
         }
@@ -37,8 +31,9 @@ class MetricsUploader {
     
     func flushMetrics(from: Int, to: Int) {
         syncQueue.sync {
-            guard let metricList = database?.fetchMetrics(from: from, to: to) else {
-                Logger.logDebug("")
+            let metricList = database.fetchMetrics(from: from, to: to)
+            guard metricList.isNotEmpty else {
+                Logger.logDebug("No metrics found in db")
                 return
             }
             var isDataAvailable = false
@@ -50,7 +45,7 @@ class MetricsUploader {
                 while true {
                     count += 1
                     if let error = flushMetricsToServer(params: params) {
-                        Logger.logDebug("Retrying in \(count)s")
+                        Logger.logDebug("Got error code: \(error.code), retrying in \(count)s")
                         sleep(UInt32(count * 1000000))
                     } else {
                         if isDataAvailable {
@@ -61,7 +56,7 @@ class MetricsUploader {
                     }
                 }
             } else {
-                
+                Logger.logError("Failed to create JSON")
             }
         }
     }
@@ -69,7 +64,7 @@ class MetricsUploader {
     func flushMetricsToServer(params: String) -> NSError? {
         var error: NSError?
         let semaphore = DispatchSemaphore(value: 0)
-        serviceManger?.sdkMetrics(params: params, { result in
+        serviceManger.sdkMetrics(params: params, { result in
             switch result {
                 case .success(_):
                     break
@@ -84,13 +79,13 @@ class MetricsUploader {
     
     func updateMetricList(metricList: MetricList) {
         if let countList = metricList.countList {
-            for list in countList {
-                database?.updateMetric(list)
+            for count in countList {
+                database.updateMetric(count)
             }
         }
         if let gaugeList = metricList.gaugeList {
-            for list in gaugeList {
-                database?.updateMetric(list)
+            for gauge in gaugeList {
+                database.updateMetric(gauge)
             }
         }
     }

@@ -132,16 +132,16 @@ class MetricOperator: MetricOperations {
                 Logger.logError("Metric SELECT statement is not prepared, Reason: \(errorMessage)")
             }
             sqlite3_finalize(queryStatement)
-            return metricList
+            return (metricList?.isEmpty ?? true) ? nil : metricList
         }
     }
     
     @discardableResult
-    func updateMetric(_ metric: MetricEntity?) -> Int? {
+    func updateMetric(_ metric: MetricEntity?, updatedValue: Float) -> Int? {
         syncQueue.sync { [weak self] in
             guard let self = self, let metric = metric else { return nil }
             var queryStatement: OpaquePointer?
-            let queryStatementString = "UPDATE metric SET value=((SELECT value FROM metric WHERE name=\(metric.name) AND type=\(metric.type) AND labels=\(metric.labels)) - \(metric.value)) WHERE name=\(metric.name) AND type=\(metric.type) AND labels=\(metric.labels);"
+            let queryStatementString = "UPDATE metric SET value=\(updatedValue) WHERE name=\"\(metric.name)\" AND type=\"\(metric.type)\" AND labels=\"\(metric.labels)\";"
             Logger.logDebug("countSQL: \(queryStatementString)")
             if sqlite3_prepare_v2(self.database, queryStatementString, -1, &queryStatement, nil) == SQLITE_OK {
                 if sqlite3_step(queryStatement) == SQLITE_DONE {

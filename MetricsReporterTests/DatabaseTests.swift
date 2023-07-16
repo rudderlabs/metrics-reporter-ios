@@ -11,40 +11,12 @@ import SQLite3
 
 final class DatabaseTests: XCTestCase {
 
-    var metricOperator: MetricOperations!
-    var labelOperator: LabelOperations!
     var databaseOperator: DatabaseOperations!
     
     override func setUp() {
         super.setUp()
         let database = openDatabase()
-        metricOperator = MetricOperator(database: database)
-        labelOperator = LabelOperator(database: database)
-        metricOperator.createTable()
-        labelOperator.createTable()
         databaseOperator = Database(database: database)
-        clearAll()
-    }
-    
-    func test_saveMetricEntity() {
-        let metric = metricOperator.saveMetric(name: "test_metric", value: 10, type: MetricType.count.rawValue, labels: "label_1,label_2")
-
-        XCTAssertNotNil(metric)
-        XCTAssertEqual(metric!.id, 1)
-        XCTAssertEqual(metric!.name, "test_metric")
-        XCTAssertEqual(metric!.value, 10)
-        XCTAssertEqual(metric!.type, MetricType.count.rawValue)
-        XCTAssertEqual(metric!.labels, "label_1,label_2")
-        clearAll()
-    }
-    
-    func test_saveLabelEntity() {
-        let label = labelOperator.saveLabel(name: "label_1", value: "value_1")
-
-        XCTAssertNotNil(label)
-        XCTAssertEqual(label!.id, 1)
-        XCTAssertEqual(label!.name, "label_1")
-        XCTAssertEqual(label!.value, "value_1")
         clearAll()
     }
     
@@ -76,7 +48,7 @@ final class DatabaseTests: XCTestCase {
         clearAll()
     }
     
-    func test_saveMultipleMetrics() {
+    func test_fetchMetrics() {
         let count = Count(name: "test_count", labels: ["key_1": "value_1", "key_2": "value_2"], value: 2)
         databaseOperator.saveMetric(count)
         
@@ -112,32 +84,78 @@ final class DatabaseTests: XCTestCase {
         clearAll()
     }
     
+    func test_updateMetric() {
+        let count = Count(name: "test_count", labels: ["key_1": "value_1", "key_2": "value_2"], value: 10)
+        let metricEntity = databaseOperator.saveMetric(count)
+        
+        XCTAssertNotNil(metricEntity)
+        
+        let updateMetric = Count(name: "test_count", labels: ["key_1": "value_1", "key_2": "value_2"], value: 4)
+        
+        databaseOperator.updateMetric(updateMetric)
+        
+        let metricList = databaseOperator.fetchMetrics(from: 0, to: metricEntity!.id)
+        
+        XCTAssertNotNil(metricList)
+        
+        XCTAssertTrue(!metricList.countList!.isEmpty)
+        XCTAssertNotNil(metricList.countList?.first)
+        let metric = metricList.countList!.first
+        
+        XCTAssertNotNil(metric)
+        XCTAssertNotNil(metric!.name)
+        XCTAssertNotNil(metric!.value)
+        XCTAssertEqual(metric!.name, "test_count")
+        XCTAssertEqual(metric!.value, 6)
+        XCTAssertEqual(metric!.type, .count)
+        XCTAssertEqual(metric!.labels, ["key_1": "value_1", "key_2": "value_2"])
+        
+        clearAll()
+    }
+    
+    func test_clearAllMetrics() {
+        let count = Count(name: "test_count", labels: ["key_1": "value_1", "key_2": "value_2"], value: 2)
+        let metricEntity1 = databaseOperator.saveMetric(count)
+        
+        XCTAssertNotNil(metricEntity1)
+        
+        let gauge = Gauge(name: "test_gauge", labels: ["key_1": "value_3", "key_3": "value_3"], value: 11.3)
+        let metricEntity2 = databaseOperator.saveMetric(gauge)
+        
+        XCTAssertNotNil(metricEntity2)
+        
+        databaseOperator.clearAllMetrics()
+        
+        let metricList = databaseOperator.fetchMetrics(from: metricEntity1!.id, to: metricEntity2!.id)
+        XCTAssertNil(metricList.countList)
+        XCTAssertNil(metricList.gaugeList)
+        XCTAssertEqual(metricList.count, 0)
+        
+        clearAll()
+    }
+    
     override func tearDown() {
         super.tearDown()
         clearAll()
-        metricOperator = nil
-        labelOperator = nil
+        databaseOperator = nil
     }
 
     func clearAll() {
-        metricOperator.clearAll()
-        labelOperator.clearAll()
+        databaseOperator.clearAllMetrics()
     }
 }
 
-extension DatabaseTests {
-    func getDBPath() -> String {
-        let urlDirectory = FileManager.default.urls(for: FileManager.SearchPathDirectory.libraryDirectory, in: FileManager.SearchPathDomainMask.userDomainMask)[0]
-        let fileUrl = urlDirectory.appendingPathComponent("test_metrics.sqlite")
-        return fileUrl.path
-    }
-    
-    func openDatabase() -> OpaquePointer? {
-        var db: OpaquePointer?
-        if sqlite3_open_v2(getDBPath(), &db, SQLITE_OPEN_CREATE | SQLITE_OPEN_READWRITE | SQLITE_OPEN_FULLMUTEX, nil) == SQLITE_OK {
-            return db
-        } else {
-            return nil
-        }
+func getDBPath() -> String {
+    let urlDirectory = FileManager.default.urls(for: FileManager.SearchPathDirectory.libraryDirectory, in: FileManager.SearchPathDomainMask.userDomainMask)[0]
+    let fileUrl = urlDirectory.appendingPathComponent("test_metrics.sqlite")
+    return fileUrl.path
+}
+
+func openDatabase() -> OpaquePointer? {
+    var db: OpaquePointer?
+    if sqlite3_open_v2(getDBPath(), &db, SQLITE_OPEN_CREATE | SQLITE_OPEN_READWRITE | SQLITE_OPEN_FULLMUTEX, nil) == SQLITE_OK {
+        return db
+    } else {
+        return nil
     }
 }

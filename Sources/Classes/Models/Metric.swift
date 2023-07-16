@@ -62,6 +62,14 @@ struct MetricList {
         return (countList?.count ?? 0) + (gaugeList?.count ?? 0)
     }
     
+    var isEmpty: Bool {
+        return count <= 0
+    }
+    
+    var isNotEmpty: Bool {
+        return !isEmpty
+    }
+    
     init(countList: [Count]?, gaugeList: [Gauge]?) {
         self.countList = countList
         self.gaugeList = gaugeList

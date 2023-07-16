@@ -16,7 +16,7 @@ protocol TableOperations {
 
 protocol MetricOperations: TableOperations {
     @discardableResult func saveMetric(name: String, value: Float, type: String, labels: String) -> MetricEntity?
-    @discardableResult func updateMetric(_ metric: MetricEntity?) -> Int?
+    @discardableResult func updateMetric(_ metric: MetricEntity?, updatedValue: Float) -> Int?
     func fetchMetric(where name: String, type: String, labels: String) -> MetricEntity?
     func fetchMetrics(where columnName: String, from valueFrom: Int, to valueTo: Int) -> [MetricEntity]?
 }
@@ -24,13 +24,14 @@ protocol MetricOperations: TableOperations {
 protocol LabelOperations: TableOperations {
     @discardableResult func saveLabel(name: String, value: String) -> LabelEntity?
     func fetchLabel(where name: String, value: String) -> LabelEntity?
-    func fetchLabels(where coulmnName: String, in value: String) -> [LabelEntity]?
+    func fetchLabels(where coulmnName: String, in values: [String]) -> [LabelEntity]?
 }
 
 protocol DatabaseOperations {
     @discardableResult func saveMetric<M: Metric>(_ metric: M) -> MetricEntity?
     func fetchMetrics(from valueFrom: Int, to valueTo: Int) -> MetricList
     @discardableResult func updateMetric<M: Metric>(_ metric: M) -> Int?
+    func clearAllMetrics()
 }
 
 class Database: DatabaseOperations {
@@ -83,7 +84,7 @@ class Database: DatabaseOperations {
             gaugeList = [Gauge]()
             for metricEntity in metricEntityList {
                 var labels: [String: String]?
-                if let labelEntityList = labelOperator.fetchLabels(where: "id", in: metricEntity.labels) {
+                if let labelEntityList = labelOperator.fetchLabels(where: "id", in: metricEntity.labels.components(separatedBy: ",")) {
                     labels = [String: String]()
                     for labelEntity in labelEntityList {
                         labels?[labelEntity.name] = labelEntity.value
@@ -119,8 +120,25 @@ class Database: DatabaseOperations {
         if let labelIdList = labelIdList, !labelIdList.isEmpty {
             labels = (labelIdList.sorted{ $0 < $1 } as NSArray).componentsJoined(by: ",")
         }
-        let metricEntity = metricOperator.fetchMetric(where: metric.name, type: metric.type.rawValue, labels: labels)
-        return metricOperator.updateMetric(metricEntity)
+        guard let metricEntity = metricOperator.fetchMetric(where: metric.name, type: metric.type.rawValue, labels: labels) else {
+            return nil
+        }
+        var newValue: Float = 0.0
+        switch metric {
+            case let m as Count:
+                newValue = Float(m.value)
+            case let m as Gauge:
+                newValue = m.value
+            default:
+                break
+        }
+        let updatedValue: Float = (newValue > metricEntity.value) ? (newValue - metricEntity.value) : (metricEntity.value - newValue)
+        return metricOperator.updateMetric(metricEntity, updatedValue: updatedValue)
+    }
+    
+    func clearAllMetrics() {
+        metricOperator.clearAll()
+        labelOperator.clearAll()
     }
 }
 

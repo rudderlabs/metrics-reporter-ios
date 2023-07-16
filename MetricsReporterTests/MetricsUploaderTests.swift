@@ -10,8 +10,25 @@ import XCTest
 
 final class MetricsUploaderTests: XCTestCase {
     
+    var metricsUploader: MetricsUploader!
+    let apiURL = URL(string: "https://some.rudderstack.com.url")!
+
+    override func setUp() {
+        super.setUp()
+        let database: DatabaseOperations = {
+            let db = openDatabase()
+            return Database(database: db)
+        }()
+        let serviceManager: ServiceType = {
+            let configuration = URLSessionConfiguration.default
+            configuration.protocolClasses = [MockURLProtocol.self]
+            let urlSession = URLSession(configuration: configuration)
+            return ServiceManager(urlSession: urlSession)
+        }()
+        metricsUploader = MetricsUploader(database: database, configuration: Configuration(logLevel: .none, writeKey: "WRITE_KEY", sdkVersion: "some.version"), serviceManger: serviceManager)
+    }
+    
     func test_getJSONString() {
-        let metricsUploader = MetricsUploader(database: nil, configuration: Configuration(logLevel: .none, writeKey: "WRITE_KEY", sdkVersion: "some.version"))
         var countList = [Count]()
         var gaugeList = [Gauge]()
         
@@ -70,6 +87,35 @@ final class MetricsUploaderTests: XCTestCase {
         XCTAssertNotNil(expectedPayloadObject)
         
         XCTAssertEqual(payloadObject!, expectedPayloadObject!)
+    }
+    
+    func test_flushMetricsToServer() {
+        let data = """
+        {
+        
+        }
+        """.data(using: .utf8)
+        MockURLProtocol.requestHandler = { request in
+            let response = HTTPURLResponse(url: self.apiURL, statusCode: 201, httpVersion: nil, headerFields: nil)!
+            return (response, data)
+        }
+        
+        var countList = [Count]()
+        var gaugeList = [Gauge]()
+        
+        let count = Count(name: "test_count", labels: ["key_1": "value_1", "key_2": "value_2"], value: 2)
+        countList.append(count)
+        
+        let gauge = Gauge(name: "test_gauge", labels: ["key_1": "value_3", "key_3": "value_3"], value: 11.3)
+        gaugeList.append(gauge)
+        
+        let metricList = MetricList(countList: countList, gaugeList: gaugeList)
+        
+        let params = metricsUploader.getJSONString(from: metricList)
+        XCTAssertNotNil(params)
+        
+        let error = metricsUploader.flushMetricsToServer(params: params!)
+        XCTAssertNil(error)
     }
 }
 
