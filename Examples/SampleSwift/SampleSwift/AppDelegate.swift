@@ -16,10 +16,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        let configuration = Configuration(logLevel: .debug, writeKey: "WRITE_KEY")
+        let configuration = Configuration(logLevel: .debug, writeKey: "WRITE_KEY", sdkVersion: "1.3.3")
         let client = MetricsClient(configuration: configuration)
         
-        client.count(name: "", labels: nil, value: 0)
+        client.process(metric: Count(name: "test_count", value: 12))
         
         return true
     }

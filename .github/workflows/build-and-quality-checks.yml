@@ -24,7 +24,7 @@ jobs:
         
       - name: Build SDK(iOS)
         run: |
-          xcodebuild build -scheme MetricsReporter-iOS -workspace MetricsReporter.xcworkspace -destination 'platform=iOS Simulator,name=iPhone 13' | xcpretty
+          xcodebuild build -scheme MetricsReporter-iOS -workspace MetricsReporter.xcworkspace -destination 'platform=iOS Simulator,name=iPhone 14' | xcpretty
           
       - name: Build SDK(watchOS)
         run: |

@@ -29,13 +29,13 @@ jobs:
       - name: Pod install
         run: pod install
         
-#      - name: Run build-wrapper
-#        run: |
-#          build-wrapper-macosx-x86 --out-dir ${{ env.BUILD_WRAPPER_OUT_DIR }} xcodebuild -workspace MetricsReporter.xcworkspace -scheme MetricsReporter-iOS -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 14' | xcpretty
-          
       - name: Run tests(suite)
         run: |
-          xcodebuild -workspace MetricsReporter.xcworkspace -scheme MetricsReporterTests test -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 14' -enableCodeCoverage YES -derivedDataPath build | xcpretty
+          xcodebuild -workspace MetricsReporter.xcworkspace -scheme MetricsReporterTests-iOS test -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 14' -enableCodeCoverage YES -derivedDataPath build | xcpretty
+          xcodebuild -workspace MetricsReporter.xcworkspace -scheme MetricsReporterTests-tvOS test -sdk iphonesimulator -destination 'platform=iOS Simulator,name=Apple TV' -enableCodeCoverage YES -derivedDataPath build | xcpretty
+          xcodebuild -workspace MetricsReporter.xcworkspace -scheme MetricsReporterTests-watchOS test -sdk watchsimulator -destination 'platform=watchOS Simulator,name=Apple Watch Series 7 (45mm)' -enableCodeCoverage YES -derivedDataPath build | xcpretty
+          xcodebuild -workspace MetricsReporter.xcworkspace -scheme MetricsReporterTests-macOS test -destination 'platform=macOS,arch=arm64' -enableCodeCoverage YES -derivedDataPath build | xcpretty
+      
       - name: Collect coverage into one XML report
         run: |
           bash xccov-to-generic.sh build/Logs/Test/*.xcresult/ > generic-coverage.xml
