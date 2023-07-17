@@ -16,11 +16,7 @@ class ViewController: UIViewController {
     }
 
     @IBAction func onButtonTap(_ button: UIButton) {
-        CrashReporterClient.shared.testCrash()
         
-        
-//        let arr: NSMutableArray = NSMutableArray()
-//        _ = arr.object(at: 5)
     }
 }
 

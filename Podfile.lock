@@ -1,11 +1,11 @@
 PODS:
   - MetricsReporter (1.0.0):
-    - RudderKit
-  - RudderKit (1.0.0)
+    - RudderKit (~> 1.1.1)
+  - RudderKit (1.1.1)
 
 DEPENDENCIES:
   - MetricsReporter (from `.`)
-  - RudderKit
+  - RudderKit (~> 1.1.1)
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
@@ -16,9 +16,9 @@ EXTERNAL SOURCES:
     :path: "."
 
 SPEC CHECKSUMS:
-  MetricsReporter: 3d8d77283caebaa90afcba25c296ea0d68dd7526
-  RudderKit: 872a05f80abefab442635d2a19328e9a00b2e514
+  MetricsReporter: 0fa390a56fd1275be4575bb871a2074a60ebb47b
+  RudderKit: 19e3fc552a6a3ee3a3c6d597624aab352e653dbf
 
-PODFILE CHECKSUM: 864661ec11b475aa9f199636ea1e3e71d2e8dd79
+PODFILE CHECKSUM: e885ce491327d31b136aeb7704ca56cf1389ba10
 
 COCOAPODS: 1.12.1

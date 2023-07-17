@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import RudderKit
 
 typealias Handler<T> = (HandlerResult<T, NSError>) -> Void
 
@@ -22,15 +23,7 @@ enum ErrorCode: Int {
 }
 
 struct ServiceManager: ServiceType {
-//    static let sharedSession: URLSession = {
-//        let configuration = URLSessionConfiguration.default
-//        configuration.timeoutIntervalForRequest = 30
-//        configuration.timeoutIntervalForResource = 30
-//        configuration.requestCachePolicy = .useProtocolCachePolicy
-//        return URLSession(configuration: configuration)
-//    }()
-    
-    let urlSession: URLSession
+    private let urlSession: URLSession
     
     init(urlSession: URLSession) {
         self.urlSession = urlSession
@@ -44,16 +37,16 @@ struct ServiceManager: ServiceType {
 extension ServiceManager {
     func request<T: Codable>(_ api: API, _ completion: @escaping Handler<T>) {
         let urlString = [baseURL(api), path(api)].joined().addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
-//        client.log(message: "URL: \(urlString ?? "")", logLevel: .debug)
+        Logger.logDebug("URL: \(urlString ?? "")")
         var request = URLRequest(url: URL(string: urlString ?? "")!)
         request.httpMethod = method(api).value
         if let headers = headers(api) {
             request.allHTTPHeaderFields = headers
-//            client.log(message: "HTTPHeaderFields: \(headers)", logLevel: .debug)
+            Logger.logDebug("HTTPHeaderFields: \(headers)")
         }
         if let httpBody = httpBody(api) {
             request.httpBody = httpBody
-//            client.log(message: "HTTPBody: \(httpBody)", logLevel: .debug)
+            Logger.logDebug("HTTPBody: \(httpBody)")
         }
         let dataTask = urlSession.dataTask(with: request, completionHandler: { (data, response, error) in
             if error != nil {

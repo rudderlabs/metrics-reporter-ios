@@ -7,6 +7,8 @@
 
 #import "AppDelegate.h"
 
+@import MetricsReporter;
+
 @interface AppDelegate ()
 
 @end
@@ -16,6 +18,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    MetricsClient *client = [[MetricsClient alloc] init];
+//    Count *count = [Count]
     return YES;
 }
 
