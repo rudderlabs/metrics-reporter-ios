@@ -10,10 +10,10 @@ end
 target 'MetricsReporter' do
     project 'MetricsReporter.xcodeproj'
     platform :ios, '12.0'
-    pod 'RudderKit', '~> 1.1.1'
+    pod 'RudderKit', '~> 1.2.0'
     target 'MetricsReporterTests' do
         inherit! :search_paths
-        pod 'RudderKit', '~> 1.1.1'
+        pod 'RudderKit', '~> 1.2.0'
     end
 end
 

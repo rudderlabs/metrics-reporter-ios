@@ -23,6 +23,12 @@ jobs:
       - name: Install xcpretty
         run: gem install xcpretty
 
+      - name: Install Cocoapods
+        run: gem install cocoapods
+        
+      - name: Pod install
+        run: pod install
+        
 #      - name: Run build-wrapper
 #        run: |
 #          build-wrapper-macosx-x86 --out-dir ${{ env.BUILD_WRAPPER_OUT_DIR }} xcodebuild -workspace MetricsReporter.xcworkspace -scheme MetricsReporter-iOS -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 14' | xcpretty

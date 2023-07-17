@@ -29,6 +29,7 @@
 		ED9225FF2A5FC17A00734372 /* MetricsUploaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9225FE2A5FC17A00734372 /* MetricsUploaderTests.swift */; };
 		ED9226012A613F5C00734372 /* LabelOperatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9226002A613F5C00734372 /* LabelOperatorTests.swift */; };
 		ED9226032A61401900734372 /* MetricOperatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9226022A61401900734372 /* MetricOperatorTests.swift */; };
+		ED9226062A65172E00734372 /* ObjCConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9226052A65172E00734372 /* ObjCConfiguration.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +84,7 @@
 		ED9225FE2A5FC17A00734372 /* MetricsUploaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricsUploaderTests.swift; sourceTree = "<group>"; };
 		ED9226002A613F5C00734372 /* LabelOperatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelOperatorTests.swift; sourceTree = "<group>"; };
 		ED9226022A61401900734372 /* MetricOperatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricOperatorTests.swift; sourceTree = "<group>"; };
+		ED9226052A65172E00734372 /* ObjCConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjCConfiguration.swift; sourceTree = "<group>"; };
 		ED9585A2E61D393835555F75 /* Pods-MetricsReporterTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MetricsReporterTests.debug.xcconfig"; path = "Target Support Files/Pods-MetricsReporterTests/Pods-MetricsReporterTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -203,6 +205,7 @@
 				ED74EF662A5D8B9B0075C583 /* Database */,
 				ED9225F92A5E7A5300734372 /* Models */,
 				ED74EF6A2A5D8B9B0075C583 /* Networking */,
+				ED9226042A6516F600734372 /* ObjC */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -242,6 +245,14 @@
 				ED74EF652A5D8B9B0075C583 /* Metric.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		ED9226042A6516F600734372 /* ObjC */ = {
+			isa = PBXGroup;
+			children = (
+				ED9226052A65172E00734372 /* ObjCConfiguration.swift */,
+			);
+			path = ObjC;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -423,6 +434,7 @@
 				ED1A22782A5DBA02007031FF /* MetricsClient.swift in Sources */,
 				ED1A22772A5DB9F5007031FF /* MetricOperator.swift in Sources */,
 				ED1A22762A5DB9F5007031FF /* LabelOperator.swift in Sources */,
+				ED9226062A65172E00734372 /* ObjCConfiguration.swift in Sources */,
 				ED9225FB2A5E7B1900734372 /* MetricsUploader.swift in Sources */,
 				ED1A227F2A5DC34D007031FF /* Configuration.swift in Sources */,
 				ED1A227C2A5DBA02007031FF /* Metric.swift in Sources */,
