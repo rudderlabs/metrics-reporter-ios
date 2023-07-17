@@ -4,6 +4,7 @@ package = JSON.parse(File.read(File.join(__dir__, 'package.json')))
 
 Pod::Spec.new do |s|
   s.name             = 'MetricsReporter'
+  s.module_name      = 'MetricsReporter'
   s.version          = package['version']
   s.summary          = "Privacy and Security focused Segment-alternative. iOS, tvOS, watchOS & macOS SDK"
   s.description      = <<-DESC
@@ -21,9 +22,7 @@ Pod::Spec.new do |s|
   s.tvos.deployment_target = '11.0'
   s.watchos.deployment_target = '7.0'
   s.osx.deployment_target = '10.13'
-  
-  s.frameworks = 'UserNotifications'
-  
+    
   s.source_files = 'Sources/**/*.swift'
 
   s.dependency 'RudderKit', '~> 1.2.0'

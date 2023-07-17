@@ -6,7 +6,15 @@
 //
 
 import XCTest
-@testable import MetricsReporter
+#if os(iOS)
+@testable import MetricsReporter_iOS
+#elseif os(tvOS)
+@testable import MetricsReporter_tvOS
+#elseif os(macOS)
+@testable import MetricsReporter_macOS
+#else
+@testable import MetricsReporter_watchOS
+#endif
 
 final class MetricsUploaderTests: XCTestCase {
     
@@ -89,6 +97,7 @@ final class MetricsUploaderTests: XCTestCase {
         XCTAssertEqual(payloadObject!, expectedPayloadObject!)
     }
     
+    #if !os(watchOS)
     func test_flushMetricsToServer() {
         let data = """
         {
@@ -117,6 +126,7 @@ final class MetricsUploaderTests: XCTestCase {
         let error = metricsUploader.flushMetricsToServer(params: params!)
         XCTAssertNil(error)
     }
+    #endif
 }
 
 func getObject<T: Codable>(data: Data) -> T? {

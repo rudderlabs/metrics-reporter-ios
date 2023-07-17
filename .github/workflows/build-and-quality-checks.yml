@@ -28,15 +28,15 @@ jobs:
           
       - name: Build SDK(watchOS)
         run: |
-          xcodebuild build -scheme MetricsReporter-iOS -workspace MetricsReporter.xcworkspace -destination 'platform=watchOS Simulator,name=Apple Watch Series 7 (45mm)' | xcpretty
+          xcodebuild build -scheme MetricsReporter-watchOS -workspace MetricsReporter.xcworkspace -destination 'platform=watchOS Simulator,name=Apple Watch Series 7 (45mm)' | xcpretty
       
       - name: Build SDK(tvOS)
         run: |
-          xcodebuild build -scheme MetricsReporter-iOS -workspace MetricsReporter.xcworkspace -destination 'platform=tvOS Simulator,name=Apple TV' | xcpretty
+          xcodebuild build -scheme MetricsReporter-tvOS -workspace MetricsReporter.xcworkspace -destination 'platform=tvOS Simulator,name=Apple TV' | xcpretty
           
       - name: Build SDK(macOS)
         run: |
-          xcodebuild build -scheme MetricsReporter-iOS -workspace MetricsReporter.xcworkspace -destination 'platform=macOS,variant=Mac Catalyst' | xcpretty
+          xcodebuild build -scheme MetricsReporter-macOS -workspace MetricsReporter.xcworkspace -destination 'platform=macOS,arch=arm64' | xcpretty
       
       - name: Execute pod lint
         run: pod lib lint --no-clean --allow-warnings

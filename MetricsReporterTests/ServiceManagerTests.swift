@@ -6,7 +6,15 @@
 //
 
 import XCTest
-@testable import MetricsReporter
+#if os(iOS)
+@testable import MetricsReporter_iOS
+#elseif os(tvOS)
+@testable import MetricsReporter_tvOS
+#elseif os(macOS)
+@testable import MetricsReporter_macOS
+#else
+@testable import MetricsReporter_watchOS
+#endif
 
 final class ServiceManagerTests: XCTestCase {
 
@@ -23,6 +31,7 @@ final class ServiceManagerTests: XCTestCase {
         promise = expectation(description: "Expectation")
     }
 
+    #if !os(watchOS)
     func test_sdkMetrics() {
         // Prepare mock response.
         let jsonString = """
@@ -152,4 +161,5 @@ final class ServiceManagerTests: XCTestCase {
         }
         wait(for: [promise], timeout: 1.0)
     }
+    #endif
 }

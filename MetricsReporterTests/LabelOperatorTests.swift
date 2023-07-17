@@ -6,7 +6,15 @@
 //
 
 import XCTest
-@testable import MetricsReporter
+#if os(iOS)
+@testable import MetricsReporter_iOS
+#elseif os(tvOS)
+@testable import MetricsReporter_tvOS
+#elseif os(macOS)
+@testable import MetricsReporter_macOS
+#else
+@testable import MetricsReporter_watchOS
+#endif
 
 final class LabelOperatorTests: XCTestCase {
     var labelOperator: LabelOperations!

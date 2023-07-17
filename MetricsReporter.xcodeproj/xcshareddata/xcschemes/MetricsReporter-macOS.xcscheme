@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "ED74EF432A5D8AE70075C583"
-               BuildableName = "MetricsReporter_iOS.framework"
-               BlueprintName = "MetricsReporter-iOS"
+               BlueprintIdentifier = "ED9226352A65317B00734372"
+               BuildableName = "MetricsReporter_macOS.framework"
+               BlueprintName = "MetricsReporter-macOS"
                ReferencedContainer = "container:MetricsReporter.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -29,7 +29,7 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <TestPlans>
          <TestPlanReference
-            reference = "container:MetricsReporterTests/MetricsReporter-iOS.xctestplan"
+            reference = "container:MetricsReporterTests/MetricsReporter-macOS.xctestplan"
             default = "YES">
          </TestPlanReference>
       </TestPlans>
@@ -54,9 +54,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "ED74EF432A5D8AE70075C583"
-            BuildableName = "MetricsReporter_iOS.framework"
-            BlueprintName = "MetricsReporter-iOS"
+            BlueprintIdentifier = "ED9226352A65317B00734372"
+            BuildableName = "MetricsReporter_macOS.framework"
+            BlueprintName = "MetricsReporter-macOS"
             ReferencedContainer = "container:MetricsReporter.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
