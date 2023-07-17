@@ -36,7 +36,7 @@ jobs:
           
       - name: Build SDK(macOS)
         run: |
-          xcodebuild build -scheme MetricsReporter-macOS -workspace MetricsReporter.xcworkspace -destination 'platform=macOS,arch=arm64' | xcpretty
+          xcodebuild build -scheme MetricsReporter-macOS -workspace MetricsReporter.xcworkspace -destination 'platform=macOS,arch=x86_64' | xcpretty
       
       - name: Execute pod lint
         run: pod lib lint --no-clean --allow-warnings
