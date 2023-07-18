@@ -1,4 +1,4 @@
-source 'https://github.com/rudderlabs/rudder-ios-kit.git'
+source 'https://github.com/rudderlabs/Specs.git'
 workspace 'MetricsReporter.xcworkspace'
 use_frameworks!
 inhibit_all_warnings!
