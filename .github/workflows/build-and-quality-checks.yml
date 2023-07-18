@@ -20,7 +20,7 @@ jobs:
         run: gem install cocoapods
         
       - name: Pod install
-        run: pod install
+        run: pod install --repo-update
         
       - name: Build SDK(iOS)
         run: |

@@ -18,7 +18,7 @@
             parallelizable = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "ED74EF4B2A5D8AE70075C583"
+               BlueprintIdentifier = "EDEDB6212A66523E005C670A"
                BuildableName = "MetricsReporterTests-iOS.xctest"
                BlueprintName = "MetricsReporterTests-iOS"
                ReferencedContainer = "container:MetricsReporter.xcodeproj">

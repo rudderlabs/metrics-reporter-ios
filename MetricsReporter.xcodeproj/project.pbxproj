@@ -11,7 +11,7 @@
 		78B3016819335AD65EBD28BD /* Pods_MetricsReporterTests_watchOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35B43B7E6C29E8E235BC3446 /* Pods_MetricsReporterTests_watchOS.framework */; };
 		83416865B4AD87B5FDB84C98 /* Pods_MetricsReporterTests_macOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56A9CA70C78EE1F8CA3C0415 /* Pods_MetricsReporterTests_macOS.framework */; };
 		8FBF124AC2BF8A17CEB7ACCA /* Pods_MetricsReporter_tvOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D7C96E9006035A6DBACB9A6 /* Pods_MetricsReporter_tvOS.framework */; };
-		A1BB823CB29E8E030C1FF984 /* Pods_MetricsReporterTests_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD9B57637273703B0D339DDF /* Pods_MetricsReporterTests_iOS.framework */; };
+		9FEFE3D8BE3D30197D8C0C3E /* Pods_MetricsReporterTests_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD9B57637273703B0D339DDF /* Pods_MetricsReporterTests_iOS.framework */; };
 		CA9F4726731F6DF51F1BCAC4 /* Pods_MetricsReporter_watchOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9002E52F615D6D4104FFF47 /* Pods_MetricsReporter_watchOS.framework */; };
 		D011A40867CF8DD74501B869 /* Pods_MetricsReporterTests_tvOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3FB556DD2F2D4715339C03C /* Pods_MetricsReporterTests_tvOS.framework */; };
 		D5ED8FE65E7F9C1280B76B33 /* Pods_MetricsReporter_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54EF10A70AFDCA01CCF09D1B /* Pods_MetricsReporter_iOS.framework */; };
@@ -24,16 +24,7 @@
 		ED1A227B2A5DBA02007031FF /* ServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED74EF6B2A5D8B9B0075C583 /* ServiceType.swift */; };
 		ED1A227C2A5DBA02007031FF /* Metric.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED74EF652A5D8B9B0075C583 /* Metric.swift */; };
 		ED1A227F2A5DC34D007031FF /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1A227E2A5DC34D007031FF /* Configuration.swift */; };
-		ED74EF4D2A5D8AE70075C583 /* MetricsReporter_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED74EF442A5D8AE70075C583 /* MetricsReporter_iOS.framework */; };
-		ED74EF842A5D9D7C0075C583 /* MockURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED74EF7F2A5D9D7C0075C583 /* MockURLProtocol.swift */; };
-		ED74EF852A5D9D7C0075C583 /* ServiceManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED74EF802A5D9D7C0075C583 /* ServiceManagerTests.swift */; };
-		ED74EF862A5D9D7C0075C583 /* DatabaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED74EF812A5D9D7C0075C583 /* DatabaseTests.swift */; };
-		ED74EF872A5D9D7C0075C583 /* MetricsReporterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED74EF822A5D9D7C0075C583 /* MetricsReporterTests.swift */; };
-		ED74EF882A5D9D7C0075C583 /* ModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED74EF832A5D9D7C0075C583 /* ModelTests.swift */; };
 		ED9225FB2A5E7B1900734372 /* MetricsUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9225FA2A5E7B1900734372 /* MetricsUploader.swift */; };
-		ED9225FF2A5FC17A00734372 /* MetricsUploaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9225FE2A5FC17A00734372 /* MetricsUploaderTests.swift */; };
-		ED9226012A613F5C00734372 /* LabelOperatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9226002A613F5C00734372 /* LabelOperatorTests.swift */; };
-		ED9226032A61401900734372 /* MetricOperatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9226022A61401900734372 /* MetricOperatorTests.swift */; };
 		ED9226062A65172E00734372 /* ObjCConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9226052A65172E00734372 /* ObjCConfiguration.swift */; };
 		ED92260C2A65313B00734372 /* MetricsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED74EF6F2A5D8B9B0075C583 /* MetricsClient.swift */; };
 		ED92260D2A65313B00734372 /* MetricOperator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED74EF672A5D8B9B0075C583 /* MetricOperator.swift */; };
@@ -107,16 +98,10 @@
 		EDEDB61B2A659FF5005C670A /* ObjCMetric.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEDB6192A659FF5005C670A /* ObjCMetric.swift */; };
 		EDEDB61C2A659FF5005C670A /* ObjCMetric.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEDB6192A659FF5005C670A /* ObjCMetric.swift */; };
 		EDEDB61D2A659FF5005C670A /* ObjCMetric.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEDB6192A659FF5005C670A /* ObjCMetric.swift */; };
+		EDEDB6262A66523F005C670A /* MetricsReporter_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED74EF442A5D8AE70075C583 /* MetricsReporter_iOS.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		ED74EF4E2A5D8AE70075C583 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = ED74EF3B2A5D8AE70075C583 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = ED74EF432A5D8AE70075C583;
-			remoteInfo = MetricsReporter;
-		};
 		EDEDB5CD2A6578B1005C670A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = ED74EF3B2A5D8AE70075C583 /* Project object */;
@@ -137,6 +122,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = ED9226352A65317B00734372;
 			remoteInfo = "MetricsReporter-macOS";
+		};
+		EDEDB6272A66523F005C670A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = ED74EF3B2A5D8AE70075C583 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = ED74EF432A5D8AE70075C583;
+			remoteInfo = "MetricsReporter-iOS";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -179,7 +171,6 @@
 		ED1A227D2A5DBE1D007031FF /* MetricsReporter-iOS.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "MetricsReporter-iOS.xctestplan"; sourceTree = "<group>"; };
 		ED1A227E2A5DC34D007031FF /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		ED74EF442A5D8AE70075C583 /* MetricsReporter_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MetricsReporter_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		ED74EF4C2A5D8AE70075C583 /* MetricsReporterTests-iOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MetricsReporterTests-iOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED74EF652A5D8B9B0075C583 /* Metric.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Metric.swift; sourceTree = "<group>"; };
 		ED74EF672A5D8B9B0075C583 /* MetricOperator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetricOperator.swift; sourceTree = "<group>"; };
 		ED74EF682A5D8B9B0075C583 /* LabelOperator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelOperator.swift; sourceTree = "<group>"; };
@@ -216,6 +207,7 @@
 		EDEDB5EC2A6579F6005C670A /* MetricsReporterTests-macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MetricsReporterTests-macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDEDB6142A659F4E005C670A /* ObjCMetricsClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjCMetricsClient.swift; sourceTree = "<group>"; };
 		EDEDB6192A659FF5005C670A /* ObjCMetric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjCMetric.swift; sourceTree = "<group>"; };
+		EDEDB6222A66523E005C670A /* MetricsReporterTests-iOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MetricsReporterTests-iOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -224,15 +216,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D5ED8FE65E7F9C1280B76B33 /* Pods_MetricsReporter_iOS.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		ED74EF492A5D8AE70075C583 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				ED74EF4D2A5D8AE70075C583 /* MetricsReporter_iOS.framework in Frameworks */,
-				A1BB823CB29E8E030C1FF984 /* Pods_MetricsReporterTests_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,6 +267,15 @@
 			files = (
 				EDEDB5F02A6579F6005C670A /* MetricsReporter_macOS.framework in Frameworks */,
 				83416865B4AD87B5FDB84C98 /* Pods_MetricsReporterTests_macOS.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EDEDB61F2A66523E005C670A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EDEDB6262A66523F005C670A /* MetricsReporter_iOS.framework in Frameworks */,
+				9FEFE3D8BE3D30197D8C0C3E /* Pods_MetricsReporterTests_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -370,13 +362,13 @@
 			isa = PBXGroup;
 			children = (
 				ED74EF442A5D8AE70075C583 /* MetricsReporter_iOS.framework */,
-				ED74EF4C2A5D8AE70075C583 /* MetricsReporterTests-iOS.xctest */,
 				ED92261D2A65313B00734372 /* MetricsReporter_tvOS.framework */,
 				ED9226342A65316400734372 /* MetricsReporter_watchOS.framework */,
 				ED92264B2A65317B00734372 /* MetricsReporter_macOS.framework */,
 				EDEDB5C82A6578B0005C670A /* MetricsReporterTests-watchOS.xctest */,
 				EDEDB5DE2A6579CE005C670A /* MetricsReporterTests-tvOS.xctest */,
 				EDEDB5EC2A6579F6005C670A /* MetricsReporterTests-macOS.xctest */,
+				EDEDB6222A66523E005C670A /* MetricsReporterTests-iOS.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -557,26 +549,6 @@
 			productReference = ED74EF442A5D8AE70075C583 /* MetricsReporter_iOS.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		ED74EF4B2A5D8AE70075C583 /* MetricsReporterTests-iOS */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = ED74EF592A5D8AE70075C583 /* Build configuration list for PBXNativeTarget "MetricsReporterTests-iOS" */;
-			buildPhases = (
-				DC4E4970B7B1B1B3680E34A1 /* [CP] Check Pods Manifest.lock */,
-				ED74EF482A5D8AE70075C583 /* Sources */,
-				ED74EF492A5D8AE70075C583 /* Frameworks */,
-				ED74EF4A2A5D8AE70075C583 /* Resources */,
-				D2BA8DA90D482E8DE494572E /* [CP] Embed Pods Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				ED74EF4F2A5D8AE70075C583 /* PBXTargetDependency */,
-			);
-			name = "MetricsReporterTests-iOS";
-			productName = MetricsReporterTests;
-			productReference = ED74EF4C2A5D8AE70075C583 /* MetricsReporterTests-iOS.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 		ED9226072A65313B00734372 /* MetricsReporter-tvOS */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = ED92261A2A65313B00734372 /* Build configuration list for PBXNativeTarget "MetricsReporter-tvOS" */;
@@ -694,6 +666,26 @@
 			productReference = EDEDB5EC2A6579F6005C670A /* MetricsReporterTests-macOS.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		EDEDB6212A66523E005C670A /* MetricsReporterTests-iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EDEDB6292A66523F005C670A /* Build configuration list for PBXNativeTarget "MetricsReporterTests-iOS" */;
+			buildPhases = (
+				2418FE0A74D42A07CE2DC899 /* [CP] Check Pods Manifest.lock */,
+				EDEDB61E2A66523E005C670A /* Sources */,
+				EDEDB61F2A66523E005C670A /* Frameworks */,
+				EDEDB6202A66523E005C670A /* Resources */,
+				C2588CA9EE7045E1429C2D09 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EDEDB6282A66523F005C670A /* PBXTargetDependency */,
+			);
+			name = "MetricsReporterTests-iOS";
+			productName = "MetricsReporterTests-iOS";
+			productReference = EDEDB6222A66523E005C670A /* MetricsReporterTests-iOS.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -707,9 +699,6 @@
 					ED74EF432A5D8AE70075C583 = {
 						CreatedOnToolsVersion = 14.3.1;
 					};
-					ED74EF4B2A5D8AE70075C583 = {
-						CreatedOnToolsVersion = 14.3.1;
-					};
 					EDEDB5C72A6578B0005C670A = {
 						CreatedOnToolsVersion = 14.3.1;
 					};
@@ -717,6 +706,9 @@
 						CreatedOnToolsVersion = 14.3.1;
 					};
 					EDEDB5EB2A6579F6005C670A = {
+						CreatedOnToolsVersion = 14.3.1;
+					};
+					EDEDB6212A66523E005C670A = {
 						CreatedOnToolsVersion = 14.3.1;
 					};
 				};
@@ -738,7 +730,7 @@
 				ED9226352A65317B00734372 /* MetricsReporter-macOS */,
 				ED9226072A65313B00734372 /* MetricsReporter-tvOS */,
 				ED92261E2A65316400734372 /* MetricsReporter-watchOS */,
-				ED74EF4B2A5D8AE70075C583 /* MetricsReporterTests-iOS */,
+				EDEDB6212A66523E005C670A /* MetricsReporterTests-iOS */,
 				EDEDB5C72A6578B0005C670A /* MetricsReporterTests-watchOS */,
 				EDEDB5DD2A6579CE005C670A /* MetricsReporterTests-tvOS */,
 				EDEDB5EB2A6579F6005C670A /* MetricsReporterTests-macOS */,
@@ -748,13 +740,6 @@
 
 /* Begin PBXResourcesBuildPhase section */
 		ED74EF422A5D8AE70075C583 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		ED74EF4A2A5D8AE70075C583 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -803,6 +788,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		EDEDB6202A66523E005C670A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
@@ -844,6 +836,28 @@
 			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-MetricsReporter-macOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2418FE0A74D42A07CE2DC899 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MetricsReporterTests-iOS-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -972,7 +986,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D2BA8DA90D482E8DE494572E /* [CP] Embed Pods Frameworks */ = {
+		C2588CA9EE7045E1429C2D09 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -987,28 +1001,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MetricsReporterTests-iOS/Pods-MetricsReporterTests-iOS-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		DC4E4970B7B1B1B3680E34A1 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-MetricsReporterTests-iOS-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F9431CE8E976C1D54D1FEB38 /* [CP] Check Pods Manifest.lock */ = {
@@ -1070,21 +1062,6 @@
 				ED1A227A2A5DBA02007031FF /* ServiceManager.swift in Sources */,
 				ED1A227B2A5DBA02007031FF /* ServiceType.swift in Sources */,
 				EDEDB61A2A659FF5005C670A /* ObjCMetric.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		ED74EF482A5D8AE70075C583 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				ED74EF842A5D9D7C0075C583 /* MockURLProtocol.swift in Sources */,
-				ED74EF872A5D9D7C0075C583 /* MetricsReporterTests.swift in Sources */,
-				ED74EF882A5D9D7C0075C583 /* ModelTests.swift in Sources */,
-				ED74EF862A5D9D7C0075C583 /* DatabaseTests.swift in Sources */,
-				ED74EF852A5D9D7C0075C583 /* ServiceManagerTests.swift in Sources */,
-				ED9225FF2A5FC17A00734372 /* MetricsUploaderTests.swift in Sources */,
-				ED9226012A613F5C00734372 /* LabelOperatorTests.swift in Sources */,
-				ED9226032A61401900734372 /* MetricOperatorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1193,14 +1170,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		EDEDB61E2A66523E005C670A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		ED74EF4F2A5D8AE70075C583 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = ED74EF432A5D8AE70075C583 /* MetricsReporter-iOS */;
-			targetProxy = ED74EF4E2A5D8AE70075C583 /* PBXContainerItemProxy */;
-		};
 		EDEDB5CE2A6578B1005C670A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = ED92261E2A65316400734372 /* MetricsReporter-watchOS */;
@@ -1215,6 +1194,11 @@
 			isa = PBXTargetDependency;
 			target = ED9226352A65317B00734372 /* MetricsReporter-macOS */;
 			targetProxy = EDEDB5F12A6579F6005C670A /* PBXContainerItemProxy */;
+		};
+		EDEDB6282A66523F005C670A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = ED74EF432A5D8AE70075C583 /* MetricsReporter-iOS */;
+			targetProxy = EDEDB6272A66523F005C670A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1408,42 +1392,6 @@
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		ED74EF5A2A5D8AE70075C583 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 428986D9A1E3A4B3DEE8E4B5 /* Pods-MetricsReporterTests-iOS.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = WPX9KRKA8B;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.rudderstack.MetricsReporterTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		ED74EF5B2A5D8AE70075C583 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 95D431C67B9ADDA87B640558 /* Pods-MetricsReporterTests-iOS.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = WPX9KRKA8B;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.rudderstack.MetricsReporterTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1771,6 +1719,42 @@
 			};
 			name = Release;
 		};
+		EDEDB62A2A66523F005C670A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 428986D9A1E3A4B3DEE8E4B5 /* Pods-MetricsReporterTests-iOS.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = WPX9KRKA8B;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.rudderstack.MetricsReporterTests-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		EDEDB62B2A66523F005C670A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 95D431C67B9ADDA87B640558 /* Pods-MetricsReporterTests-iOS.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = WPX9KRKA8B;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.rudderstack.MetricsReporterTests-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1788,15 +1772,6 @@
 			buildConfigurations = (
 				ED74EF572A5D8AE70075C583 /* Debug */,
 				ED74EF582A5D8AE70075C583 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		ED74EF592A5D8AE70075C583 /* Build configuration list for PBXNativeTarget "MetricsReporterTests-iOS" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				ED74EF5A2A5D8AE70075C583 /* Debug */,
-				ED74EF5B2A5D8AE70075C583 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1851,6 +1826,15 @@
 			buildConfigurations = (
 				EDEDB5F42A6579F6005C670A /* Debug */,
 				EDEDB5F52A6579F6005C670A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EDEDB6292A66523F005C670A /* Build configuration list for PBXNativeTarget "MetricsReporterTests-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EDEDB62A2A66523F005C670A /* Debug */,
+				EDEDB62B2A66523F005C670A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
