@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "ED9226072A65313B00734372"
-               BuildableName = "MetricsReporter_tvOS.framework"
+               BuildableName = "MetricsReporter.framework"
                BlueprintName = "MetricsReporter-tvOS"
                ReferencedContainer = "container:MetricsReporter.xcodeproj">
             </BuildableReference>
@@ -55,7 +55,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "ED9226072A65313B00734372"
-            BuildableName = "MetricsReporter_tvOS.framework"
+            BuildableName = "MetricsReporter.framework"
             BlueprintName = "MetricsReporter-tvOS"
             ReferencedContainer = "container:MetricsReporter.xcodeproj">
          </BuildableReference>

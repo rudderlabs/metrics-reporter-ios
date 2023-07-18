@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "ED92261E2A65316400734372"
-               BuildableName = "MetricsReporter_watchOS.framework"
+               BuildableName = "MetricsReporter.framework"
                BlueprintName = "MetricsReporter-watchOS"
                ReferencedContainer = "container:MetricsReporter.xcodeproj">
             </BuildableReference>
@@ -55,7 +55,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "ED92261E2A65316400734372"
-            BuildableName = "MetricsReporter_watchOS.framework"
+            BuildableName = "MetricsReporter.framework"
             BlueprintName = "MetricsReporter-watchOS"
             ReferencedContainer = "container:MetricsReporter.xcodeproj">
          </BuildableReference>

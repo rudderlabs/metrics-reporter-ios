@@ -7,14 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0B52D13758F51FBC42BEBD56 /* Pods_MetricsReporterTests_macOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF3B450E972DB2B146AC7918 /* Pods_MetricsReporterTests_macOS.framework */; };
-		1B03B56AE9624AE004F5DF0F /* Pods_MetricsReporterTests_watchOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3193919FF4702F534A05DC2D /* Pods_MetricsReporterTests_watchOS.framework */; };
-		1F25C4F3AEFE2E34A29260C8 /* Pods_MetricsReporter_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CEB5E101B903D9F9511DC37 /* Pods_MetricsReporter_iOS.framework */; };
-		38E801FA0B8D0BA2C3B0483B /* Pods_MetricsReporter_tvOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37E263B0724587AE013EF8A2 /* Pods_MetricsReporter_tvOS.framework */; };
-		6A1AE4DD489B53CBB44EE734 /* Pods_MetricsReporter_macOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC8551A162931D92636C42C1 /* Pods_MetricsReporter_macOS.framework */; };
-		6AEC3BB5AE188E150DB99B85 /* Pods_MetricsReporterTests_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D2F747FACAB7C651EB33404 /* Pods_MetricsReporterTests_iOS.framework */; };
-		8285F4A0D2ED4CB8659B3AF6 /* Pods_MetricsReporterTests_tvOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C555157A29F2F60510E2309 /* Pods_MetricsReporterTests_tvOS.framework */; };
-		905B5BCD89930CA4925DF65D /* Pods_MetricsReporter_watchOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F802D9049892F17DF53A32D /* Pods_MetricsReporter_watchOS.framework */; };
+		26AC7A517F434400B386D31E /* Pods_MetricsReporter_watchOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8703A90ABBD0AA124C69A77 /* Pods_MetricsReporter_watchOS.framework */; };
+		272B597838C502A566804A2F /* Pods_MetricsReporterTests_tvOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F89214F421E31B9EB391690 /* Pods_MetricsReporterTests_tvOS.framework */; };
+		3DFE431C91C42BD30FF357A6 /* Pods_MetricsReporter_macOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1F41039FBB684DEC93925AC /* Pods_MetricsReporter_macOS.framework */; };
+		54B26960CE4C3188F4323211 /* Pods_MetricsReporterTests_macOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB31A00EAF450A5E9D513AB2 /* Pods_MetricsReporterTests_macOS.framework */; };
+		8F0BD22A479F6CE683FF1E05 /* Pods_MetricsReporter_tvOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B852CDEC36EEDC0023A2F4C /* Pods_MetricsReporter_tvOS.framework */; };
+		A62A26D98C99D87EC09027BD /* Pods_MetricsReporter_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DC4AF67CE799FBFA484CF40 /* Pods_MetricsReporter_iOS.framework */; };
+		E727EC873EEAFED93B4C37A1 /* Pods_MetricsReporterTests_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D4D401C6A49F18BC75B112A /* Pods_MetricsReporterTests_iOS.framework */; };
 		ED1A22752A5DB9F5007031FF /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED74EF692A5D8B9B0075C583 /* Database.swift */; };
 		ED1A22762A5DB9F5007031FF /* LabelOperator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED74EF682A5D8B9B0075C583 /* LabelOperator.swift */; };
 		ED1A22772A5DB9F5007031FF /* MetricOperator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED74EF672A5D8B9B0075C583 /* MetricOperator.swift */; };
@@ -59,11 +58,17 @@
 		ED9226422A65317B00734372 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED74EF6E2A5D8B9B0075C583 /* API.swift */; };
 		ED9226432A65317B00734372 /* ServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED74EF6D2A5D8B9B0075C583 /* ServiceManager.swift */; };
 		ED9226442A65317B00734372 /* ServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED74EF6B2A5D8B9B0075C583 /* ServiceType.swift */; };
-		ED9226932A65460400734372 /* MetricsReporteriOS.h in Headers */ = {isa = PBXBuildFile; fileRef = ED92268F2A6545D500734372 /* MetricsReporteriOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		ED9226952A65465B00734372 /* MetricsReportermacOS.h in Headers */ = {isa = PBXBuildFile; fileRef = ED9226942A65465B00734372 /* MetricsReportermacOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		ED9226972A65468D00734372 /* MetricsReportertvOS.h in Headers */ = {isa = PBXBuildFile; fileRef = ED9226962A65468D00734372 /* MetricsReportertvOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		ED9226992A65469300734372 /* MetricsReporterwatchOS.h in Headers */ = {isa = PBXBuildFile; fileRef = ED9226982A65469300734372 /* MetricsReporterwatchOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EDEDB5CC2A6578B1005C670A /* MetricsReporter_watchOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED9226342A65316400734372 /* MetricsReporter_watchOS.framework */; };
+		ED9226932A65460400734372 /* MetricsReporter.h in Headers */ = {isa = PBXBuildFile; fileRef = ED92268F2A6545D500734372 /* MetricsReporter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		ED998E3E2A6695B700031B06 /* ModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED74EF832A5D9D7C0075C583 /* ModelTests.swift */; };
+		ED998E3F2A6695B700031B06 /* DatabaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED74EF812A5D9D7C0075C583 /* DatabaseTests.swift */; };
+		ED998E402A6695B700031B06 /* ObjCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEDB62C2A666C9F005C670A /* ObjCTests.swift */; };
+		ED998E412A6695B700031B06 /* MetricOperatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9226022A61401900734372 /* MetricOperatorTests.swift */; };
+		ED998E422A6695B700031B06 /* MetricsUploaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9225FE2A5FC17A00734372 /* MetricsUploaderTests.swift */; };
+		ED998E432A6695B700031B06 /* MetricsClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEDB6322A669137005C670A /* MetricsClientTests.swift */; };
+		ED998E442A6695B700031B06 /* ServiceManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED74EF802A5D9D7C0075C583 /* ServiceManagerTests.swift */; };
+		ED998E452A6695B700031B06 /* MockURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED74EF7F2A5D9D7C0075C583 /* MockURLProtocol.swift */; };
+		ED998E462A6695B700031B06 /* LabelOperatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9226002A613F5C00734372 /* LabelOperatorTests.swift */; };
+		EDEDB5CC2A6578B1005C670A /* MetricsReporter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED9226342A65316400734372 /* MetricsReporter.framework */; };
 		EDEDB5D32A6578C7005C670A /* DatabaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED74EF812A5D9D7C0075C583 /* DatabaseTests.swift */; };
 		EDEDB5D42A6578C7005C670A /* MockURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED74EF7F2A5D9D7C0075C583 /* MockURLProtocol.swift */; };
 		EDEDB5D52A6578C7005C670A /* MetricOperatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9226022A61401900734372 /* MetricOperatorTests.swift */; };
@@ -71,8 +76,8 @@
 		EDEDB5D72A6578C7005C670A /* LabelOperatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9226002A613F5C00734372 /* LabelOperatorTests.swift */; };
 		EDEDB5D82A6578C7005C670A /* ServiceManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED74EF802A5D9D7C0075C583 /* ServiceManagerTests.swift */; };
 		EDEDB5D92A6578C7005C670A /* MetricsUploaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9225FE2A5FC17A00734372 /* MetricsUploaderTests.swift */; };
-		EDEDB5E22A6579CF005C670A /* MetricsReporter_tvOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED92261D2A65313B00734372 /* MetricsReporter_tvOS.framework */; };
-		EDEDB5F02A6579F6005C670A /* MetricsReporter_macOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED92264B2A65317B00734372 /* MetricsReporter_macOS.framework */; };
+		EDEDB5E22A6579CF005C670A /* MetricsReporter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED92261D2A65313B00734372 /* MetricsReporter.framework */; };
+		EDEDB5F02A6579F6005C670A /* MetricsReporter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED92264B2A65317B00734372 /* MetricsReporter.framework */; };
 		EDEDB6042A657CA8005C670A /* LabelOperatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9226002A613F5C00734372 /* LabelOperatorTests.swift */; };
 		EDEDB6062A657CA8005C670A /* ModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED74EF832A5D9D7C0075C583 /* ModelTests.swift */; };
 		EDEDB6072A657CA8005C670A /* ServiceManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED74EF802A5D9D7C0075C583 /* ServiceManagerTests.swift */; };
@@ -95,15 +100,17 @@
 		EDEDB61B2A659FF5005C670A /* ObjCMetric.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEDB6192A659FF5005C670A /* ObjCMetric.swift */; };
 		EDEDB61C2A659FF5005C670A /* ObjCMetric.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEDB6192A659FF5005C670A /* ObjCMetric.swift */; };
 		EDEDB61D2A659FF5005C670A /* ObjCMetric.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEDB6192A659FF5005C670A /* ObjCMetric.swift */; };
-		EDEDB6262A66523F005C670A /* MetricsReporter_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED74EF442A5D8AE70075C583 /* MetricsReporter_iOS.framework */; };
-		EDEDB62D2A666C9F005C670A /* ObjCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEDB62C2A666C9F005C670A /* ObjCTests.swift */; };
+		EDEDB6262A66523F005C670A /* MetricsReporter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED74EF442A5D8AE70075C583 /* MetricsReporter.framework */; };
 		EDEDB62E2A666C9F005C670A /* ObjCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEDB62C2A666C9F005C670A /* ObjCTests.swift */; };
 		EDEDB62F2A666C9F005C670A /* ObjCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEDB62C2A666C9F005C670A /* ObjCTests.swift */; };
 		EDEDB6302A666C9F005C670A /* ObjCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEDB62C2A666C9F005C670A /* ObjCTests.swift */; };
-		EDEDB6332A669137005C670A /* MetricsClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEDB6322A669137005C670A /* MetricsClientTests.swift */; };
 		EDEDB6342A669137005C670A /* MetricsClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEDB6322A669137005C670A /* MetricsClientTests.swift */; };
 		EDEDB6352A669137005C670A /* MetricsClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEDB6322A669137005C670A /* MetricsClientTests.swift */; };
 		EDEDB6362A669137005C670A /* MetricsClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEDB6322A669137005C670A /* MetricsClientTests.swift */; };
+		EDEDB6372A669405005C670A /* MetricsReporter.h in Headers */ = {isa = PBXBuildFile; fileRef = ED92268F2A6545D500734372 /* MetricsReporter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EDEDB6382A669407005C670A /* MetricsReporter.h in Headers */ = {isa = PBXBuildFile; fileRef = ED92268F2A6545D500734372 /* MetricsReporter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EDEDB6392A669407005C670A /* MetricsReporter.h in Headers */ = {isa = PBXBuildFile; fileRef = ED92268F2A6545D500734372 /* MetricsReporter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F4A3080D62CC5B89E9B724CF /* Pods_MetricsReporterTests_watchOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81A186F5743C75F157FE22EE /* Pods_MetricsReporterTests_watchOS.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -138,29 +145,29 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		04B80CC89137692A23D2A3AE /* Pods-MetricsReporter-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MetricsReporter-tvOS.release.xcconfig"; path = "Target Support Files/Pods-MetricsReporter-tvOS/Pods-MetricsReporter-tvOS.release.xcconfig"; sourceTree = "<group>"; };
-		0F7B90A3E84FCC6CD1611FEF /* Pods-MetricsReporterTests-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MetricsReporterTests-tvOS.release.xcconfig"; path = "Target Support Files/Pods-MetricsReporterTests-tvOS/Pods-MetricsReporterTests-tvOS.release.xcconfig"; sourceTree = "<group>"; };
-		18854D1A0F16D83D6D35F7BD /* Pods-MetricsReporterTests-watchOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MetricsReporterTests-watchOS.release.xcconfig"; path = "Target Support Files/Pods-MetricsReporterTests-watchOS/Pods-MetricsReporterTests-watchOS.release.xcconfig"; sourceTree = "<group>"; };
-		27050CE68E2A3E416087223F /* Pods-MetricsReporter-watchOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MetricsReporter-watchOS.debug.xcconfig"; path = "Target Support Files/Pods-MetricsReporter-watchOS/Pods-MetricsReporter-watchOS.debug.xcconfig"; sourceTree = "<group>"; };
-		2CEB5E101B903D9F9511DC37 /* Pods_MetricsReporter_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MetricsReporter_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3193919FF4702F534A05DC2D /* Pods_MetricsReporterTests_watchOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MetricsReporterTests_watchOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		37E263B0724587AE013EF8A2 /* Pods_MetricsReporter_tvOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MetricsReporter_tvOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3C555157A29F2F60510E2309 /* Pods_MetricsReporterTests_tvOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MetricsReporterTests_tvOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3C5984406A72FB13647548EF /* Pods-MetricsReporterTests-watchOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MetricsReporterTests-watchOS.debug.xcconfig"; path = "Target Support Files/Pods-MetricsReporterTests-watchOS/Pods-MetricsReporterTests-watchOS.debug.xcconfig"; sourceTree = "<group>"; };
-		3F802D9049892F17DF53A32D /* Pods_MetricsReporter_watchOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MetricsReporter_watchOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4D2F747FACAB7C651EB33404 /* Pods_MetricsReporterTests_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MetricsReporterTests_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4F6D896AB798876A83A20901 /* Pods-MetricsReporter-macOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MetricsReporter-macOS.release.xcconfig"; path = "Target Support Files/Pods-MetricsReporter-macOS/Pods-MetricsReporter-macOS.release.xcconfig"; sourceTree = "<group>"; };
-		5AF92FBA9F461E225F64E70F /* Pods-MetricsReporterTests-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MetricsReporterTests-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-MetricsReporterTests-tvOS/Pods-MetricsReporterTests-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
-		698D95BDFC68B78B7F9E66FA /* Pods-MetricsReporterTests-macOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MetricsReporterTests-macOS.release.xcconfig"; path = "Target Support Files/Pods-MetricsReporterTests-macOS/Pods-MetricsReporterTests-macOS.release.xcconfig"; sourceTree = "<group>"; };
-		6EA6BF59F7BDF83A3467BBD7 /* Pods-MetricsReporterTests-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MetricsReporterTests-iOS.release.xcconfig"; path = "Target Support Files/Pods-MetricsReporterTests-iOS/Pods-MetricsReporterTests-iOS.release.xcconfig"; sourceTree = "<group>"; };
-		A13025875389B6CB21352C2D /* Pods-MetricsReporterTests-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MetricsReporterTests-iOS.debug.xcconfig"; path = "Target Support Files/Pods-MetricsReporterTests-iOS/Pods-MetricsReporterTests-iOS.debug.xcconfig"; sourceTree = "<group>"; };
-		CA511DA26A2FE6C809AEB52B /* Pods-MetricsReporterTests-macOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MetricsReporterTests-macOS.debug.xcconfig"; path = "Target Support Files/Pods-MetricsReporterTests-macOS/Pods-MetricsReporterTests-macOS.debug.xcconfig"; sourceTree = "<group>"; };
-		CC8551A162931D92636C42C1 /* Pods_MetricsReporter_macOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MetricsReporter_macOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		CF921537B754B1737964C539 /* Pods-MetricsReporter-watchOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MetricsReporter-watchOS.release.xcconfig"; path = "Target Support Files/Pods-MetricsReporter-watchOS/Pods-MetricsReporter-watchOS.release.xcconfig"; sourceTree = "<group>"; };
-		D41DF0586EE80EB2561677EB /* Pods-MetricsReporter-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MetricsReporter-iOS.debug.xcconfig"; path = "Target Support Files/Pods-MetricsReporter-iOS/Pods-MetricsReporter-iOS.debug.xcconfig"; sourceTree = "<group>"; };
-		D56B94520E8A85470FE619A7 /* Pods-MetricsReporter-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MetricsReporter-iOS.release.xcconfig"; path = "Target Support Files/Pods-MetricsReporter-iOS/Pods-MetricsReporter-iOS.release.xcconfig"; sourceTree = "<group>"; };
-		DF3B450E972DB2B146AC7918 /* Pods_MetricsReporterTests_macOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MetricsReporterTests_macOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E9E6085A404B4EABACF9C653 /* Pods-MetricsReporter-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MetricsReporter-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-MetricsReporter-tvOS/Pods-MetricsReporter-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
+		00743D2E8732175D08324698 /* Pods-MetricsReporterTests-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MetricsReporterTests-tvOS.release.xcconfig"; path = "Target Support Files/Pods-MetricsReporterTests-tvOS/Pods-MetricsReporterTests-tvOS.release.xcconfig"; sourceTree = "<group>"; };
+		065FFF928C6E0AD4F2C2263E /* Pods-MetricsReporter-macOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MetricsReporter-macOS.debug.xcconfig"; path = "Target Support Files/Pods-MetricsReporter-macOS/Pods-MetricsReporter-macOS.debug.xcconfig"; sourceTree = "<group>"; };
+		155F54F92AD982C0ADDCBD6D /* Pods-MetricsReporter-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MetricsReporter-tvOS.release.xcconfig"; path = "Target Support Files/Pods-MetricsReporter-tvOS/Pods-MetricsReporter-tvOS.release.xcconfig"; sourceTree = "<group>"; };
+		157EA9D5E3B9D99E363588B5 /* Pods-MetricsReporterTests-macOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MetricsReporterTests-macOS.debug.xcconfig"; path = "Target Support Files/Pods-MetricsReporterTests-macOS/Pods-MetricsReporterTests-macOS.debug.xcconfig"; sourceTree = "<group>"; };
+		19A750498748794041D79FC0 /* Pods-MetricsReporterTests-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MetricsReporterTests-iOS.debug.xcconfig"; path = "Target Support Files/Pods-MetricsReporterTests-iOS/Pods-MetricsReporterTests-iOS.debug.xcconfig"; sourceTree = "<group>"; };
+		1DC4AF67CE799FBFA484CF40 /* Pods_MetricsReporter_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MetricsReporter_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2189C13B5DA9A5004F79E56C /* Pods-MetricsReporterTests-watchOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MetricsReporterTests-watchOS.debug.xcconfig"; path = "Target Support Files/Pods-MetricsReporterTests-watchOS/Pods-MetricsReporterTests-watchOS.debug.xcconfig"; sourceTree = "<group>"; };
+		256521AAB4C2B569A59B4D0B /* Pods-MetricsReporterTests-watchOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MetricsReporterTests-watchOS.release.xcconfig"; path = "Target Support Files/Pods-MetricsReporterTests-watchOS/Pods-MetricsReporterTests-watchOS.release.xcconfig"; sourceTree = "<group>"; };
+		2F89214F421E31B9EB391690 /* Pods_MetricsReporterTests_tvOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MetricsReporterTests_tvOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3D4D401C6A49F18BC75B112A /* Pods_MetricsReporterTests_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MetricsReporterTests_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		482AC87F600111E6D010FAE9 /* Pods-MetricsReporter-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MetricsReporter-iOS.debug.xcconfig"; path = "Target Support Files/Pods-MetricsReporter-iOS/Pods-MetricsReporter-iOS.debug.xcconfig"; sourceTree = "<group>"; };
+		4B852CDEC36EEDC0023A2F4C /* Pods_MetricsReporter_tvOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MetricsReporter_tvOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		641586E68E4A7286B1F40E26 /* Pods-MetricsReporter-watchOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MetricsReporter-watchOS.release.xcconfig"; path = "Target Support Files/Pods-MetricsReporter-watchOS/Pods-MetricsReporter-watchOS.release.xcconfig"; sourceTree = "<group>"; };
+		67A7C6BFBFC0A67EBF0AAB4B /* Pods-MetricsReporterTests-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MetricsReporterTests-iOS.release.xcconfig"; path = "Target Support Files/Pods-MetricsReporterTests-iOS/Pods-MetricsReporterTests-iOS.release.xcconfig"; sourceTree = "<group>"; };
+		70BEB5116CC74CDBC5B64086 /* Pods-MetricsReporter-macOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MetricsReporter-macOS.release.xcconfig"; path = "Target Support Files/Pods-MetricsReporter-macOS/Pods-MetricsReporter-macOS.release.xcconfig"; sourceTree = "<group>"; };
+		78F3B8849C610D44F6C37672 /* Pods-MetricsReporterTests-macOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MetricsReporterTests-macOS.release.xcconfig"; path = "Target Support Files/Pods-MetricsReporterTests-macOS/Pods-MetricsReporterTests-macOS.release.xcconfig"; sourceTree = "<group>"; };
+		81A186F5743C75F157FE22EE /* Pods_MetricsReporterTests_watchOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MetricsReporterTests_watchOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A1F41039FBB684DEC93925AC /* Pods_MetricsReporter_macOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MetricsReporter_macOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A717533B6FC6CA678475DBD3 /* Pods-MetricsReporter-watchOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MetricsReporter-watchOS.debug.xcconfig"; path = "Target Support Files/Pods-MetricsReporter-watchOS/Pods-MetricsReporter-watchOS.debug.xcconfig"; sourceTree = "<group>"; };
+		B377264FF462D5748443F35B /* Pods-MetricsReporter-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MetricsReporter-iOS.release.xcconfig"; path = "Target Support Files/Pods-MetricsReporter-iOS/Pods-MetricsReporter-iOS.release.xcconfig"; sourceTree = "<group>"; };
+		B8703A90ABBD0AA124C69A77 /* Pods_MetricsReporter_watchOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MetricsReporter_watchOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB5868B89ECBD281064F17D2 /* Pods-MetricsReporterTests-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MetricsReporterTests-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-MetricsReporterTests-tvOS/Pods-MetricsReporterTests-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
+		DB31A00EAF450A5E9D513AB2 /* Pods_MetricsReporterTests_macOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MetricsReporterTests_macOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED1A226A2A5DA23B007031FF /* deploy-cocoapods.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = "deploy-cocoapods.yml"; sourceTree = "<group>"; };
 		ED1A226B2A5DA23B007031FF /* notion-pr-sync.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = "notion-pr-sync.yml"; sourceTree = "<group>"; };
 		ED1A226C2A5DA23B007031FF /* draft-new-beta-release.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = "draft-new-beta-release.yml"; sourceTree = "<group>"; };
@@ -174,7 +181,7 @@
 		ED1A22742A5DA23B007031FF /* draft-new-release.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = "draft-new-release.yml"; sourceTree = "<group>"; };
 		ED1A227D2A5DBE1D007031FF /* MetricsReporter-iOS.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "MetricsReporter-iOS.xctestplan"; sourceTree = "<group>"; };
 		ED1A227E2A5DC34D007031FF /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
-		ED74EF442A5D8AE70075C583 /* MetricsReporter_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MetricsReporter_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED74EF442A5D8AE70075C583 /* MetricsReporter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MetricsReporter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED74EF652A5D8B9B0075C583 /* Metric.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Metric.swift; sourceTree = "<group>"; };
 		ED74EF672A5D8B9B0075C583 /* MetricOperator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetricOperator.swift; sourceTree = "<group>"; };
 		ED74EF682A5D8B9B0075C583 /* LabelOperator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelOperator.swift; sourceTree = "<group>"; };
@@ -195,13 +202,10 @@
 		ED9226002A613F5C00734372 /* LabelOperatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelOperatorTests.swift; sourceTree = "<group>"; };
 		ED9226022A61401900734372 /* MetricOperatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricOperatorTests.swift; sourceTree = "<group>"; };
 		ED9226052A65172E00734372 /* ObjCConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjCConfiguration.swift; sourceTree = "<group>"; };
-		ED92261D2A65313B00734372 /* MetricsReporter_tvOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MetricsReporter_tvOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		ED9226342A65316400734372 /* MetricsReporter_watchOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MetricsReporter_watchOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		ED92264B2A65317B00734372 /* MetricsReporter_macOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MetricsReporter_macOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		ED92268F2A6545D500734372 /* MetricsReporteriOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MetricsReporteriOS.h; sourceTree = "<group>"; };
-		ED9226942A65465B00734372 /* MetricsReportermacOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MetricsReportermacOS.h; sourceTree = "<group>"; };
-		ED9226962A65468D00734372 /* MetricsReportertvOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MetricsReportertvOS.h; sourceTree = "<group>"; };
-		ED9226982A65469300734372 /* MetricsReporterwatchOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MetricsReporterwatchOS.h; sourceTree = "<group>"; };
+		ED92261D2A65313B00734372 /* MetricsReporter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MetricsReporter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED9226342A65316400734372 /* MetricsReporter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MetricsReporter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED92264B2A65317B00734372 /* MetricsReporter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MetricsReporter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED92268F2A6545D500734372 /* MetricsReporter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MetricsReporter.h; sourceTree = "<group>"; };
 		ED92269A2A6548CA00734372 /* MetricsReporter-tvOS.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "MetricsReporter-tvOS.xctestplan"; sourceTree = "<group>"; };
 		ED92269B2A65494D00734372 /* MetricsReporter-macOS.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "MetricsReporter-macOS.xctestplan"; sourceTree = "<group>"; };
 		ED92269C2A654AF100734372 /* MetricsReporter-watchOS.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "MetricsReporter-watchOS.xctestplan"; sourceTree = "<group>"; };
@@ -213,7 +217,7 @@
 		EDEDB6222A66523E005C670A /* MetricsReporterTests-iOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MetricsReporterTests-iOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDEDB62C2A666C9F005C670A /* ObjCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjCTests.swift; sourceTree = "<group>"; };
 		EDEDB6322A669137005C670A /* MetricsClientTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetricsClientTests.swift; sourceTree = "<group>"; };
-		FD78E1E1915850C6EB6D5B77 /* Pods-MetricsReporter-macOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MetricsReporter-macOS.debug.xcconfig"; path = "Target Support Files/Pods-MetricsReporter-macOS/Pods-MetricsReporter-macOS.debug.xcconfig"; sourceTree = "<group>"; };
+		FA62E050CDF92DDEC2076F27 /* Pods-MetricsReporter-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MetricsReporter-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-MetricsReporter-tvOS/Pods-MetricsReporter-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -221,7 +225,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1F25C4F3AEFE2E34A29260C8 /* Pods_MetricsReporter_iOS.framework in Frameworks */,
+				A62A26D98C99D87EC09027BD /* Pods_MetricsReporter_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -229,7 +233,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				38E801FA0B8D0BA2C3B0483B /* Pods_MetricsReporter_tvOS.framework in Frameworks */,
+				8F0BD22A479F6CE683FF1E05 /* Pods_MetricsReporter_tvOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -237,7 +241,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				905B5BCD89930CA4925DF65D /* Pods_MetricsReporter_watchOS.framework in Frameworks */,
+				26AC7A517F434400B386D31E /* Pods_MetricsReporter_watchOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -245,7 +249,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6A1AE4DD489B53CBB44EE734 /* Pods_MetricsReporter_macOS.framework in Frameworks */,
+				3DFE431C91C42BD30FF357A6 /* Pods_MetricsReporter_macOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,8 +257,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EDEDB5CC2A6578B1005C670A /* MetricsReporter_watchOS.framework in Frameworks */,
-				1B03B56AE9624AE004F5DF0F /* Pods_MetricsReporterTests_watchOS.framework in Frameworks */,
+				EDEDB5CC2A6578B1005C670A /* MetricsReporter.framework in Frameworks */,
+				F4A3080D62CC5B89E9B724CF /* Pods_MetricsReporterTests_watchOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,8 +266,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EDEDB5E22A6579CF005C670A /* MetricsReporter_tvOS.framework in Frameworks */,
-				8285F4A0D2ED4CB8659B3AF6 /* Pods_MetricsReporterTests_tvOS.framework in Frameworks */,
+				EDEDB5E22A6579CF005C670A /* MetricsReporter.framework in Frameworks */,
+				272B597838C502A566804A2F /* Pods_MetricsReporterTests_tvOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -271,8 +275,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EDEDB5F02A6579F6005C670A /* MetricsReporter_macOS.framework in Frameworks */,
-				0B52D13758F51FBC42BEBD56 /* Pods_MetricsReporterTests_macOS.framework in Frameworks */,
+				EDEDB5F02A6579F6005C670A /* MetricsReporter.framework in Frameworks */,
+				54B26960CE4C3188F4323211 /* Pods_MetricsReporterTests_macOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,25 +284,25 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EDEDB6262A66523F005C670A /* MetricsReporter_iOS.framework in Frameworks */,
-				6AEC3BB5AE188E150DB99B85 /* Pods_MetricsReporterTests_iOS.framework in Frameworks */,
+				EDEDB6262A66523F005C670A /* MetricsReporter.framework in Frameworks */,
+				E727EC873EEAFED93B4C37A1 /* Pods_MetricsReporterTests_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		99C7C76FB60D730D34B5374E /* Frameworks */ = {
+		4AF895F34682E71806F0F3FE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				2CEB5E101B903D9F9511DC37 /* Pods_MetricsReporter_iOS.framework */,
-				CC8551A162931D92636C42C1 /* Pods_MetricsReporter_macOS.framework */,
-				37E263B0724587AE013EF8A2 /* Pods_MetricsReporter_tvOS.framework */,
-				3F802D9049892F17DF53A32D /* Pods_MetricsReporter_watchOS.framework */,
-				4D2F747FACAB7C651EB33404 /* Pods_MetricsReporterTests_iOS.framework */,
-				DF3B450E972DB2B146AC7918 /* Pods_MetricsReporterTests_macOS.framework */,
-				3C555157A29F2F60510E2309 /* Pods_MetricsReporterTests_tvOS.framework */,
-				3193919FF4702F534A05DC2D /* Pods_MetricsReporterTests_watchOS.framework */,
+				1DC4AF67CE799FBFA484CF40 /* Pods_MetricsReporter_iOS.framework */,
+				A1F41039FBB684DEC93925AC /* Pods_MetricsReporter_macOS.framework */,
+				4B852CDEC36EEDC0023A2F4C /* Pods_MetricsReporter_tvOS.framework */,
+				B8703A90ABBD0AA124C69A77 /* Pods_MetricsReporter_watchOS.framework */,
+				3D4D401C6A49F18BC75B112A /* Pods_MetricsReporterTests_iOS.framework */,
+				DB31A00EAF450A5E9D513AB2 /* Pods_MetricsReporterTests_macOS.framework */,
+				2F89214F421E31B9EB391690 /* Pods_MetricsReporterTests_tvOS.framework */,
+				81A186F5743C75F157FE22EE /* Pods_MetricsReporterTests_watchOS.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -306,22 +310,22 @@
 		B24007186632C0956C674282 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				D41DF0586EE80EB2561677EB /* Pods-MetricsReporter-iOS.debug.xcconfig */,
-				D56B94520E8A85470FE619A7 /* Pods-MetricsReporter-iOS.release.xcconfig */,
-				FD78E1E1915850C6EB6D5B77 /* Pods-MetricsReporter-macOS.debug.xcconfig */,
-				4F6D896AB798876A83A20901 /* Pods-MetricsReporter-macOS.release.xcconfig */,
-				E9E6085A404B4EABACF9C653 /* Pods-MetricsReporter-tvOS.debug.xcconfig */,
-				04B80CC89137692A23D2A3AE /* Pods-MetricsReporter-tvOS.release.xcconfig */,
-				27050CE68E2A3E416087223F /* Pods-MetricsReporter-watchOS.debug.xcconfig */,
-				CF921537B754B1737964C539 /* Pods-MetricsReporter-watchOS.release.xcconfig */,
-				A13025875389B6CB21352C2D /* Pods-MetricsReporterTests-iOS.debug.xcconfig */,
-				6EA6BF59F7BDF83A3467BBD7 /* Pods-MetricsReporterTests-iOS.release.xcconfig */,
-				CA511DA26A2FE6C809AEB52B /* Pods-MetricsReporterTests-macOS.debug.xcconfig */,
-				698D95BDFC68B78B7F9E66FA /* Pods-MetricsReporterTests-macOS.release.xcconfig */,
-				5AF92FBA9F461E225F64E70F /* Pods-MetricsReporterTests-tvOS.debug.xcconfig */,
-				0F7B90A3E84FCC6CD1611FEF /* Pods-MetricsReporterTests-tvOS.release.xcconfig */,
-				3C5984406A72FB13647548EF /* Pods-MetricsReporterTests-watchOS.debug.xcconfig */,
-				18854D1A0F16D83D6D35F7BD /* Pods-MetricsReporterTests-watchOS.release.xcconfig */,
+				482AC87F600111E6D010FAE9 /* Pods-MetricsReporter-iOS.debug.xcconfig */,
+				B377264FF462D5748443F35B /* Pods-MetricsReporter-iOS.release.xcconfig */,
+				065FFF928C6E0AD4F2C2263E /* Pods-MetricsReporter-macOS.debug.xcconfig */,
+				70BEB5116CC74CDBC5B64086 /* Pods-MetricsReporter-macOS.release.xcconfig */,
+				FA62E050CDF92DDEC2076F27 /* Pods-MetricsReporter-tvOS.debug.xcconfig */,
+				155F54F92AD982C0ADDCBD6D /* Pods-MetricsReporter-tvOS.release.xcconfig */,
+				A717533B6FC6CA678475DBD3 /* Pods-MetricsReporter-watchOS.debug.xcconfig */,
+				641586E68E4A7286B1F40E26 /* Pods-MetricsReporter-watchOS.release.xcconfig */,
+				19A750498748794041D79FC0 /* Pods-MetricsReporterTests-iOS.debug.xcconfig */,
+				67A7C6BFBFC0A67EBF0AAB4B /* Pods-MetricsReporterTests-iOS.release.xcconfig */,
+				157EA9D5E3B9D99E363588B5 /* Pods-MetricsReporterTests-macOS.debug.xcconfig */,
+				78F3B8849C610D44F6C37672 /* Pods-MetricsReporterTests-macOS.release.xcconfig */,
+				CB5868B89ECBD281064F17D2 /* Pods-MetricsReporterTests-tvOS.debug.xcconfig */,
+				00743D2E8732175D08324698 /* Pods-MetricsReporterTests-tvOS.release.xcconfig */,
+				2189C13B5DA9A5004F79E56C /* Pods-MetricsReporterTests-watchOS.debug.xcconfig */,
+				256521AAB4C2B569A59B4D0B /* Pods-MetricsReporterTests-watchOS.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -354,23 +358,19 @@
 				ED74EF792A5D94090075C583 /* Podfile */,
 				ED74EF462A5D8AE70075C583 /* Sources */,
 				ED74EF502A5D8AE70075C583 /* MetricsReporterTests */,
-				ED92268E2A6545D500734372 /* MetricsReporter-iOS */,
-				ED9226902A6545D500734372 /* MetricsReporter-macOS */,
-				ED9226912A6545D500734372 /* MetricsReporter-tvOS */,
-				ED9226922A6545D500734372 /* MetricsReporter-watchOS */,
 				ED74EF452A5D8AE70075C583 /* Products */,
 				B24007186632C0956C674282 /* Pods */,
-				99C7C76FB60D730D34B5374E /* Frameworks */,
+				4AF895F34682E71806F0F3FE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
 		ED74EF452A5D8AE70075C583 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				ED74EF442A5D8AE70075C583 /* MetricsReporter_iOS.framework */,
-				ED92261D2A65313B00734372 /* MetricsReporter_tvOS.framework */,
-				ED9226342A65316400734372 /* MetricsReporter_watchOS.framework */,
-				ED92264B2A65317B00734372 /* MetricsReporter_macOS.framework */,
+				ED74EF442A5D8AE70075C583 /* MetricsReporter.framework */,
+				ED92261D2A65313B00734372 /* MetricsReporter.framework */,
+				ED9226342A65316400734372 /* MetricsReporter.framework */,
+				ED92264B2A65317B00734372 /* MetricsReporter.framework */,
 				EDEDB5C82A6578B0005C670A /* MetricsReporterTests-watchOS.xctest */,
 				EDEDB5DE2A6579CE005C670A /* MetricsReporterTests-tvOS.xctest */,
 				EDEDB5EC2A6579F6005C670A /* MetricsReporterTests-macOS.xctest */,
@@ -383,6 +383,7 @@
 			isa = PBXGroup;
 			children = (
 				ED74EF642A5D8B9B0075C583 /* Classes */,
+				ED92268F2A6545D500734372 /* MetricsReporter.h */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -467,38 +468,6 @@
 			path = ObjC;
 			sourceTree = "<group>";
 		};
-		ED92268E2A6545D500734372 /* MetricsReporter-iOS */ = {
-			isa = PBXGroup;
-			children = (
-				ED92268F2A6545D500734372 /* MetricsReporteriOS.h */,
-			);
-			path = "MetricsReporter-iOS";
-			sourceTree = "<group>";
-		};
-		ED9226902A6545D500734372 /* MetricsReporter-macOS */ = {
-			isa = PBXGroup;
-			children = (
-				ED9226942A65465B00734372 /* MetricsReportermacOS.h */,
-			);
-			path = "MetricsReporter-macOS";
-			sourceTree = "<group>";
-		};
-		ED9226912A6545D500734372 /* MetricsReporter-tvOS */ = {
-			isa = PBXGroup;
-			children = (
-				ED9226962A65468D00734372 /* MetricsReportertvOS.h */,
-			);
-			path = "MetricsReporter-tvOS";
-			sourceTree = "<group>";
-		};
-		ED9226922A6545D500734372 /* MetricsReporter-watchOS */ = {
-			isa = PBXGroup;
-			children = (
-				ED9226982A65469300734372 /* MetricsReporterwatchOS.h */,
-			);
-			path = "MetricsReporter-watchOS";
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -506,7 +475,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ED9226932A65460400734372 /* MetricsReporteriOS.h in Headers */,
+				ED9226932A65460400734372 /* MetricsReporter.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -514,7 +483,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ED9226972A65468D00734372 /* MetricsReportertvOS.h in Headers */,
+				EDEDB6382A669407005C670A /* MetricsReporter.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -522,7 +491,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ED9226992A65469300734372 /* MetricsReporterwatchOS.h in Headers */,
+				EDEDB6392A669407005C670A /* MetricsReporter.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -530,7 +499,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ED9226952A65465B00734372 /* MetricsReportermacOS.h in Headers */,
+				EDEDB6372A669405005C670A /* MetricsReporter.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -541,7 +510,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = ED74EF562A5D8AE70075C583 /* Build configuration list for PBXNativeTarget "MetricsReporter-iOS" */;
 			buildPhases = (
-				BB7E184F700C1C9AEC81FD33 /* [CP] Check Pods Manifest.lock */,
+				47892EE520E084B8F130490E /* [CP] Check Pods Manifest.lock */,
 				ED74EF3F2A5D8AE70075C583 /* Headers */,
 				ED74EF402A5D8AE70075C583 /* Sources */,
 				ED74EF412A5D8AE70075C583 /* Frameworks */,
@@ -553,14 +522,14 @@
 			);
 			name = "MetricsReporter-iOS";
 			productName = MetricsReporter;
-			productReference = ED74EF442A5D8AE70075C583 /* MetricsReporter_iOS.framework */;
+			productReference = ED74EF442A5D8AE70075C583 /* MetricsReporter.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		ED9226072A65313B00734372 /* MetricsReporter-tvOS */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = ED92261A2A65313B00734372 /* Build configuration list for PBXNativeTarget "MetricsReporter-tvOS" */;
 			buildPhases = (
-				B6C0761961CC39C1B554BA3A /* [CP] Check Pods Manifest.lock */,
+				A84E9C5DD687D873FED2CBAC /* [CP] Check Pods Manifest.lock */,
 				ED9226092A65313B00734372 /* Headers */,
 				ED92260B2A65313B00734372 /* Sources */,
 				ED9226172A65313B00734372 /* Frameworks */,
@@ -572,14 +541,14 @@
 			);
 			name = "MetricsReporter-tvOS";
 			productName = MetricsReporter;
-			productReference = ED92261D2A65313B00734372 /* MetricsReporter_tvOS.framework */;
+			productReference = ED92261D2A65313B00734372 /* MetricsReporter.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		ED92261E2A65316400734372 /* MetricsReporter-watchOS */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = ED9226312A65316400734372 /* Build configuration list for PBXNativeTarget "MetricsReporter-watchOS" */;
 			buildPhases = (
-				E5A832252C3DDDCF66B71676 /* [CP] Check Pods Manifest.lock */,
+				5796CFE20196DE436653C0CC /* [CP] Check Pods Manifest.lock */,
 				ED9226202A65316400734372 /* Headers */,
 				ED9226222A65316400734372 /* Sources */,
 				ED92262E2A65316400734372 /* Frameworks */,
@@ -591,14 +560,14 @@
 			);
 			name = "MetricsReporter-watchOS";
 			productName = MetricsReporter;
-			productReference = ED9226342A65316400734372 /* MetricsReporter_watchOS.framework */;
+			productReference = ED9226342A65316400734372 /* MetricsReporter.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		ED9226352A65317B00734372 /* MetricsReporter-macOS */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = ED9226482A65317B00734372 /* Build configuration list for PBXNativeTarget "MetricsReporter-macOS" */;
 			buildPhases = (
-				574C6F92D91AE896BA9CDB64 /* [CP] Check Pods Manifest.lock */,
+				952A1C246818526B1E4C8E9C /* [CP] Check Pods Manifest.lock */,
 				ED9226372A65317B00734372 /* Headers */,
 				ED9226392A65317B00734372 /* Sources */,
 				ED9226452A65317B00734372 /* Frameworks */,
@@ -610,18 +579,18 @@
 			);
 			name = "MetricsReporter-macOS";
 			productName = MetricsReporter;
-			productReference = ED92264B2A65317B00734372 /* MetricsReporter_macOS.framework */;
+			productReference = ED92264B2A65317B00734372 /* MetricsReporter.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		EDEDB5C72A6578B0005C670A /* MetricsReporterTests-watchOS */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = EDEDB5CF2A6578B1005C670A /* Build configuration list for PBXNativeTarget "MetricsReporterTests-watchOS" */;
 			buildPhases = (
-				39F2E6029D1E89DAC095FF7F /* [CP] Check Pods Manifest.lock */,
+				7DD09388BEB7EDC627C1B303 /* [CP] Check Pods Manifest.lock */,
 				EDEDB5C42A6578B0005C670A /* Sources */,
 				EDEDB5C52A6578B0005C670A /* Frameworks */,
 				EDEDB5C62A6578B0005C670A /* Resources */,
-				6DDB0CE2105090380C6B04DF /* [CP] Embed Pods Frameworks */,
+				901391814F6EA210C126EE1E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -637,11 +606,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EDEDB5E52A6579CF005C670A /* Build configuration list for PBXNativeTarget "MetricsReporterTests-tvOS" */;
 			buildPhases = (
-				310DF17359912357BC676CCB /* [CP] Check Pods Manifest.lock */,
+				6A5027D1A81FA5A2EFFCDFB1 /* [CP] Check Pods Manifest.lock */,
 				EDEDB5DA2A6579CE005C670A /* Sources */,
 				EDEDB5DB2A6579CE005C670A /* Frameworks */,
 				EDEDB5DC2A6579CE005C670A /* Resources */,
-				DCCFA19ABD596C340AF99BEA /* [CP] Embed Pods Frameworks */,
+				AF68F31CE0D0527EC5A02A6C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -657,11 +626,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EDEDB5F32A6579F6005C670A /* Build configuration list for PBXNativeTarget "MetricsReporterTests-macOS" */;
 			buildPhases = (
-				D311C9DD655F3D6E65CB3F18 /* [CP] Check Pods Manifest.lock */,
+				F775949D18102D7456C7C6D9 /* [CP] Check Pods Manifest.lock */,
 				EDEDB5E82A6579F6005C670A /* Sources */,
 				EDEDB5E92A6579F6005C670A /* Frameworks */,
 				EDEDB5EA2A6579F6005C670A /* Resources */,
-				09A936227E0976C81534DB28 /* [CP] Embed Pods Frameworks */,
+				F55300C5C40DA08662732AC6 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -677,11 +646,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EDEDB6292A66523F005C670A /* Build configuration list for PBXNativeTarget "MetricsReporterTests-iOS" */;
 			buildPhases = (
-				DFCA7C1E2FF0BBFA0918600E /* [CP] Check Pods Manifest.lock */,
+				713134D4B6D83AD7D88C1D82 /* [CP] Check Pods Manifest.lock */,
 				EDEDB61E2A66523E005C670A /* Sources */,
 				EDEDB61F2A66523E005C670A /* Frameworks */,
 				EDEDB6202A66523E005C670A /* Resources */,
-				C91F25CB2E636660A7EDE2D6 /* [CP] Embed Pods Frameworks */,
+				F8E213F41F473E0C35A6991F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -806,129 +775,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		09A936227E0976C81534DB28 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MetricsReporterTests-macOS/Pods-MetricsReporterTests-macOS-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MetricsReporterTests-macOS/Pods-MetricsReporterTests-macOS-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MetricsReporterTests-macOS/Pods-MetricsReporterTests-macOS-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		310DF17359912357BC676CCB /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-MetricsReporterTests-tvOS-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		39F2E6029D1E89DAC095FF7F /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-MetricsReporterTests-watchOS-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		574C6F92D91AE896BA9CDB64 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-MetricsReporter-macOS-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		6DDB0CE2105090380C6B04DF /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MetricsReporterTests-watchOS/Pods-MetricsReporterTests-watchOS-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MetricsReporterTests-watchOS/Pods-MetricsReporterTests-watchOS-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MetricsReporterTests-watchOS/Pods-MetricsReporterTests-watchOS-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B6C0761961CC39C1B554BA3A /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-MetricsReporter-tvOS-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		BB7E184F700C1C9AEC81FD33 /* [CP] Check Pods Manifest.lock */ = {
+		47892EE520E084B8F130490E /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -950,24 +797,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C91F25CB2E636660A7EDE2D6 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MetricsReporterTests-iOS/Pods-MetricsReporterTests-iOS-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MetricsReporterTests-iOS/Pods-MetricsReporterTests-iOS-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MetricsReporterTests-iOS/Pods-MetricsReporterTests-iOS-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D311C9DD655F3D6E65CB3F18 /* [CP] Check Pods Manifest.lock */ = {
+		5796CFE20196DE436653C0CC /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -982,31 +812,36 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-MetricsReporterTests-macOS-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-MetricsReporter-watchOS-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		DCCFA19ABD596C340AF99BEA /* [CP] Embed Pods Frameworks */ = {
+		6A5027D1A81FA5A2EFFCDFB1 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MetricsReporterTests-tvOS/Pods-MetricsReporterTests-tvOS-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			name = "[CP] Embed Pods Frameworks";
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MetricsReporterTests-tvOS/Pods-MetricsReporterTests-tvOS-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MetricsReporterTests-tvOS-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MetricsReporterTests-tvOS/Pods-MetricsReporterTests-tvOS-frameworks.sh\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		DFCA7C1E2FF0BBFA0918600E /* [CP] Check Pods Manifest.lock */ = {
+		713134D4B6D83AD7D88C1D82 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1028,7 +863,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E5A832252C3DDDCF66B71676 /* [CP] Check Pods Manifest.lock */ = {
+		7DD09388BEB7EDC627C1B303 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1043,11 +878,145 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-MetricsReporter-watchOS-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-MetricsReporterTests-watchOS-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		901391814F6EA210C126EE1E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MetricsReporterTests-watchOS/Pods-MetricsReporterTests-watchOS-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MetricsReporterTests-watchOS/Pods-MetricsReporterTests-watchOS-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MetricsReporterTests-watchOS/Pods-MetricsReporterTests-watchOS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		952A1C246818526B1E4C8E9C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MetricsReporter-macOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A84E9C5DD687D873FED2CBAC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MetricsReporter-tvOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AF68F31CE0D0527EC5A02A6C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MetricsReporterTests-tvOS/Pods-MetricsReporterTests-tvOS-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MetricsReporterTests-tvOS/Pods-MetricsReporterTests-tvOS-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MetricsReporterTests-tvOS/Pods-MetricsReporterTests-tvOS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F55300C5C40DA08662732AC6 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MetricsReporterTests-macOS/Pods-MetricsReporterTests-macOS-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MetricsReporterTests-macOS/Pods-MetricsReporterTests-macOS-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MetricsReporterTests-macOS/Pods-MetricsReporterTests-macOS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F775949D18102D7456C7C6D9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MetricsReporterTests-macOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F8E213F41F473E0C35A6991F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MetricsReporterTests-iOS/Pods-MetricsReporterTests-iOS-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MetricsReporterTests-iOS/Pods-MetricsReporterTests-iOS-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MetricsReporterTests-iOS/Pods-MetricsReporterTests-iOS-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1185,8 +1154,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EDEDB6332A669137005C670A /* MetricsClientTests.swift in Sources */,
-				EDEDB62D2A666C9F005C670A /* ObjCTests.swift in Sources */,
+				ED998E3F2A6695B700031B06 /* DatabaseTests.swift in Sources */,
+				ED998E3E2A6695B700031B06 /* ModelTests.swift in Sources */,
+				ED998E442A6695B700031B06 /* ServiceManagerTests.swift in Sources */,
+				ED998E432A6695B700031B06 /* MetricsClientTests.swift in Sources */,
+				ED998E422A6695B700031B06 /* MetricsUploaderTests.swift in Sources */,
+				ED998E402A6695B700031B06 /* ObjCTests.swift in Sources */,
+				ED998E412A6695B700031B06 /* MetricOperatorTests.swift in Sources */,
+				ED998E462A6695B700031B06 /* LabelOperatorTests.swift in Sources */,
+				ED998E452A6695B700031B06 /* MockURLProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1344,7 +1320,7 @@
 		};
 		ED74EF572A5D8AE70075C583 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D41DF0586EE80EB2561677EB /* Pods-MetricsReporter-iOS.debug.xcconfig */;
+			baseConfigurationReference = 482AC87F600111E6D010FAE9 /* Pods-MetricsReporter-iOS.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CODE_SIGN_STYLE = Automatic;
@@ -1367,7 +1343,7 @@
 				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
 				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++20";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rudderstack.MetricsReporter;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = MetricsReporter;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1378,7 +1354,7 @@
 		};
 		ED74EF582A5D8AE70075C583 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D56B94520E8A85470FE619A7 /* Pods-MetricsReporter-iOS.release.xcconfig */;
+			baseConfigurationReference = B377264FF462D5748443F35B /* Pods-MetricsReporter-iOS.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CODE_SIGN_STYLE = Automatic;
@@ -1401,7 +1377,7 @@
 				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
 				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++20";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rudderstack.MetricsReporter;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = MetricsReporter;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1412,7 +1388,7 @@
 		};
 		ED92261B2A65313B00734372 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E9E6085A404B4EABACF9C653 /* Pods-MetricsReporter-tvOS.debug.xcconfig */;
+			baseConfigurationReference = FA62E050CDF92DDEC2076F27 /* Pods-MetricsReporter-tvOS.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CODE_SIGN_STYLE = Automatic;
@@ -1435,7 +1411,7 @@
 				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
 				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++20";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rudderstack.MetricsReporter;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = MetricsReporter;
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "appletvsimulator appletvos";
@@ -1447,7 +1423,7 @@
 		};
 		ED92261C2A65313B00734372 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 04B80CC89137692A23D2A3AE /* Pods-MetricsReporter-tvOS.release.xcconfig */;
+			baseConfigurationReference = 155F54F92AD982C0ADDCBD6D /* Pods-MetricsReporter-tvOS.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CODE_SIGN_STYLE = Automatic;
@@ -1470,7 +1446,7 @@
 				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
 				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++20";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rudderstack.MetricsReporter;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = MetricsReporter;
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "appletvsimulator appletvos";
@@ -1482,7 +1458,7 @@
 		};
 		ED9226322A65316400734372 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 27050CE68E2A3E416087223F /* Pods-MetricsReporter-watchOS.debug.xcconfig */;
+			baseConfigurationReference = A717533B6FC6CA678475DBD3 /* Pods-MetricsReporter-watchOS.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CODE_SIGN_STYLE = Automatic;
@@ -1505,7 +1481,7 @@
 				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
 				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++20";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rudderstack.MetricsReporter;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = MetricsReporter;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "watchsimulator watchos";
@@ -1517,7 +1493,7 @@
 		};
 		ED9226332A65316400734372 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CF921537B754B1737964C539 /* Pods-MetricsReporter-watchOS.release.xcconfig */;
+			baseConfigurationReference = 641586E68E4A7286B1F40E26 /* Pods-MetricsReporter-watchOS.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CODE_SIGN_STYLE = Automatic;
@@ -1540,7 +1516,7 @@
 				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
 				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++20";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rudderstack.MetricsReporter;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = MetricsReporter;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "watchsimulator watchos";
@@ -1552,7 +1528,7 @@
 		};
 		ED9226492A65317B00734372 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FD78E1E1915850C6EB6D5B77 /* Pods-MetricsReporter-macOS.debug.xcconfig */;
+			baseConfigurationReference = 065FFF928C6E0AD4F2C2263E /* Pods-MetricsReporter-macOS.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CODE_SIGN_STYLE = Automatic;
@@ -1575,7 +1551,7 @@
 				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
 				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++20";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rudderstack.MetricsReporter;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = MetricsReporter;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = macosx;
@@ -1587,7 +1563,7 @@
 		};
 		ED92264A2A65317B00734372 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4F6D896AB798876A83A20901 /* Pods-MetricsReporter-macOS.release.xcconfig */;
+			baseConfigurationReference = 70BEB5116CC74CDBC5B64086 /* Pods-MetricsReporter-macOS.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CODE_SIGN_STYLE = Automatic;
@@ -1610,7 +1586,7 @@
 				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
 				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++20";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rudderstack.MetricsReporter;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = MetricsReporter;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = macosx;
@@ -1622,7 +1598,7 @@
 		};
 		EDEDB5D02A6578B1005C670A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3C5984406A72FB13647548EF /* Pods-MetricsReporterTests-watchOS.debug.xcconfig */;
+			baseConfigurationReference = 2189C13B5DA9A5004F79E56C /* Pods-MetricsReporterTests-watchOS.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1641,7 +1617,7 @@
 		};
 		EDEDB5D12A6578B1005C670A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 18854D1A0F16D83D6D35F7BD /* Pods-MetricsReporterTests-watchOS.release.xcconfig */;
+			baseConfigurationReference = 256521AAB4C2B569A59B4D0B /* Pods-MetricsReporterTests-watchOS.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1660,7 +1636,7 @@
 		};
 		EDEDB5E62A6579CF005C670A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5AF92FBA9F461E225F64E70F /* Pods-MetricsReporterTests-tvOS.debug.xcconfig */;
+			baseConfigurationReference = CB5868B89ECBD281064F17D2 /* Pods-MetricsReporterTests-tvOS.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1679,7 +1655,7 @@
 		};
 		EDEDB5E72A6579CF005C670A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0F7B90A3E84FCC6CD1611FEF /* Pods-MetricsReporterTests-tvOS.release.xcconfig */;
+			baseConfigurationReference = 00743D2E8732175D08324698 /* Pods-MetricsReporterTests-tvOS.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1698,7 +1674,7 @@
 		};
 		EDEDB5F42A6579F6005C670A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CA511DA26A2FE6C809AEB52B /* Pods-MetricsReporterTests-macOS.debug.xcconfig */;
+			baseConfigurationReference = 157EA9D5E3B9D99E363588B5 /* Pods-MetricsReporterTests-macOS.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1716,7 +1692,7 @@
 		};
 		EDEDB5F52A6579F6005C670A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 698D95BDFC68B78B7F9E66FA /* Pods-MetricsReporterTests-macOS.release.xcconfig */;
+			baseConfigurationReference = 78F3B8849C610D44F6C37672 /* Pods-MetricsReporterTests-macOS.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1734,7 +1710,7 @@
 		};
 		EDEDB62A2A66523F005C670A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A13025875389B6CB21352C2D /* Pods-MetricsReporterTests-iOS.debug.xcconfig */;
+			baseConfigurationReference = 19A750498748794041D79FC0 /* Pods-MetricsReporterTests-iOS.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -1754,7 +1730,7 @@
 		};
 		EDEDB62B2A66523F005C670A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6EA6BF59F7BDF83A3467BBD7 /* Pods-MetricsReporterTests-iOS.release.xcconfig */;
+			baseConfigurationReference = 67A7C6BFBFC0A67EBF0AAB4B /* Pods-MetricsReporterTests-iOS.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
