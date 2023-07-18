@@ -1,6 +1,6 @@
 PODS:
   - MetricsReporter (1.0.0):
-    - RudderKit (~> 1.2.0)
+    - RudderKit
   - RudderKit (1.2.0)
 
 DEPENDENCIES:
@@ -16,9 +16,9 @@ EXTERNAL SOURCES:
     :path: "."
 
 SPEC CHECKSUMS:
-  MetricsReporter: 7877946858972125328f153cb7b6f2d2b02a9d46
+  MetricsReporter: 0972c19c8b7060da01e73affbfb748c4be6aae30
   RudderKit: 423bc02659a9edd8afd62025e90f8ea48c3a6e01
 
-PODFILE CHECKSUM: cb0c2c7740c1761fb05e2b2b8964e32969fdd894
+PODFILE CHECKSUM: 227199d3e59b17dc1928240181b1a0757f1ff7f5
 
 COCOAPODS: 1.12.1

@@ -8,6 +8,7 @@
 #import "AppDelegate.h"
 
 @import MetricsReporter;
+@import RudderKit;
 
 @interface AppDelegate ()
 
@@ -18,8 +19,12 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    MetricsClient *client = [[MetricsClient alloc] init];
-//    Count *count = [Count]
+    
+    RSMetricConfiguration *config = [[RSMetricConfiguration alloc] initWithLogLevel:RSLogLevelVerbose writeKey:@"WRITE_KEY" sdkVersion:@"1.1.1"];
+    RSMetricClient *client = [[RSMetricClient alloc] initWithConfiguration:config];
+    
+    RSCount *count = [[RSCount alloc] initWithName:@"test_count" labels:@{@"key_1": @"value_1"} value:10];
+    [client process:count];
     return YES;
 }
 

@@ -1,7 +1,8 @@
-source 'https://github.com/CocoaPods/Specs.git'
+source 'https://github.com/rudderlabs/rudder-ios-kit.git'
 workspace 'MetricsReporter.xcworkspace'
 use_frameworks!
 inhibit_all_warnings!
+install! 'cocoapods', :warn_for_unused_master_specs_repo => false
 
 def shared_pods
     pod 'MetricsReporter', :path => '.'

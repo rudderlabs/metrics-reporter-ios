@@ -8,12 +8,12 @@
 import Foundation
 import RudderKit
 
-//@objc(RSMetricConfiguration)
-//public class ObjCConfiguration: NSObject {
-//    internal var configuration: Configuration
-//    
-//    @objc
-//    public init(logLevel: LogLevel, writeKey: String, sdkVersion: String) {
-//        configuration = Configuration(logLevel: logLevel, writeKey: writeKey, sdkVersion: sdkVersion)
-//    }
-//}
+@objc(RSMetricConfiguration)
+public class ObjCConfiguration: NSObject {
+    var configuration: Configuration
+    
+    @objc
+    public init(logLevel: Int, writeKey: String, sdkVersion: String) {
+        configuration = Configuration(logLevel: LogLevel(rawValue: logLevel) ?? .error, writeKey: writeKey, sdkVersion: sdkVersion)
+    }
+}
