@@ -72,4 +72,27 @@ final class ObjCTests: XCTestCase {
         XCTAssertEqual(ObjCMetricType(rawValue: 0), .count)
         XCTAssertEqual(ObjCMetricType(rawValue: 1), .gauge)
     }
+    
+    func test_toSwiftMetric() {
+        let gauge = ObjCGauge(name: "test_gauge", value: 1)
+        let count = ObjCCount(name: "test_count", value: 1)
+        
+        XCTAssertNotNil(gauge.toSwiftMetric())
+        XCTAssertNotNil(count.toSwiftMetric())
+        
+        XCTAssertEqual(gauge.toSwiftMetric()!.name, "test_gauge")
+        XCTAssertEqual(gauge.toSwiftMetric()!.labels, nil)
+        XCTAssertEqual(gauge.toSwiftMetric()!.type, .gauge)
+        
+        XCTAssertEqual(count.toSwiftMetric()!.name, "test_count")
+        XCTAssertEqual(count.toSwiftMetric()!.labels, nil)
+        XCTAssertEqual(count.toSwiftMetric()!.type, .count)
+    }
+    
+    func test_ObjCMetricsClient() {
+        let configuration = ObjCConfiguration(logLevel: 0, writeKey: "WRITE_KEY", sdkVersion: "some.version")
+        let client = ObjCMetricsClient(configuration: configuration)
+        
+        XCTAssertNotNil(client)
+    }
 }

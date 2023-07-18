@@ -100,6 +100,10 @@
 		EDEDB62E2A666C9F005C670A /* ObjCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEDB62C2A666C9F005C670A /* ObjCTests.swift */; };
 		EDEDB62F2A666C9F005C670A /* ObjCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEDB62C2A666C9F005C670A /* ObjCTests.swift */; };
 		EDEDB6302A666C9F005C670A /* ObjCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEDB62C2A666C9F005C670A /* ObjCTests.swift */; };
+		EDEDB6332A669137005C670A /* MetricsClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEDB6322A669137005C670A /* MetricsClientTests.swift */; };
+		EDEDB6342A669137005C670A /* MetricsClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEDB6322A669137005C670A /* MetricsClientTests.swift */; };
+		EDEDB6352A669137005C670A /* MetricsClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEDB6322A669137005C670A /* MetricsClientTests.swift */; };
+		EDEDB6362A669137005C670A /* MetricsClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEDB6322A669137005C670A /* MetricsClientTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -208,6 +212,7 @@
 		EDEDB6192A659FF5005C670A /* ObjCMetric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjCMetric.swift; sourceTree = "<group>"; };
 		EDEDB6222A66523E005C670A /* MetricsReporterTests-iOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MetricsReporterTests-iOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDEDB62C2A666C9F005C670A /* ObjCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjCTests.swift; sourceTree = "<group>"; };
+		EDEDB6322A669137005C670A /* MetricsClientTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetricsClientTests.swift; sourceTree = "<group>"; };
 		FD78E1E1915850C6EB6D5B77 /* Pods-MetricsReporter-macOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MetricsReporter-macOS.debug.xcconfig"; path = "Target Support Files/Pods-MetricsReporter-macOS/Pods-MetricsReporter-macOS.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -392,6 +397,7 @@
 				ED74EF812A5D9D7C0075C583 /* DatabaseTests.swift */,
 				ED9226002A613F5C00734372 /* LabelOperatorTests.swift */,
 				ED9226022A61401900734372 /* MetricOperatorTests.swift */,
+				EDEDB6322A669137005C670A /* MetricsClientTests.swift */,
 				ED9225FE2A5FC17A00734372 /* MetricsUploaderTests.swift */,
 				ED74EF832A5D9D7C0075C583 /* ModelTests.swift */,
 				ED74EF7F2A5D9D7C0075C583 /* MockURLProtocol.swift */,
@@ -1139,6 +1145,7 @@
 				EDEDB5D72A6578C7005C670A /* LabelOperatorTests.swift in Sources */,
 				EDEDB5D52A6578C7005C670A /* MetricOperatorTests.swift in Sources */,
 				EDEDB62E2A666C9F005C670A /* ObjCTests.swift in Sources */,
+				EDEDB6342A669137005C670A /* MetricsClientTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1154,6 +1161,7 @@
 				EDEDB6072A657CA8005C670A /* ServiceManagerTests.swift in Sources */,
 				EDEDB60B2A657CA8005C670A /* MockURLProtocol.swift in Sources */,
 				EDEDB62F2A666C9F005C670A /* ObjCTests.swift in Sources */,
+				EDEDB6352A669137005C670A /* MetricsClientTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1169,6 +1177,7 @@
 				EDEDB60F2A657CA9005C670A /* ServiceManagerTests.swift in Sources */,
 				EDEDB6132A657CA9005C670A /* MockURLProtocol.swift in Sources */,
 				EDEDB6302A666C9F005C670A /* ObjCTests.swift in Sources */,
+				EDEDB6362A669137005C670A /* MetricsClientTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1176,6 +1185,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EDEDB6332A669137005C670A /* MetricsClientTests.swift in Sources */,
 				EDEDB62D2A666C9F005C670A /* ObjCTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
