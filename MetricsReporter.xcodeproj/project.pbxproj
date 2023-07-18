@@ -64,7 +64,6 @@
 		ED9226972A65468D00734372 /* MetricsReportertvOS.h in Headers */ = {isa = PBXBuildFile; fileRef = ED9226962A65468D00734372 /* MetricsReportertvOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		ED9226992A65469300734372 /* MetricsReporterwatchOS.h in Headers */ = {isa = PBXBuildFile; fileRef = ED9226982A65469300734372 /* MetricsReporterwatchOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EDEDB5CC2A6578B1005C670A /* MetricsReporter_watchOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED9226342A65316400734372 /* MetricsReporter_watchOS.framework */; };
-		EDEDB5D22A6578C7005C670A /* MetricsReporterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED74EF822A5D9D7C0075C583 /* MetricsReporterTests.swift */; };
 		EDEDB5D32A6578C7005C670A /* DatabaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED74EF812A5D9D7C0075C583 /* DatabaseTests.swift */; };
 		EDEDB5D42A6578C7005C670A /* MockURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED74EF7F2A5D9D7C0075C583 /* MockURLProtocol.swift */; };
 		EDEDB5D52A6578C7005C670A /* MetricOperatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9226022A61401900734372 /* MetricOperatorTests.swift */; };
@@ -75,7 +74,6 @@
 		EDEDB5E22A6579CF005C670A /* MetricsReporter_tvOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED92261D2A65313B00734372 /* MetricsReporter_tvOS.framework */; };
 		EDEDB5F02A6579F6005C670A /* MetricsReporter_macOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED92264B2A65317B00734372 /* MetricsReporter_macOS.framework */; };
 		EDEDB6042A657CA8005C670A /* LabelOperatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9226002A613F5C00734372 /* LabelOperatorTests.swift */; };
-		EDEDB6052A657CA8005C670A /* MetricsReporterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED74EF822A5D9D7C0075C583 /* MetricsReporterTests.swift */; };
 		EDEDB6062A657CA8005C670A /* ModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED74EF832A5D9D7C0075C583 /* ModelTests.swift */; };
 		EDEDB6072A657CA8005C670A /* ServiceManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED74EF802A5D9D7C0075C583 /* ServiceManagerTests.swift */; };
 		EDEDB6082A657CA8005C670A /* MetricOperatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9226022A61401900734372 /* MetricOperatorTests.swift */; };
@@ -83,7 +81,6 @@
 		EDEDB60A2A657CA8005C670A /* MetricsUploaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9225FE2A5FC17A00734372 /* MetricsUploaderTests.swift */; };
 		EDEDB60B2A657CA8005C670A /* MockURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED74EF7F2A5D9D7C0075C583 /* MockURLProtocol.swift */; };
 		EDEDB60C2A657CA9005C670A /* LabelOperatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9226002A613F5C00734372 /* LabelOperatorTests.swift */; };
-		EDEDB60D2A657CA9005C670A /* MetricsReporterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED74EF822A5D9D7C0075C583 /* MetricsReporterTests.swift */; };
 		EDEDB60E2A657CA9005C670A /* ModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED74EF832A5D9D7C0075C583 /* ModelTests.swift */; };
 		EDEDB60F2A657CA9005C670A /* ServiceManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED74EF802A5D9D7C0075C583 /* ServiceManagerTests.swift */; };
 		EDEDB6102A657CA9005C670A /* MetricOperatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9226022A61401900734372 /* MetricOperatorTests.swift */; };
@@ -99,6 +96,10 @@
 		EDEDB61C2A659FF5005C670A /* ObjCMetric.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEDB6192A659FF5005C670A /* ObjCMetric.swift */; };
 		EDEDB61D2A659FF5005C670A /* ObjCMetric.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEDB6192A659FF5005C670A /* ObjCMetric.swift */; };
 		EDEDB6262A66523F005C670A /* MetricsReporter_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED74EF442A5D8AE70075C583 /* MetricsReporter_iOS.framework */; };
+		EDEDB62D2A666C9F005C670A /* ObjCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEDB62C2A666C9F005C670A /* ObjCTests.swift */; };
+		EDEDB62E2A666C9F005C670A /* ObjCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEDB62C2A666C9F005C670A /* ObjCTests.swift */; };
+		EDEDB62F2A666C9F005C670A /* ObjCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEDB62C2A666C9F005C670A /* ObjCTests.swift */; };
+		EDEDB6302A666C9F005C670A /* ObjCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEDB62C2A666C9F005C670A /* ObjCTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -184,7 +185,6 @@
 		ED74EF7F2A5D9D7C0075C583 /* MockURLProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockURLProtocol.swift; sourceTree = "<group>"; };
 		ED74EF802A5D9D7C0075C583 /* ServiceManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceManagerTests.swift; sourceTree = "<group>"; };
 		ED74EF812A5D9D7C0075C583 /* DatabaseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseTests.swift; sourceTree = "<group>"; };
-		ED74EF822A5D9D7C0075C583 /* MetricsReporterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetricsReporterTests.swift; sourceTree = "<group>"; };
 		ED74EF832A5D9D7C0075C583 /* ModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelTests.swift; sourceTree = "<group>"; };
 		ED9225FA2A5E7B1900734372 /* MetricsUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricsUploader.swift; sourceTree = "<group>"; };
 		ED9225FE2A5FC17A00734372 /* MetricsUploaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricsUploaderTests.swift; sourceTree = "<group>"; };
@@ -207,6 +207,7 @@
 		EDEDB6142A659F4E005C670A /* ObjCMetricsClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjCMetricsClient.swift; sourceTree = "<group>"; };
 		EDEDB6192A659FF5005C670A /* ObjCMetric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjCMetric.swift; sourceTree = "<group>"; };
 		EDEDB6222A66523E005C670A /* MetricsReporterTests-iOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MetricsReporterTests-iOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EDEDB62C2A666C9F005C670A /* ObjCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjCTests.swift; sourceTree = "<group>"; };
 		FD78E1E1915850C6EB6D5B77 /* Pods-MetricsReporter-macOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MetricsReporter-macOS.debug.xcconfig"; path = "Target Support Files/Pods-MetricsReporter-macOS/Pods-MetricsReporter-macOS.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -391,10 +392,10 @@
 				ED74EF812A5D9D7C0075C583 /* DatabaseTests.swift */,
 				ED9226002A613F5C00734372 /* LabelOperatorTests.swift */,
 				ED9226022A61401900734372 /* MetricOperatorTests.swift */,
-				ED74EF822A5D9D7C0075C583 /* MetricsReporterTests.swift */,
 				ED9225FE2A5FC17A00734372 /* MetricsUploaderTests.swift */,
 				ED74EF832A5D9D7C0075C583 /* ModelTests.swift */,
 				ED74EF7F2A5D9D7C0075C583 /* MockURLProtocol.swift */,
+				EDEDB62C2A666C9F005C670A /* ObjCTests.swift */,
 				ED74EF802A5D9D7C0075C583 /* ServiceManagerTests.swift */,
 			);
 			path = MetricsReporterTests;
@@ -710,6 +711,7 @@
 					};
 					EDEDB6212A66523E005C670A = {
 						CreatedOnToolsVersion = 14.3.1;
+						LastSwiftMigration = 1430;
 					};
 				};
 			};
@@ -1133,10 +1135,10 @@
 				EDEDB5D32A6578C7005C670A /* DatabaseTests.swift in Sources */,
 				EDEDB5D82A6578C7005C670A /* ServiceManagerTests.swift in Sources */,
 				EDEDB5D92A6578C7005C670A /* MetricsUploaderTests.swift in Sources */,
-				EDEDB5D22A6578C7005C670A /* MetricsReporterTests.swift in Sources */,
 				EDEDB5D62A6578C7005C670A /* ModelTests.swift in Sources */,
 				EDEDB5D72A6578C7005C670A /* LabelOperatorTests.swift in Sources */,
 				EDEDB5D52A6578C7005C670A /* MetricOperatorTests.swift in Sources */,
+				EDEDB62E2A666C9F005C670A /* ObjCTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1147,11 +1149,11 @@
 				EDEDB60A2A657CA8005C670A /* MetricsUploaderTests.swift in Sources */,
 				EDEDB6092A657CA8005C670A /* DatabaseTests.swift in Sources */,
 				EDEDB6062A657CA8005C670A /* ModelTests.swift in Sources */,
-				EDEDB6052A657CA8005C670A /* MetricsReporterTests.swift in Sources */,
 				EDEDB6042A657CA8005C670A /* LabelOperatorTests.swift in Sources */,
 				EDEDB6082A657CA8005C670A /* MetricOperatorTests.swift in Sources */,
 				EDEDB6072A657CA8005C670A /* ServiceManagerTests.swift in Sources */,
 				EDEDB60B2A657CA8005C670A /* MockURLProtocol.swift in Sources */,
+				EDEDB62F2A666C9F005C670A /* ObjCTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1162,11 +1164,11 @@
 				EDEDB6122A657CA9005C670A /* MetricsUploaderTests.swift in Sources */,
 				EDEDB6112A657CA9005C670A /* DatabaseTests.swift in Sources */,
 				EDEDB60E2A657CA9005C670A /* ModelTests.swift in Sources */,
-				EDEDB60D2A657CA9005C670A /* MetricsReporterTests.swift in Sources */,
 				EDEDB60C2A657CA9005C670A /* LabelOperatorTests.swift in Sources */,
 				EDEDB6102A657CA9005C670A /* MetricOperatorTests.swift in Sources */,
 				EDEDB60F2A657CA9005C670A /* ServiceManagerTests.swift in Sources */,
 				EDEDB6132A657CA9005C670A /* MockURLProtocol.swift in Sources */,
+				EDEDB6302A666C9F005C670A /* ObjCTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1174,6 +1176,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EDEDB62D2A666C9F005C670A /* ObjCTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1723,6 +1726,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A13025875389B6CB21352C2D /* Pods-MetricsReporterTests-iOS.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = WPX9KRKA8B;
@@ -1732,6 +1736,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.rudderstack.MetricsReporterTests-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1741,6 +1746,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6EA6BF59F7BDF83A3467BBD7 /* Pods-MetricsReporterTests-iOS.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = WPX9KRKA8B;

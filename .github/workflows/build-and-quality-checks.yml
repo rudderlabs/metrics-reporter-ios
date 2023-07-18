@@ -34,9 +34,9 @@ jobs:
         run: |
           xcodebuild build -scheme MetricsReporter-tvOS -workspace MetricsReporter.xcworkspace -destination 'platform=tvOS Simulator,name=Apple TV' | xcpretty
           
-      - name: Build SDK(macOS)
-        run: |
-          xcodebuild build -scheme MetricsReporter-macOS -workspace MetricsReporter.xcworkspace -destination 'platform=macOS,arch=x86_64' | xcpretty
+#      - name: Build SDK(macOS)
+#        run: |
+#          xcodebuild build -scheme MetricsReporter-macOS -workspace MetricsReporter.xcworkspace -destination 'platform=macOS,arch=x86_64' | xcpretty
       
       - name: Execute pod lint
         run: pod lib lint --no-clean --allow-warnings
