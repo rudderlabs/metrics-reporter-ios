@@ -7,7 +7,7 @@
 
 import Foundation
 
-@objc(RSMetricClient)
+@objc(RSMetricsClient)
 public class ObjCMetricsClient: NSObject {
     let metricClient: MetricsClient
     
