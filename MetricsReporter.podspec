@@ -4,7 +4,6 @@ package = JSON.parse(File.read(File.join(__dir__, 'package.json')))
 
 Pod::Spec.new do |s|
   s.name             = 'MetricsReporter'
-  s.module_name      = 'MetricsReporter'
   s.version          = package['version']
   s.summary          = "Privacy and Security focused Segment-alternative. iOS, tvOS, watchOS & macOS SDK"
   s.description      = <<-DESC
@@ -14,7 +13,7 @@ Pod::Spec.new do |s|
   s.homepage         = "https://github.com/rudderlabs/metrics-reporter-ios"
   s.license          = { :type => "Apache", :file => "LICENSE" }
   s.author           = { "RudderStack" => "sdk-accounts@rudderstack.com" }
-  s.source           = { :git => "https://github.com/rudderlabs/metrics-reporter-ios", :tag => "v#{s.version}" }
+  s.source           = { :git => "https://github.com/rudderlabs/metrics-reporter-ios.git", :tag => "v#{s.version}" }
 
   s.swift_version = '5.3'
   
