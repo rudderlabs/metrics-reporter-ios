@@ -16,7 +16,7 @@ EXTERNAL SOURCES:
     :path: "."
 
 SPEC CHECKSUMS:
-  MetricsReporter: 0972c19c8b7060da01e73affbfb748c4be6aae30
+  MetricsReporter: 01626ef626c00e28a9da8d4b95e5f2d412f6fdbf
   RudderKit: 423bc02659a9edd8afd62025e90f8ea48c3a6e01
 
 PODFILE CHECKSUM: 77ac4b0e76070949611b5d42b3df853d6437d016

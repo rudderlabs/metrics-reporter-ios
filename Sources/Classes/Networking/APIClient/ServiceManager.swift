@@ -102,7 +102,7 @@ extension ServiceManager {
     func baseURL(_ api: API) -> String {
         switch api {
         case .sdkMetrics:
-            return "https://sdkmetrics.rudderstack.com"
+            return "https://sdk-metrics.dev-rudder.rudderlabs.com/"
         }
     }
     
