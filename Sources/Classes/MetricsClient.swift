@@ -12,6 +12,7 @@ public class MetricsClient {
     private let database: DatabaseOperations
     private let configuration: Configuration
     private let metricsUploader: MetricsUploader
+    private var _statsCollection = StatsCollection()
     
     public init(configuration: Configuration) {
         self.configuration = configuration
@@ -25,12 +26,32 @@ public class MetricsClient {
                 configuration.requestCachePolicy = .useProtocolCachePolicy
                 return URLSession(configuration: configuration)
             }()
-            return ServiceManager(urlSession: session)
+            return ServiceManager(urlSession: session, configuration: configuration)
         }()
         metricsUploader = MetricsUploader(database: database, configuration: configuration, serviceManger: serviceManger)
     }
     
     public func process(metric: Metric) {
-        database.saveMetric(metric)
+        if _statsCollection.isMetricsEnabled {
+            database.saveMetric(metric)
+        }
+    }
+    
+    public var isErrorsCollectionEnabled: Bool {
+        set {
+            _statsCollection.isErrorsEnabled = newValue
+        }
+        get {
+            return _statsCollection.isErrorsEnabled
+        }
+    }
+    
+    public var isMetricsCollectionEnabled: Bool {
+        set {
+            _statsCollection.isMetricsEnabled = newValue
+        }
+        get {
+            return _statsCollection.isMetricsEnabled
+        }
     }
 }

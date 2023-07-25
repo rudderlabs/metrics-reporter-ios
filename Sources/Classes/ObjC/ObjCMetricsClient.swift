@@ -24,4 +24,24 @@ extension ObjCMetricsClient {
             metricClient.process(metric: metric)
         }
     }
+    
+    @objc
+    public var isErrorsCollectionEnabled: Bool {
+        set {
+            metricClient.isErrorsCollectionEnabled = newValue
+        }
+        get {
+            return metricClient.isErrorsCollectionEnabled
+        }
+    }
+    
+    @objc
+    public var isMetricsCollectionEnabled: Bool {
+        set {
+            metricClient.isMetricsCollectionEnabled = newValue
+        }
+        get {
+            return metricClient.isMetricsCollectionEnabled
+        }
+    }
 }

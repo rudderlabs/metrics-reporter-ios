@@ -15,6 +15,7 @@ final class MetricsUploaderTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
+        let metricConfiguration = Configuration(logLevel: .none, writeKey: "WRITE_KEY", sdkVersion: "some.version")
         let database: DatabaseOperations = {
             let db = openDatabase()
             return Database(database: db)
@@ -23,9 +24,9 @@ final class MetricsUploaderTests: XCTestCase {
             let configuration = URLSessionConfiguration.default
             configuration.protocolClasses = [MockURLProtocol.self]
             let urlSession = URLSession(configuration: configuration)
-            return ServiceManager(urlSession: urlSession)
+            return ServiceManager(urlSession: urlSession, configuration: metricConfiguration)
         }()
-        metricsUploader = MetricsUploader(database: database, configuration: Configuration(logLevel: .none, writeKey: "WRITE_KEY", sdkVersion: "some.version"), serviceManger: serviceManager)
+        metricsUploader = MetricsUploader(database: database, configuration: metricConfiguration, serviceManger: serviceManager)
     }
     
     func test_getJSONString() {
@@ -55,7 +56,7 @@ final class MetricsUploaderTests: XCTestCase {
                 {
                     "name": "test_count",
                     "type": "count",
-                    "value": "2.0",
+                    "value": 2.0,
                     "labels": {
                         "key_1": "value_1",
                         "key_2": "value_2"
@@ -64,7 +65,7 @@ final class MetricsUploaderTests: XCTestCase {
                 {
                     "name": "test_gauge",
                     "type": "gauge",
-                    "value": "11.3",
+                    "value": 11.3,
                     "labels": {
                         "key_1": "value_3",
                         "key_3": "value_3"
@@ -133,7 +134,7 @@ struct Payload: Codable, Equatable {
     
     struct Metric: Codable, Equatable {
         let name: String
-        let value: String
+        let value: Float
         let type: String
         let labels: [String: String]
     }

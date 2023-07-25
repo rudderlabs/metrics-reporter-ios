@@ -101,9 +101,9 @@ struct MetricList {
             }
             switch list {
                 case let m as Count:
-                    metric["value"] = "\(Float(m.value).rounded(to: 2))"
+                    metric["value"] = Float(m.value).rounded(to: 2)
                 case let m as Gauge:
-                    metric["value"] = "\(m.value.rounded(to: 2))"
+                    metric["value"] = m.value.rounded(to: 2)
                 default:
                     break
             }

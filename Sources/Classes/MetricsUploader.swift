@@ -10,7 +10,7 @@ import RudderKit
 
 let MAX_METRICS_IN_A_BATCH = 20
 let START_FROM = 1
-let FLUSH_INTERVAL = 30
+let FLUSH_INTERVAL = 5
 
 class MetricsUploader {
     private let database: DatabaseOperations

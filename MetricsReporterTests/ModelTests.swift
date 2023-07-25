@@ -69,7 +69,7 @@ final class ModelTests: XCTestCase {
             [
                 "name": "test_count",
                 "type": "count",
-                "value": "2.0",
+                "value": 2.0,
                 "labels": [
                     "key_1": "value_1",
                     "key_2": "value_2"
@@ -78,7 +78,7 @@ final class ModelTests: XCTestCase {
             [
                 "name": "test_gauge",
                 "type": "gauge",
-                "value": "12.0",
+                "value": 12.0,
                 "labels": [
                     "key_1": "value_1"
                 ]

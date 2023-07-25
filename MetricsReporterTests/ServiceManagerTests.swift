@@ -19,13 +19,13 @@ final class ServiceManagerTests: XCTestCase {
         configuration.protocolClasses = [MockURLProtocol.self]
         let urlSession = URLSession.init(configuration: configuration)
         
-        serviceManager = ServiceManager(urlSession: urlSession)
+        serviceManager = ServiceManager(urlSession: urlSession, configuration: Configuration(logLevel: .none, writeKey: "WRITE_KEY", sdkVersion: "some.version"))
         promise = expectation(description: "Expectation")
     }
 
     #if !os(watchOS)
     func test_sdkMetrics() {
-        // Prepare mock response.
+        // Prepare mock payload.
         let jsonString = """
         {
             "version": "1",

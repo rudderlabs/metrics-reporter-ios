@@ -16,4 +16,9 @@ public class ObjCConfiguration: NSObject {
     public init(logLevel: Int, writeKey: String, sdkVersion: String) {
         configuration = Configuration(logLevel: LogLevel(rawValue: logLevel) ?? .error, writeKey: writeKey, sdkVersion: sdkVersion)
     }
+    
+    @objc
+    public init(logLevel: Int, writeKey: String, sdkVersion: String, sdkMetricsUrl: String) {
+        configuration = Configuration(logLevel: LogLevel(rawValue: logLevel) ?? .error, writeKey: writeKey, sdkVersion: sdkVersion, sdkMetricsUrl: sdkMetricsUrl)
+    }
 }

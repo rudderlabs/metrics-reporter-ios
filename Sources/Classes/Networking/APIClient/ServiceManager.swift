@@ -24,9 +24,11 @@ enum ErrorCode: Int {
 
 struct ServiceManager: ServiceType {
     private let urlSession: URLSession
+    private let configuration: Configuration
     
-    init(urlSession: URLSession) {
+    init(urlSession: URLSession, configuration: Configuration) {
         self.urlSession = urlSession
+        self.configuration = configuration
     }
     
     func sdkMetrics(params: String, _ completion: @escaping Handler<Bool>) {
@@ -75,10 +77,10 @@ extension ServiceManager {
     
     func handleCustomError(data: Data) -> ErrorCode {
         do {
-            guard let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: String] else {
+            guard let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] else {
                 return .SERVER_ERROR
             }
-            if let message = json["message"], message == "Invalid write key" {
+            if let message: String = json["message"] as? String, message == "Invalid write key" {
                 return .WRONG_WRITE_KEY
             }
             return .SERVER_ERROR
@@ -90,8 +92,7 @@ extension ServiceManager {
 
 extension ServiceManager {
     func headers(_ api: API) -> [String: String]? {
-        var headers = ["Content-Type": "Application/json",
-                       "Content-Encoding": "gzip"]
+        var headers = ["Content-Type": "Application/json"]
         switch api {
         case .sdkMetrics:
             headers["Content-Encoding"] = "gzip"
@@ -102,14 +103,14 @@ extension ServiceManager {
     func baseURL(_ api: API) -> String {
         switch api {
         case .sdkMetrics:
-            return "https://sdk-metrics.dev-rudder.rudderlabs.com/"
+            return configuration.sdkMetricsUrl
         }
     }
     
     func httpBody(_ api: API) -> Data? {
         switch api {
         case .sdkMetrics(let params):
-            return params.data(using: .utf8)
+            return try? params.data(using: .utf8)?.gzipped()
         }
     }
     

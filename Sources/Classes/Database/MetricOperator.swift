@@ -124,6 +124,9 @@ class MetricOperator: MetricOperations {
                     let value = Float(sqlite3_column_double(queryStatement, 2))
                     let type = String(cString: sqlite3_column_text(queryStatement, 3))
                     let labels = String(cString: sqlite3_column_text(queryStatement, 4))
+                    if value == 0 {
+                        continue
+                    }
                     let metric = MetricEntity(id: id, name: name, value: value, type: type, labels: labels)
                     metricList?.append(metric)
                 }

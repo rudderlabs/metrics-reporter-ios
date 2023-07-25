@@ -16,6 +16,13 @@ final class ObjCTests: XCTestCase {
         XCTAssertEqual(configuration.configuration.logLevel, .none)
         XCTAssertEqual(configuration.configuration.writeKey, "WRITE_KEY")
         XCTAssertEqual(configuration.configuration.sdkVersion, "some.version")
+        
+        let configuration2 = ObjCConfiguration(logLevel: 1, writeKey: "WRITE_KEY_2", sdkVersion: "some.version.2", sdkMetricsUrl: "some.url.com")
+        
+        XCTAssertEqual(configuration2.configuration.logLevel, .error)
+        XCTAssertEqual(configuration2.configuration.writeKey, "WRITE_KEY_2")
+        XCTAssertEqual(configuration2.configuration.sdkVersion, "some.version.2")
+        XCTAssertEqual(configuration2.configuration.sdkMetricsUrl, "some.url.com")
     }
 
     func test_ObjCCount() {
