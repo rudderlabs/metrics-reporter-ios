@@ -11,40 +11,40 @@ end
 target 'MetricsReporter-iOS' do
     project 'MetricsReporter.xcodeproj'
     platform :ios, '12.0'
-    pod 'RudderKit', '~> 1.2.1'
+    pod 'RudderKit', '~> 1.3.0'
     target 'MetricsReporterTests-iOS' do
         inherit! :search_paths
-        pod 'RudderKit', '~> 1.2.1'
+        pod 'RudderKit', '~> 1.3.0'
     end
 end
 
 target 'MetricsReporter-tvOS' do
     project 'MetricsReporter.xcodeproj'
     platform :tvos, '11.0'
-    pod 'RudderKit', '~> 1.2.1'
+    pod 'RudderKit', '~> 1.3.0'
     target 'MetricsReporterTests-tvOS' do
         inherit! :search_paths
-        pod 'RudderKit', '~> 1.2.1'
+        pod 'RudderKit', '~> 1.3.0'
     end
 end
 
 target 'MetricsReporter-watchOS' do
     project 'MetricsReporter.xcodeproj'
     platform :watchos, '7.0'
-    pod 'RudderKit', '~> 1.2.1'
+    pod 'RudderKit', '~> 1.3.0'
     target 'MetricsReporterTests-watchOS' do
         inherit! :search_paths
-        pod 'RudderKit', '~> 1.2.1'
+        pod 'RudderKit', '~> 1.3.0'
     end
 end
 
 target 'MetricsReporter-macOS' do
     project 'MetricsReporter.xcodeproj'
     platform :macos, '10.13'
-    pod 'RudderKit', '~> 1.2.1'
+    pod 'RudderKit', '~> 1.3.0'
     target 'MetricsReporterTests-macOS' do
         inherit! :search_paths
-        pod 'RudderKit', '~> 1.2.1'
+        pod 'RudderKit', '~> 1.3.0'
     end
 end
 

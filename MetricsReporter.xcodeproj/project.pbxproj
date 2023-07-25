@@ -73,10 +73,6 @@
 		EDA5B76A2A6EDFC100948D18 /* StatsCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA5B7682A6EDFC100948D18 /* StatsCollection.swift */; };
 		EDA5B76B2A6EDFC100948D18 /* StatsCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA5B7682A6EDFC100948D18 /* StatsCollection.swift */; };
 		EDA5B76C2A6EDFC100948D18 /* StatsCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA5B7682A6EDFC100948D18 /* StatsCollection.swift */; };
-		EDA5B76E2A6F91A100948D18 /* Data+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA5B76D2A6F91A100948D18 /* Data+Ext.swift */; };
-		EDA5B76F2A6F91A100948D18 /* Data+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA5B76D2A6F91A100948D18 /* Data+Ext.swift */; };
-		EDA5B7702A6F91A100948D18 /* Data+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA5B76D2A6F91A100948D18 /* Data+Ext.swift */; };
-		EDA5B7712A6F91A100948D18 /* Data+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA5B76D2A6F91A100948D18 /* Data+Ext.swift */; };
 		EDEDB5CC2A6578B1005C670A /* MetricsReporter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED9226342A65316400734372 /* MetricsReporter.framework */; };
 		EDEDB5D32A6578C7005C670A /* DatabaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED74EF812A5D9D7C0075C583 /* DatabaseTests.swift */; };
 		EDEDB5D42A6578C7005C670A /* MockURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED74EF7F2A5D9D7C0075C583 /* MockURLProtocol.swift */; };
@@ -217,7 +213,6 @@
 		ED92269B2A65494D00734372 /* MetricsReporter-macOS.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "MetricsReporter-macOS.xctestplan"; sourceTree = "<group>"; };
 		ED92269C2A654AF100734372 /* MetricsReporter-watchOS.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "MetricsReporter-watchOS.xctestplan"; sourceTree = "<group>"; };
 		EDA5B7682A6EDFC100948D18 /* StatsCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsCollection.swift; sourceTree = "<group>"; };
-		EDA5B76D2A6F91A100948D18 /* Data+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Ext.swift"; sourceTree = "<group>"; };
 		EDEDB5C82A6578B0005C670A /* MetricsReporterTests-watchOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MetricsReporterTests-watchOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDEDB5DE2A6579CE005C670A /* MetricsReporterTests-tvOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MetricsReporterTests-tvOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDEDB5EC2A6579F6005C670A /* MetricsReporterTests-macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MetricsReporterTests-macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -445,7 +440,6 @@
 			isa = PBXGroup;
 			children = (
 				ED74EF6C2A5D8B9B0075C583 /* APIClient */,
-				EDA5B76D2A6F91A100948D18 /* Data+Ext.swift */,
 				ED74EF6B2A5D8B9B0075C583 /* ServiceType.swift */,
 			);
 			path = Networking;
@@ -1044,7 +1038,6 @@
 				ED1A22762A5DB9F5007031FF /* LabelOperator.swift in Sources */,
 				ED9226062A65172E00734372 /* ObjCConfiguration.swift in Sources */,
 				EDA5B7692A6EDFC100948D18 /* StatsCollection.swift in Sources */,
-				EDA5B76E2A6F91A100948D18 /* Data+Ext.swift in Sources */,
 				ED9225FB2A5E7B1900734372 /* MetricsUploader.swift in Sources */,
 				ED1A227F2A5DC34D007031FF /* Configuration.swift in Sources */,
 				ED1A227C2A5DBA02007031FF /* Metric.swift in Sources */,
@@ -1066,7 +1059,6 @@
 				ED92260E2A65313B00734372 /* LabelOperator.swift in Sources */,
 				ED92260F2A65313B00734372 /* ObjCConfiguration.swift in Sources */,
 				EDA5B76B2A6EDFC100948D18 /* StatsCollection.swift in Sources */,
-				EDA5B7702A6F91A100948D18 /* Data+Ext.swift in Sources */,
 				ED9226102A65313B00734372 /* MetricsUploader.swift in Sources */,
 				ED9226112A65313B00734372 /* Configuration.swift in Sources */,
 				ED9226122A65313B00734372 /* Metric.swift in Sources */,
@@ -1088,7 +1080,6 @@
 				ED9226252A65316400734372 /* LabelOperator.swift in Sources */,
 				ED9226262A65316400734372 /* ObjCConfiguration.swift in Sources */,
 				EDA5B76C2A6EDFC100948D18 /* StatsCollection.swift in Sources */,
-				EDA5B7712A6F91A100948D18 /* Data+Ext.swift in Sources */,
 				ED9226272A65316400734372 /* MetricsUploader.swift in Sources */,
 				ED9226282A65316400734372 /* Configuration.swift in Sources */,
 				ED9226292A65316400734372 /* Metric.swift in Sources */,
@@ -1110,7 +1101,6 @@
 				ED92263C2A65317B00734372 /* LabelOperator.swift in Sources */,
 				ED92263D2A65317B00734372 /* ObjCConfiguration.swift in Sources */,
 				EDA5B76A2A6EDFC100948D18 /* StatsCollection.swift in Sources */,
-				EDA5B76F2A6F91A100948D18 /* Data+Ext.swift in Sources */,
 				ED92263E2A65317B00734372 /* MetricsUploader.swift in Sources */,
 				ED92263F2A65317B00734372 /* Configuration.swift in Sources */,
 				ED9226402A65317B00734372 /* Metric.swift in Sources */,

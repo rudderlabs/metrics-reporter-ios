@@ -8,13 +8,15 @@
 import Foundation
 import RudderKit
 
+public let SDKMETRICS_URL = "https://sdk-metrics.rudderstack.com"
+
 public struct Configuration {
     let logLevel: LogLevel
     let writeKey: String
     let sdkVersion: String
     let sdkMetricsUrl: String
     
-    public init(logLevel: LogLevel, writeKey: String, sdkVersion: String, sdkMetricsUrl: String = "https://sdk-metrics.dev-rudder.rudderlabs.com") {
+    public init(logLevel: LogLevel, writeKey: String, sdkVersion: String, sdkMetricsUrl: String = SDKMETRICS_URL) {
         self.logLevel = logLevel
         self.writeKey = writeKey
         self.sdkVersion = sdkVersion
