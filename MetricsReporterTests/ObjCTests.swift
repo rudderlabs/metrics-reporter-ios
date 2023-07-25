@@ -94,4 +94,44 @@ final class ObjCTests: XCTestCase {
         
         XCTAssertNotNil(client)
     }
+    
+    func test_StatsCollection() {
+        let configuration = ObjCConfiguration(logLevel: 0, writeKey: "WRITE_KEY", sdkVersion: "some.version")
+        let client = ObjCMetricsClient(configuration: configuration)
+        
+        XCTAssertFalse(client.isErrorsCollectionEnabled)
+        XCTAssertFalse(client.isMetricsCollectionEnabled)
+        
+        client.isErrorsCollectionEnabled = true
+        client.isMetricsCollectionEnabled = true
+        
+        XCTAssertTrue(client.isErrorsCollectionEnabled)
+        XCTAssertTrue(client.isMetricsCollectionEnabled)
+        
+        client.isErrorsCollectionEnabled = false
+        client.isMetricsCollectionEnabled = false
+        
+        XCTAssertFalse(client.isErrorsCollectionEnabled)
+        XCTAssertFalse(client.isMetricsCollectionEnabled)
+        
+        client.isErrorsCollectionEnabled = true
+        
+        XCTAssertTrue(client.isErrorsCollectionEnabled)
+        XCTAssertFalse(client.isMetricsCollectionEnabled)
+        
+        client.isMetricsCollectionEnabled = true
+        
+        XCTAssertTrue(client.isErrorsCollectionEnabled)
+        XCTAssertTrue(client.isMetricsCollectionEnabled)
+        
+        client.isErrorsCollectionEnabled = false
+        
+        XCTAssertFalse(client.isErrorsCollectionEnabled)
+        XCTAssertTrue(client.isMetricsCollectionEnabled)
+        
+        client.isMetricsCollectionEnabled = false
+        
+        XCTAssertFalse(client.isErrorsCollectionEnabled)
+        XCTAssertFalse(client.isMetricsCollectionEnabled)
+    }
 }
