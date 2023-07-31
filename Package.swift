@@ -14,7 +14,7 @@ let package = Package(
         )
     ],
     dependencies: [
-        .package(name: "RudderKit", url: "https://github.com/rudderlabs/rudder-ios-kit", from: "1.2.0"),
+        .package(name: "RudderKit", url: "https://github.com/rudderlabs/rudder-ios-kit", from: "1.4.0"),
     ],
     targets: [
         .target(

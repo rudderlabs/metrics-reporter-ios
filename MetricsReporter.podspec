@@ -24,6 +24,6 @@ Pod::Spec.new do |s|
     
   s.source_files = 'Sources/**/*.swift'
 
-  s.dependency 'RudderKit', '~> 1.3.0'
+  s.dependency 'RudderKit', '~> 1.4.0'
   
 end
