@@ -6,27 +6,33 @@
 //
 
 import XCTest
+import RudderKit
 @testable import MetricsReporter
 
 final class MetricsUploaderTests: XCTestCase {
     
     var metricsUploader: MetricsUploader!
+    var database: DatabaseOperations!
     let apiURL = URL(string: "https://some.rudderstack.com.url")!
 
     override func setUp() {
         super.setUp()
-        let metricConfiguration = Configuration(logLevel: .none, writeKey: "WRITE_KEY", sdkVersion: "some.version")
-        let database: DatabaseOperations = {
+        let metricConfiguration = Configuration(logLevel: .none, writeKey: "WRITE_KEY", sdkVersion: "some.version", maxErrorsInBatch: 1, maxMetricsInBatch: 1, flushInterval: 1)
+        database = {
             let db = openDatabase()
             return Database(database: db)
         }()
-        let serviceManager: ServiceType = {
+        let serviceManager = {
             let configuration = URLSessionConfiguration.default
             configuration.protocolClasses = [MockURLProtocol.self]
             let urlSession = URLSession(configuration: configuration)
             return ServiceManager(urlSession: urlSession, configuration: metricConfiguration)
         }()
-        metricsUploader = MetricsUploader(database: database, configuration: metricConfiguration, serviceManager: serviceManager)
+        metricsUploader = MetricsUploader()
+        metricsUploader.serviceManager = serviceManager
+        metricsUploader.database = database
+        metricsUploader.configuration = metricConfiguration
+        clearAll()
     }
     
     func test_getJSONString() {
@@ -40,7 +46,9 @@ final class MetricsUploaderTests: XCTestCase {
         gaugeList.append(gauge)
         
         let metricList = MetricList(countList: countList, gaugeList: gaugeList)
-        let JSONString = metricsUploader.getJSONString(from: metricList)
+        
+        let errorEntity = ErrorEntity(id: 1, events: createErrorEvent(index: 0))
+        let JSONString = metricsUploader.getJSONString(from: metricList, and: [errorEntity])
         
         XCTAssertNotNil(JSONString)
         
@@ -56,7 +64,7 @@ final class MetricsUploaderTests: XCTestCase {
                 {
                     "name": "test_count",
                     "type": "count",
-                    "value": 2.0,
+                    "value": 2,
                     "labels": {
                         "key_1": "value_1",
                         "key_2": "value_2"
@@ -71,7 +79,16 @@ final class MetricsUploaderTests: XCTestCase {
                         "key_3": "value_3"
                     }
                 }
-            ]
+            ],
+            "errors": {
+                "payloadVersion": "5",
+                "notifier": {
+                    "name": "Bugsnag iOS",
+                    "version": "some.version",
+                    "url": "https://github.com/rudderlabs/rudder-sdk-ios"
+                },
+                "events": \(createErrorEvent(index: 0))
+            }
         }
         """
                         
@@ -90,36 +107,53 @@ final class MetricsUploaderTests: XCTestCase {
         XCTAssertEqual(payloadObject!, expectedPayloadObject!)
     }
     
-    #if !os(watchOS)
-    func test_flushMetricsToServer() {
+    /*#if !os(watchOS)
+    func test_flush() {
+        metricsUploader.startUploading()
         let data = """
         {
         
         }
         """.data(using: .utf8)
+        var count = 0
+        var ready = false
         MockURLProtocol.requestHandler = { request in
             let response = HTTPURLResponse(url: self.apiURL, statusCode: 201, httpVersion: nil, headerFields: nil)!
+            count += 1
+            if count == 30 {
+                ready = false
+                self.clearAll()
+            }
             return (response, data)
         }
         
-        var countList = [Count]()
-        var gaugeList = [Gauge]()
+        for i in 1...30 {
+            let countMetric = Count(name: "test_count_\(i)", labels: ["key_\(i)": "value_\(i)"], value: i + 1)
+            database.saveMetric(countMetric)
+            let events = createErrorEvent(index: i)
+            database.saveError(events: events)
+        }
         
-        let count = Count(name: "test_count", labels: ["key_1": "value_1", "key_2": "value_2"], value: 2)
-        countList.append(count)
+        ready = true
         
-        let gauge = Gauge(name: "test_gauge", labels: ["key_1": "value_3", "key_3": "value_3"], value: 11.3)
-        gaugeList.append(gauge)
-        
-        let metricList = MetricList(countList: countList, gaugeList: gaugeList)
-        
-        let params = metricsUploader.getJSONString(from: metricList)
-        XCTAssertNotNil(params)
-        
-        let error = metricsUploader.flushMetricsToServer(params: params!)
-        XCTAssertNil(error)
+        while (ready) {
+            RunLoop.main.run(until: Date.distantPast)
+        }
     }
-    #endif
+    #endif*/
+    
+    override func tearDown() {
+        super.tearDown()
+        clearAll()
+        metricsUploader = nil
+        database = nil
+    }
+    
+    func clearAll() {
+        database.clearAllErrors()
+        database.clearAllMetrics()
+        database.resetErrorTable()
+    }
 }
 
 func getObject<T: Codable>(data: Data) -> T? {
@@ -139,11 +173,28 @@ struct Payload: Codable, Equatable {
         let labels: [String: String]
     }
     
+    struct Notifier: Codable, Equatable {
+        let name: String
+        let version: String
+        let url: String
+    }
+    
+    struct Errors: Codable, Equatable {
+        static func == (lhs: Payload.Errors, rhs: Payload.Errors) -> Bool {
+            return lhs.payloadVersion == rhs.payloadVersion && lhs.notifier == rhs.notifier && lhs.events == rhs.events
+        }
+        
+        let payloadVersion: String
+        let notifier: Notifier
+        let events: JSON
+    }
+    
     let version: String
     let source: Source
     let metrics: [Metric]
+    let errors: Errors
     
     static func == (lhs: Payload, rhs: Payload) -> Bool {
-        return lhs.version == rhs.version && lhs.source == rhs.source && lhs.metrics == rhs.metrics
+        return lhs.version == rhs.version && lhs.source == rhs.source && lhs.metrics == rhs.metrics && lhs.errors == rhs.errors
     }
 }

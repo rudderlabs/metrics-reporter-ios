@@ -134,6 +134,27 @@ final class DatabaseTests: XCTestCase {
         clearAll()
     }
     
+    func test_saveErrorEntity() {
+        let events = createErrorEvent(index: 0)
+        let error = databaseOperator.saveError(events: events)
+        
+        XCTAssertNotNil(error)
+        XCTAssertEqual(error!.id, 1)
+        XCTAssertEqual(error!.events, events)
+        clearAll()
+    }
+    
+    func test_fetchErrors() {
+        for index in 0..<25 {
+            databaseOperator.saveError(events: createErrorEvent(index: index))
+        }
+        let errorEntityList = databaseOperator.fetchErrors(count: 30)
+        
+        XCTAssertNotNil(errorEntityList)
+        XCTAssertEqual(errorEntityList!.count, 25)
+        clearAll()
+    }
+    
     override func tearDown() {
         super.tearDown()
         clearAll()
@@ -142,6 +163,8 @@ final class DatabaseTests: XCTestCase {
 
     func clearAll() {
         databaseOperator.clearAllMetrics()
+        databaseOperator.clearAllErrors()
+        databaseOperator.resetErrorTable()
     }
 }
 

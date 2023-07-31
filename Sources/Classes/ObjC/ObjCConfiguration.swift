@@ -17,8 +17,33 @@ public class ObjCConfiguration: NSObject {
         configuration = Configuration(logLevel: LogLevel(rawValue: logLevel) ?? .error, writeKey: writeKey, sdkVersion: sdkVersion)
     }
     
-    @objc
-    public init(logLevel: Int, writeKey: String, sdkVersion: String, sdkMetricsUrl: String?, maxMetricsInBatch: NSNumber?, flushInterval: NSNumber?) {
-        configuration = Configuration(logLevel: LogLevel(rawValue: logLevel) ?? .error, writeKey: writeKey, sdkVersion: sdkVersion, sdkMetricsUrl: sdkMetricsUrl, maxMetricsInBatch: maxMetricsInBatch, flushInterval: flushInterval)
+    @discardableResult @objc
+    public func sdkMetricsUrl(_ sdkMetricsUrl: String) -> ObjCConfiguration {
+        configuration.sdkMetricsUrl = sdkMetricsUrl
+        return self
+    }
+    
+    @discardableResult @objc
+    public func maxErrorsInBatch(_ maxErrorsInBatch: Int) -> ObjCConfiguration {
+        configuration.maxErrorsInBatch = maxErrorsInBatch
+        return self
+    }
+    
+    @discardableResult @objc
+    public func maxMetricsInBatch(_ maxMetricsInBatch: Int) -> ObjCConfiguration {
+        configuration.maxMetricsInBatch = maxMetricsInBatch
+        return self
+    }
+    
+    @discardableResult @objc
+    public func flushInterval(_ flushInterval: Int) -> ObjCConfiguration {
+        configuration.flushInterval = flushInterval
+        return self
+    }
+    
+    @discardableResult @objc
+    public func dbCountThreshold(_ dbCountThreshold: Int) -> ObjCConfiguration {
+        configuration.dbCountThreshold = dbCountThreshold
+        return self
     }
 }
