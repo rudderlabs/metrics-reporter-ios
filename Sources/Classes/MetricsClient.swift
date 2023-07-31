@@ -35,6 +35,8 @@ public class MetricsClient {
     public func process(metric: Metric) {
         if _statsCollection.isMetricsEnabled {
             database.saveMetric(metric)
+        } else {
+            Logger.logDebug("Metrics collection is disabled")
         }
     }
     
