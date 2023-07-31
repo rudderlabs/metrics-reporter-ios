@@ -53,22 +53,37 @@ protocol LabelOperations: TableOperations {
     func fetchLabels(where coulmnName: String, in values: [String]) -> [LabelEntity]?
 }
 
+protocol ErrorOperations: TableOperations {
+    @discardableResult func saveError(events: String) -> ErrorEntity?
+    func fetchErrors(count: Int) -> [ErrorEntity]?
+    func clearError(where ids: String)
+    func resetTable()
+}
+
 protocol DatabaseOperations {
     @discardableResult func saveMetric<M: Metric>(_ metric: M) -> MetricEntity?
     func fetchMetrics(from valueFrom: Int, to valueTo: Int) -> MetricList
     @discardableResult func updateMetric<M: Metric>(_ metric: M) -> Int?
+    @discardableResult func saveError(events: String) -> ErrorEntity?
+    func fetchErrors(count: Int) -> [ErrorEntity]?
+    func clearErrorList(_ errorList: [ErrorEntity])
     func clearAllMetrics()
+    func clearAllErrors()
+    func resetErrorTable()
 }
 
 class Database: DatabaseOperations {
     private var metricOperator: MetricOperations!
     private var labelOperator: LabelOperations!
+    private var errorOperator: ErrorOperations!
     
     init(database: OpaquePointer?) {
         metricOperator = MetricOperator(database: database)
         labelOperator = LabelOperator(database: database)
+        errorOperator = ErrorOperator(database: database)
         metricOperator.createTable()
         labelOperator.createTable()
+        errorOperator.createTable()
     }
     
     @discardableResult
@@ -162,9 +177,33 @@ class Database: DatabaseOperations {
         return metricOperator.updateMetric(metricEntity, updatedValue: updatedValue)
     }
     
+    @discardableResult
+    func saveError(events: String) -> ErrorEntity? {
+        return errorOperator.saveError(events: events)
+    }
+    
+    func fetchErrors(count: Int) -> [ErrorEntity]? {
+        return errorOperator.fetchErrors(count: count)
+    }
+    
+    func clearErrorList(_ errorList: [ErrorEntity]) {
+        let ids = errorList.compactMap({ errorEntity in
+            return errorEntity.id
+        })
+        errorOperator.clearError(where: NSArray(array: ids).componentsJoined(by: ","))
+    }
+    
+    func resetErrorTable() {
+        errorOperator.resetTable()
+    }
+    
     func clearAllMetrics() {
         metricOperator.clearAll()
         labelOperator.clearAll()
+    }
+    
+    func clearAllErrors() {
+        errorOperator.clearAll()
     }
 }
 

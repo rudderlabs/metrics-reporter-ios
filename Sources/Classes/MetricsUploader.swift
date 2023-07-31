@@ -34,22 +34,27 @@ class MetricsUploader {
     
     func flushMetrics(from: Int, to: Int) {
         let metricList = database.fetchMetrics(from: from, to: to)
-        guard metricList.isNotEmpty else {
-            Logger.logDebug("No metrics found in db")
+        let errorList = database.fetchErrors(count: configuration.maxErrorsInBatch)
+        if metricList.isEmpty && (errorList?.isEmpty ?? true) {
+            Logger.logDebug("No metrics or errors found in db")
             return
         }
         var isDataAvailable = false
         if metricList.count == configuration.maxMetricsInBatch {
             isDataAvailable = true
         }
-        if let params = getJSONString(from: metricList) {
+        if errorList?.count == configuration.maxErrorsInBatch {
+            isDataAvailable = true
+        }
+        if let params = getJSONString(from: metricList, and: errorList) {
             if let error = flushMetricsToServer(params: params) {
-                Logger.logError("Got error code: \(error.code), Aborting")
+                Logger.logError("Got error code: \(error.code), Aborting.")
             } else {
                 Logger.logDebug("Metrics uploaded successfully")
-                self.updateMetricList(metricList: metricList)
+                updateMetricList(metricList)
+                clearErrorList(errorList)
                 if isDataAvailable {
-                    self.flushMetrics(from: to + 1, to: to + configuration.maxMetricsInBatch)
+                    flushMetrics(from: to + 1, to: to + configuration.maxMetricsInBatch)
                 }
             }
         } else {
@@ -76,7 +81,7 @@ class MetricsUploader {
         return error
     }
     
-    func updateMetricList(metricList: MetricList) {
+    func updateMetricList(_ metricList: MetricList) {
         if let countList = metricList.countList {
             for count in countList {
                 database.updateMetric(count)
@@ -89,8 +94,15 @@ class MetricsUploader {
         }
     }
     
-    func getJSONString(from metricList: MetricList) -> String? {
-        guard let metrics = metricList.toDict() else {
+    func clearErrorList(_ errorList: [ErrorEntity]?) {
+        if let errorList = errorList {
+            database.clearErrorList(errorList)
+        }
+    }
+    
+    func getJSONString(from metricList: MetricList, and errorList: [ErrorEntity]?) -> String? {
+        let metrics = metricList.toDict()
+        if metrics == nil && errorList == nil {
             return nil
         }
         var payload: [String: Any] = [
@@ -101,8 +113,36 @@ class MetricsUploader {
                 "write_key": configuration.writeKey
             ]
         ]
-        payload["metrics"] = metrics
+        if let metrics = metrics {
+            payload["metrics"] = metrics
+        }
+        if let errorList = errorList {
+            payload["errors"] = errorList.toDict(configuration: configuration)
+        }
         return payload.toJSONString()
+    }
+}
+
+extension [ErrorEntity] {
+    func toDict(configuration: Configuration) -> [String: Any] {
+        let notifier = [
+            "name": "Bugsnag iOS",
+            "version": configuration.sdkVersion,
+            "url": "https://github.com/rudderlabs/rudder-sdk-ios"
+        ]
+        
+        var eventList = [[String: Any]]()
+        for item in self {
+            if let events = item.eventList {
+                eventList.append(contentsOf: events)
+            }
+        }
+        
+        return [
+            "payloadVersion": "5",
+            "notifier": notifier,
+            "events": eventList
+        ]
     }
 }
 

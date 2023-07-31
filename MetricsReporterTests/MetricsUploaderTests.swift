@@ -6,27 +6,32 @@
 //
 
 import XCTest
+import RudderKit
 @testable import MetricsReporter
 
 final class MetricsUploaderTests: XCTestCase {
     
     var metricsUploader: MetricsUploader!
+    var database: DatabaseOperations!
+    var serviceManager: ServiceType!
     let apiURL = URL(string: "https://some.rudderstack.com.url")!
 
     override func setUp() {
         super.setUp()
-        let metricConfiguration = Configuration(logLevel: .none, writeKey: "WRITE_KEY", sdkVersion: "some.version")
-        let database: DatabaseOperations = {
+        let metricConfiguration = Configuration(logLevel: .none, writeKey: "WRITE_KEY", sdkVersion: "some.version", maxErrorsInBatch: 1, maxMetricsInBatch: 1, flushInterval: 60)
+        database = {
             let db = openDatabase()
             return Database(database: db)
         }()
-        let serviceManager: ServiceType = {
+        serviceManager = {
             let configuration = URLSessionConfiguration.default
             configuration.protocolClasses = [MockURLProtocol.self]
             let urlSession = URLSession(configuration: configuration)
             return ServiceManager(urlSession: urlSession, configuration: metricConfiguration)
         }()
         metricsUploader = MetricsUploader(database: database, configuration: metricConfiguration, serviceManager: serviceManager)
+        metricsUploader.startUploadingMetrics()
+        clearAll()
     }
     
     func test_getJSONString() {
@@ -40,7 +45,9 @@ final class MetricsUploaderTests: XCTestCase {
         gaugeList.append(gauge)
         
         let metricList = MetricList(countList: countList, gaugeList: gaugeList)
-        let JSONString = metricsUploader.getJSONString(from: metricList)
+        
+        let errorEntity = ErrorEntity(id: 1, events: createErrorEvent(index: 0))
+        let JSONString = metricsUploader.getJSONString(from: metricList, and: [errorEntity])
         
         XCTAssertNotNil(JSONString)
         
@@ -56,7 +63,7 @@ final class MetricsUploaderTests: XCTestCase {
                 {
                     "name": "test_count",
                     "type": "count",
-                    "value": 2.0,
+                    "value": 2,
                     "labels": {
                         "key_1": "value_1",
                         "key_2": "value_2"
@@ -71,7 +78,16 @@ final class MetricsUploaderTests: XCTestCase {
                         "key_3": "value_3"
                     }
                 }
-            ]
+            ],
+            "errors": {
+                "payloadVersion": "5",
+                "notifier": {
+                    "name": "Bugsnag iOS",
+                    "version": "some.version",
+                    "url": "https://github.com/rudderlabs/rudder-sdk-ios"
+                },
+                "events": \(createErrorEvent(index: 0))
+            }
         }
         """
                         
@@ -113,13 +129,54 @@ final class MetricsUploaderTests: XCTestCase {
         
         let metricList = MetricList(countList: countList, gaugeList: gaugeList)
         
-        let params = metricsUploader.getJSONString(from: metricList)
+        let params = metricsUploader.getJSONString(from: metricList, and: nil)
         XCTAssertNotNil(params)
         
         let error = metricsUploader.flushMetricsToServer(params: params!)
         XCTAssertNil(error)
     }
+    
+    /*func test_flushMetrics() {
+        let promise = expectation(description: "Expectation")
+        let data = """
+        {
+        
+        }
+        """.data(using: .utf8)
+        var count = 0
+        MockURLProtocol.requestHandler = { request in
+            let response = HTTPURLResponse(url: self.apiURL, statusCode: 201, httpVersion: nil, headerFields: nil)!
+            count += 1
+            return (response, data)
+        }
+        
+        for i in 1..<31 {
+            let countMetric = Count(name: "test_count_\(i)", labels: ["key_\(i)": "value_\(i)"], value: i + 1)
+            database.saveMetric(countMetric)
+            let events = createErrorEvent(index: i)
+            database.saveError(events: events)
+        }
+        
+        if count == 30 {
+            promise.fulfill()
+            clearAll()
+        }
+        wait(for: [promise], timeout: 31.0)
+    }*/
     #endif
+    
+    override func tearDown() {
+        super.tearDown()
+        clearAll()
+        metricsUploader = nil
+        database = nil
+    }
+    
+    func clearAll() {
+        database.clearAllErrors()
+        database.clearAllMetrics()
+        database.resetErrorTable()
+    }
 }
 
 func getObject<T: Codable>(data: Data) -> T? {
@@ -139,11 +196,28 @@ struct Payload: Codable, Equatable {
         let labels: [String: String]
     }
     
+    struct Notifier: Codable, Equatable {
+        let name: String
+        let version: String
+        let url: String
+    }
+    
+    struct Errors: Codable, Equatable {
+        static func == (lhs: Payload.Errors, rhs: Payload.Errors) -> Bool {
+            return lhs.payloadVersion == rhs.payloadVersion && lhs.notifier == rhs.notifier && lhs.events == rhs.events
+        }
+        
+        let payloadVersion: String
+        let notifier: Notifier
+        let events: JSON
+    }
+    
     let version: String
     let source: Source
     let metrics: [Metric]
+    let errors: Errors
     
     static func == (lhs: Payload, rhs: Payload) -> Bool {
-        return lhs.version == rhs.version && lhs.source == rhs.source && lhs.metrics == rhs.metrics
+        return lhs.version == rhs.version && lhs.source == rhs.source && lhs.metrics == rhs.metrics && lhs.errors == rhs.errors
     }
 }
