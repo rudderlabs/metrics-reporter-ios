@@ -18,7 +18,7 @@ public class ObjCConfiguration: NSObject {
     }
     
     @objc
-    public init(logLevel: Int, writeKey: String, sdkVersion: String, sdkMetricsUrl: String) {
-        configuration = Configuration(logLevel: LogLevel(rawValue: logLevel) ?? .error, writeKey: writeKey, sdkVersion: sdkVersion, sdkMetricsUrl: sdkMetricsUrl)
+    public init(logLevel: Int, writeKey: String, sdkVersion: String, sdkMetricsUrl: String?, maxMetricsInBatch: NSNumber?, flushInterval: NSNumber?) {
+        configuration = Configuration(logLevel: LogLevel(rawValue: logLevel) ?? .error, writeKey: writeKey, sdkVersion: sdkVersion, sdkMetricsUrl: sdkMetricsUrl, maxMetricsInBatch: maxMetricsInBatch, flushInterval: flushInterval)
     }
 }

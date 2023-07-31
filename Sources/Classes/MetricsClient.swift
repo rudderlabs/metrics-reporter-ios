@@ -28,7 +28,8 @@ public class MetricsClient {
             }()
             return ServiceManager(urlSession: session, configuration: configuration)
         }()
-        metricsUploader = MetricsUploader(database: database, configuration: configuration, serviceManger: serviceManger)
+        metricsUploader = MetricsUploader(database: database, configuration: configuration, serviceManager: serviceManger)
+        metricsUploader.startUploadingMetrics()
     }
     
     public func process(metric: Metric) {

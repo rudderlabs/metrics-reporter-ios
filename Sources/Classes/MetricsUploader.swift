@@ -8,55 +8,54 @@
 import Foundation
 import RudderKit
 
-let MAX_METRICS_IN_A_BATCH = 20
 let START_FROM = 1
-let FLUSH_INTERVAL = 5
 
 class MetricsUploader {
     private let database: DatabaseOperations
     private let configuration: Configuration
     private var flushTimer: RepeatingTimer?
-    private let serviceManger: ServiceType
+    private let serviceManager: ServiceType
     private let syncQueue = DispatchQueue(label: "uploadQueue.rudder.com")
     
-    init(database: DatabaseOperations, configuration: Configuration, serviceManger: ServiceType) {
+    init(database: DatabaseOperations, configuration: Configuration, serviceManager: ServiceType) {
         self.database = database
         self.configuration = configuration
-        self.serviceManger = serviceManger
-        flushTimer = RepeatingTimer(interval: TimeInterval(FLUSH_INTERVAL)) { [weak self] in
+        self.serviceManager = serviceManager
+    }
+    
+    func startUploadingMetrics() {
+        flushTimer = RepeatingTimer(interval: TimeInterval(configuration.flushInterval)) { [weak self] in
             guard let self = self else { return }
-            self.flushMetrics(from: START_FROM, to: MAX_METRICS_IN_A_BATCH)
+            syncQueue.async {
+                self.flushMetrics(from: START_FROM, to: self.configuration.maxMetricsInBatch)
+            }
         }
     }
     
     func flushMetrics(from: Int, to: Int) {
-        syncQueue.sync {
-            let metricList = database.fetchMetrics(from: from, to: to)
-            guard metricList.isNotEmpty else {
-                Logger.logDebug("No metrics found in db")
-                return
-            }
-            var isDataAvailable = false
-            if metricList.count == MAX_METRICS_IN_A_BATCH {
-                isDataAvailable = true
-            }
-            if let params = getJSONString(from: metricList) {
-                var count = 0
-                while true {
-                    count += 1
-                    if let error = flushMetricsToServer(params: params) {
-                        Logger.logDebug("Got error code: \(error.code), retrying in \(count)s")
-                        sleep(UInt32(count * 1000000))
-                    } else {
-                        if isDataAvailable {
-                            self.flushMetrics(from: to + 1, to: to + MAX_METRICS_IN_A_BATCH)
-                        }
-                        self.updateMetricList(metricList: metricList)
-                        break
-                    }
-                }
+        let metricList = database.fetchMetrics(from: from, to: to)
+        guard metricList.isNotEmpty else {
+            Logger.logDebug("No metrics found in db")
+            return
+        }
+        var isDataAvailable = false
+        if metricList.count == configuration.maxMetricsInBatch {
+            isDataAvailable = true
+        }
+        if let params = getJSONString(from: metricList) {
+            if let error = flushMetricsToServer(params: params) {
+                Logger.logError("Got error code: \(error.code), Aborting")
             } else {
-                Logger.logError("Failed to create JSON")
+                Logger.logDebug("Metrics uploaded successfully")
+                self.updateMetricList(metricList: metricList)
+                if isDataAvailable {
+                    self.flushMetrics(from: to + 1, to: to + configuration.maxMetricsInBatch)
+                }
+            }
+        } else {
+            Logger.logDebug("No metrics or errors found in db for flushing")
+            if isDataAvailable {
+                flushMetrics(from: to + 1, to: to + configuration.maxMetricsInBatch)
             }
         }
     }
@@ -64,7 +63,7 @@ class MetricsUploader {
     func flushMetricsToServer(params: String) -> NSError? {
         var error: NSError?
         let semaphore = DispatchSemaphore(value: 0)
-        serviceManger.sdkMetrics(params: params, { result in
+        serviceManager.sdkMetrics(params: params, { result in
             switch result {
                 case .success(_):
                     break

@@ -34,21 +34,9 @@ class MetricOperator: MetricOperations {
     }
     
     func createTable() {
-        var createTableStatement: OpaquePointer?
         let createTableString = "CREATE TABLE IF NOT EXISTS metric(id INTEGER NOT NULL, name TEXT NOT NULL, value NUMERIC NOT NULL, type TEXT NOT NULL, labels TEXT NOT NULL, PRIMARY KEY(name, type, labels));"
-        Logger.logDebug("createTableSQL: \(createTableString)")
-        if sqlite3_prepare_v2(database, createTableString, -1, &createTableStatement, nil) ==
-            SQLITE_OK {
-            if sqlite3_step(createTableStatement) == SQLITE_DONE {
-                Logger.logDebug("DB Schema created")
-            } else {
-                Logger.logError("DB Schema creation error")
-            }
-        } else {
-            let errorMessage = String(cString: sqlite3_errmsg(database))
-            Logger.logError("DB Schema CREATE statement is not prepared, Reason: \(errorMessage)")
-        }
-        sqlite3_finalize(createTableStatement)
+        let tableCreator = TableCreator(database: database, createTableString: createTableString)
+        tableCreator.createTable()
     }
     
     @discardableResult
@@ -124,9 +112,6 @@ class MetricOperator: MetricOperations {
                     let value = Float(sqlite3_column_double(queryStatement, 2))
                     let type = String(cString: sqlite3_column_text(queryStatement, 3))
                     let labels = String(cString: sqlite3_column_text(queryStatement, 4))
-                    if value == 0 {
-                        continue
-                    }
                     let metric = MetricEntity(id: id, name: name, value: value, type: type, labels: labels)
                     metricList?.append(metric)
                 }

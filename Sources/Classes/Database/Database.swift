@@ -9,6 +9,32 @@ import Foundation
 import SQLite3
 import RudderKit
 
+class TableCreator {
+    private let database: OpaquePointer?
+    private let createTableString: String
+    
+    init(database: OpaquePointer?, createTableString: String) {
+        self.database = database
+        self.createTableString = createTableString
+    }
+    
+    func createTable() {
+        var createTableStatement: OpaquePointer?
+        Logger.logDebug("createTableSQL: \(createTableString)")
+        if sqlite3_prepare_v2(database, createTableString, -1, &createTableStatement, nil) == SQLITE_OK {
+            if sqlite3_step(createTableStatement) == SQLITE_DONE {
+                Logger.logDebug("DB Schema created")
+            } else {
+                Logger.logError("DB Schema creation error")
+            }
+        } else {
+            let errorMessage = String(cString: sqlite3_errmsg(database))
+            Logger.logError("DB Schema CREATE statement is not prepared, Reason: \(errorMessage)")
+        }
+        sqlite3_finalize(createTableStatement)
+    }
+}
+
 protocol TableOperations {
     func createTable()
     func clearAll()

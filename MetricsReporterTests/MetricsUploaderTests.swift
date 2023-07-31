@@ -26,7 +26,7 @@ final class MetricsUploaderTests: XCTestCase {
             let urlSession = URLSession(configuration: configuration)
             return ServiceManager(urlSession: urlSession, configuration: metricConfiguration)
         }()
-        metricsUploader = MetricsUploader(database: database, configuration: metricConfiguration, serviceManger: serviceManager)
+        metricsUploader = MetricsUploader(database: database, configuration: metricConfiguration, serviceManager: serviceManager)
     }
     
     func test_getJSONString() {

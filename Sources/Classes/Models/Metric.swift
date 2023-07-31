@@ -101,11 +101,17 @@ struct MetricList {
             }
             switch list {
                 case let m as Count:
+                    if m.value == 0 {
+                        continue
+                    }
                     metric["value"] = Float(m.value).rounded(to: 2)
                 case let m as Gauge:
+                    if m.value == 0 {
+                        continue
+                    }
                     metric["value"] = m.value.rounded(to: 2)
                 default:
-                    break
+                    continue
             }
             metrics.append(metric)
         }
