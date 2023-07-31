@@ -7,12 +7,14 @@
 
 import Foundation
 import RudderKit
+import RSCrashReporter
 
 public class MetricsClient {
     private let database: DatabaseOperations
     private let configuration: Configuration
     private let metricsUploader: MetricsUploader
-    private var _statsCollection = StatsCollection()
+    private let crashReporter: CrashReporter
+    private var statsCollection = StatsCollection()
     
     public init(configuration: Configuration) {
         self.configuration = configuration
@@ -30,10 +32,12 @@ public class MetricsClient {
         }()
         metricsUploader = MetricsUploader(database: database, configuration: configuration, serviceManager: serviceManager)
         metricsUploader.startUploadingMetrics()
+        crashReporter = CrashReporter(database: database, statsCollection: statsCollection)
+        crashReporter.startCollectingCrash()
     }
     
     public func process(metric: Metric) {
-        if _statsCollection.isMetricsEnabled {
+        if statsCollection.isMetricsEnabled {
             database.saveMetric(metric)
         } else {
             Logger.logDebug("Metrics collection is disabled")
@@ -42,19 +46,24 @@ public class MetricsClient {
     
     public var isErrorsCollectionEnabled: Bool {
         set {
-            _statsCollection.isErrorsEnabled = newValue
+            statsCollection.isErrorsEnabled = newValue
         }
         get {
-            return _statsCollection.isErrorsEnabled
+            return statsCollection.isErrorsEnabled
         }
     }
     
     public var isMetricsCollectionEnabled: Bool {
         set {
-            _statsCollection.isMetricsEnabled = newValue
+            statsCollection.isMetricsEnabled = newValue
         }
         get {
-            return _statsCollection.isMetricsEnabled
+            return statsCollection.isMetricsEnabled
         }
+    }
+    
+    public func testCrash() {
+        let array = ["abc"]
+        print(array[5])
     }
 }

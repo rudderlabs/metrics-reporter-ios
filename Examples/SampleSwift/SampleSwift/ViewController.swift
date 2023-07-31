@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     }
 
     @IBAction func onButtonTap(_ button: UIButton) {
-        
+        (UIApplication.shared.delegate as? AppDelegate)?.client?.testCrash()
     }
 }
 

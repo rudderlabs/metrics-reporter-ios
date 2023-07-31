@@ -1,10 +1,13 @@
 PODS:
   - MetricsReporter (1.0.0):
+    - RSCrashReporter (~> 1.0.0)
     - RudderKit (~> 1.4.0)
+  - RSCrashReporter (1.0.0)
   - RudderKit (1.4.0)
 
 DEPENDENCIES:
   - MetricsReporter (from `.`)
+  - RSCrashReporter (from `/Users/pallabmaiti/Documents/Rudder/crash-reporter-ios`)
   - RudderKit (~> 1.4.0)
 
 SPEC REPOS:
@@ -14,11 +17,14 @@ SPEC REPOS:
 EXTERNAL SOURCES:
   MetricsReporter:
     :path: "."
+  RSCrashReporter:
+    :path: "/Users/pallabmaiti/Documents/Rudder/crash-reporter-ios"
 
 SPEC CHECKSUMS:
-  MetricsReporter: 35d1a8e62cd99e1434bc8fdd06bf2baf7cb23e42
+  MetricsReporter: a1b18d68ab6601f17011b42ddfd2dad728da062d
+  RSCrashReporter: a2f4e7fdd4a82497b58affe0491a5e215385996f
   RudderKit: d9d6997696e1642b753d8bdf94e57af643a68f03
 
-PODFILE CHECKSUM: d4e99a7fe32c608e51bc29b909349f9d5eacf066
+PODFILE CHECKSUM: 816c4d10ae3d5886bd217891195c92fff57e9f99
 
 COCOAPODS: 1.12.1
