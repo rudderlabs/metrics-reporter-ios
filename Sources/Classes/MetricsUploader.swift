@@ -26,7 +26,7 @@ class MetricsUploader {
     func startUploadingMetrics() {
         flushTimer = RepeatingTimer(interval: TimeInterval(configuration.flushInterval)) { [weak self] in
             guard let self = self else { return }
-            syncQueue.async {
+            self.syncQueue.async {
                 self.flushMetrics(from: START_FROM, to: self.configuration.maxMetricsInBatch)
             }
         }
