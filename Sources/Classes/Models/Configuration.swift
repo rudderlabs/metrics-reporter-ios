@@ -10,8 +10,8 @@ import RudderKit
 
 class Constants {
     static let SDKMETRICS_URL = "https://sdk-metrics.rudderstack.com"
-    static let MAX_METRICS_IN_A_BATCH: NSNumber = 20
-    static let FLUSH_INTERVAL: NSNumber = 5
+    static let MAX_METRICS_IN_A_BATCH: NSNumber = 10
+    static let FLUSH_INTERVAL: NSNumber = 30
 }
 
 public struct Configuration {

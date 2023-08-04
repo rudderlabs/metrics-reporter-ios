@@ -18,7 +18,7 @@ public class MetricsClient {
         self.configuration = configuration
         Logger.logLevel = configuration.logLevel
         database = Database(database: Database.openDatabase())
-        let serviceManger: ServiceType = {
+        let serviceManager: ServiceType = {
             let session: URLSession = {
                 let configuration = URLSessionConfiguration.default
                 configuration.timeoutIntervalForRequest = 30
@@ -28,7 +28,7 @@ public class MetricsClient {
             }()
             return ServiceManager(urlSession: session, configuration: configuration)
         }()
-        metricsUploader = MetricsUploader(database: database, configuration: configuration, serviceManager: serviceManger)
+        metricsUploader = MetricsUploader(database: database, configuration: configuration, serviceManager: serviceManager)
         metricsUploader.startUploadingMetrics()
     }
     

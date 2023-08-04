@@ -97,7 +97,8 @@ class MetricsUploader {
             "version": "1",
             "source": [
                 "name": "ios",
-                "sdk_version": configuration.sdkVersion
+                "sdk_version": configuration.sdkVersion,
+                "write_key": configuration.writeKey
             ]
         ]
         payload["metrics"] = metrics
