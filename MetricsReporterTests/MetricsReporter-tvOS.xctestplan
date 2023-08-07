@@ -1,0 +1,25 @@
+{
+  "configurations" : [
+    {
+      "id" : "77BDA177-DF1E-4F35-ADDC-99AC3DCD7B85",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : false
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:MetricsReporter.xcodeproj",
+        "identifier" : "ED92264C2A65336600734372",
+        "name" : "MetricsReporterTests-tvOS"
+      }
+    }
+  ],
+  "version" : 1
+}
