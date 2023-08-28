@@ -1,8 +1,8 @@
 PODS:
   - MetricsReporter (1.0.0):
-    - RSCrashReporter (~> 1.0.0)
+    - RSCrashReporter (= 1.0.0.beta.1)
     - RudderKit (~> 1.4.0)
-  - RSCrashReporter (1.0.0)
+  - RSCrashReporter (1.0.0.beta.1)
   - RudderKit (1.4.0)
 
 DEPENDENCIES:
@@ -20,8 +20,8 @@ EXTERNAL SOURCES:
     :path: "."
 
 SPEC CHECKSUMS:
-  MetricsReporter: a1b18d68ab6601f17011b42ddfd2dad728da062d
-  RSCrashReporter: a335b624eaa4e549645b334c8b895bb47a8a00e0
+  MetricsReporter: ae3ce20fb1243ccbdfa91c81a88d8c885603d3eb
+  RSCrashReporter: 89822b9f464ba400ecdb81b84c8f9b60ab0a1d16
   RudderKit: d9d6997696e1642b753d8bdf94e57af643a68f03
 
 PODFILE CHECKSUM: dad18b36d04fcf5738932c8cb26d81ee3aaba37c

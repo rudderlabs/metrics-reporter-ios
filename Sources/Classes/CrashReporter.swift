@@ -10,12 +10,31 @@ import RSCrashReporter
 
 class CrashReporter: RSCrashReporterNotifyDelegate {
     private let database: DatabaseOperations
-    private let statsCollection: StatsCollection
+    private var statsCollection: StatsCollection
     private let sdkList = ["MetricsReporter", "Rudder"]
     
     init(database: DatabaseOperations, statsCollection: StatsCollection) {
         self.database = database
         self.statsCollection = statsCollection
+    }
+    
+    var isErrorsCollectionEnabled: Bool {
+        set {
+            statsCollection.isErrorsEnabled = newValue
+        }
+        get {
+            return statsCollection.isErrorsEnabled
+        }
+    }
+    
+    /// Enable/Disable metric collection
+    var isMetricsCollectionEnabled: Bool {
+        set {
+            statsCollection.isMetricsEnabled = newValue
+        }
+        get {
+            return statsCollection.isMetricsEnabled
+        }
     }
     
     func startCollectingCrash() {
@@ -36,6 +55,7 @@ class CrashReporter: RSCrashReporterNotifyDelegate {
                 for stacktrace in error.stacktrace {
                     if let machoFile = stacktrace.machoFile {
                         if let url = URL(string: machoFile) {
+                            print(url.lastPathComponent)
                             if sdkList.contains(url.lastPathComponent) {
                                 isRudderCrash = true
                                 break
