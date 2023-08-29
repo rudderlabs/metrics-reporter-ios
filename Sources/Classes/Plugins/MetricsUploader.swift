@@ -44,7 +44,7 @@ class MetricsUploader: Plugin {
         flushTimer = RepeatingTimer(interval: TimeInterval(configuration.flushInterval)) { [weak self] in
             guard let self = self else { return }
             self.syncQueue.async {
-                self.flushMetrics(from: Constants.START_FROM, to: configuration.maxMetricsInBatch)
+                self.flushMetrics(from: Constants.Config.START_FROM, to: configuration.maxMetricsInBatch)
             }
         }
     }

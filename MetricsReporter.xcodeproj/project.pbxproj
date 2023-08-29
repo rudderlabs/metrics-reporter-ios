@@ -85,6 +85,10 @@
 		ED9B9EAF2A9DDA4000A8B1FD /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9B9EAD2A9DDA4000A8B1FD /* Utilities.swift */; };
 		ED9B9EB02A9DDA4000A8B1FD /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9B9EAD2A9DDA4000A8B1FD /* Utilities.swift */; };
 		ED9B9EB12A9DDA4000A8B1FD /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9B9EAD2A9DDA4000A8B1FD /* Utilities.swift */; };
+		ED9B9EB32A9DF1C000A8B1FD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9B9EB22A9DF1C000A8B1FD /* Constants.swift */; };
+		ED9B9EB42A9DF1C000A8B1FD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9B9EB22A9DF1C000A8B1FD /* Constants.swift */; };
+		ED9B9EB52A9DF1C000A8B1FD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9B9EB22A9DF1C000A8B1FD /* Constants.swift */; };
+		ED9B9EB62A9DF1C000A8B1FD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9B9EB22A9DF1C000A8B1FD /* Constants.swift */; };
 		EDA5B7692A6EDFC100948D18 /* StatsCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA5B7682A6EDFC100948D18 /* StatsCollection.swift */; };
 		EDA5B76A2A6EDFC100948D18 /* StatsCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA5B7682A6EDFC100948D18 /* StatsCollection.swift */; };
 		EDA5B76B2A6EDFC100948D18 /* StatsCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA5B7682A6EDFC100948D18 /* StatsCollection.swift */; };
@@ -252,6 +256,7 @@
 		ED9B9EA32A9D06BE00A8B1FD /* Startup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Startup.swift; sourceTree = "<group>"; };
 		ED9B9EA82A9DABC800A8B1FD /* Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controller.swift; sourceTree = "<group>"; };
 		ED9B9EAD2A9DDA4000A8B1FD /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		ED9B9EB22A9DF1C000A8B1FD /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		EDA5B7682A6EDFC100948D18 /* StatsCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsCollection.swift; sourceTree = "<group>"; };
 		EDA5B7742A72419500948D18 /* ErrorOperator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorOperator.swift; sourceTree = "<group>"; };
 		EDA5B77D2A72614A00948D18 /* ErrorOperatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorOperatorTests.swift; sourceTree = "<group>"; };
@@ -463,6 +468,7 @@
 		ED74EF642A5D8B9B0075C583 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				ED9B9EB22A9DF1C000A8B1FD /* Constants.swift */,
 				ED9B9EA82A9DABC800A8B1FD /* Controller.swift */,
 				ED74EF6F2A5D8B9B0075C583 /* MetricsClient.swift */,
 				ED9B9E9D2A9D01FE00A8B1FD /* Plugins.swift */,
@@ -1117,6 +1123,7 @@
 				ED1A22792A5DBA02007031FF /* API.swift in Sources */,
 				ED9B9EA42A9D06BE00A8B1FD /* Startup.swift in Sources */,
 				ED9B9EA92A9DABC800A8B1FD /* Controller.swift in Sources */,
+				ED9B9EB32A9DF1C000A8B1FD /* Constants.swift in Sources */,
 				ED1A227A2A5DBA02007031FF /* ServiceManager.swift in Sources */,
 				ED1A227B2A5DBA02007031FF /* ServiceType.swift in Sources */,
 				EDEDB61A2A659FF5005C670A /* ObjCMetric.swift in Sources */,
@@ -1143,6 +1150,7 @@
 				ED9226142A65313B00734372 /* API.swift in Sources */,
 				ED9B9EA62A9D06BE00A8B1FD /* Startup.swift in Sources */,
 				ED9B9EAB2A9DABC800A8B1FD /* Controller.swift in Sources */,
+				ED9B9EB52A9DF1C000A8B1FD /* Constants.swift in Sources */,
 				ED9226152A65313B00734372 /* ServiceManager.swift in Sources */,
 				ED9226162A65313B00734372 /* ServiceType.swift in Sources */,
 				EDEDB61C2A659FF5005C670A /* ObjCMetric.swift in Sources */,
@@ -1169,6 +1177,7 @@
 				ED92262B2A65316400734372 /* API.swift in Sources */,
 				ED9B9EA72A9D06BE00A8B1FD /* Startup.swift in Sources */,
 				ED9B9EAC2A9DABC800A8B1FD /* Controller.swift in Sources */,
+				ED9B9EB62A9DF1C000A8B1FD /* Constants.swift in Sources */,
 				ED92262C2A65316400734372 /* ServiceManager.swift in Sources */,
 				ED92262D2A65316400734372 /* ServiceType.swift in Sources */,
 				EDEDB61D2A659FF5005C670A /* ObjCMetric.swift in Sources */,
@@ -1195,6 +1204,7 @@
 				ED9226422A65317B00734372 /* API.swift in Sources */,
 				ED9B9EA52A9D06BE00A8B1FD /* Startup.swift in Sources */,
 				ED9B9EAA2A9DABC800A8B1FD /* Controller.swift in Sources */,
+				ED9B9EB42A9DF1C000A8B1FD /* Constants.swift in Sources */,
 				ED9226432A65317B00734372 /* ServiceManager.swift in Sources */,
 				ED9226442A65317B00734372 /* ServiceType.swift in Sources */,
 				EDEDB61B2A659FF5005C670A /* ObjCMetric.swift in Sources */,

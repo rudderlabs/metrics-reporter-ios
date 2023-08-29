@@ -49,13 +49,13 @@ class ErrorOperator: ErrorOperations {
                 if sqlite3_step(insertStatement) == SQLITE_ROW {
                     let rowId = Int(sqlite3_column_int(insertStatement, 0))
                     error = ErrorEntity(id: rowId, events: events)
-                    Logger.logDebug("Error inserted to table")
+                    Logger.logDebug(Constants.Messages.Insert.Error.success)
                 } else {
-                    Logger.logError("Error insertion error")
+                    Logger.logError(Constants.Messages.Insert.Error.failed)
                 }
             } else {
                 let errorMessage = String(cString: sqlite3_errmsg(self.database))
-                Logger.logError("Error INSERT statement is not prepared, Reason: \(errorMessage)")
+                Logger.logError("\(Constants.Messages.Statement.Insert.error), Reason: \(errorMessage)")
             }
             sqlite3_finalize(insertStatement)
             return error
@@ -79,7 +79,7 @@ class ErrorOperator: ErrorOperations {
                 }
             } else {
                 let errorMessage = String(cString: sqlite3_errmsg(self.database))
-                Logger.logError("Error SELECT statement is not prepared, Reason: \(errorMessage)")
+                Logger.logError("\(Constants.Messages.Statement.Select.error), Reason: \(errorMessage)")
             }
             sqlite3_finalize(queryStatement)
             return (errorList?.isEmpty ?? true) ? nil : errorList
@@ -94,13 +94,13 @@ class ErrorOperator: ErrorOperations {
             if sqlite3_prepare_v2(self.database, deleteStatementString, -1, &deleteStatement, nil) == SQLITE_OK {
                 Logger.logDebug("deleteEventSQL: \(deleteStatementString)")
                 if sqlite3_step(deleteStatement) == SQLITE_DONE {
-                    Logger.logDebug("Labels deleted from DB")
+                    Logger.logDebug(Constants.Messages.Delete.Error.success)
                 } else {
-                    Logger.logError("Label deletion error")
+                    Logger.logError(Constants.Messages.Delete.Error.failed)
                 }
             } else {
                 let errorMessage = String(cString: sqlite3_errmsg(self.database))
-                Logger.logError("Label DELETE statement is not prepared, Reason: \(errorMessage)")
+                Logger.logError("\(Constants.Messages.Statement.Delete.error), Reason: \(errorMessage)")
             }
             sqlite3_finalize(deleteStatement)
         }
@@ -114,13 +114,13 @@ class ErrorOperator: ErrorOperations {
             if sqlite3_prepare_v2(self.database, deleteStatementString, -1, &deleteStatement, nil) == SQLITE_OK {
                 Logger.logDebug("deleteEventSQL: \(deleteStatementString)")
                 if sqlite3_step(deleteStatement) == SQLITE_DONE {
-                    Logger.logDebug("Labels deleted from DB")
+                    Logger.logDebug(Constants.Messages.Delete.Error.success)
                 } else {
-                    Logger.logError("Label deletion error")
+                    Logger.logError(Constants.Messages.Delete.Error.failed)
                 }
             } else {
                 let errorMessage = String(cString: sqlite3_errmsg(self.database))
-                Logger.logError("Label DELETE statement is not prepared, Reason: \(errorMessage)")
+                Logger.logError("\(Constants.Messages.Statement.Delete.error), Reason: \(errorMessage)")
             }
             sqlite3_finalize(deleteStatement)
         }
@@ -134,13 +134,13 @@ class ErrorOperator: ErrorOperations {
             if sqlite3_prepare_v2(self.database, deleteStatementString, -1, &deleteStatement, nil) == SQLITE_OK {
                 Logger.logDebug("deleteEventSQL: \(deleteStatementString)")
                 if sqlite3_step(deleteStatement) == SQLITE_DONE {
-                    Logger.logDebug("Labels deleted from DB")
+                    Logger.logDebug(Constants.Messages.Reset.success)
                 } else {
-                    Logger.logError("Label deletion error")
+                    Logger.logError(Constants.Messages.Reset.failed)
                 }
             } else {
                 let errorMessage = String(cString: sqlite3_errmsg(self.database))
-                Logger.logError("Label DELETE statement is not prepared, Reason: \(errorMessage)")
+                Logger.logError("\(Constants.Messages.Reset.statementError), Reason: \(errorMessage)")
             }
             sqlite3_finalize(deleteStatement)
         }

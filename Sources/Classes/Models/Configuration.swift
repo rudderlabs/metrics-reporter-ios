@@ -8,14 +8,6 @@
 import Foundation
 import RudderKit
 
-class Constants {
-    static let SDKMETRICS_URL = "https://sdk-metrics.rudderstack.com"
-    static let MAX_METRICS_IN_A_BATCH: NSNumber = 10
-    static let MAX_ERRORS_IN_A_BATCH: NSNumber = 5
-    static let FLUSH_INTERVAL: NSNumber = 30
-    static let START_FROM = 1
-}
-
 public struct Configuration {
     let logLevel: LogLevel
     let writeKey: String
@@ -29,9 +21,9 @@ public struct Configuration {
         self.logLevel = logLevel
         self.writeKey = writeKey
         self.sdkVersion = sdkVersion
-        self.sdkMetricsUrl = sdkMetricsUrl ?? Constants.SDKMETRICS_URL
-        self.maxErrorsInBatch = (maxErrorsInBatch ?? Constants.MAX_ERRORS_IN_A_BATCH).intValue
-        self.maxMetricsInBatch = (maxMetricsInBatch ?? Constants.MAX_METRICS_IN_A_BATCH).intValue
-        self.flushInterval = (flushInterval ?? Constants.FLUSH_INTERVAL).intValue
+        self.sdkMetricsUrl = sdkMetricsUrl ?? Constants.Config.SDKMETRICS_URL
+        self.maxErrorsInBatch = (maxErrorsInBatch ?? Constants.Config.MAX_ERRORS_IN_A_BATCH).intValue
+        self.maxMetricsInBatch = (maxMetricsInBatch ?? Constants.Config.MAX_METRICS_IN_A_BATCH).intValue
+        self.flushInterval = (flushInterval ?? Constants.Config.FLUSH_INTERVAL).intValue
     }
 }
