@@ -46,11 +46,9 @@ class CrashReporter: Plugin, RSCrashReporterNotifyDelegate {
         if let event = event {
             for error in event.errors {
                 for stacktrace in error.stacktrace {
-                    if let machoFile = stacktrace.machoFile {
-                        if let url = URL(string: machoFile), sdkList.contains(url.lastPathComponent) {
-                            isRudderCrash = true
-                            break
-                        }
+                    if let machoFile = stacktrace.machoFile, let url = URL(string: machoFile), sdkList.contains(url.lastPathComponent) {
+                        isRudderCrash = true
+                        break
                     }
                 }
             }
