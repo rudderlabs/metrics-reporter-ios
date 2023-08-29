@@ -8,31 +8,55 @@
 import Foundation
 import RudderKit
 
-let START_FROM = 1
 
-class MetricsUploader {
-    private let database: DatabaseOperations
-    private let configuration: Configuration
+class MetricsUploader: Plugin {
+    weak var metricsClient: MetricsClient? {
+        didSet {
+            initialSetup()
+            startUploadingMetrics()
+        }
+    }
+    
+    var database: DatabaseOperations?
+    var configuration: Configuration?
     private var flushTimer: RepeatingTimer?
-    private let serviceManager: ServiceType
+    var serviceManager: ServiceType?
     private let syncQueue = DispatchQueue(label: "uploadQueue.rudder.com")
     
-    init(database: DatabaseOperations, configuration: Configuration, serviceManager: ServiceType) {
-        self.database = database
-        self.configuration = configuration
-        self.serviceManager = serviceManager
+    func initialSetup() {
+        guard let metricsClient = self.metricsClient else { return }
+        database = metricsClient.database
+        configuration = metricsClient.configuration
+        serviceManager = {
+            let session: URLSession = {
+                let configuration = URLSessionConfiguration.default
+                configuration.timeoutIntervalForRequest = 30
+                configuration.timeoutIntervalForResource = 30
+                configuration.requestCachePolicy = .useProtocolCachePolicy
+                return URLSession(configuration: configuration)
+            }()
+            return ServiceManager(urlSession: session, configuration: metricsClient.configuration)
+        }()
     }
     
     func startUploadingMetrics() {
+        guard let configuration = self.configuration else { return }
         flushTimer = RepeatingTimer(interval: TimeInterval(configuration.flushInterval)) { [weak self] in
             guard let self = self else { return }
             self.syncQueue.async {
-                self.flushMetrics(from: START_FROM, to: self.configuration.maxMetricsInBatch)
+                self.flushMetrics(from: Constants.START_FROM, to: configuration.maxMetricsInBatch)
             }
         }
     }
     
+    func execute<M: Metric>(metric: M?) -> M? {
+        guard let database = self.database, let metric = metric else { return metric }
+        database.saveMetric(metric)
+        return metric
+    }
+    
     func flushMetrics(from: Int, to: Int) {
+        guard let database = self.database, let configuration = self.configuration else { return }
         let metricList = database.fetchMetrics(from: from, to: to)
         let errorList = database.fetchErrors(count: configuration.maxErrorsInBatch)
         if metricList.isEmpty && (errorList?.isEmpty ?? true) {
@@ -68,7 +92,7 @@ class MetricsUploader {
     func flushMetricsToServer(params: String) -> NSError? {
         var error: NSError?
         let semaphore = DispatchSemaphore(value: 0)
-        serviceManager.sdkMetrics(params: params, { result in
+        serviceManager?.sdkMetrics(params: params, { result in
             switch result {
                 case .success(_):
                     break
@@ -84,23 +108,24 @@ class MetricsUploader {
     func updateMetricList(_ metricList: MetricList) {
         if let countList = metricList.countList {
             for count in countList {
-                database.updateMetric(count)
+                database?.updateMetric(count)
             }
         }
         if let gaugeList = metricList.gaugeList {
             for gauge in gaugeList {
-                database.updateMetric(gauge)
+                database?.updateMetric(gauge)
             }
         }
     }
     
     func clearErrorList(_ errorList: [ErrorEntity]?) {
         if let errorList = errorList {
-            database.clearErrorList(errorList)
+            database?.clearErrorList(errorList)
         }
     }
     
     func getJSONString(from metricList: MetricList, and errorList: [ErrorEntity]?) -> String? {
+        guard let configuration = self.configuration else { return nil }
         let metrics = metricList.toDict()
         if metrics == nil && errorList == nil {
             return nil

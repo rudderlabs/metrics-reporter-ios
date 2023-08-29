@@ -8,41 +8,34 @@
 import Foundation
 import RSCrashReporter
 
-class CrashReporter: RSCrashReporterNotifyDelegate {
-    private let database: DatabaseOperations
-    private var statsCollection: StatsCollection
+class CrashReporter: Plugin, RSCrashReporterNotifyDelegate {
+    
+    weak var metricsClient: MetricsClient? {
+        didSet {
+            initialSetup()
+            startCollectingCrash()
+        }
+    }
+    
+    private var database: DatabaseOperations?
     private let sdkList = ["MetricsReporter", "Rudder"]
     
-    init(database: DatabaseOperations, statsCollection: StatsCollection) {
-        self.database = database
-        self.statsCollection = statsCollection
-    }
-    
-    var isErrorsCollectionEnabled: Bool {
-        set {
-            statsCollection.isErrorsEnabled = newValue
-        }
-        get {
-            return statsCollection.isErrorsEnabled
-        }
-    }
-    
-    /// Enable/Disable metric collection
-    var isMetricsCollectionEnabled: Bool {
-        set {
-            statsCollection.isMetricsEnabled = newValue
-        }
-        get {
-            return statsCollection.isMetricsEnabled
-        }
+    func initialSetup() {
+        guard let metricsClient = self.metricsClient else { return }
+        database = metricsClient.database
     }
     
     func startCollectingCrash() {
         RSCrashReporter.start(with: self)
     }
     
+    func execute<M: Metric>(metric: M?) -> M? {
+        return metric
+    }
+    
     func notifyCrash(_ event: BugsnagEvent?, withRequestPayload requestPayload: [AnyHashable: Any]?) {
-        if let requestPayload = requestPayload, (checkIfRudderCrash(event: event) && statsCollection.isErrorsEnabled),
+        guard let metricsClient = self.metricsClient, let database = self.database else { return }
+        if let requestPayload = requestPayload, (checkIfRudderCrash(event: event) && metricsClient.statsCollection.isErrorsEnabled),
            let eventList = requestPayload["events"] as? [[String: Any]], let events = eventList.toJSONString() {
             database.saveError(events: events)
         }

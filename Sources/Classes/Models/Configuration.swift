@@ -13,6 +13,7 @@ class Constants {
     static let MAX_METRICS_IN_A_BATCH: NSNumber = 10
     static let MAX_ERRORS_IN_A_BATCH: NSNumber = 5
     static let FLUSH_INTERVAL: NSNumber = 30
+    static let START_FROM = 1
 }
 
 public struct Configuration {

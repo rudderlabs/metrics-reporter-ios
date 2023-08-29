@@ -10,11 +10,10 @@ import RudderKit
 import RSCrashReporter
 
 public class MetricsClient {
-    private let database: DatabaseOperations
-    private let configuration: Configuration
-    private let metricsUploader: MetricsUploader
-    private let crashReporter: CrashReporter
-    private var statsCollection = StatsCollection()
+    internal let database: DatabaseOperations
+    internal let configuration: Configuration
+    internal var statsCollection = StatsCollection()
+    internal var controller = Controller()
     
     /// Initialize Metrics Client
     /// - Parameter configuration: Instance of Configuration struct to configure Metrics Client
@@ -22,27 +21,14 @@ public class MetricsClient {
         self.configuration = configuration
         Logger.logLevel = configuration.logLevel
         database = Database(database: Database.openDatabase())
-        let serviceManager: ServiceType = {
-            let session: URLSession = {
-                let configuration = URLSessionConfiguration.default
-                configuration.timeoutIntervalForRequest = 30
-                configuration.timeoutIntervalForResource = 30
-                configuration.requestCachePolicy = .useProtocolCachePolicy
-                return URLSession(configuration: configuration)
-            }()
-            return ServiceManager(urlSession: session, configuration: configuration)
-        }()
-        metricsUploader = MetricsUploader(database: database, configuration: configuration, serviceManager: serviceManager)
-        metricsUploader.startUploadingMetrics()
-        crashReporter = CrashReporter(database: database, statsCollection: statsCollection)
-        crashReporter.startCollectingCrash()
+        platformStartup()
     }
     
     /// Send metrics to server
     /// - Parameter metric: Instance of Count/Gauge which will be processed
     public func process(metric: Metric) {
         if statsCollection.isMetricsEnabled {
-            database.saveMetric(metric)
+            controller.process(metric)
         } else {
             Logger.logDebug("Metrics collection is disabled")
         }
@@ -52,7 +38,6 @@ public class MetricsClient {
     public var isErrorsCollectionEnabled: Bool {
         set {
             statsCollection.isErrorsEnabled = newValue
-            crashReporter.isErrorsCollectionEnabled = newValue
         }
         get {
             return statsCollection.isErrorsEnabled
@@ -63,7 +48,6 @@ public class MetricsClient {
     public var isMetricsCollectionEnabled: Bool {
         set {
             statsCollection.isMetricsEnabled = newValue
-            crashReporter.isMetricsCollectionEnabled = newValue
         }
         get {
             return statsCollection.isMetricsEnabled

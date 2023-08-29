@@ -15,9 +15,7 @@ final class CrashReporterTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        let database = openDatabase()
-        let databaseOperator = Database(database: database)
-        crashReporter = CrashReporter(database: databaseOperator)
+        crashReporter = CrashReporter()
     }
 
     func test_checkIfRudderCrash() {

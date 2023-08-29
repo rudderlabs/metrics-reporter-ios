@@ -13,7 +13,6 @@ final class MetricsUploaderTests: XCTestCase {
     
     var metricsUploader: MetricsUploader!
     var database: DatabaseOperations!
-    var serviceManager: ServiceType!
     let apiURL = URL(string: "https://some.rudderstack.com.url")!
 
     override func setUp() {
@@ -23,14 +22,17 @@ final class MetricsUploaderTests: XCTestCase {
             let db = openDatabase()
             return Database(database: db)
         }()
-        serviceManager = {
+        let serviceManager = {
             let configuration = URLSessionConfiguration.default
             configuration.protocolClasses = [MockURLProtocol.self]
             let urlSession = URLSession(configuration: configuration)
             return ServiceManager(urlSession: urlSession, configuration: metricConfiguration)
         }()
-        metricsUploader = MetricsUploader(database: database, configuration: metricConfiguration, serviceManager: serviceManager)
-        metricsUploader.startUploadingMetrics()
+        metricsUploader = MetricsUploader()
+        metricsUploader.serviceManager = serviceManager
+        metricsUploader.database = database
+        metricsUploader.configuration = metricConfiguration
+//        metricsUploader.startUploadingMetrics()
         clearAll()
     }
     
