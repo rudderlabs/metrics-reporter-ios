@@ -13,7 +13,6 @@
   },
   "testTargets" : [
     {
-      "parallelizable" : true,
       "target" : {
         "containerPath" : "container:MetricsReporter.xcodeproj",
         "identifier" : "EDEDB6212A66523E005C670A",

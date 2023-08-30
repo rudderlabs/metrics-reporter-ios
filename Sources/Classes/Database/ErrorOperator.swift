@@ -145,4 +145,24 @@ class ErrorOperator: ErrorOperations {
             sqlite3_finalize(deleteStatement)
         }
     }
+    
+    func getCount() -> Int {
+        syncQueue.sync { [weak self] in
+            guard let self = self else { return 0 }
+            var queryStatement: OpaquePointer?
+            var count = 0
+            let queryStatementString = "SELECT count(*) FROM error;"
+            Logger.logDebug("countSQL: \(queryStatementString)")
+            if sqlite3_prepare_v2(self.database, queryStatementString, -1, &queryStatement, nil) == SQLITE_OK {
+                if sqlite3_step(queryStatement) == SQLITE_ROW {
+                    count = Int(sqlite3_column_int(queryStatement, 0))
+                }
+            } else {
+                let errorMessage = String(cString: sqlite3_errmsg(self.database))
+                Logger.logError("\(Constants.Messages.Statement.Select.error), Reason: \(errorMessage)")
+            }
+            sqlite3_finalize(queryStatement)
+            return count
+        }
+    }
 }

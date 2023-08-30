@@ -13,10 +13,9 @@
   },
   "testTargets" : [
     {
-      "parallelizable" : true,
       "target" : {
         "containerPath" : "container:MetricsReporter.xcodeproj",
-        "identifier" : "ED9226622A65337300734372",
+        "identifier" : "EDEDB5C72A6578B0005C670A",
         "name" : "MetricsReporterTests-watchOS"
       }
     }

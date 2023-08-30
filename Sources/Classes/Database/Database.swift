@@ -58,6 +58,7 @@ protocol ErrorOperations: TableOperations {
     func fetchErrors(count: Int) -> [ErrorEntity]?
     func clearError(where ids: String)
     func resetTable()
+    func getCount() -> Int
 }
 
 protocol DatabaseOperations {
@@ -70,6 +71,7 @@ protocol DatabaseOperations {
     func clearAllMetrics()
     func clearAllErrors()
     func resetErrorTable()
+    func getErrorsCount() -> Int
 }
 
 class Database: DatabaseOperations {
@@ -204,6 +206,10 @@ class Database: DatabaseOperations {
     
     func clearAllErrors() {
         errorOperator.clearAll()
+    }
+    
+    func getErrorsCount() -> Int {
+        return errorOperator.getCount()
     }
 }
 

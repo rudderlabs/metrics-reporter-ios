@@ -17,7 +17,7 @@ final class MetricsUploaderTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        let metricConfiguration = Configuration(logLevel: .none, writeKey: "WRITE_KEY", sdkVersion: "some.version", maxErrorsInBatch: 1, maxMetricsInBatch: 1, flushInterval: 60)
+        let metricConfiguration = Configuration(logLevel: .none, writeKey: "WRITE_KEY", sdkVersion: "some.version", maxErrorsInBatch: 1, maxMetricsInBatch: 1, flushInterval: 1)
         database = {
             let db = openDatabase()
             return Database(database: db)
@@ -32,7 +32,6 @@ final class MetricsUploaderTests: XCTestCase {
         metricsUploader.serviceManager = serviceManager
         metricsUploader.database = database
         metricsUploader.configuration = metricConfiguration
-//        metricsUploader.startUploadingMetrics()
         clearAll()
     }
     
@@ -109,62 +108,38 @@ final class MetricsUploaderTests: XCTestCase {
     }
     
     #if !os(watchOS)
-    func test_flushMetricsToServer() {
-        let data = """
-        {
-        
-        }
-        """.data(using: .utf8)
-        MockURLProtocol.requestHandler = { request in
-            let response = HTTPURLResponse(url: self.apiURL, statusCode: 201, httpVersion: nil, headerFields: nil)!
-            return (response, data)
-        }
-        
-        var countList = [Count]()
-        var gaugeList = [Gauge]()
-        
-        let count = Count(name: "test_count", labels: ["key_1": "value_1", "key_2": "value_2"], value: 2)
-        countList.append(count)
-        
-        let gauge = Gauge(name: "test_gauge", labels: ["key_1": "value_3", "key_3": "value_3"], value: 11.3)
-        gaugeList.append(gauge)
-        
-        let metricList = MetricList(countList: countList, gaugeList: gaugeList)
-        
-        let params = metricsUploader.getJSONString(from: metricList, and: nil)
-        XCTAssertNotNil(params)
-        
-        let error = metricsUploader.flushMetricsToServer(params: params!)
-        XCTAssertNil(error)
-    }
-    
-    /*func test_flushMetrics() {
-        let promise = expectation(description: "Expectation")
+    func test_flush() {
+        metricsUploader.startUploading()
         let data = """
         {
         
         }
         """.data(using: .utf8)
         var count = 0
+        var ready = false
         MockURLProtocol.requestHandler = { request in
             let response = HTTPURLResponse(url: self.apiURL, statusCode: 201, httpVersion: nil, headerFields: nil)!
             count += 1
+            if count == 30 {
+                ready = false
+                self.clearAll()
+            }
             return (response, data)
         }
         
-        for i in 1..<31 {
+        for i in 1...30 {
             let countMetric = Count(name: "test_count_\(i)", labels: ["key_\(i)": "value_\(i)"], value: i + 1)
             database.saveMetric(countMetric)
             let events = createErrorEvent(index: i)
             database.saveError(events: events)
         }
         
-        if count == 30 {
-            promise.fulfill()
-            clearAll()
+        ready = true
+        
+        while (ready) {
+            RunLoop.main.run(until: Date.distantPast)
         }
-        wait(for: [promise], timeout: 31.0)
-    }*/
+    }
     #endif
     
     override func tearDown() {

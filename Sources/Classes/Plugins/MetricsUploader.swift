@@ -13,7 +13,7 @@ class MetricsUploader: Plugin {
     weak var metricsClient: MetricsClient? {
         didSet {
             initialSetup()
-            startUploadingMetrics()
+            startUploading()
         }
     }
     
@@ -39,12 +39,24 @@ class MetricsUploader: Plugin {
         }()
     }
     
-    func startUploadingMetrics() {
-        guard let configuration = self.configuration else { return }
-        flushTimer = RepeatingTimer(interval: TimeInterval(configuration.flushInterval)) { [weak self] in
+    func startUploading() {
+        guard let database = self.database, let configuration = self.configuration else { return }
+        var sleepCount = 0
+        let df = DateFormatter()
+        df.dateFormat = "HH:mm:ss.SSS"
+        flushTimer = RepeatingTimer(interval: TimeInterval(1)) { [weak self] in
             guard let self = self else { return }
             self.syncQueue.async {
-                self.flushMetrics(from: Constants.Config.START_FROM, to: configuration.maxMetricsInBatch)
+                let errorCount = database.getErrorsCount()
+                if (errorCount >= configuration.dbCountThreshold) || (sleepCount >= configuration.flushInterval) {
+                    self.flushTimer?.suspend()
+                    self.flush(from: Constants.Config.START_FROM, to: configuration.maxMetricsInBatch) {
+                        sleepCount = 0
+                        self.flushTimer?.resume()
+                    }
+                } else {
+                    sleepCount += 1
+                }
             }
         }
     }
@@ -55,12 +67,13 @@ class MetricsUploader: Plugin {
         return metric
     }
     
-    func flushMetrics(from: Int, to: Int) {
+    func flush(from: Int, to: Int, _ completion: @escaping () -> Void) {
         guard let database = self.database, let configuration = self.configuration else { return }
         let metricList = database.fetchMetrics(from: from, to: to)
         let errorList = database.fetchErrors(count: configuration.maxErrorsInBatch)
         if metricList.isEmpty && (errorList?.isEmpty ?? true) {
             Logger.logDebug("No metrics or errors found in db")
+            completion()
             return
         }
         var isDataAvailable = false
@@ -71,38 +84,30 @@ class MetricsUploader: Plugin {
             isDataAvailable = true
         }
         if let params = getJSONString(from: metricList, and: errorList) {
-            if let error = flushMetricsToServer(params: params) {
-                Logger.logError("Got error code: \(error.code), Aborting.")
-            } else {
-                Logger.logDebug("Metrics uploaded successfully")
-                updateMetricList(metricList)
-                clearErrorList(errorList)
-                if isDataAvailable {
-                    flushMetrics(from: to + 1, to: to + configuration.maxMetricsInBatch)
+            serviceManager?.sdkMetrics(params: params, { result in
+                switch result {
+                    case .success(_):
+                        Logger.logDebug("Metrics uploaded successfully")
+                        self.updateMetricList(metricList)
+                        self.clearErrorList(errorList)
+                        if isDataAvailable {
+                            self.flush(from: to + 1, to: to + configuration.maxMetricsInBatch, completion)
+                        } else {
+                            completion()
+                        }
+                    case .failure(let error):
+                        Logger.logError("Got error code: \(error.code), Aborting.")
+                        completion()
                 }
-            }
+            })
         } else {
             Logger.logDebug("No metrics or errors found in db for flushing")
             if isDataAvailable {
-                flushMetrics(from: to + 1, to: to + configuration.maxMetricsInBatch)
+                flush(from: to + 1, to: to + configuration.maxMetricsInBatch, completion)
+            } else {
+                completion()
             }
         }
-    }
-    
-    func flushMetricsToServer(params: String) -> NSError? {
-        var error: NSError?
-        let semaphore = DispatchSemaphore(value: 0)
-        serviceManager?.sdkMetrics(params: params, { result in
-            switch result {
-                case .success(_):
-                    break
-                case .failure(let err):
-                    error = err
-            }
-            semaphore.signal()
-        })
-        semaphore.wait()
-        return error
     }
     
     func updateMetricList(_ metricList: MetricList) {

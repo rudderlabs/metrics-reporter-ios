@@ -13,10 +13,9 @@
   },
   "testTargets" : [
     {
-      "parallelizable" : true,
       "target" : {
         "containerPath" : "container:MetricsReporter.xcodeproj",
-        "identifier" : "ED92264C2A65336600734372",
+        "identifier" : "EDEDB5DD2A6579CE005C670A",
         "name" : "MetricsReporterTests-tvOS"
       }
     }

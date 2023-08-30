@@ -39,6 +39,16 @@ final class ErrorOperatorTests: XCTestCase {
         XCTAssertEqual(errorEntityList!.count, 30)
     }
     
+    func test_clearError() {
+        let errorEntity = errorOperator.saveError(events: createErrorEvent(index: 0))
+        
+        XCTAssertNotNil(errorEntity)
+        errorOperator.clearError(where: "\(errorEntity!.id)")
+        
+        let errorEntityList = errorOperator.fetchErrors(count: 30)
+        XCTAssertNil(errorEntityList)
+    }
+    
     func test_toDict() {
         let errorEntity = ErrorEntity(id: 1, events: createErrorEvent(index: 0))
         let metricConfiguration = Configuration(logLevel: .none, writeKey: "WRITE_KEY", sdkVersion: "some.version")
