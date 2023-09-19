@@ -8,26 +8,24 @@
 import Foundation
 import RudderKit
 
-class Constants {
-    static let SDKMETRICS_URL = "https://sdk-metrics.rudderstack.com"
-    static let MAX_METRICS_IN_A_BATCH: NSNumber = 10
-    static let FLUSH_INTERVAL: NSNumber = 30
-}
-
 public struct Configuration {
     let logLevel: LogLevel
     let writeKey: String
     let sdkVersion: String
-    let sdkMetricsUrl: String
-    let maxMetricsInBatch: Int
-    let flushInterval: Int
+    var sdkMetricsUrl: String
+    var maxErrorsInBatch: Int
+    var maxMetricsInBatch: Int
+    var flushInterval: Int
+    var dbCountThreshold: Int
     
-    public init(logLevel: LogLevel, writeKey: String, sdkVersion: String, sdkMetricsUrl: String? = nil, maxMetricsInBatch: NSNumber? = nil, flushInterval: NSNumber? = nil) {
+    public init(logLevel: LogLevel, writeKey: String, sdkVersion: String, sdkMetricsUrl: String? = nil, maxErrorsInBatch: Int? = nil, maxMetricsInBatch: Int? = nil, flushInterval: Int? = nil, dbCountThreshold: Int? = nil) {
         self.logLevel = logLevel
         self.writeKey = writeKey
         self.sdkVersion = sdkVersion
-        self.sdkMetricsUrl = sdkMetricsUrl ?? Constants.SDKMETRICS_URL
-        self.maxMetricsInBatch = (maxMetricsInBatch ?? Constants.MAX_METRICS_IN_A_BATCH).intValue
-        self.flushInterval = (flushInterval ?? Constants.FLUSH_INTERVAL).intValue
+        self.sdkMetricsUrl = sdkMetricsUrl ?? Constants.Config.SDKMETRICS_URL
+        self.maxErrorsInBatch = maxErrorsInBatch ?? Constants.Config.MAX_ERRORS_IN_A_BATCH
+        self.maxMetricsInBatch = maxMetricsInBatch ?? Constants.Config.MAX_METRICS_IN_A_BATCH
+        self.flushInterval = flushInterval ?? Constants.Config.FLUSH_INTERVAL
+        self.dbCountThreshold = dbCountThreshold ?? Constants.Config.DB_COUNT_THRESHOLD
     }
 }

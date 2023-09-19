@@ -16,7 +16,7 @@
       "parallelizable" : true,
       "target" : {
         "containerPath" : "container:MetricsReporter.xcodeproj",
-        "identifier" : "ED9226782A65338900734372",
+        "identifier" : "EDEDB5EB2A6579F6005C670A",
         "name" : "MetricsReporterTests-macOS"
       }
     }

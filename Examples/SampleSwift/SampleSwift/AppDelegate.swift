@@ -19,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let configuration = Configuration(logLevel: .debug, writeKey: "WRITE_KEY", sdkVersion: "1.3.3", maxMetricsInBatch: 1, flushInterval: 1)
         client = MetricsClient(configuration: configuration)
         client?.isMetricsCollectionEnabled = true
+        client?.isErrorsCollectionEnabled = true
         
         for i in 1..<61 {
             let countMetric = Count(name: "test_count_\(i)", labels: ["key_\(i)": "value_\(i)"], value: i + 1)

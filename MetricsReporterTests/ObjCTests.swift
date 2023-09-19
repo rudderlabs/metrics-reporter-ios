@@ -17,14 +17,21 @@ final class ObjCTests: XCTestCase {
         XCTAssertEqual(configuration.configuration.writeKey, "WRITE_KEY")
         XCTAssertEqual(configuration.configuration.sdkVersion, "some.version")
         
-        let configuration2 = ObjCConfiguration(logLevel: 1, writeKey: "WRITE_KEY_2", sdkVersion: "some.version.2", sdkMetricsUrl: "some.url.com", maxMetricsInBatch: 13, flushInterval: 7)
+        let configuration2 = ObjCConfiguration(logLevel: 1, writeKey: "WRITE_KEY_2", sdkVersion: "some.version.2")
+            .sdkMetricsUrl("some.url.com")
+            .maxErrorsInBatch(11)
+            .maxMetricsInBatch(13)
+            .flushInterval(7)
+            .dbCountThreshold(35)
         
         XCTAssertEqual(configuration2.configuration.logLevel, .error)
         XCTAssertEqual(configuration2.configuration.writeKey, "WRITE_KEY_2")
         XCTAssertEqual(configuration2.configuration.sdkVersion, "some.version.2")
         XCTAssertEqual(configuration2.configuration.sdkMetricsUrl, "some.url.com")
         XCTAssertEqual(configuration2.configuration.maxMetricsInBatch, 13)
+        XCTAssertEqual(configuration2.configuration.maxErrorsInBatch, 11)
         XCTAssertEqual(configuration2.configuration.flushInterval, 7)
+        XCTAssertEqual(configuration2.configuration.dbCountThreshold, 35)
     }
 
     func test_ObjCCount() {

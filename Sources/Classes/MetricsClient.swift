@@ -7,54 +7,56 @@
 
 import Foundation
 import RudderKit
+import RSCrashReporter
 
 public class MetricsClient {
-    private let database: DatabaseOperations
-    private let configuration: Configuration
-    private let metricsUploader: MetricsUploader
-    private var _statsCollection = StatsCollection()
+    internal let database: DatabaseOperations
+    internal let configuration: Configuration
+    internal var statsCollection = StatsCollection()
+    internal var controller = Controller()
     
+    /// Initialize Metrics Client
+    /// - Parameter configuration: Instance of Configuration struct to configure Metrics Client
     public init(configuration: Configuration) {
         self.configuration = configuration
         Logger.logLevel = configuration.logLevel
         database = Database(database: Database.openDatabase())
-        let serviceManager: ServiceType = {
-            let session: URLSession = {
-                let configuration = URLSessionConfiguration.default
-                configuration.timeoutIntervalForRequest = 30
-                configuration.timeoutIntervalForResource = 30
-                configuration.requestCachePolicy = .useProtocolCachePolicy
-                return URLSession(configuration: configuration)
-            }()
-            return ServiceManager(urlSession: session, configuration: configuration)
-        }()
-        metricsUploader = MetricsUploader(database: database, configuration: configuration, serviceManager: serviceManager)
-        metricsUploader.startUploadingMetrics()
+        platformStartup()
     }
     
+    /// Send metrics to server
+    /// - Parameter metric: Instance of Count/Gauge which will be processed
     public func process(metric: Metric) {
-        if _statsCollection.isMetricsEnabled {
-            database.saveMetric(metric)
+        if statsCollection.isMetricsEnabled {
+            controller.process(metric)
         } else {
             Logger.logDebug("Metrics collection is disabled")
         }
     }
     
+    /// Enable/Disable error/crash collection
     public var isErrorsCollectionEnabled: Bool {
         set {
-            _statsCollection.isErrorsEnabled = newValue
+            statsCollection.isErrorsEnabled = newValue
         }
         get {
-            return _statsCollection.isErrorsEnabled
+            return statsCollection.isErrorsEnabled
         }
     }
     
+    /// Enable/Disable metric collection
     public var isMetricsCollectionEnabled: Bool {
         set {
-            _statsCollection.isMetricsEnabled = newValue
+            statsCollection.isMetricsEnabled = newValue
         }
         get {
-            return _statsCollection.isMetricsEnabled
+            return statsCollection.isMetricsEnabled
         }
+    }
+    
+    /// For internal testing purpose only. Don't use this API.
+    public func testCrash() {
+        let array = ["abc"]
+        print(array[5])
     }
 }

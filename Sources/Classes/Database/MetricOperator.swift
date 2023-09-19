@@ -55,14 +55,14 @@ class MetricOperator: MetricOperations {
                 if sqlite3_step(insertStatement) == SQLITE_ROW {
                     let rowId = Int(sqlite3_column_int(insertStatement, 0))
                     metric = MetricEntity(id: rowId, name: name, value: value, type: type, labels: labels)
-                    Logger.logDebug("Metric inserted to table")
+                    Logger.logDebug(Constants.Messages.Insert.Metric.success)
                 } else {
-                    Logger.logError("Metric insertion error")
+                    Logger.logError(Constants.Messages.Insert.Metric.failed)
                 }
                 
             } else {
                 let errorMessage = String(cString: sqlite3_errmsg(self.database))
-                Logger.logError("Metric INSERT statement is not prepared, Reason: \(errorMessage)")
+                Logger.logError("\(Constants.Messages.Statement.Insert.metric), Reason: \(errorMessage)")
             }
             sqlite3_finalize(insertStatement)
             return metric
@@ -84,13 +84,13 @@ class MetricOperator: MetricOperations {
                     let type = String(cString: sqlite3_column_text(queryStatement, 3))
                     let labels = String(cString: sqlite3_column_text(queryStatement, 4))
                     metric = MetricEntity(id: id, name: name, value: value, type: type, labels: labels)
-                    Logger.logDebug("Metric returned")
+                    Logger.logDebug(Constants.Messages.Select.Metric.success)
                 } else {
-                    Logger.logError("Metric return error")
+                    Logger.logError(Constants.Messages.Select.Metric.failed)
                 }
             } else {
                 let errorMessage = String(cString: sqlite3_errmsg(self.database))
-                Logger.logError("Metric SELECT statement is not prepared, Reason: \(errorMessage)")
+                Logger.logError("\(Constants.Messages.Statement.Select.metric), Reason: \(errorMessage)")
             }
             sqlite3_finalize(queryStatement)
             return metric
@@ -117,7 +117,7 @@ class MetricOperator: MetricOperations {
                 }
             } else {
                 let errorMessage = String(cString: sqlite3_errmsg(self.database))
-                Logger.logError("Metric SELECT statement is not prepared, Reason: \(errorMessage)")
+                Logger.logError("\(Constants.Messages.Statement.Select.metric), Reason: \(errorMessage)")
             }
             sqlite3_finalize(queryStatement)
             return (metricList?.isEmpty ?? true) ? nil : metricList
@@ -133,13 +133,13 @@ class MetricOperator: MetricOperations {
             Logger.logDebug("countSQL: \(queryStatementString)")
             if sqlite3_prepare_v2(self.database, queryStatementString, -1, &queryStatement, nil) == SQLITE_OK {
                 if sqlite3_step(queryStatement) == SQLITE_DONE {
-                    Logger.logDebug("Metric updated")
+                    Logger.logDebug(Constants.Messages.Update.Metric.success)
                 } else {
-                    Logger.logError("Metric updation error")
+                    Logger.logError(Constants.Messages.Update.Metric.failed)
                 }
             } else {
                 let errorMessage = String(cString: sqlite3_errmsg(self.database))
-                Logger.logError("Metric SELECT statement is not prepared, Reason: \(errorMessage)")
+                Logger.logError("\(Constants.Messages.Statement.Select.metric), Reason: \(errorMessage)")
             }
             sqlite3_finalize(queryStatement)
             return metric.id
@@ -154,13 +154,13 @@ class MetricOperator: MetricOperations {
             if sqlite3_prepare_v2(self.database, deleteStatementString, -1, &deleteStatement, nil) == SQLITE_OK {
                 Logger.logDebug("deleteEventSQL: \(deleteStatementString)")
                 if sqlite3_step(deleteStatement) == SQLITE_DONE {
-                    Logger.logDebug("Metrics deleted from DB")
+                    Logger.logDebug(Constants.Messages.Delete.Metric.success)
                 } else {
-                    Logger.logError("Metric deletion error")
+                    Logger.logError(Constants.Messages.Delete.Metric.failed)
                 }
             } else {
                 let errorMessage = String(cString: sqlite3_errmsg(self.database))
-                Logger.logError("Metric DELETE statement is not prepared, Reason: \(errorMessage)")
+                Logger.logError("\(Constants.Messages.Statement.Delete.metric), Reason: \(errorMessage)")
             }
             sqlite3_finalize(deleteStatement)
         }
