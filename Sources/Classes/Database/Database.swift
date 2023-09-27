@@ -215,7 +215,7 @@ class Database: DatabaseOperations {
 
 extension Database {
     private static func getDBPath() -> String {
-        let urlDirectory = FileManager.default.urls(for: FileManager.SearchPathDirectory.libraryDirectory, in: FileManager.SearchPathDomainMask.userDomainMask)[0]
+        let urlDirectory = FileManager.default.urls(for: FileManager.SearchPathDirectory.documentDirectory, in: FileManager.SearchPathDomainMask.userDomainMask)[0]
         let fileUrl = urlDirectory.appendingPathComponent("metrics.sqlite")
         return fileUrl.path
     }
