@@ -40,14 +40,14 @@ class LabelOperator: LabelOperations {
         syncQueue.sync { [weak self] in
             guard let self = self else { return nil }
             var label: LabelEntity?
-            let insertStatementString = "INSERT INTO label(id, name, value) VALUES ((SELECT count(*) FROM label) + 1, ?, ?) RETURNING id;"
+            let insertStatementString = "INSERT INTO label(id, name, value) VALUES ((SELECT count(*) FROM label) + 1, ?, ?);"
             var insertStatement: OpaquePointer?
             if sqlite3_prepare_v2(self.database, insertStatementString, -1, &insertStatement, nil) == SQLITE_OK {
                 sqlite3_bind_text(insertStatement, 1, (name as NSString).utf8String, -1, nil)
                 sqlite3_bind_text(insertStatement, 2, (value as NSString).utf8String, -1, nil)
                 Logger.logDebug("saveLabelSQL: \(insertStatementString)")
-                if sqlite3_step(insertStatement) == SQLITE_ROW {
-                    let rowId = Int(sqlite3_column_int(insertStatement, 0))
+                if sqlite3_step(insertStatement) == SQLITE_DONE {
+                    let rowId = Int(sqlite3_last_insert_rowid(self.database))
                     label = LabelEntity(id: rowId, name: name, value: value)
                     Logger.logDebug(Constants.Messages.Insert.Label.success)
                 } else {
