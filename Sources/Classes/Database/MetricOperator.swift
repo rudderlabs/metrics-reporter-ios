@@ -42,9 +42,8 @@ class MetricOperator: MetricOperations {
     @discardableResult
     func saveMetric(name: String, value: Float, type: String, labels: String) -> MetricEntity? {
         syncQueue.sync { [weak self] in
-            guard let self = self else { return nil }
-            var metric: MetricEntity?
-            let insertStatementString = "INSERT INTO metric(id, name, value, type, labels) VALUES ((SELECT count(*) FROM metric) + 1, ?, ?, ?, ?) ON CONFLICT(name, type, labels) DO UPDATE SET value=value+excluded.value RETURNING id;"
+            guard let self = self else { return }
+            let insertStatementString = "INSERT INTO metric(id, name, value, type, labels) VALUES ((SELECT count(*) FROM metric) + 1, ?, ?, ?, ?) ON CONFLICT(name, type, labels) DO UPDATE SET value=value+excluded.value;"
             var insertStatement: OpaquePointer?
             if sqlite3_prepare_v2(self.database, insertStatementString, -1, &insertStatement, nil) == SQLITE_OK {
                 sqlite3_bind_text(insertStatement, 1, (name as NSString).utf8String, -1, nil)
@@ -52,21 +51,20 @@ class MetricOperator: MetricOperations {
                 sqlite3_bind_text(insertStatement, 3, (type as NSString).utf8String, -1, nil)
                 sqlite3_bind_text(insertStatement, 4, (labels as NSString).utf8String, -1, nil)
                 Logger.logDebug("saveEventSQL: \(insertStatementString)")
-                if sqlite3_step(insertStatement) == SQLITE_ROW {
-                    let rowId = Int(sqlite3_column_int(insertStatement, 0))
-                    metric = MetricEntity(id: rowId, name: name, value: value, type: type, labels: labels)
+                if sqlite3_step(insertStatement) == SQLITE_DONE {
                     Logger.logDebug(Constants.Messages.Insert.Metric.success)
                 } else {
                     Logger.logError(Constants.Messages.Insert.Metric.failed)
                 }
-                
             } else {
                 let errorMessage = String(cString: sqlite3_errmsg(self.database))
                 Logger.logError("\(Constants.Messages.Statement.Insert.metric), Reason: \(errorMessage)")
             }
             sqlite3_finalize(insertStatement)
-            return metric
         }
+        let metric = fetchMetric(where: name, type: type, labels: labels)
+        return metric
+
     }
     
     func fetchMetric(where name: String, type: String, labels: String) -> MetricEntity? {

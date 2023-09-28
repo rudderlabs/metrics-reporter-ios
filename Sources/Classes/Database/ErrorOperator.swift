@@ -41,13 +41,13 @@ class ErrorOperator: ErrorOperations {
         syncQueue.sync { [weak self] in
             guard let self = self else { return nil }
             var error: ErrorEntity?
-            let insertStatementString = "INSERT INTO error(events) VALUES (?) RETURNING id;"
+            let insertStatementString = "INSERT INTO error(events) VALUES (?);"
             var insertStatement: OpaquePointer?
             if sqlite3_prepare_v2(self.database, insertStatementString, -1, &insertStatement, nil) == SQLITE_OK {
                 sqlite3_bind_text(insertStatement, 1, (events as NSString).utf8String, -1, nil)
                 Logger.logDebug("saveLabelSQL: \(insertStatementString)")
-                if sqlite3_step(insertStatement) == SQLITE_ROW {
-                    let rowId = Int(sqlite3_column_int(insertStatement, 0))
+                if sqlite3_step(insertStatement) == SQLITE_DONE {
+                    let rowId = Int(sqlite3_last_insert_rowid(self.database))
                     error = ErrorEntity(id: rowId, events: events)
                     Logger.logDebug(Constants.Messages.Insert.Error.success)
                 } else {

@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.1](https://github.com/rudderlabs/metrics-reporter-ios/compare/v1.1.0...v1.1.1) (2023-09-28)
+
+
+### Bug Fixes
+
+* workaround for RETURNING clause ([844e85e](https://github.com/rudderlabs/metrics-reporter-ios/commit/844e85e4304c7e24dcbf34ecedb20d6de109dac8))
+
 ## [1.1.0](https://github.com/rudderlabs/metrics-reporter-ios/compare/v1.0.0...v1.1.0) (2023-09-19)
 
 
