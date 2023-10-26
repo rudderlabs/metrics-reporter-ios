@@ -28,6 +28,11 @@ struct Constants {
                 static let success = "Metric returned"
                 static let failed = "Metric return error"
             }
+            
+            struct Batch {
+                static let success = "Batch returned"
+                static let failed = "Batch return error"
+            }
         }
         
         struct Delete {
@@ -44,6 +49,11 @@ struct Constants {
             struct Error {
                 static let success = "Errors deleted from DB"
                 static let failed = "Error deletion error"
+            }
+            
+            struct Batch {
+                static let success = "Batch deleted from DB"
+                static let failed = "Batch deletion error"
             }
         }
         
@@ -69,6 +79,11 @@ struct Constants {
                 static let success = "Label inserted to table"
                 static let failed = "Label insertion error"
             }
+            
+            struct Batch {
+                static let success = "Batch inserted to table"
+                static let failed = "Batch insertion error"
+            }
         }
         
         struct Reset {
@@ -82,18 +97,21 @@ struct Constants {
                 static let label = "Label DELETE statement is not prepared"
                 static let error = "Error DELETE statement is not prepared"
                 static let metric = "Metric DELETE statement is not prepared"
+                static let batch = "Batch DELETE statement is not prepared"
             }
             
             struct Select {
                 static let label = "Label SELECT statement is not prepared"
                 static let error = "Error SELECT statement is not prepared"
                 static let metric = "Metric SELECT statement is not prepared"
+                static let batch = "Batch SELECT statement is not prepared"
             }
             
             struct Insert {
                 static let label = "Label INSERT statement is not prepared"
                 static let error = "Error INSERT statement is not prepared"
                 static let metric = "Metric INSERT statement is not prepared"
+                static let batch = "Batch INSERT statement is not prepared"
             }
         }
     }

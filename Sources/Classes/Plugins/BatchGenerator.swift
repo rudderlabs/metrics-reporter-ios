@@ -1,56 +1,42 @@
 //
-//  MetricsUploader.swift
+//  BatchGenerator.swift
 //  MetricsReporter
 //
-//  Created by Pallab Maiti on 12/07/23.
+//  Created by Desu Sai Venkat on 25/10/23.
 //
-
 import Foundation
 import RudderKit
 
 
-class MetricsUploader: Plugin {
+class BatchGenerator: Plugin {
     weak var metricsClient: MetricsClient? {
         didSet {
             initialSetup()
-            startUploading()
+            startBatching()
         }
     }
     
     var database: DatabaseOperations?
     var configuration: Configuration?
     private var flushTimer: RepeatingTimer?
-    var serviceManager: ServiceType?
-    private let syncQueue = DispatchQueue(label: "uploadQueue.rudder.com")
+    private let syncQueue = DispatchQueue(label: "rudder.metrics.batcher")
     
     func initialSetup() {
         guard let metricsClient = self.metricsClient else { return }
         database = metricsClient.database
         configuration = metricsClient.configuration
-        serviceManager = {
-            let session: URLSession = {
-                let configuration = URLSessionConfiguration.default
-                configuration.timeoutIntervalForRequest = 30
-                configuration.timeoutIntervalForResource = 30
-                configuration.requestCachePolicy = .useProtocolCachePolicy
-                return URLSession(configuration: configuration)
-            }()
-            return ServiceManager(urlSession: session, configuration: metricsClient.configuration)
-        }()
     }
     
-    func startUploading() {
+    func startBatching() {
         guard let database = self.database, let configuration = self.configuration else { return }
         var sleepCount = 0
-        let df = DateFormatter()
-        df.dateFormat = "HH:mm:ss.SSS"
         flushTimer = RepeatingTimer(interval: TimeInterval(1)) { [weak self] in
             guard let self = self else { return }
             self.syncQueue.async {
                 let errorCount = database.getErrorsCount()
                 if (errorCount >= configuration.dbCountThreshold) || (sleepCount >= configuration.flushInterval) {
                     self.flushTimer?.suspend()
-                    self.flush(from: Constants.Config.START_FROM, to: configuration.maxMetricsInBatch) {
+                    self.createBatch(startingFromId: Constants.Config.START_FROM) {
                         sleepCount = 0
                         self.flushTimer?.resume()
                     }
@@ -62,70 +48,29 @@ class MetricsUploader: Plugin {
     }
     
     func execute<M: Metric>(metric: M?) -> M? {
-        guard let database = self.database, let metric = metric else { return metric }
-        database.saveMetric(metric)
         return metric
     }
     
-    func flush(from: Int, to: Int, _ completion: @escaping () -> Void) {
+    func createBatch(startingFromId id: Int, _ completion: @escaping () -> Void) {
         guard let database = self.database, let configuration = self.configuration else { return }
-        let metricList = database.fetchMetrics(from: from, to: to)
+        let (metricList, lastMetricId) = database.fetchMetrics(startingFromId: id, withLimit: configuration.maxMetricsInBatch)
         let errorList = database.fetchErrors(count: configuration.maxErrorsInBatch)
         if metricList.isEmpty && (errorList?.isEmpty ?? true) {
             Logger.logDebug("No metrics or errors found in db")
             completion()
             return
         }
-        var isDataAvailable = false
-        if metricList.count == configuration.maxMetricsInBatch {
-            isDataAvailable = true
-        }
-        if errorList?.count == configuration.maxErrorsInBatch {
-            isDataAvailable = true
-        }
-        if let params = getJSONString(from: metricList, and: errorList) {
-            serviceManager?.sdkMetrics(params: params, { result in
-                switch result {
-                    case .success(_):
-                        Logger.logDebug("Metrics uploaded successfully")
-                        self.updateMetricList(metricList)
-                        self.clearErrorList(errorList)
-                        if isDataAvailable {
-                            self.flush(from: to + 1, to: to + configuration.maxMetricsInBatch, completion)
-                        } else {
-                            completion()
-                        }
-                    case .failure(let error):
-                        Logger.logError("Got error code: \(error.code), Aborting.")
-                        completion()
-                }
-            })
-        } else {
-            Logger.logDebug("No metrics or errors found in db for flushing")
-            if isDataAvailable {
-                flush(from: to + 1, to: to + configuration.maxMetricsInBatch, completion)
+        if let batchJSON = getJSONString(from: metricList, and: errorList) {
+            self.database?.saveBatch(batch: batchJSON)
+            self.updateMetricList(metricList)
+            self.clearErrorList(errorList)
+            if let lastMetricId = lastMetricId {
+                createBatch(startingFromId: lastMetricId + 1, completion)
             } else {
                 completion()
             }
-        }
-    }
-    
-    func updateMetricList(_ metricList: MetricList) {
-        if let countList = metricList.countList {
-            for count in countList {
-                database?.updateMetric(count)
-            }
-        }
-        if let gaugeList = metricList.gaugeList {
-            for gauge in gaugeList {
-                database?.updateMetric(gauge)
-            }
-        }
-    }
-    
-    func clearErrorList(_ errorList: [ErrorEntity]?) {
-        if let errorList = errorList {
-            database?.clearErrorList(errorList)
+        } else {
+            completion()
         }
     }
     
@@ -151,6 +96,25 @@ class MetricsUploader: Plugin {
         }
         return payload.toJSONString()
     }
+    
+    func updateMetricList(_ metricList: MetricList) {
+           if let countList = metricList.countList {
+               for count in countList {
+                   database?.updateMetric(count)
+               }
+           }
+           if let gaugeList = metricList.gaugeList {
+               for gauge in gaugeList {
+                   database?.updateMetric(gauge)
+               }
+           }
+       }
+       
+       func clearErrorList(_ errorList: [ErrorEntity]?) {
+           if let errorList = errorList {
+               database?.clearErrorList(errorList)
+           }
+       }
 }
 
 extension [ErrorEntity] {
