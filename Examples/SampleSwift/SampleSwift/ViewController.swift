@@ -16,7 +16,14 @@ class ViewController: UIViewController {
     }
 
     @IBAction func onButtonTap(_ button: UIButton) {
-        (UIApplication.shared.delegate as? AppDelegate)?.client?.testCrash()
+//        (UIApplication.shared.delegate as? AppDelegate)?.client?.testCrash()
+        for i in 1..<61 {
+            if (i % 5 == 0) {
+                let countMetric = Count(name: "test_count_\(i)", labels: ["key_\(i)": "value_\(i)"], value: i)
+                (UIApplication.shared.delegate as? AppDelegate)?.client?.process(metric: countMetric)
+            }
+        }
+        print("done")
     }
 }
 

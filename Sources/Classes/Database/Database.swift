@@ -187,6 +187,8 @@ class Database: DatabaseOperations {
         default:
             break
         }
+        // todo: why would the new value be greater than the current value, because in this case new value is actually the count when making the
+        // last request and why are doing newValue - metricEntity.value (very confused with the variable namings and the logic
         let updatedValue: Float = (newValue > metricEntity.value) ? (newValue - metricEntity.value) : (metricEntity.value - newValue)
         return metricOperator.updateMetric(metricEntity, updatedValue: updatedValue)
     }
@@ -236,8 +238,11 @@ extension Database {
         return fileUrl.path
     }
     
+    static var db: OpaquePointer?
     static func openDatabase() -> OpaquePointer? {
-        var db: OpaquePointer?
+        if (db != nil) {
+            return db
+        }
         if sqlite3_open_v2(getDBPath(), &db, SQLITE_OPEN_CREATE | SQLITE_OPEN_READWRITE | SQLITE_OPEN_FULLMUTEX, nil) == SQLITE_OK {
             return db
         } else {

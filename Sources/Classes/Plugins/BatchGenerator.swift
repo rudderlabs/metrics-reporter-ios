@@ -19,6 +19,7 @@ class BatchGenerator: Plugin {
     var database: DatabaseOperations?
     var configuration: Configuration?
     private var flushTimer: RepeatingTimer?
+    // todo: manchi name pettalsindi bhayya, is it really a sync queue
     private let syncQueue = DispatchQueue(label: "rudder.metrics.batcher")
     
     func initialSetup() {
@@ -30,12 +31,17 @@ class BatchGenerator: Plugin {
     func startBatching() {
         guard let database = self.database, let configuration = self.configuration else { return }
         var sleepCount = 0
+        var executionCount = 0;
         flushTimer = RepeatingTimer(interval: TimeInterval(1)) { [weak self] in
             guard let self = self else { return }
             self.syncQueue.async {
+                 executionCount += 1
+                print("Timer executing again for the \(executionCount) time and the current time is \(Date())")
+                // todo: why are we checking error count with db count threshold, dbthresholdCount is usually around 10,000
                 let errorCount = database.getErrorsCount()
                 if (errorCount >= configuration.dbCountThreshold) || (sleepCount >= configuration.flushInterval) {
                     self.flushTimer?.suspend()
+                    print("Creating a batch this time \(Date())")
                     self.createBatch(startingFromId: Constants.Config.START_FROM) {
                         sleepCount = 0
                         self.flushTimer?.resume()
@@ -51,6 +57,8 @@ class BatchGenerator: Plugin {
         return metric
     }
     
+    // todo: do we really need this function to accept from and Int, when they are actually constants, moreover this is kind of misleading because for errors
+    // we are using a direct contact regardless what this method has been passed as an input.
     func createBatch(startingFromId id: Int, _ completion: @escaping () -> Void) {
         guard let database = self.database, let configuration = self.configuration else { return }
         let (metricList, lastMetricId) = database.fetchMetrics(startingFromId: id, withLimit: configuration.maxMetricsInBatch)
@@ -61,6 +69,7 @@ class BatchGenerator: Plugin {
             return
         }
         if let batchJSON = getJSONString(from: metricList, and: errorList) {
+            print("Saving Batch \(batchJSON) to the database")
             self.database?.saveBatch(batch: batchJSON)
             self.updateMetricList(metricList)
             self.clearErrorList(errorList)

@@ -16,13 +16,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        let configuration = Configuration(logLevel: .debug, writeKey: "WRITE_KEY", sdkVersion: "1.3.3", maxMetricsInBatch: 1, flushInterval: 1)
+        let configuration = Configuration(logLevel: .none, writeKey: "WRITE_KEY", sdkVersion: "1.3.3", maxMetricsInBatch: 15, flushInterval: 5)
         client = MetricsClient(configuration: configuration)
         client?.isMetricsCollectionEnabled = true
         client?.isErrorsCollectionEnabled = true
         
         for i in 1..<61 {
-            let countMetric = Count(name: "test_count_\(i)", labels: ["key_\(i)": "value_\(i)"], value: i + 1)
+            let countMetric = Count(name: "test_count_\(i)", labels: ["key_\(i)": "value_\(i)"], value: i)
             client?.process(metric: countMetric)
         }
         
