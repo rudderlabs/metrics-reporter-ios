@@ -44,7 +44,7 @@ protocol MetricOperations: TableOperations {
     @discardableResult func saveMetric(name: String, value: Float, type: String, labels: String) -> MetricEntity?
     @discardableResult func updateMetric(_ metric: MetricEntity?, updatedValue: Float) -> Int?
     func fetchMetric(where name: String, type: String, labels: String) -> MetricEntity?
-    func fetchMetrics(where columnName: String, from valueFrom: Int, to valueTo: Int) -> [MetricEntity]?
+    func fetchMetrics(where columnName: String, startingFrom id: Int, withLimit limit: Int) -> (metricEntities: [MetricEntity]?, lastMetricId: Int?)
 }
 
 protocol LabelOperations: TableOperations {
@@ -70,7 +70,7 @@ protocol BatchOperations: TableOperations {
 
 protocol DatabaseOperations {
     @discardableResult func saveMetric<M: Metric>(_ metric: M) -> MetricEntity?
-    func fetchMetrics(from valueFrom: Int, to valueTo: Int) -> MetricList
+    func fetchMetrics(startingFromId id: Int, withLimit limit: Int) -> (metricsList: MetricList, lastMetricId: Int?)
     @discardableResult func updateMetric<M: Metric>(_ metric: M) -> Int?
     @discardableResult func saveError(events: String) -> ErrorEntity?
     @discardableResult func saveBatch(batch: String) -> BatchEntity?
@@ -130,10 +130,11 @@ class Database: DatabaseOperations {
         return metricOperator.saveMetric(name: metric.name, value: value, type: metric.type.rawValue, labels: labels)
     }
     
-    func fetchMetrics(from valueFrom: Int, to valueTo: Int) -> MetricList {
+    func fetchMetrics(startingFromId id: Int, withLimit limit: Int) -> (metricsList: MetricList, lastMetricId: Int?) {
         var countList: [Count]?
         var gaugeList: [Gauge]?
-        if let metricEntityList = metricOperator.fetchMetrics(where: "id", from: valueFrom, to: valueTo) {
+        let (metricEntityList, lastMetricId) = metricOperator.fetchMetrics(where: "id", startingFrom:id, withLimit:limit)
+        if let metricEntityList = metricEntityList {
             countList = [Count]()
             gaugeList = [Gauge]()
             for metricEntity in metricEntityList {
@@ -156,7 +157,7 @@ class Database: DatabaseOperations {
                 }
             }
         }
-        return MetricList(countList: countList, gaugeList: gaugeList)
+        return (MetricList(countList: countList, gaugeList: gaugeList), lastMetricId)
     }
     
     @discardableResult

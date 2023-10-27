@@ -10,7 +10,8 @@ import Foundation
 extension MetricsClient {
     internal func platformStartup() {
         add(plugin: CrashReporter())
-        add(plugin: MetricsUploader())
+        add(plugin: BatchGenerator())
+        add(plugin: MetricsIngestor())
     }
 
     @discardableResult
