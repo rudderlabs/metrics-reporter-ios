@@ -78,8 +78,10 @@ protocol DatabaseOperations {
     func clearErrorList(_ errorList: [ErrorEntity])
     func clearAllMetrics()
     func clearAllErrors()
+    func clearAllBatches()
     func resetErrorTable()
     func getErrorsCount() -> Int
+    func getBatchCount() -> Int
 }
 
 class Database: DatabaseOperations {
@@ -224,8 +226,16 @@ class Database: DatabaseOperations {
         errorOperator.clearAll()
     }
     
+    func clearAllBatches() {
+        batchOperator.clearAll()
+    }
+    
     func getErrorsCount() -> Int {
         return errorOperator.getCount()
+    }
+    
+    func getBatchCount() -> Int {
+        return batchOperator.getCount()
     }
 }
 

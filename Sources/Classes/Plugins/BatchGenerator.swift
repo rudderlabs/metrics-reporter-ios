@@ -27,7 +27,7 @@ class BatchGenerator: Plugin {
         configuration = metricsClient.configuration
     }
     
-    func startBatching() {
+    func startBatching(completion: (() -> Void)? = nil) {
         guard let database = self.database, let configuration = self.configuration else { return }
         var sleepCount = 0
         flushTimer = RepeatingTimer(interval: TimeInterval(1)) { [weak self] in
@@ -37,6 +37,7 @@ class BatchGenerator: Plugin {
                 if (errorCount >= configuration.dbCountThreshold) || (sleepCount >= configuration.flushInterval) {
                     self.flushTimer?.suspend()
                     self.createBatch(startingFromId: Constants.Config.START_FROM) {
+                        completion?()
                         sleepCount = 0
                         self.flushTimer?.resume()
                     }
