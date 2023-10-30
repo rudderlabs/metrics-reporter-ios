@@ -1,37 +1,29 @@
 //
-//  MetricsUploaderTests.swift
-//  MetricsReporterTests
+//  BatchGeneratorTests.swift
+//  MetricsReporter
 //
-//  Created by Pallab Maiti on 13/07/23.
+//  Created by Desu Sai Venkat on 30/10/23.
 //
 
 import XCTest
 import RudderKit
 @testable import MetricsReporter
 
-final class MetricsUploaderTests: XCTestCase {
+final class BatchGeneratorTests: XCTestCase {
     
-    var metricsUploader: MetricsUploader!
+    var batchGenerator: BatchGenerator!
     var database: DatabaseOperations!
-    let apiURL = URL(string: "https://some.rudderstack.com.url")!
 
     override func setUp() {
         super.setUp()
-        let metricConfiguration = Configuration(logLevel: .none, writeKey: "WRITE_KEY", sdkVersion: "some.version", maxErrorsInBatch: 1, maxMetricsInBatch: 1, flushInterval: 1)
+        let metricConfiguration = Configuration(logLevel: .none, writeKey: "WRITE_KEY", sdkVersion: "some.version", maxErrorsInBatch: 15, maxMetricsInBatch: 15, flushInterval: 1)
         database = {
             let db = openDatabase()
             return Database(database: db)
         }()
-        let serviceManager = {
-            let configuration = URLSessionConfiguration.default
-            configuration.protocolClasses = [MockURLProtocol.self]
-            let urlSession = URLSession(configuration: configuration)
-            return ServiceManager(urlSession: urlSession, configuration: metricConfiguration)
-        }()
-        metricsUploader = MetricsUploader()
-        metricsUploader.serviceManager = serviceManager
-        metricsUploader.database = database
-        metricsUploader.configuration = metricConfiguration
+        batchGenerator = BatchGenerator()
+        batchGenerator.database = database
+        batchGenerator.configuration = metricConfiguration
         clearAll()
     }
     
@@ -48,7 +40,7 @@ final class MetricsUploaderTests: XCTestCase {
         let metricList = MetricList(countList: countList, gaugeList: gaugeList)
         
         let errorEntity = ErrorEntity(id: 1, events: createErrorEvent(index: 0))
-        let JSONString = metricsUploader.getJSONString(from: metricList, and: [errorEntity])
+        let JSONString = batchGenerator.getJSONString(from: metricList, and: [errorEntity])
         
         XCTAssertNotNil(JSONString)
         
@@ -107,45 +99,31 @@ final class MetricsUploaderTests: XCTestCase {
         XCTAssertEqual(payloadObject!, expectedPayloadObject!)
     }
     
-    /*#if !os(watchOS)
-    func test_flush() {
-        metricsUploader.startUploading()
-        let data = """
-        {
-        
-        }
-        """.data(using: .utf8)
-        var count = 0
-        var ready = false
-        MockURLProtocol.requestHandler = { request in
-            let response = HTTPURLResponse(url: self.apiURL, statusCode: 201, httpVersion: nil, headerFields: nil)!
-            count += 1
-            if count == 30 {
-                ready = false
-                self.clearAll()
-            }
-            return (response, data)
-        }
-        
-        for i in 1...30 {
+    func test_batching() {
+        let expectation = XCTestExpectation(description: "Batching completed")
+        for i in 1...31 {
             let countMetric = Count(name: "test_count_\(i)", labels: ["key_\(i)": "value_\(i)"], value: i + 1)
             database.saveMetric(countMetric)
             let events = createErrorEvent(index: i)
             database.saveError(events: events)
         }
-        
-        ready = true
-        
-        while (ready) {
-            RunLoop.main.run(until: Date.distantPast)
+        batchGenerator.startBatching() {
+            // since the maxMetricsInBatch and maxErrorsInBatch are 15,
+            // and as we have generated 31 errors and 31 metrics, which is total of 62,
+            // and should be grouped into 3 batches in total
+            if (self.database.getBatchCount() == 3) {
+                expectation.fulfill()
+            }
         }
+        
+        let result = XCTWaiter.wait(for: [expectation], timeout: 5.0)
+        XCTAssertEqual(result, .completed, "Batching Operation is successful")
     }
-    #endif*/
     
     override func tearDown() {
         super.tearDown()
         clearAll()
-        metricsUploader = nil
+        batchGenerator = nil
         database = nil
     }
     
@@ -153,6 +131,7 @@ final class MetricsUploaderTests: XCTestCase {
         database.clearAllErrors()
         database.clearAllMetrics()
         database.resetErrorTable()
+        database.clearAllBatches()
     }
 }
 
