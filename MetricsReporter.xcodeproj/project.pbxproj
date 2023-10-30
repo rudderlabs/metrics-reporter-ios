@@ -471,6 +471,7 @@
 				ED74EF832A5D9D7C0075C583 /* ModelTests.swift */,
 				EDEDB62C2A666C9F005C670A /* ObjCTests.swift */,
 				ED74EF802A5D9D7C0075C583 /* ServiceManagerTests.swift */,
+				F60B798B2AEF6C6500EFC311 /* BatchOperatorTests.swift */,
 			);
 			path = MetricsReporterTests;
 			sourceTree = "<group>";
@@ -1248,6 +1249,7 @@
 				EDA5B79E2A762E8100948D18 /* JSON.swift in Sources */,
 				EDEDB5D92A6578C7005C670A /* MetricsUploaderTests.swift in Sources */,
 				EDEDB5D62A6578C7005C670A /* ModelTests.swift in Sources */,
+				F60B798D2AEF6C6500EFC311 /* BatchOperatorTests.swift in Sources */,
 				EDEDB5D72A6578C7005C670A /* LabelOperatorTests.swift in Sources */,
 				EDEDB5D52A6578C7005C670A /* MetricOperatorTests.swift in Sources */,
 				EDEDB62E2A666C9F005C670A /* ObjCTests.swift in Sources */,
@@ -1268,6 +1270,7 @@
 				EDA5B79F2A762E8100948D18 /* JSON.swift in Sources */,
 				EDEDB6042A657CA8005C670A /* LabelOperatorTests.swift in Sources */,
 				EDEDB6082A657CA8005C670A /* MetricOperatorTests.swift in Sources */,
+				F60B798E2AEF6C6500EFC311 /* BatchOperatorTests.swift in Sources */,
 				EDEDB6072A657CA8005C670A /* ServiceManagerTests.swift in Sources */,
 				EDEDB60B2A657CA8005C670A /* MockURLProtocol.swift in Sources */,
 				EDEDB62F2A666C9F005C670A /* ObjCTests.swift in Sources */,
@@ -1288,6 +1291,7 @@
 				EDA5B7A02A762E8100948D18 /* JSON.swift in Sources */,
 				EDEDB60C2A657CA9005C670A /* LabelOperatorTests.swift in Sources */,
 				EDEDB6102A657CA9005C670A /* MetricOperatorTests.swift in Sources */,
+				F60B798F2AEF6C6500EFC311 /* BatchOperatorTests.swift in Sources */,
 				EDEDB60F2A657CA9005C670A /* ServiceManagerTests.swift in Sources */,
 				EDEDB6132A657CA9005C670A /* MockURLProtocol.swift in Sources */,
 				EDEDB6302A666C9F005C670A /* ObjCTests.swift in Sources */,
@@ -1308,6 +1312,7 @@
 				EDA5B79D2A762E8100948D18 /* JSON.swift in Sources */,
 				ED998E432A6695B700031B06 /* MetricsClientTests.swift in Sources */,
 				ED998E422A6695B700031B06 /* MetricsUploaderTests.swift in Sources */,
+				F60B798C2AEF6C6500EFC311 /* BatchOperatorTests.swift in Sources */,
 				ED998E402A6695B700031B06 /* ObjCTests.swift in Sources */,
 				ED998E412A6695B700031B06 /* MetricOperatorTests.swift in Sources */,
 				ED998E462A6695B700031B06 /* LabelOperatorTests.swift in Sources */,
