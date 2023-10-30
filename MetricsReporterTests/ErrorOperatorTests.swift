@@ -58,7 +58,9 @@ final class ErrorOperatorTests: XCTestCase {
             "notifier": [
                 "name": "Bugsnag iOS",
                 "version": "some.version",
-                "url": "https://github.com/rudderlabs/rudder-sdk-ios"
+                "url": "https://github.com/rudderlabs/rudder-sdk-ios",
+                "os_version": "\(OSInfo.version)",
+                "os_name": "\(OSInfo.name)",
             ],
             "events": [
                 [

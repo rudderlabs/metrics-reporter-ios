@@ -58,7 +58,9 @@ final class MetricsUploaderTests: XCTestCase {
             "version": "1",
             "source": {
                 "name": "ios",
-                "sdk_version": "some.version"
+                "sdk_version": "some.version",
+                "os_version": "\(OSInfo.version)",
+                "os_name": "\(OSInfo.name)"
             },
             "metrics": [
                 {
@@ -85,7 +87,9 @@ final class MetricsUploaderTests: XCTestCase {
                 "notifier": {
                     "name": "Bugsnag iOS",
                     "version": "some.version",
-                    "url": "https://github.com/rudderlabs/rudder-sdk-ios"
+                    "url": "https://github.com/rudderlabs/rudder-sdk-ios",
+                    "os_version": "\(OSInfo.version)",
+                    "os_name": "\(OSInfo.name)"
                 },
                 "events": \(createErrorEvent(index: 0))
             }
@@ -164,6 +168,8 @@ struct Payload: Codable, Equatable {
     struct Source: Codable, Equatable {
         let name: String
         let sdk_version: String
+        let os_version: String?
+        let os_name: String?
     }
     
     struct Metric: Codable, Equatable {
