@@ -91,16 +91,20 @@ class Database: DatabaseOperations {
     private var labelOperator: LabelOperations!
     private var errorOperator: ErrorOperations!
     private var batchOperator: BatchOperations!
+    private var databaseObserver: DatabaseObserver!
     
     init(database: OpaquePointer?) {
         metricOperator = MetricOperator(database: database)
         labelOperator = LabelOperator(database: database)
         errorOperator = ErrorOperator(database: database)
         batchOperator = BatchOperator(database: database)
+        databaseObserver = DatabaseObserver(database: database)
+        
         metricOperator.createTable()
         labelOperator.createTable()
         errorOperator.createTable()
         batchOperator.createTable()
+        databaseObserver.subscribeToDatabaseUpdates()
     }
     
     @discardableResult
