@@ -64,7 +64,7 @@ protocol ErrorOperations: TableOperations {
 protocol BatchOperations: TableOperations {
     @discardableResult func saveBatch(batch: String) -> BatchEntity?
     func getBatch() -> BatchEntity?
-    func clearBatch(where id: Int)
+    func clearBatch(uuid: String)
     func getCount() -> Int
 }
 
@@ -74,10 +74,12 @@ protocol DatabaseOperations {
     @discardableResult func updateMetric<M: Metric>(_ metric: M) -> Int?
     @discardableResult func saveError(events: String) -> ErrorEntity?
     @discardableResult func saveBatch(batch: String) -> BatchEntity?
+    func getBatch() -> Batch?
     func fetchErrors(count: Int) -> [ErrorEntity]?
     func clearErrorList(_ errorList: [ErrorEntity])
     func clearAllMetrics()
     func clearAllErrors()
+    func clearBatch(batch: Batch)
     func clearAllBatches()
     func resetErrorTable()
     func getErrorsCount() -> Int
@@ -191,6 +193,18 @@ class Database: DatabaseOperations {
         }
         let updatedValue: Float = (newValue > metricEntity.value) ? (newValue - metricEntity.value) : (metricEntity.value - newValue)
         return metricOperator.updateMetric(metricEntity, updatedValue: updatedValue)
+    }
+    
+    func getBatch() -> Batch? {
+        let batchEntity = batchOperator.getBatch()
+        if let batchEntity = batchEntity {
+            return Batch(uuid: batchEntity.uuid, batch: batchEntity.batch)
+        }
+        return nil
+    }
+    
+    func clearBatch(batch: Batch) {
+        batchOperator.clearBatch(uuid:batch.uuid)
     }
     
     @discardableResult

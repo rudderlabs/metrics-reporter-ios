@@ -109,11 +109,11 @@ class BatchOperator: BatchOperations {
         }
     }
     
-    func clearBatch(where id: Int) {
+    func clearBatch(uuid: String) {
         syncQueue.sync { [weak self] in
             guard let self = self else {return }
             var queryStatement: OpaquePointer?
-            let queryStatementString = "DELETE FROM batch where id = \(id);"
+            let queryStatementString = "DELETE FROM batch where uuid = '\(uuid)';"
             Logger.logDebug("clearBatchSQL: \(queryStatementString)")
             if sqlite3_prepare_v2(self.database, queryStatementString, -1, &queryStatement, nil) == SQLITE_OK {
                 if sqlite3_step(queryStatement) == SQLITE_DONE {
