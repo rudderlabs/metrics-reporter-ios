@@ -38,18 +38,7 @@ struct ServiceManager: ServiceType {
 
 extension ServiceManager {
     func request<T: Codable>(_ api: API, _ completion: @escaping Handler<T>) {
-        let urlString = [baseURL(api), path(api)].joined().addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
-        Logger.logDebug("URL: \(urlString ?? "")")
-        var request = URLRequest(url: URL(string: urlString ?? "")!)
-        request.httpMethod = method(api).value
-        if let headers = headers(api) {
-            request.allHTTPHeaderFields = headers
-            Logger.logDebug("HTTPHeaderFields: \(headers)")
-        }
-        if let httpBody = httpBody(api) {
-            request.httpBody = httpBody
-            Logger.logDebug("HTTPBody: \(httpBody)")
-        }
+        var request = getURLRequest(api)
         let dataTask = urlSession.dataTask(with: request, completionHandler: { (data, response, error) in
             if error != nil {
                 completion(.failure(NSError(code: .SERVER_ERROR)))
@@ -73,6 +62,22 @@ extension ServiceManager {
             }
         })
         dataTask.resume()
+    }
+    
+    func getURLRequest(_ api: API) -> URLRequest {
+        let urlString = [baseURL(api), path(api)].joined().addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
+        Logger.logDebug("URL: \(urlString ?? "")")
+        var request = URLRequest(url: URL(string: urlString ?? "")!)
+        request.httpMethod = method(api).value
+        if let headers = headers(api) {
+            request.allHTTPHeaderFields = headers
+            Logger.logDebug("HTTPHeaderFields: \(headers)")
+        }
+        if let httpBody = httpBody(api) {
+            request.httpBody = httpBody
+            Logger.logDebug("HTTPBody: \(httpBody)")
+        }
+        return request
     }
     
     func handleCustomError(data: Data) -> ErrorCode {
