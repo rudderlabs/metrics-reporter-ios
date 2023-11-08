@@ -29,10 +29,6 @@ class CrashReporter: Plugin, RSCrashReporterNotifyDelegate {
         RSCrashReporter.start(with: self)
     }
     
-    func execute<M: Metric>(metric: M?) -> M? {
-        return metric
-    }
-    
     func notifyCrash(_ event: BugsnagEvent?, withRequestPayload requestPayload: [AnyHashable: Any]?) {
         guard let metricsClient = self.metricsClient, let database = self.database else { return }
         if let requestPayload = requestPayload, (checkIfRudderCrash(event: event) && metricsClient.statsCollection.isErrorsEnabled),

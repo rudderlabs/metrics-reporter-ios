@@ -19,7 +19,7 @@ class BatchGenerator: Plugin {
     var database: DatabaseOperations?
     var configuration: Configuration?
     private var flushTimer: RepeatingTimer?
-    private let syncQueue = DispatchQueue(label: "rudder.metrics.batcher")
+    private let syncQueue = DispatchQueue(label: "rudder.metrics.batchgenerator")
     
     func initialSetup() {
         guard let metricsClient = self.metricsClient else { return }
@@ -46,10 +46,6 @@ class BatchGenerator: Plugin {
                 }
             }
         }
-    }
-    
-    func execute<M: Metric>(metric: M?) -> M? {
-        return metric
     }
     
     func createBatch(startingFromId id: Int, _ completion: @escaping () -> Void) {
