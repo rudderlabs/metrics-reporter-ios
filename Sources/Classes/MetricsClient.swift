@@ -54,6 +54,10 @@ public class MetricsClient {
         }
     }
     
+    public func flushMetricsSnapshots() {
+        controller.flushMetricsSnapshots()
+    }
+    
     /// For internal testing purpose only. Don't use this API.
     public func testCrash() {
         let array = ["abc"]

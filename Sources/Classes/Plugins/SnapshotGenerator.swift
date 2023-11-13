@@ -27,11 +27,7 @@ class SnapshotGenerator: Plugin {
         database = metricsClient.database
         configuration = metricsClient.configuration
     }
-    
-    func execute<M>(metric: M?) -> M? where M : Metric {
-        return metric
-    }
-    
+
     func startCapturingSnapshots(completion: (() -> Void)? = nil) {
         guard let configuration = self.configuration else { return }
         flushTimer = RepeatingTimer(interval: TimeInterval(configuration.flushInterval)) { [weak self] in
@@ -57,9 +53,11 @@ class SnapshotGenerator: Plugin {
         }
         if let batchJSON = getJSONString(from: metricList, and: errorList) {
             let snapshotEntity = self.database?.saveSnapshot(batch: batchJSON)
-            if let snapshotEntity = snapshotEntity {
+            if snapshotEntity != nil {
                 self.updateMetricList(metricList)
                 self.clearErrorList(errorList)
+                // flush the snapshots
+                self.metricsClient?.flushMetricsSnapshots()
             }
             if let lastMetricId = lastMetricId {
                 captureSnapshot(startingFromId: lastMetricId + 1, completion)

@@ -21,4 +21,12 @@ class Controller {
         }
         return incomingMetric
     }
+    
+    func flushMetricsSnapshots() {
+        plugins.forEach { plugin in
+            if let snapshotUploader = plugin as? SnapshotUploader {
+                snapshotUploader.startUploading()
+            }
+        }
+    }
 }
