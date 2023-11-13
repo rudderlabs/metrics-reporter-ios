@@ -10,7 +10,7 @@ import Foundation
 extension MetricsClient {
     internal func platformStartup() {
         add(plugin: CrashReporter())
-        add(plugin: BatchGenerator())
+        add(plugin: SnapshotGenerator())
         add(plugin: MetricsIngestor())
     }
 

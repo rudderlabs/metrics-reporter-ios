@@ -1,5 +1,5 @@
 //
-//  BatchGenerator.swift
+//  SnapshotGenerator.swift
 //  MetricsReporter
 //
 //  Created by Desu Sai Venkat on 25/10/23.
@@ -8,18 +8,18 @@ import Foundation
 import RudderKit
 
 
-class BatchGenerator: Plugin {
+class SnapshotGenerator: Plugin {
     weak var metricsClient: MetricsClient? {
         didSet {
             initialSetup()
-            startBatching()
+            startCapturingSnapshots()
         }
     }
     
     var database: DatabaseOperations?
     var configuration: Configuration?
     private var flushTimer: RepeatingTimer?
-    private let syncQueue = DispatchQueue(label: "rudder.metrics.batcher")
+    private let syncQueue = DispatchQueue(label: "rudder.metrics.snapshot.generator")
     
     func initialSetup() {
         guard let metricsClient = self.metricsClient else { return }
@@ -27,7 +27,7 @@ class BatchGenerator: Plugin {
         configuration = metricsClient.configuration
     }
     
-    func startBatching(completion: (() -> Void)? = nil) {
+    func startCapturingSnapshots(completion: (() -> Void)? = nil) {
         guard let database = self.database, let configuration = self.configuration else { return }
         var sleepCount = 0
         flushTimer = RepeatingTimer(interval: TimeInterval(1)) { [weak self] in
@@ -36,7 +36,7 @@ class BatchGenerator: Plugin {
                 let errorCount = database.getErrorsCount()
                 if (errorCount >= configuration.dbCountThreshold) || (sleepCount >= configuration.flushInterval) {
                     self.flushTimer?.suspend()
-                    self.createBatch(startingFromId: Constants.Config.START_FROM) {
+                    self.captureSnapshot(startingFromId: Constants.Config.START_FROM) {
                         completion?()
                         sleepCount = 0
                         self.flushTimer?.resume()
@@ -52,7 +52,7 @@ class BatchGenerator: Plugin {
         return metric
     }
     
-    func createBatch(startingFromId id: Int, _ completion: @escaping () -> Void) {
+    func captureSnapshot(startingFromId id: Int, _ completion: @escaping () -> Void) {
         guard let database = self.database, let configuration = self.configuration else { return }
         let (metricList, lastMetricId) = database.fetchMetrics(startingFromId: id, withLimit: configuration.maxMetricsInBatch)
         let errorList = database.fetchErrors(count: configuration.maxErrorsInBatch)
@@ -62,11 +62,11 @@ class BatchGenerator: Plugin {
             return
         }
         if let batchJSON = getJSONString(from: metricList, and: errorList) {
-            self.database?.saveBatch(batch: batchJSON)
+            self.database?.saveSnapshot(batch: batchJSON)
             self.updateMetricList(metricList)
             self.clearErrorList(errorList)
             if let lastMetricId = lastMetricId {
-                createBatch(startingFromId: lastMetricId + 1, completion)
+                captureSnapshot(startingFromId: lastMetricId + 1, completion)
             } else {
                 completion()
             }
