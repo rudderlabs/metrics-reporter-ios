@@ -54,7 +54,7 @@ class MetricOperator: MetricOperations {
                 if sqlite3_step(insertStatement) == SQLITE_DONE {
                     Logger.logDebug(Constants.Messages.Insert.Metric.success)
                 } else {
-                    Logger.logError(Constants.Messages.Insert.Metric.failed)
+                    Logger.logError(Constants.Messages.Insert.Metric.failed + " Reason: \(String(cString: sqlite3_errmsg(self.database)))")
                 }
             } else {
                 let errorMessage = String(cString: sqlite3_errmsg(self.database))
@@ -84,7 +84,7 @@ class MetricOperator: MetricOperations {
                     metric = MetricEntity(id: id, name: name, value: value, type: type, labels: labels)
                     Logger.logDebug(Constants.Messages.Select.Metric.success)
                 } else {
-                    Logger.logError(Constants.Messages.Select.Metric.failed)
+                    Logger.logError(Constants.Messages.Select.Metric.failed + " Reason: \(String(cString: sqlite3_errmsg(self.database)))")
                 }
             } else {
                 let errorMessage = String(cString: sqlite3_errmsg(self.database))
@@ -133,7 +133,7 @@ class MetricOperator: MetricOperations {
                 if sqlite3_step(queryStatement) == SQLITE_DONE {
                     Logger.logDebug(Constants.Messages.Update.Metric.success)
                 } else {
-                    Logger.logError(Constants.Messages.Update.Metric.failed)
+                    Logger.logError(Constants.Messages.Update.Metric.failed + " Reason: \(String(cString: sqlite3_errmsg(self.database)))")
                 }
             } else {
                 let errorMessage = String(cString: sqlite3_errmsg(self.database))
@@ -154,7 +154,7 @@ class MetricOperator: MetricOperations {
                 if sqlite3_step(deleteStatement) == SQLITE_DONE {
                     Logger.logDebug(Constants.Messages.Delete.Metric.success)
                 } else {
-                    Logger.logError(Constants.Messages.Delete.Metric.failed)
+                    Logger.logError(Constants.Messages.Delete.Metric.failed + " Reason: \(String(cString: sqlite3_errmsg(self.database)))")
                 }
             } else {
                 let errorMessage = String(cString: sqlite3_errmsg(self.database))

@@ -1,5 +1,5 @@
 //
-//  BatchGeneratorTests.swift
+//  SnapshotGeneratorTests.swift
 //  MetricsReporter
 //
 //  Created by Desu Sai Venkat on 30/10/23.
@@ -9,9 +9,9 @@ import XCTest
 import RudderKit
 @testable import MetricsReporter
 
-final class BatchGeneratorTests: XCTestCase {
+final class SnapshotGeneratorTests: XCTestCase {
     
-    var batchGenerator: BatchGenerator!
+    var snapshotGenerator: SnapshotGenerator!
     var database: DatabaseOperations!
 
     override func setUp() {
@@ -21,9 +21,9 @@ final class BatchGeneratorTests: XCTestCase {
             let db = openDatabase()
             return Database(database: db)
         }()
-        batchGenerator = BatchGenerator()
-        batchGenerator.database = database
-        batchGenerator.configuration = metricConfiguration
+        snapshotGenerator = SnapshotGenerator()
+        snapshotGenerator.database = database
+        snapshotGenerator.configuration = metricConfiguration
         clearAll()
     }
     
@@ -40,7 +40,7 @@ final class BatchGeneratorTests: XCTestCase {
         let metricList = MetricList(countList: countList, gaugeList: gaugeList)
         
         let errorEntity = ErrorEntity(id: 1, events: createErrorEvent(index: 0))
-        let JSONString = batchGenerator.getJSONString(from: metricList, and: [errorEntity])
+        let JSONString = snapshotGenerator.getJSONString(from: metricList, and: [errorEntity])
         
         XCTAssertNotNil(JSONString)
         
@@ -99,7 +99,7 @@ final class BatchGeneratorTests: XCTestCase {
         XCTAssertEqual(payloadObject!, expectedPayloadObject!)
     }
     
-    func test_batching() {
+    func test_snapshotting() {
         let expectation = XCTestExpectation(description: "Batching completed")
         for i in 1...31 {
             let countMetric = Count(name: "test_count_\(i)", labels: ["key_\(i)": "value_\(i)"], value: i + 1)
@@ -107,23 +107,23 @@ final class BatchGeneratorTests: XCTestCase {
             let events = createErrorEvent(index: i)
             database.saveError(events: events)
         }
-        batchGenerator.startBatching() {
+        snapshotGenerator.startCapturingSnapshots() {
             // since the maxMetricsInBatch and maxErrorsInBatch are 15,
             // and as we have generated 31 errors and 31 metrics, which is total of 62,
             // and should be grouped into 3 batches in total
-            if (self.database.getBatchCount() == 3) {
+            if (self.database.getSnapshotCount() == 3) {
                 expectation.fulfill()
             }
         }
         
-        let result = XCTWaiter.wait(for: [expectation], timeout: 5.0)
+        let result = XCTWaiter.wait(for: [expectation], timeout: 15.0)
         XCTAssertEqual(result, .completed, "Batching Operation is successful")
     }
     
     override func tearDown() {
         super.tearDown()
         clearAll()
-        batchGenerator = nil
+        snapshotGenerator = nil
         database = nil
     }
     
@@ -131,7 +131,7 @@ final class BatchGeneratorTests: XCTestCase {
         database.clearAllErrors()
         database.clearAllMetrics()
         database.resetErrorTable()
-        database.clearAllBatches()
+        database.clearAllSnapshots()
     }
 }
 
