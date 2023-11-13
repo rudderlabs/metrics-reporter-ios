@@ -28,28 +28,17 @@ class SnapshotGenerator: Plugin {
     }
     
     func startCapturingSnapshots(completion: (() -> Void)? = nil) {
-        guard let database = self.database, let configuration = self.configuration else { return }
-        var sleepCount = 0
-        flushTimer = RepeatingTimer(interval: TimeInterval(1)) { [weak self] in
+        guard let configuration = self.configuration else { return }
+        flushTimer = RepeatingTimer(interval: TimeInterval(configuration.flushInterval)) { [weak self] in
             guard let self = self else { return }
             self.syncQueue.async {
-                let errorCount = database.getErrorsCount()
-                if (errorCount >= configuration.dbCountThreshold) || (sleepCount >= configuration.flushInterval) {
-                    self.flushTimer?.suspend()
-                    self.captureSnapshot(startingFromId: Constants.Config.START_FROM) {
-                        completion?()
-                        sleepCount = 0
-                        self.flushTimer?.resume()
-                    }
-                } else {
-                    sleepCount += 1
+                self.flushTimer?.suspend()
+                self.captureSnapshot(startingFromId: Constants.Config.START_FROM) {
+                    completion?()
+                    self.flushTimer?.resume()
                 }
             }
         }
-    }
-    
-    func execute<M: Metric>(metric: M?) -> M? {
-        return metric
     }
     
     func captureSnapshot(startingFromId id: Int, _ completion: @escaping () -> Void) {
@@ -62,9 +51,11 @@ class SnapshotGenerator: Plugin {
             return
         }
         if let batchJSON = getJSONString(from: metricList, and: errorList) {
-            self.database?.saveSnapshot(batch: batchJSON)
-            self.updateMetricList(metricList)
-            self.clearErrorList(errorList)
+            let snapshotEntity = self.database?.saveSnapshot(batch: batchJSON)
+            if let snapshotEntity = snapshotEntity {
+                self.updateMetricList(metricList)
+                self.clearErrorList(errorList)
+            }
             if let lastMetricId = lastMetricId {
                 captureSnapshot(startingFromId: lastMetricId + 1, completion)
             } else {
@@ -99,23 +90,23 @@ class SnapshotGenerator: Plugin {
     }
     
     func updateMetricList(_ metricList: MetricList) {
-           if let countList = metricList.countList {
-               for count in countList {
-                   database?.updateMetric(count)
-               }
-           }
-           if let gaugeList = metricList.gaugeList {
-               for gauge in gaugeList {
-                   database?.updateMetric(gauge)
-               }
-           }
-       }
-       
-       func clearErrorList(_ errorList: [ErrorEntity]?) {
-           if let errorList = errorList {
-               database?.clearErrorList(errorList)
-           }
-       }
+        if let countList = metricList.countList {
+            for count in countList {
+                database?.updateMetric(count)
+            }
+        }
+        if let gaugeList = metricList.gaugeList {
+            for gauge in gaugeList {
+                database?.updateMetric(gauge)
+            }
+        }
+    }
+    
+    func clearErrorList(_ errorList: [ErrorEntity]?) {
+        if let errorList = errorList {
+            database?.clearErrorList(errorList)
+        }
+    }
 }
 
 extension [ErrorEntity] {
