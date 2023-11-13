@@ -9,6 +9,7 @@ import RudderKit
 
 
 class SnapshotGenerator: Plugin {
+
     weak var metricsClient: MetricsClient? {
         didSet {
             initialSetup()
@@ -25,6 +26,10 @@ class SnapshotGenerator: Plugin {
         guard let metricsClient = self.metricsClient else { return }
         database = metricsClient.database
         configuration = metricsClient.configuration
+    }
+    
+    func execute<M>(metric: M?) -> M? where M : Metric {
+        return metric
     }
     
     func startCapturingSnapshots(completion: (() -> Void)? = nil) {
