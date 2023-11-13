@@ -1,5 +1,5 @@
 //
-//  BatchUploader.swift
+//  SnapshotUploader.swift
 //  MetricsReporter
 //
 //  Created by Desu Sai Venkat on 02/11/23.
@@ -9,20 +9,20 @@ import Foundation
 import RudderKit
 
 
-class BatchUploader: Plugin {
+class SnapshotUploader: Plugin {
     weak var metricsClient: MetricsClient? {
         didSet {
             initialSetup()
-            addBatchTableObserver()
+            addSnapshotTableObserver()
         }
     }
     
     let MAX_ATTEMPTS = 5
     var database: DatabaseOperations?
     var configuration: Configuration?
-    var uploadInProgress: Bool = false
+    @Atomic var uploadInProgress: Bool = false
     var serviceManager: ServiceType?
-    private let queue = DispatchQueue(label: "rudder.metrics.batchuploader")
+    private let queue = DispatchQueue(label: "rudder.metrics.snapshot.uploader")
     
     func initialSetup() {
         guard let metricsClient = self.metricsClient else { return }
@@ -42,39 +42,36 @@ class BatchUploader: Plugin {
     }
     
     func startUploading() {
-        RepeatingTimer(interval: TimeInterval(30)) { [weak self] in
-            guard let self = self else { return }
-            uploadBatches()
-        }
+        uploadSnapshots()
     }
     
-    func onNewBatchInsertion() {
-        uploadBatches()
+    func onNewSnapshotInsertion() {
+        uploadSnapshots()
     }
     
-    func addBatchTableObserver() {
-        DatabaseObserver.addObserver(tableName: "batch", changeType: .insert, callback:onNewBatchInsertion)
+    func addSnapshotTableObserver() {
+        DatabaseObserver.addObserver(tableName: "snapshot", changeType: .insert, callback:onNewSnapshotInsertion)
     }
     
-    func uploadBatches() {
+    func uploadSnapshots() {
         if(!self.uploadInProgress) {
             self.uploadInProgress = true
-            startUploadingBatchesWithBackOff(){
+            startUploadingSnapshotsWithBackOff(){
                 self.uploadInProgress = false
             }
         }
     }
     
-    func startUploadingBatchesWithBackOff(currentAttempt:Int = 0, backoffDelay: TimeInterval = 2.0, _ completion: @escaping () -> Void) {
+    func startUploadingSnapshotsWithBackOff(currentAttempt:Int = 0, backoffDelay: TimeInterval = 2.0, _ completion: @escaping () -> Void) {
         if currentAttempt < MAX_ATTEMPTS {
             queue.async {
-                self.uploadBatch() { [weak self] result in
+                self.uploadSnapshot() { [weak self] result in
                     guard let self = self else {
                         completion()
                         return }
                     if (!result) {
                         queue.asyncAfter(deadline: .now() + backoffDelay, execute: {
-                            self.startUploadingBatchesWithBackOff(currentAttempt: currentAttempt+1, backoffDelay: backoffDelay * 2, completion)
+                            self.startUploadingSnapshotsWithBackOff(currentAttempt: currentAttempt+1, backoffDelay: backoffDelay * 2, completion)
                         })
                     } else {
                         completion()
@@ -82,33 +79,33 @@ class BatchUploader: Plugin {
                 }
             }
         } else {
-            Logger.logDebug("Failed to send batches to metric service even after backing off with retries")
+            Logger.logDebug("Failed to send snapshots to metric service even after backing off with retries")
             completion()
         }
     }
     
-    func uploadBatch(_ wasUploadSuccessful: @escaping (Bool) -> Void) {
+    func uploadSnapshot(_ wasUploadSuccessful: @escaping (Bool) -> Void) {
         guard let database = self.database else {
             wasUploadSuccessful(false)
             return
         }
         
-        if let batch = database.getBatch(), var batchDict = batch.batch.toDictionary() {
-            batchDict["id"] = batch.uuid
-            if let requestBody = batchDict.toJSONString() {
+        if let snapshot = database.getSnapshot(), var snapshotDict = snapshot.batch.toDictionary() {
+            snapshotDict["id"] = snapshot.uuid
+            if let requestBody = snapshotDict.toJSONString() {
                 serviceManager?.sdkMetrics(params: requestBody, { [weak self] (result) in
                     guard let self = self else {
-                        Logger.logError("Failed to Upload Batch, Aborting.")
+                        Logger.logError("Failed to Upload Snapshot, Aborting.")
                         wasUploadSuccessful(false)
                         return
                     }
                     switch result {
                     case .success(_):
-                        Logger.logDebug("Metrics Batch uploaded successfully")
-                        database.clearBatch(batch: batch)
-                        uploadBatch(wasUploadSuccessful)
+                        Logger.logDebug("Metrics Snapshot uploaded successfully")
+                        database.clearSnapshot(snapshot: snapshot)
+                        uploadSnapshot(wasUploadSuccessful)
                     case .failure(let error):
-                        Logger.logError("Failed to Upload Batch, Got error code: \(error.code), Aborting.")
+                        Logger.logError("Failed to Upload Snapshot, Got error code: \(error.code), Aborting.")
                         wasUploadSuccessful(false)
                     }
                 })
@@ -117,7 +114,7 @@ class BatchUploader: Plugin {
                 wasUploadSuccessful(false)
             }
         } else {
-            Logger.logDebug("no more batches in the db")
+            Logger.logDebug("no more snapshots in the db")
             wasUploadSuccessful(true)
         }
     }

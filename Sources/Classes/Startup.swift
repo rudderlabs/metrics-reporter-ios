@@ -12,7 +12,7 @@ extension MetricsClient {
         add(plugin: CrashReporter())
         add(plugin: SnapshotGenerator())
         add(plugin: MetricsIngestor())
-        add(plugin: BatchUploader())
+        add(plugin: SnapshotUploader())
     }
 
     @discardableResult

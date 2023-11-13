@@ -74,12 +74,12 @@ protocol DatabaseOperations {
     @discardableResult func updateMetric<M: Metric>(_ metric: M) -> Int?
     @discardableResult func saveError(events: String) -> ErrorEntity?
     @discardableResult func saveSnapshot(batch: String) -> SnapshotEntity?
-    func getBatch() -> Batch?
+    func getSnapshot() -> Snapshot?
     func fetchErrors(count: Int) -> [ErrorEntity]?
     func clearErrorList(_ errorList: [ErrorEntity])
     func clearAllMetrics()
     func clearAllErrors()
-    func clearBatch(batch: Batch)
+    func clearSnapshot(snapshot: Snapshot)
     func clearAllSnapshots()
     func resetErrorTable()
     func getErrorsCount() -> Int
@@ -199,16 +199,16 @@ class Database: DatabaseOperations {
         return metricOperator.updateMetric(metricEntity, updatedValue: updatedValue)
     }
     
-    func getBatch() -> Batch? {
-        let batchEntity = batchOperator.getBatch()
-        if let batchEntity = batchEntity {
-            return Batch(uuid: batchEntity.uuid, batch: batchEntity.batch)
+    func getSnapshot() -> Snapshot? {
+        let snapshotEntity = snapshotOperator.getSnapshot()
+        if let snapshotEntity = snapshotEntity {
+            return Snapshot(uuid: snapshotEntity.uuid, batch: snapshotEntity.batch)
         }
         return nil
     }
     
-    func clearBatch(batch: Batch) {
-        batchOperator.clearBatch(uuid:batch.uuid)
+    func clearSnapshot(snapshot: Snapshot) {
+        snapshotOperator.clearSnapshot(where: snapshot.uuid)
     }
     
     @discardableResult

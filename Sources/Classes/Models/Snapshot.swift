@@ -1,5 +1,5 @@
 //
-//  Batch.swift
+//  Snapshot.swift
 //  MetricsReporter
 //
 //  Created by Desu Sai Venkat on 02/11/23.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Batch {
+struct Snapshot {
     let uuid: String
     let batch: String
     
