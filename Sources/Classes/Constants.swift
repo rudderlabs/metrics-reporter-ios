@@ -29,9 +29,9 @@ struct Constants {
                 static let failed = "Metric return error"
             }
             
-            struct Batch {
-                static let success = "Batch returned"
-                static let failed = "Batch return error"
+            struct Snapshot {
+                static let success = "Snapshot returned"
+                static let failed = "Snapshot return error"
             }
         }
         
@@ -51,9 +51,9 @@ struct Constants {
                 static let failed = "Error deletion error"
             }
             
-            struct Batch {
-                static let success = "Batch deleted from DB"
-                static let failed = "Batch deletion error"
+            struct Snapshot {
+                static let success = "Snapshot deleted from DB"
+                static let failed = "Snapshot deletion error"
             }
         }
         
@@ -80,9 +80,9 @@ struct Constants {
                 static let failed = "Label insertion error"
             }
             
-            struct Batch {
-                static let success = "Batch inserted to table"
-                static let failed = "Batch insertion error"
+            struct Snapshot {
+                static let success = "Snapshot inserted to table"
+                static let failed = "Snapshot insertion error"
             }
         }
         
@@ -97,21 +97,21 @@ struct Constants {
                 static let label = "Label DELETE statement is not prepared"
                 static let error = "Error DELETE statement is not prepared"
                 static let metric = "Metric DELETE statement is not prepared"
-                static let batch = "Batch DELETE statement is not prepared"
+                static let snapshot = "Snapshot DELETE statement is not prepared"
             }
             
             struct Select {
                 static let label = "Label SELECT statement is not prepared"
                 static let error = "Error SELECT statement is not prepared"
                 static let metric = "Metric SELECT statement is not prepared"
-                static let batch = "Batch SELECT statement is not prepared"
+                static let snapshot = "Snapshot SELECT statement is not prepared"
             }
             
             struct Insert {
                 static let label = "Label INSERT statement is not prepared"
                 static let error = "Error INSERT statement is not prepared"
                 static let metric = "Metric INSERT statement is not prepared"
-                static let batch = "Batch INSERT statement is not prepared"
+                static let snapshot = "Snapshot INSERT statement is not prepared"
             }
         }
     }
