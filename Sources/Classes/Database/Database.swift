@@ -109,12 +109,12 @@ class Database: DatabaseOperations {
         }
         var value: Float = 0.0
         switch metric {
-            case let m as Count:
-                value = Float(m.value)
-            case let m as Gauge:
-                value = m.value
-            default:
-                break
+        case let m as Count:
+            value = Float(m.value)
+        case let m as Gauge:
+            value = m.value
+        default:
+            break
         }
         return metricOperator.saveMetric(name: metric.name, value: value, type: metric.type.rawValue, labels: labels)
     }
@@ -134,14 +134,14 @@ class Database: DatabaseOperations {
                     }
                 }
                 switch metricEntity.type {
-                    case MetricType.count.rawValue:
-                        let count = Count(name: metricEntity.name, labels: labels, value: Int(metricEntity.value))
-                        countList?.append(count)
-                    case MetricType.gauge.rawValue:
-                        let gauge = Gauge(name: metricEntity.name, labels: labels, value: metricEntity.value)
-                        gaugeList?.append(gauge)
-                    default:
-                        break
+                case MetricType.count.rawValue:
+                    let count = Count(name: metricEntity.name, labels: labels, value: Int(metricEntity.value))
+                    countList?.append(count)
+                case MetricType.gauge.rawValue:
+                    let gauge = Gauge(name: metricEntity.name, labels: labels, value: metricEntity.value)
+                    gaugeList?.append(gauge)
+                default:
+                    break
                 }
             }
         }
@@ -168,12 +168,12 @@ class Database: DatabaseOperations {
         }
         var newValue: Float = 0.0
         switch metric {
-            case let m as Count:
-                newValue = Float(m.value)
-            case let m as Gauge:
-                newValue = m.value
-            default:
-                break
+        case let m as Count:
+            newValue = Float(m.value)
+        case let m as Gauge:
+            newValue = m.value
+        default:
+            break
         }
         let updatedValue: Float = (newValue > metricEntity.value) ? (newValue - metricEntity.value) : (metricEntity.value - newValue)
         return metricOperator.updateMetric(metricEntity, updatedValue: updatedValue)
@@ -215,7 +215,11 @@ class Database: DatabaseOperations {
 
 extension Database {
     private static func getDBPath() -> String {
+#if os(tvOS)
+        let urlDirectory = FileManager.default.urls(for: FileManager.SearchPathDirectory.cachesDirectory, in: FileManager.SearchPathDomainMask.userDomainMask)[0]
+#else
         let urlDirectory = FileManager.default.urls(for: FileManager.SearchPathDirectory.libraryDirectory, in: FileManager.SearchPathDomainMask.userDomainMask)[0]
+#endif
         let fileUrl = urlDirectory.appendingPathComponent("metrics.sqlite")
         return fileUrl.path
     }
