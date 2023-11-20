@@ -10,7 +10,6 @@ import Foundation
 extension MetricsClient {
     internal func platformStartup() {
         add(plugin: MetricsIngestor())
-        add(plugin: SnapshotUploader())
     }
 
     @discardableResult

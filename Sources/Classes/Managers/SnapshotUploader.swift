@@ -9,25 +9,19 @@ import Foundation
 import RudderKit
 
 
-class SnapshotUploader: Plugin {
-    weak var metricsClient: MetricsClient? {
-        didSet {
-            initialSetup()
-            addSnapshotTableObserver()
-        }
-    }
+class SnapshotUploader {
     
     let MAX_ATTEMPTS = 5
-    var database: DatabaseOperations?
-    var configuration: Configuration?
+    var database: DatabaseOperations
+    var configuration: Configuration
     @Atomic var uploadInProgress: Bool = false
     var serviceManager: ServiceType?
     private let queue = DispatchQueue(label: "rudder.metrics.snapshot.uploader")
     
-    func initialSetup() {
-        guard let metricsClient = self.metricsClient else { return }
-        database = metricsClient.database
-        configuration = metricsClient.configuration
+    
+    init(_ database: DatabaseOperations, _ configuration: Configuration) {
+        self.database = database
+        self.configuration = configuration
         serviceManager = {
             let session: URLSession = {
                 let configuration = URLSessionConfiguration.default
@@ -36,21 +30,14 @@ class SnapshotUploader: Plugin {
                 configuration.requestCachePolicy = .useProtocolCachePolicy
                 return URLSession(configuration: configuration)
             }()
-            return ServiceManager(urlSession: session, configuration: metricsClient.configuration)
+            return ServiceManager(urlSession: session, configuration: self.configuration)
         }()
-        startUploading()
-    }
-    
-    func startUploading() {
-        uploadSnapshots()
-    }
-    
-    func onNewSnapshotInsertion() {
+        addSnapshotTableObserver()
         uploadSnapshots()
     }
     
     func addSnapshotTableObserver() {
-        DatabaseObserver.addObserver(tableName: "snapshot", changeType: .insert, callback:onNewSnapshotInsertion)
+        DatabaseObserver.addObserver(tableName: "snapshot", changeType: .insert, callback: uploadSnapshots)
     }
     
     func uploadSnapshots() {
@@ -85,11 +72,6 @@ class SnapshotUploader: Plugin {
     }
     
     func uploadSnapshot(_ wasUploadSuccessful: @escaping (Bool) -> Void) {
-        guard let database = self.database else {
-            wasUploadSuccessful(false)
-            return
-        }
-        
         if let snapshot = database.getSnapshot(), var snapshotDict = snapshot.batch.toDictionary() {
             snapshotDict["id"] = snapshot.uuid
             if let requestBody = snapshotDict.toJSONString() {
