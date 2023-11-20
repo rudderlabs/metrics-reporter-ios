@@ -8,21 +8,16 @@
 import Foundation
 import RSCrashReporter
 
-class CrashReporter: Plugin, RSCrashReporterNotifyDelegate {
+class CrashReporter: RSCrashReporterNotifyDelegate {
     
-    weak var metricsClient: MetricsClient? {
-        didSet {
-            initialSetup()
-            startCollectingCrash()
-        }
-    }
-    
+    private var statsCollection: StatsCollection?
     private var database: DatabaseOperations?
     private let sdkList = ["MetricsReporter", "Rudder"]
     
-    func initialSetup() {
-        guard let metricsClient = self.metricsClient else { return }
-        database = metricsClient.database
+    init(_ database: DatabaseOperations, _ statsCollection: StatsCollection) {
+        self.statsCollection = statsCollection
+        self.database = database
+        startCollectingCrash()
     }
     
     func startCollectingCrash() {
@@ -30,8 +25,8 @@ class CrashReporter: Plugin, RSCrashReporterNotifyDelegate {
     }
     
     func notifyCrash(_ event: BugsnagEvent?, withRequestPayload requestPayload: [AnyHashable: Any]?) {
-        guard let metricsClient = self.metricsClient, let database = self.database else { return }
-        if let requestPayload = requestPayload, (checkIfRudderCrash(event: event) && metricsClient.statsCollection.isErrorsEnabled),
+        guard let database = self.database, let statsCollection = self.statsCollection else { return }
+        if let requestPayload = requestPayload, (checkIfRudderCrash(event: event) && statsCollection.isErrorsEnabled),
            let eventList = requestPayload["events"] as? [[String: Any]], let events = eventList.toJSONString() {
             database.saveError(events: events)
         }

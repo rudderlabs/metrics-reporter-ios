@@ -8,24 +8,18 @@ import Foundation
 import RudderKit
 
 
-class SnapshotGenerator: Plugin {
+class SnapshotGenerator {
 
-    weak var metricsClient: MetricsClient? {
-        didSet {
-            initialSetup()
-            startCapturingSnapshots()
-        }
-    }
-    
-    var database: DatabaseOperations?
-    var configuration: Configuration?
+    private var database: DatabaseOperations?
+    private var configuration: Configuration?
     private var flushTimer: RepeatingTimer?
     private let syncQueue = DispatchQueue(label: "rudder.metrics.snapshot.generator")
     
-    func initialSetup() {
-        guard let metricsClient = self.metricsClient else { return }
-        database = metricsClient.database
-        configuration = metricsClient.configuration
+    
+    init(_ database: DatabaseOperations, _ configuration: Configuration) {
+        self.database = database
+        self.configuration = configuration
+        startCapturingSnapshots()
     }
 
     func startCapturingSnapshots(completion: (() -> Void)? = nil) {

@@ -12,6 +12,8 @@ import RSCrashReporter
 public class MetricsClient {
     internal let database: DatabaseOperations
     internal let configuration: Configuration
+    internal let crashReporter: CrashReporter
+    internal let snapshotGenerator: SnapshotGenerator
     internal var statsCollection = StatsCollection()
     internal var controller = Controller()
     
@@ -21,6 +23,8 @@ public class MetricsClient {
         self.configuration = configuration
         Logger.logLevel = configuration.logLevel
         database = Database(database: Database.openDatabase())
+        crashReporter = CrashReporter(database, statsCollection)
+        snapshotGenerator = SnapshotGenerator(database, self.configuration)
         platformStartup()
     }
     
