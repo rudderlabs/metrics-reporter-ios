@@ -21,9 +21,7 @@ final class SnapshotGeneratorTests: XCTestCase {
             let db = openDatabase()
             return Database(database: db)
         }()
-        snapshotGenerator = SnapshotGenerator()
-        snapshotGenerator.database = database
-        snapshotGenerator.configuration = metricConfiguration
+        snapshotGenerator = SnapshotGenerator(database, metricConfiguration)
         clearAll()
     }
     

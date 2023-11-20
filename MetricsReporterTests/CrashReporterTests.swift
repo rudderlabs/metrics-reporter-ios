@@ -15,7 +15,9 @@ final class CrashReporterTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        crashReporter = CrashReporter()
+        let configuration = Configuration(logLevel: .none, writeKey: "WRITE_KEY", sdkVersion: "some.version")
+        let client = MetricsClient(configuration: configuration)
+        crashReporter = CrashReporter(client.database, client.statsCollection)
     }
 
     func test_checkIfRudderCrash() {
