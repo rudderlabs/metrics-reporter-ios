@@ -9,7 +9,9 @@ import Foundation
 
 protocol Plugin: AnyObject {
     var metricsClient: MetricsClient? { get set }
-    
+}
+
+protocol MetricsPlugin : Plugin {
     func execute<M: Metric>(metric: M?) -> M?
 }
 

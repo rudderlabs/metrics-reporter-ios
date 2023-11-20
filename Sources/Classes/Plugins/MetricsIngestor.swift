@@ -9,7 +9,7 @@ import Foundation
 import RudderKit
 
 
-class MetricsIngestor: Plugin {
+class MetricsIngestor: MetricsPlugin {
     weak var metricsClient: MetricsClient? {
         didSet {
             initialSetup()

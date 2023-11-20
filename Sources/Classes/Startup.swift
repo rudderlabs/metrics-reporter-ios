@@ -15,7 +15,7 @@ extension MetricsClient {
     }
 
     @discardableResult
-    func add(plugin: Plugin) -> Plugin {
+    func add(plugin: MetricsPlugin) -> MetricsPlugin {
         plugin.configure(metricsClient: self)
         controller.add(plugin: plugin)
         return plugin
