@@ -41,7 +41,7 @@ class DatabaseObserver {
     func registerWithSQLiteForDatabaseUpdates() throws {
         let dbPointer = unsafeBitCast(self, to: UnsafeMutableRawPointer.self)
         sqlite3_update_hook(database, { (dbPointer, operation, dbName, tableName, rowId) in
-            DatabaseObserver.updateHookCallback(dbPointer: dbPointer, operation: DatabaseObserver.getSQLiteChangeType(op: operation), databaseName: dbName.map { String(cString: $0) }, tableName: tableName.map { String(cString: $0) }, rowID: Int(rowId))
+            DatabaseObserver.updateHookCallback(dbPointer: dbPointer, operation: DatabaseObserver.getSQLiteChangeType(op: operation), databaseName: dbName.map { String(cString: $0) }, tableName: tableName.map { String(cString: $0) }, rowId: Int(rowId))
         }, dbPointer)
     }
     
@@ -67,7 +67,7 @@ class DatabaseObserver {
         operation: SQLiteChangeType?, // The type of operation (1 for INSERT, 2 for UPDATE, 3 for DELETE)
         databaseName: String?,
         tableName: String?,
-        rowID: Int
+        rowId: Int
     ) {
         guard
             let tableName = tableName,
