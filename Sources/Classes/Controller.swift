@@ -8,11 +8,11 @@
 import Foundation
 
 class Controller {
-    func add(plugin: Plugin) {
+    func add(plugin: MetricsPlugin) {
         plugins.append(plugin)
     }
     
-    var plugins = [Plugin]()
+    var plugins = [MetricsPlugin]()
     
     @discardableResult
     func process<M: Metric>(_ incomingMetric: M) -> M? {

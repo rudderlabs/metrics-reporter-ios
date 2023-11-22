@@ -53,7 +53,7 @@ final class MetricOperatorTests: XCTestCase {
         let metricEntity2 = metricOperator.saveMetric(name: "test_metric_2", value: 3, type: MetricType.gauge.rawValue, labels: "label_1,label_3,label_6")
         XCTAssertNotNil(metricEntity2)
         
-        let metricList = metricOperator.fetchMetrics(where: "id", from: metricEntity1!.id, to: metricEntity2!.id)
+        let (metricList, _)  = metricOperator.fetchMetrics(where: "id", startingFrom:metricEntity1!.id, withLimit: 3)
         
         let metric1 = metricList?[0]
         

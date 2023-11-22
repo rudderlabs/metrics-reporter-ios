@@ -50,7 +50,7 @@ class SnapshotOperator: SnapshotOperations {
                     Logger.logDebug(Constants.Messages.Insert.Snapshot.success)
                     snapshotEntity = SnapshotEntity(uuid: uuid, batch: batch)
                 } else {
-                    Logger.logError(Constants.Messages.Insert.Snapshot.failed)
+                    Logger.logError(Constants.Messages.Insert.Snapshot.failed + " Reason: \(String(cString: sqlite3_errmsg(self.database)))")
                 }
             } else {
                 let errorMessage = String(cString: sqlite3_errmsg(self.database))
@@ -75,7 +75,7 @@ class SnapshotOperator: SnapshotOperations {
                     snapshotEntity = SnapshotEntity(uuid: uuid, batch: batch)
                     Logger.logDebug(Constants.Messages.Select.Snapshot.success)
                 } else {
-                    Logger.logError(Constants.Messages.Select.Snapshot.failed)
+                    Logger.logError(Constants.Messages.Select.Snapshot.failed + " Reason: \(String(cString: sqlite3_errmsg(self.database)))")
                 }
             } else {
                 let errorMessage = String(cString: sqlite3_errmsg(self.database))
@@ -116,7 +116,7 @@ class SnapshotOperator: SnapshotOperations {
                 if sqlite3_step(queryStatement) == SQLITE_DONE {
                     Logger.logDebug(Constants.Messages.Delete.Snapshot.success)
                 } else {
-                    Logger.logError(Constants.Messages.Delete.Snapshot.failed)
+                    Logger.logError(Constants.Messages.Delete.Snapshot.failed + " Reason: \(String(cString: sqlite3_errmsg(self.database)))")
                 }
             } else {
                 let errorMessage = String(cString: sqlite3_errmsg(self.database))
@@ -136,7 +136,7 @@ class SnapshotOperator: SnapshotOperations {
                 if sqlite3_step(queryStatement) == SQLITE_DONE {
                     Logger.logDebug(Constants.Messages.Delete.Snapshot.success)
                 } else {
-                    Logger.logError(Constants.Messages.Delete.Snapshot.failed)
+                    Logger.logError(Constants.Messages.Delete.Snapshot.failed + " Reason: \(String(cString: sqlite3_errmsg(self.database)))")
                 }
             } else {
                 let errorMessage = String(cString: sqlite3_errmsg(self.database))
