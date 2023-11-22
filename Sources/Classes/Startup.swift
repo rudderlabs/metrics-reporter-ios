@@ -9,12 +9,11 @@ import Foundation
 
 extension MetricsClient {
     internal func platformStartup() {
-        add(plugin: CrashReporter())
-        add(plugin: MetricsUploader())
+        add(plugin: MetricsIngestor())
     }
 
     @discardableResult
-    func add(plugin: Plugin) -> Plugin {
+    func add(plugin: MetricsPlugin) -> MetricsPlugin {
         plugin.configure(metricsClient: self)
         controller.add(plugin: plugin)
         return plugin

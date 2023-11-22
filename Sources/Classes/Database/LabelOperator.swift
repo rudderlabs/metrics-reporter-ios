@@ -51,7 +51,7 @@ class LabelOperator: LabelOperations {
                     label = LabelEntity(id: rowId, name: name, value: value)
                     Logger.logDebug(Constants.Messages.Insert.Label.success)
                 } else {
-                    Logger.logError(Constants.Messages.Insert.Label.failed)
+                    Logger.logError(Constants.Messages.Insert.Label.failed + " Reason: \(String(cString: sqlite3_errmsg(self.database)))")
                 }
             } else {
                 let errorMessage = String(cString: sqlite3_errmsg(self.database))
@@ -77,7 +77,7 @@ class LabelOperator: LabelOperations {
                     label = LabelEntity(id: id, name: name, value: value)
                     Logger.logDebug(Constants.Messages.Select.Label.success)
                 } else {
-                    Logger.logError(Constants.Messages.Select.Label.failed)
+                    Logger.logError(Constants.Messages.Select.Label.failed + " Reason: \(String(cString: sqlite3_errmsg(self.database)))")
                 }
             } else {
                 let errorMessage = String(cString: sqlite3_errmsg(self.database))
@@ -126,7 +126,7 @@ class LabelOperator: LabelOperations {
                 if sqlite3_step(deleteStatement) == SQLITE_DONE {
                     Logger.logDebug(Constants.Messages.Delete.Label.success)
                 } else {
-                    Logger.logError(Constants.Messages.Delete.Label.failed)
+                    Logger.logError(Constants.Messages.Delete.Label.failed + " Reason: \(String(cString: sqlite3_errmsg(self.database)))")
                 }
             } else {
                 let errorMessage = String(cString: sqlite3_errmsg(self.database))

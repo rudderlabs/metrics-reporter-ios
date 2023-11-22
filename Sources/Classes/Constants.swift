@@ -28,6 +28,11 @@ struct Constants {
                 static let success = "Metric returned"
                 static let failed = "Metric return error"
             }
+            
+            struct Snapshot {
+                static let success = "Snapshot returned"
+                static let failed = "Snapshot return error"
+            }
         }
         
         struct Delete {
@@ -44,6 +49,11 @@ struct Constants {
             struct Error {
                 static let success = "Errors deleted from DB"
                 static let failed = "Error deletion error"
+            }
+            
+            struct Snapshot {
+                static let success = "Snapshot deleted from DB"
+                static let failed = "Snapshot deletion error"
             }
         }
         
@@ -69,6 +79,11 @@ struct Constants {
                 static let success = "Label inserted to table"
                 static let failed = "Label insertion error"
             }
+            
+            struct Snapshot {
+                static let success = "Snapshot inserted to table"
+                static let failed = "Snapshot insertion error"
+            }
         }
         
         struct Reset {
@@ -82,18 +97,21 @@ struct Constants {
                 static let label = "Label DELETE statement is not prepared"
                 static let error = "Error DELETE statement is not prepared"
                 static let metric = "Metric DELETE statement is not prepared"
+                static let snapshot = "Snapshot DELETE statement is not prepared"
             }
             
             struct Select {
                 static let label = "Label SELECT statement is not prepared"
                 static let error = "Error SELECT statement is not prepared"
                 static let metric = "Metric SELECT statement is not prepared"
+                static let snapshot = "Snapshot SELECT statement is not prepared"
             }
             
             struct Insert {
                 static let label = "Label INSERT statement is not prepared"
                 static let error = "Error INSERT statement is not prepared"
                 static let metric = "Metric INSERT statement is not prepared"
+                static let snapshot = "Snapshot INSERT statement is not prepared"
             }
         }
     }

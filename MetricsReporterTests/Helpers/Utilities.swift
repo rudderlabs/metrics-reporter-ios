@@ -8,7 +8,7 @@
 import Foundation
 @testable import MetricsReporter
 
-class OutputReaderPlugin: Plugin {
+class OutputReaderPlugin: MetricsPlugin {
     var metricsClient: MetricsClient?
     
     var metrics = [Metric]()

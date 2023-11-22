@@ -44,7 +44,7 @@ protocol MetricOperations: TableOperations {
     @discardableResult func saveMetric(name: String, value: Float, type: String, labels: String) -> MetricEntity?
     @discardableResult func updateMetric(_ metric: MetricEntity?, updatedValue: Float) -> Int?
     func fetchMetric(where name: String, type: String, labels: String) -> MetricEntity?
-    func fetchMetrics(where columnName: String, from valueFrom: Int, to valueTo: Int) -> [MetricEntity]?
+    func fetchMetrics(where columnName: String, startingFrom id: Int, withLimit limit: Int) -> (metricEntities: [MetricEntity]?, lastMetricId: Int?)
 }
 
 protocol LabelOperations: TableOperations {
@@ -61,31 +61,50 @@ protocol ErrorOperations: TableOperations {
     func getCount() -> Int
 }
 
+protocol SnapshotOperations: TableOperations {
+    @discardableResult func saveSnapshot(batch: String) -> SnapshotEntity?
+    func getSnapshot() -> SnapshotEntity?
+    func clearSnapshot(where uuid: String)
+    func getCount() -> Int
+}
+
 protocol DatabaseOperations {
     @discardableResult func saveMetric<M: Metric>(_ metric: M) -> MetricEntity?
-    func fetchMetrics(from valueFrom: Int, to valueTo: Int) -> MetricList
+    func fetchMetrics(startingFromId id: Int, withLimit limit: Int) -> (metricsList: MetricList, lastMetricId: Int?)
     @discardableResult func updateMetric<M: Metric>(_ metric: M) -> Int?
     @discardableResult func saveError(events: String) -> ErrorEntity?
+    @discardableResult func saveSnapshot(batch: String) -> SnapshotEntity?
+    func getSnapshot() -> Snapshot?
     func fetchErrors(count: Int) -> [ErrorEntity]?
     func clearErrorList(_ errorList: [ErrorEntity])
     func clearAllMetrics()
     func clearAllErrors()
+    func clearSnapshot(snapshot: Snapshot)
+    func clearAllSnapshots()
     func resetErrorTable()
     func getErrorsCount() -> Int
+    func getSnapshotCount() -> Int
 }
 
 class Database: DatabaseOperations {
     private var metricOperator: MetricOperations!
     private var labelOperator: LabelOperations!
     private var errorOperator: ErrorOperations!
+    private var snapshotOperator: SnapshotOperations!
+    private var databaseObserver: DatabaseObserver!
     
     init(database: OpaquePointer?) {
         metricOperator = MetricOperator(database: database)
         labelOperator = LabelOperator(database: database)
         errorOperator = ErrorOperator(database: database)
+        snapshotOperator = SnapshotOperator(database: database)
+        databaseObserver = DatabaseObserver(database: database)
+
         metricOperator.createTable()
         labelOperator.createTable()
         errorOperator.createTable()
+        snapshotOperator.createTable()
+        databaseObserver.subscribeToDatabaseUpdates()
     }
     
     @discardableResult
@@ -109,20 +128,21 @@ class Database: DatabaseOperations {
         }
         var value: Float = 0.0
         switch metric {
-            case let m as Count:
-                value = Float(m.value)
-            case let m as Gauge:
-                value = m.value
-            default:
-                break
+        case let m as Count:
+            value = Float(m.value)
+        case let m as Gauge:
+            value = m.value
+        default:
+            break
         }
         return metricOperator.saveMetric(name: metric.name, value: value, type: metric.type.rawValue, labels: labels)
     }
     
-    func fetchMetrics(from valueFrom: Int, to valueTo: Int) -> MetricList {
+    func fetchMetrics(startingFromId id: Int, withLimit limit: Int) -> (metricsList: MetricList, lastMetricId: Int?) {
         var countList: [Count]?
         var gaugeList: [Gauge]?
-        if let metricEntityList = metricOperator.fetchMetrics(where: "id", from: valueFrom, to: valueTo) {
+        let (metricEntityList, lastMetricId) = metricOperator.fetchMetrics(where: "id", startingFrom:id, withLimit:limit)
+        if let metricEntityList = metricEntityList {
             countList = [Count]()
             gaugeList = [Gauge]()
             for metricEntity in metricEntityList {
@@ -134,18 +154,18 @@ class Database: DatabaseOperations {
                     }
                 }
                 switch metricEntity.type {
-                    case MetricType.count.rawValue:
-                        let count = Count(name: metricEntity.name, labels: labels, value: Int(metricEntity.value))
-                        countList?.append(count)
-                    case MetricType.gauge.rawValue:
-                        let gauge = Gauge(name: metricEntity.name, labels: labels, value: metricEntity.value)
-                        gaugeList?.append(gauge)
-                    default:
-                        break
+                case MetricType.count.rawValue:
+                    let count = Count(name: metricEntity.name, labels: labels, value: Int(metricEntity.value))
+                    countList?.append(count)
+                case MetricType.gauge.rawValue:
+                    let gauge = Gauge(name: metricEntity.name, labels: labels, value: metricEntity.value)
+                    gaugeList?.append(gauge)
+                default:
+                    break
                 }
             }
         }
-        return MetricList(countList: countList, gaugeList: gaugeList)
+        return (MetricList(countList: countList, gaugeList: gaugeList), lastMetricId)
     }
     
     @discardableResult
@@ -168,20 +188,36 @@ class Database: DatabaseOperations {
         }
         var newValue: Float = 0.0
         switch metric {
-            case let m as Count:
-                newValue = Float(m.value)
-            case let m as Gauge:
-                newValue = m.value
-            default:
-                break
+        case let m as Count:
+            newValue = Float(m.value)
+        case let m as Gauge:
+            newValue = m.value
+        default:
+            break
         }
         let updatedValue: Float = (newValue > metricEntity.value) ? (newValue - metricEntity.value) : (metricEntity.value - newValue)
         return metricOperator.updateMetric(metricEntity, updatedValue: updatedValue)
     }
     
+    func getSnapshot() -> Snapshot? {
+        let snapshotEntity = snapshotOperator.getSnapshot()
+        if let snapshotEntity = snapshotEntity {
+            return Snapshot(uuid: snapshotEntity.uuid, batch: snapshotEntity.batch)
+        }
+        return nil
+    }
+    
+    func clearSnapshot(snapshot: Snapshot) {
+        snapshotOperator.clearSnapshot(where: snapshot.uuid)
+    }
+    
     @discardableResult
     func saveError(events: String) -> ErrorEntity? {
         return errorOperator.saveError(events: events)
+    }
+    
+    func saveSnapshot(batch: String) -> SnapshotEntity? {
+        return snapshotOperator.saveSnapshot(batch: batch)
     }
     
     func fetchErrors(count: Int) -> [ErrorEntity]? {
@@ -208,8 +244,16 @@ class Database: DatabaseOperations {
         errorOperator.clearAll()
     }
     
+    func clearAllSnapshots() {
+        snapshotOperator.clearAll()
+    }
+    
     func getErrorsCount() -> Int {
         return errorOperator.getCount()
+    }
+    
+    func getSnapshotCount() -> Int {
+        return snapshotOperator.getCount()
     }
 }
 

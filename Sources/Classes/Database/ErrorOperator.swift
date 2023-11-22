@@ -51,7 +51,7 @@ class ErrorOperator: ErrorOperations {
                     error = ErrorEntity(id: rowId, events: events)
                     Logger.logDebug(Constants.Messages.Insert.Error.success)
                 } else {
-                    Logger.logError(Constants.Messages.Insert.Error.failed)
+                    Logger.logError(Constants.Messages.Insert.Error.failed + " Reason: \(String(cString: sqlite3_errmsg(self.database)))")
                 }
             } else {
                 let errorMessage = String(cString: sqlite3_errmsg(self.database))
@@ -96,7 +96,7 @@ class ErrorOperator: ErrorOperations {
                 if sqlite3_step(deleteStatement) == SQLITE_DONE {
                     Logger.logDebug(Constants.Messages.Delete.Error.success)
                 } else {
-                    Logger.logError(Constants.Messages.Delete.Error.failed)
+                    Logger.logError(Constants.Messages.Delete.Error.failed + " Reason: \(String(cString: sqlite3_errmsg(self.database)))")
                 }
             } else {
                 let errorMessage = String(cString: sqlite3_errmsg(self.database))
@@ -116,7 +116,7 @@ class ErrorOperator: ErrorOperations {
                 if sqlite3_step(deleteStatement) == SQLITE_DONE {
                     Logger.logDebug(Constants.Messages.Delete.Error.success)
                 } else {
-                    Logger.logError(Constants.Messages.Delete.Error.failed)
+                    Logger.logError(Constants.Messages.Delete.Error.failed + " Reason: \(String(cString: sqlite3_errmsg(self.database)))")
                 }
             } else {
                 let errorMessage = String(cString: sqlite3_errmsg(self.database))
@@ -136,7 +136,7 @@ class ErrorOperator: ErrorOperations {
                 if sqlite3_step(deleteStatement) == SQLITE_DONE {
                     Logger.logDebug(Constants.Messages.Reset.success)
                 } else {
-                    Logger.logError(Constants.Messages.Reset.failed)
+                    Logger.logError(Constants.Messages.Reset.failed + " Reason: \(String(cString: sqlite3_errmsg(self.database)))")
                 }
             } else {
                 let errorMessage = String(cString: sqlite3_errmsg(self.database))

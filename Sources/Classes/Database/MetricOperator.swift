@@ -54,7 +54,7 @@ class MetricOperator: MetricOperations {
                 if sqlite3_step(insertStatement) == SQLITE_DONE {
                     Logger.logDebug(Constants.Messages.Insert.Metric.success)
                 } else {
-                    Logger.logError(Constants.Messages.Insert.Metric.failed)
+                    Logger.logError(Constants.Messages.Insert.Metric.failed + " Reason: \(String(cString: sqlite3_errmsg(self.database)))")
                 }
             } else {
                 let errorMessage = String(cString: sqlite3_errmsg(self.database))
@@ -84,7 +84,7 @@ class MetricOperator: MetricOperations {
                     metric = MetricEntity(id: id, name: name, value: value, type: type, labels: labels)
                     Logger.logDebug(Constants.Messages.Select.Metric.success)
                 } else {
-                    Logger.logError(Constants.Messages.Select.Metric.failed)
+                    Logger.logError(Constants.Messages.Select.Metric.failed + " Reason: \(String(cString: sqlite3_errmsg(self.database)))")
                 }
             } else {
                 let errorMessage = String(cString: sqlite3_errmsg(self.database))
@@ -95,13 +95,13 @@ class MetricOperator: MetricOperations {
         }
     }
     
-    func fetchMetrics(where columnName: String, from valueFrom: Int, to valueTo: Int) -> [MetricEntity]? {
+    func fetchMetrics(where columnName: String, startingFrom id: Int, withLimit limit: Int) -> (metricEntities: [MetricEntity]?, lastMetricId: Int?) {
         syncQueue.sync { [weak self] in
-            guard let self = self else { return nil }
+            guard let self = self else { return (nil, nil) }
             var queryStatement: OpaquePointer?
             var metricList: [MetricEntity]?
-            let queryStatementString = "SELECT * FROM metric WHERE \(columnName) BETWEEN \(valueFrom) AND \(valueTo);"
-            Logger.logDebug("countSQL: \(queryStatementString)")
+            let queryStatementString = "SELECT * FROM metric WHERE \(columnName) >= \(id) AND value > 0 LIMIT \(limit);"
+            Logger.logDebug("fetchMetrics: \(queryStatementString)")
             if sqlite3_prepare_v2(self.database, queryStatementString, -1, &queryStatement, nil) == SQLITE_OK {
                 metricList = [MetricEntity]()
                 while sqlite3_step(queryStatement) == SQLITE_ROW {
@@ -118,7 +118,7 @@ class MetricOperator: MetricOperations {
                 Logger.logError("\(Constants.Messages.Statement.Select.metric), Reason: \(errorMessage)")
             }
             sqlite3_finalize(queryStatement)
-            return (metricList?.isEmpty ?? true) ? nil : metricList
+            return (metricList?.isEmpty ?? true) ? (nil, nil) : (metricList, metricList?.last?.id)
         }
     }
     
@@ -133,7 +133,7 @@ class MetricOperator: MetricOperations {
                 if sqlite3_step(queryStatement) == SQLITE_DONE {
                     Logger.logDebug(Constants.Messages.Update.Metric.success)
                 } else {
-                    Logger.logError(Constants.Messages.Update.Metric.failed)
+                    Logger.logError(Constants.Messages.Update.Metric.failed + " Reason: \(String(cString: sqlite3_errmsg(self.database)))")
                 }
             } else {
                 let errorMessage = String(cString: sqlite3_errmsg(self.database))
@@ -154,7 +154,7 @@ class MetricOperator: MetricOperations {
                 if sqlite3_step(deleteStatement) == SQLITE_DONE {
                     Logger.logDebug(Constants.Messages.Delete.Metric.success)
                 } else {
-                    Logger.logError(Constants.Messages.Delete.Metric.failed)
+                    Logger.logError(Constants.Messages.Delete.Metric.failed + " Reason: \(String(cString: sqlite3_errmsg(self.database)))")
                 }
             } else {
                 let errorMessage = String(cString: sqlite3_errmsg(self.database))

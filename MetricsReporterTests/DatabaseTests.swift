@@ -58,7 +58,7 @@ final class DatabaseTests: XCTestCase {
         let gauge = Gauge(name: "test_gauge", labels: ["key_1": "value_3", "key_3": "value_3"], value: 11.3)
         databaseOperator.saveMetric(gauge)
         
-        let metricList = databaseOperator.fetchMetrics(from: 1, to: 10)
+        let (metricList, _) = databaseOperator.fetchMetrics(startingFromId: 1, withLimit: 10)
         XCTAssertNotNil(metricList)
         
         XCTAssertTrue(!metricList.countList!.isEmpty)
@@ -94,7 +94,7 @@ final class DatabaseTests: XCTestCase {
         
         databaseOperator.updateMetric(updateMetric)
         
-        let metricList = databaseOperator.fetchMetrics(from: 0, to: metricEntity!.id)
+        let (metricList, _)  = databaseOperator.fetchMetrics(startingFromId: metricEntity!.id, withLimit: 10)
         
         XCTAssertNotNil(metricList)
         
@@ -126,7 +126,7 @@ final class DatabaseTests: XCTestCase {
         
         databaseOperator.clearAllMetrics()
         
-        let metricList = databaseOperator.fetchMetrics(from: metricEntity1!.id, to: metricEntity2!.id)
+        let (metricList, _) = databaseOperator.fetchMetrics(startingFromId: metricEntity1!.id, withLimit: 10)
         XCTAssertNil(metricList.countList)
         XCTAssertNil(metricList.gaugeList)
         XCTAssertEqual(metricList.count, 0)
