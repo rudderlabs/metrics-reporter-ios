@@ -59,8 +59,8 @@ final class MetricsUploaderTests: XCTestCase {
             "source": {
                 "name": "ios",
                 "sdk_version": "some.version",
-                "os_version": "\(OSInfo.version)",
-                "os_name": "\(OSInfo.name)"
+                "os_version": "\(Vendor.current.osVersion)",
+                "os_name": "\(Vendor.current.osName)"
             },
             "metrics": [
                 {
@@ -88,8 +88,8 @@ final class MetricsUploaderTests: XCTestCase {
                     "name": "Bugsnag iOS",
                     "version": "some.version",
                     "url": "https://github.com/rudderlabs/rudder-sdk-ios",
-                    "os_version": "\(OSInfo.version)",
-                    "os_name": "\(OSInfo.name)"
+                    "os_version": "\(Vendor.current.osVersion)",
+                    "os_name": "\(Vendor.current.osName)"
                 },
                 "events": \(createErrorEvent(index: 0))
             }
