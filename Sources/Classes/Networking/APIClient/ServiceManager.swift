@@ -38,7 +38,7 @@ struct ServiceManager: ServiceType {
 
 extension ServiceManager {
     func request<T: Codable>(_ api: API, _ completion: @escaping Handler<T>) {
-        var request = getURLRequest(api)
+        let request = getURLRequest(api)
         let dataTask = urlSession.dataTask(with: request, completionHandler: { (data, response, error) in
             if error != nil {
                 completion(.failure(NSError(code: .SERVER_ERROR)))

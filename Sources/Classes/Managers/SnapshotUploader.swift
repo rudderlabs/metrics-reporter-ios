@@ -51,13 +51,13 @@ class SnapshotUploader {
     
     func startUploadingSnapshotsWithBackOff(currentAttempt:Int = 0, backoffDelay: TimeInterval = 2.0, _ completion: @escaping () -> Void) {
         if currentAttempt < MAX_ATTEMPTS {
-            queue.async {
+            self.queue.async {
                 self.uploadSnapshot() { [weak self] result in
                     guard let self = self else {
                         completion()
                         return }
                     if (!result) {
-                        queue.asyncAfter(deadline: .now() + backoffDelay, execute: {
+                        self.queue.asyncAfter(deadline: .now() + backoffDelay, execute: {
                             self.startUploadingSnapshotsWithBackOff(currentAttempt: currentAttempt+1, backoffDelay: backoffDelay * 2, completion)
                         })
                     } else {
@@ -75,7 +75,7 @@ class SnapshotUploader {
         if let snapshot = database.getSnapshot(), var snapshotDict = snapshot.batch.toDictionary() {
             snapshotDict["id"] = snapshot.uuid
             if let requestBody = snapshotDict.toJSONString() {
-                serviceManager?.sdkMetrics(params: requestBody, { [weak self] (result) in
+                self.serviceManager?.sdkMetrics(params: requestBody, { [weak self] (result) in
                     guard let self = self else {
                         Logger.logError("Failed to Upload Snapshot, Aborting.")
                         wasUploadSuccessful(false)
@@ -84,8 +84,8 @@ class SnapshotUploader {
                     switch result {
                     case .success(_):
                         Logger.logDebug("Metrics Snapshot uploaded successfully")
-                        database.clearSnapshot(snapshot: snapshot)
-                        uploadSnapshot(wasUploadSuccessful)
+                        self.database.clearSnapshot(snapshot: snapshot)
+                        self.uploadSnapshot(wasUploadSuccessful)
                     case .failure(let error):
                         Logger.logError("Failed to Upload Snapshot, Got error code: \(error.code), Aborting.")
                         wasUploadSuccessful(false)
