@@ -74,10 +74,12 @@ protocol DatabaseOperations {
     @discardableResult func updateMetric<M: Metric>(_ metric: M) -> Int?
     @discardableResult func saveError(events: String) -> ErrorEntity?
     @discardableResult func saveSnapshot(batch: String) -> SnapshotEntity?
+    func getSnapshot() -> Snapshot?
     func fetchErrors(count: Int) -> [ErrorEntity]?
     func clearErrorList(_ errorList: [ErrorEntity])
     func clearAllMetrics()
     func clearAllErrors()
+    func clearSnapshot(snapshot: Snapshot)
     func clearAllSnapshots()
     func resetErrorTable()
     func getErrorsCount() -> Int
@@ -89,16 +91,20 @@ class Database: DatabaseOperations {
     private var labelOperator: LabelOperations!
     private var errorOperator: ErrorOperations!
     private var snapshotOperator: SnapshotOperations!
+    private var databaseObserver: DatabaseObserver!
     
     init(database: OpaquePointer?) {
         metricOperator = MetricOperator(database: database)
         labelOperator = LabelOperator(database: database)
         errorOperator = ErrorOperator(database: database)
         snapshotOperator = SnapshotOperator(database: database)
+        databaseObserver = DatabaseObserver(database: database)
+
         metricOperator.createTable()
         labelOperator.createTable()
         errorOperator.createTable()
         snapshotOperator.createTable()
+        databaseObserver.subscribeToDatabaseUpdates()
     }
     
     @discardableResult
@@ -191,6 +197,18 @@ class Database: DatabaseOperations {
         }
         let updatedValue: Float = (newValue > metricEntity.value) ? (newValue - metricEntity.value) : (metricEntity.value - newValue)
         return metricOperator.updateMetric(metricEntity, updatedValue: updatedValue)
+    }
+    
+    func getSnapshot() -> Snapshot? {
+        let snapshotEntity = snapshotOperator.getSnapshot()
+        if let snapshotEntity = snapshotEntity {
+            return Snapshot(uuid: snapshotEntity.uuid, batch: snapshotEntity.batch)
+        }
+        return nil
+    }
+    
+    func clearSnapshot(snapshot: Snapshot) {
+        snapshotOperator.clearSnapshot(where: snapshot.uuid)
     }
     
     @discardableResult

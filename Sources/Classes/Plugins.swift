@@ -19,4 +19,8 @@ extension Plugin {
     public func configure(metricsClient: MetricsClient) {
         self.metricsClient = metricsClient
     }
+    
+    func execute<M: Metric>(metric: M?) -> M? {
+        return metric
+    }
 }

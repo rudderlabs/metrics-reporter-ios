@@ -13,12 +13,14 @@ class SnapshotGenerator {
     private var database: DatabaseOperations?
     private var configuration: Configuration?
     private var flushTimer: RepeatingTimer?
+    private var snapshotUploader: SnapshotUploader
     private let syncQueue = DispatchQueue(label: "rudder.metrics.snapshot.generator")
     
     
     init(_ database: DatabaseOperations, _ configuration: Configuration) {
         self.database = database
         self.configuration = configuration
+        self.snapshotUploader = SnapshotUploader(database, configuration)
         startCapturingSnapshots()
     }
 
@@ -47,9 +49,11 @@ class SnapshotGenerator {
         }
         if let batchJSON = getJSONString(from: metricList, and: errorList) {
             let snapshotEntity = self.database?.saveSnapshot(batch: batchJSON)
-            if let snapshotEntity = snapshotEntity {
+            if snapshotEntity != nil {
                 self.updateMetricList(metricList)
                 self.clearErrorList(errorList)
+                // flush the snapshots
+                self.snapshotUploader.uploadSnapshots()
             }
             if let lastMetricId = lastMetricId {
                 captureSnapshot(startingFromId: lastMetricId + 1, completion)
