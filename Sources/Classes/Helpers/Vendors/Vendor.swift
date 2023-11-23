@@ -18,9 +18,6 @@ internal class PhoneVendor: Vendor {
     override var osName: String {
         return UIDevice.current.systemName
     }
-    override var osVersion: String {
-        return getOsVersion()
-    }
 }
 #endif
 
@@ -28,9 +25,6 @@ internal class PhoneVendor: Vendor {
 internal class MacVendor: Vendor {
     override var osName: String {
         return "macOS"
-    }
-    override var osVersion: String {
-        return getOsVersion()
     }
 }
 #endif
@@ -40,9 +34,6 @@ internal class WatchVendor: Vendor {
     override var osName: String {
         return WKInterfaceDevice.current().systemName
     }
-    override var osVersion: String {
-        return getOsVersion()
-    }
 }
 #endif
 
@@ -51,7 +42,7 @@ internal class Vendor {
         return "unknown"
     }
     var osVersion: String {
-        return "unknown"
+        return "\(ProcessInfo.processInfo.operatingSystemVersion.majorVersion).\(ProcessInfo.processInfo.operatingSystemVersion.minorVersion).\(ProcessInfo.processInfo.operatingSystemVersion.patchVersion)"
     }
     
     static var current: Vendor = {
