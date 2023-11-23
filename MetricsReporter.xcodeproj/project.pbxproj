@@ -162,6 +162,10 @@
 		F6D621A72B0E938C0087E192 /* Vendor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D621A52B0E938C0087E192 /* Vendor.swift */; };
 		F6D621A82B0E938C0087E192 /* Vendor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D621A52B0E938C0087E192 /* Vendor.swift */; };
 		F6D621A92B0E938C0087E192 /* Vendor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D621A52B0E938C0087E192 /* Vendor.swift */; };
+		F6D621B02B0F00770087E192 /* AppleUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D621AF2B0F00770087E192 /* AppleUtils.swift */; };
+		F6D621B12B0F00770087E192 /* AppleUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D621AF2B0F00770087E192 /* AppleUtils.swift */; };
+		F6D621B22B0F00770087E192 /* AppleUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D621AF2B0F00770087E192 /* AppleUtils.swift */; };
+		F6D621B32B0F00770087E192 /* AppleUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D621AF2B0F00770087E192 /* AppleUtils.swift */; };
 		FD90F189E2A9866F31B74AD6 /* Pods_MetricsReporter_macOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 711563AD55510FE66DE5ED77 /* Pods_MetricsReporter_macOS.framework */; };
 /* End PBXBuildFile section */
 
@@ -281,6 +285,7 @@
 		F12D84DF6C8D95E7908685D8 /* Pods_MetricsReporter_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MetricsReporter_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6567D0F2AF01807005A37D8 /* VendorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorTests.swift; sourceTree = "<group>"; };
 		F6D621A52B0E938C0087E192 /* Vendor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vendor.swift; sourceTree = "<group>"; };
+		F6D621AF2B0F00770087E192 /* AppleUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleUtils.swift; sourceTree = "<group>"; };
 		FD4CF718203A05D3F1723645 /* Pods-MetricsReporterTests-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MetricsReporterTests-tvOS.release.xcconfig"; path = "Target Support Files/Pods-MetricsReporterTests-tvOS/Pods-MetricsReporterTests-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		FE9FEA9DED65392832905F7A /* Pods-MetricsReporterTests-macOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MetricsReporterTests-macOS.debug.xcconfig"; path = "Target Support Files/Pods-MetricsReporterTests-macOS/Pods-MetricsReporterTests-macOS.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -574,6 +579,7 @@
 			isa = PBXGroup;
 			children = (
 				F6D621A52B0E938C0087E192 /* Vendor.swift */,
+				F6D621AF2B0F00770087E192 /* AppleUtils.swift */,
 			);
 			path = Vendors;
 			sourceTree = "<group>";
@@ -1140,6 +1146,7 @@
 				ED1A22772A5DB9F5007031FF /* MetricOperator.swift in Sources */,
 				EDA5B7832A72D37600948D18 /* CrashReporter.swift in Sources */,
 				EDEDB6152A659F4E005C670A /* ObjCMetricsClient.swift in Sources */,
+				F6D621B02B0F00770087E192 /* AppleUtils.swift in Sources */,
 				ED1A22762A5DB9F5007031FF /* LabelOperator.swift in Sources */,
 				ED9226062A65172E00734372 /* ObjCConfiguration.swift in Sources */,
 				EDA5B7692A6EDFC100948D18 /* StatsCollection.swift in Sources */,
@@ -1168,6 +1175,7 @@
 				ED92260D2A65313B00734372 /* MetricOperator.swift in Sources */,
 				EDA5B7852A72D37600948D18 /* CrashReporter.swift in Sources */,
 				EDEDB6172A659F4E005C670A /* ObjCMetricsClient.swift in Sources */,
+				F6D621B22B0F00770087E192 /* AppleUtils.swift in Sources */,
 				ED92260E2A65313B00734372 /* LabelOperator.swift in Sources */,
 				ED92260F2A65313B00734372 /* ObjCConfiguration.swift in Sources */,
 				EDA5B76B2A6EDFC100948D18 /* StatsCollection.swift in Sources */,
@@ -1196,6 +1204,7 @@
 				ED9226242A65316400734372 /* MetricOperator.swift in Sources */,
 				EDA5B7862A72D37600948D18 /* CrashReporter.swift in Sources */,
 				EDEDB6182A659F4E005C670A /* ObjCMetricsClient.swift in Sources */,
+				F6D621B32B0F00770087E192 /* AppleUtils.swift in Sources */,
 				ED9226252A65316400734372 /* LabelOperator.swift in Sources */,
 				ED9226262A65316400734372 /* ObjCConfiguration.swift in Sources */,
 				EDA5B76C2A6EDFC100948D18 /* StatsCollection.swift in Sources */,
@@ -1224,6 +1233,7 @@
 				ED92263B2A65317B00734372 /* MetricOperator.swift in Sources */,
 				EDA5B7842A72D37600948D18 /* CrashReporter.swift in Sources */,
 				EDEDB6162A659F4E005C670A /* ObjCMetricsClient.swift in Sources */,
+				F6D621B12B0F00770087E192 /* AppleUtils.swift in Sources */,
 				ED92263C2A65317B00734372 /* LabelOperator.swift in Sources */,
 				ED92263D2A65317B00734372 /* ObjCConfiguration.swift in Sources */,
 				EDA5B76A2A6EDFC100948D18 /* StatsCollection.swift in Sources */,
