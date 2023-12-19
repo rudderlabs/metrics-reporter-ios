@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/rudderlabs/metrics-reporter-ios/compare/v1.1.1...v1.2.0) (2023-12-19)
+
+
+### Features
+
+* added os_version and os_name as part of the request payload to the metrics service.  ([#23](https://github.com/rudderlabs/metrics-reporter-ios/issues/23)) ([d06aba4](https://github.com/rudderlabs/metrics-reporter-ios/commit/d06aba4ef2491f4f0d5615be3be7335fe067dff7))
+
+
+### Bug Fixes
+
+* fixed sqlite db path on the tvos platforms ([#25](https://github.com/rudderlabs/metrics-reporter-ios/issues/25)) ([eb997f7](https://github.com/rudderlabs/metrics-reporter-ios/commit/eb997f7b31d1530938c8d2f60c48344cfa42699d))
+
 ### [1.1.1](https://github.com/rudderlabs/metrics-reporter-ios/compare/v1.1.0...v1.1.1) (2023-09-28)
 
 
