@@ -33,7 +33,7 @@ class CrashReporter: Plugin, RSCrashReporterNotifyDelegate {
         return metric
     }
     
-    func notifyCrash(_ event: BugsnagEvent?, withRequestPayload requestPayload: [AnyHashable: Any]?) {
+    func notifyCrash(_ event: RSCrashReporterEvent?, withRequestPayload requestPayload: [AnyHashable: Any]?) {
         guard let metricsClient = self.metricsClient, let database = self.database else { return }
         if let requestPayload = requestPayload, (checkIfRudderCrash(event: event) && metricsClient.statsCollection.isErrorsEnabled),
            let eventList = requestPayload["events"] as? [[String: Any]], let events = eventList.toJSONString() {
@@ -41,7 +41,7 @@ class CrashReporter: Plugin, RSCrashReporterNotifyDelegate {
         }
     }
     
-    func checkIfRudderCrash(event: BugsnagEvent?) -> Bool {
+    func checkIfRudderCrash(event: RSCrashReporterEvent?) -> Bool {
         var isRudderCrash = false
         if let event = event {
             for error in event.errors {
