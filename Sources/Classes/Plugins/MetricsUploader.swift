@@ -140,7 +140,9 @@ class MetricsUploader: Plugin {
             "source": [
                 "name": "ios",
                 "sdk_version": configuration.sdkVersion,
-                "write_key": configuration.writeKey
+                "write_key": configuration.writeKey,
+                "os_name": Vendor.current.osName,
+                "os_version": Vendor.current.osVersion
             ]
         ]
         if let metrics = metrics {
@@ -158,7 +160,9 @@ extension [ErrorEntity] {
         let notifier = [
             "name": "Bugsnag iOS",
             "version": configuration.sdkVersion,
-            "url": "https://github.com/rudderlabs/rudder-sdk-ios"
+            "url": "https://github.com/rudderlabs/rudder-sdk-ios",
+            "os_name": Vendor.current.osName,
+            "os_version": Vendor.current.osVersion
         ]
         
         var eventList = [[String: Any]]()

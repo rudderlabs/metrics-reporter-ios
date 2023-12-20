@@ -19,13 +19,13 @@ final class CrashReporterTests: XCTestCase {
     }
 
     func test_checkIfRudderCrash() {
-        let stacktrace = BugsnagStackframe()
+        let stacktrace = RSCrashReporterStackframe()
         stacktrace.machoFile = "/path/to/sdk/Rudder"
         
-        let error = BugsnagError()
+        let error = RSCrashReporterError()
         error.stacktrace = [stacktrace]
         
-        let event = BugsnagEvent()
+        let event = RSCrashReporterEvent()
         event.errors = [error]
         
         let value = crashReporter.checkIfRudderCrash(event: event)
