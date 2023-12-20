@@ -20,8 +20,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    RSMetricConfiguration *config = [[RSMetricConfiguration alloc] initWithLogLevel:RSLogLevelVerbose writeKey:@"WRITE_KEY" sdkVersion:@"1.1.1"];
-    RSMetricClient *client = [[RSMetricClient alloc] initWithConfiguration:config];
+    RSMetricConfiguration *config = [[RSMetricConfiguration alloc] initWithLogLevel:RudderLogLevelVerbose writeKey:@"WRITE_KEY" sdkVersion:@"1.1.1"];
+    RSMetricsClient *client = [[RSMetricsClient alloc] initWithConfiguration:config];
     
     RSCount *count = [[RSCount alloc] initWithName:@"test_count" labels:@{@"key_1": @"value_1"} value:10];
     [client process:count];
