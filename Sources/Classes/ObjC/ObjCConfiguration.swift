@@ -13,14 +13,8 @@ public class ObjCConfiguration: NSObject {
     var configuration: Configuration
     
     @objc
-    public init(logLevel: Int, writeKey: String, sdkVersion: String) {
-        configuration = Configuration(logLevel: LogLevel(rawValue: logLevel) ?? .error, writeKey: writeKey, sdkVersion: sdkVersion)
-    }
-    
-    @discardableResult @objc
-    public func sdkMetricsUrl(_ sdkMetricsUrl: String) -> ObjCConfiguration {
-        configuration.sdkMetricsUrl = sdkMetricsUrl
-        return self
+    public init(logLevel: Int, writeKey: String, sdkVersion: String, sdkMetricsUrl: String) {
+        configuration = Configuration(logLevel: LogLevel(rawValue: logLevel) ?? .error, writeKey: writeKey, sdkVersion: sdkVersion, sdkMetricsUrl: sdkMetricsUrl)
     }
     
     @discardableResult @objc
