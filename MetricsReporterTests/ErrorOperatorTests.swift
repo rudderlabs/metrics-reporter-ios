@@ -51,7 +51,7 @@ final class ErrorOperatorTests: XCTestCase {
     
     func test_toDict() {
         let errorEntity = ErrorEntity(id: 1, events: createErrorEvent(index: 0))
-        let metricConfiguration = Configuration(logLevel: .none, writeKey: "WRITE_KEY", sdkVersion: "some.version")
+        let metricConfiguration = Configuration(logLevel: .none, writeKey: "WRITE_KEY", sdkVersion: "some.version", sdkMetricsUrl: "sdk.metrics.url")
         let errorsDict = [errorEntity].toDict(configuration: metricConfiguration)
         let expectedErrorsDict: [String: Any] = [
             "payloadVersion": "5",

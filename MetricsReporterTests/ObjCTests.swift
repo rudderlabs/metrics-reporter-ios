@@ -11,14 +11,13 @@ import XCTest
 final class ObjCTests: XCTestCase {
 
     func test_ObjCConfiguration() {
-        let configuration = ObjCConfiguration(logLevel: 0, writeKey: "WRITE_KEY", sdkVersion: "some.version")
+        let configuration = ObjCConfiguration(logLevel: 0, writeKey: "WRITE_KEY", sdkVersion: "some.version", sdkMetricsUrl: "sdk.metrics.url")
         
         XCTAssertEqual(configuration.configuration.logLevel, .none)
         XCTAssertEqual(configuration.configuration.writeKey, "WRITE_KEY")
         XCTAssertEqual(configuration.configuration.sdkVersion, "some.version")
         
-        let configuration2 = ObjCConfiguration(logLevel: 1, writeKey: "WRITE_KEY_2", sdkVersion: "some.version.2")
-            .sdkMetricsUrl("some.url.com")
+        let configuration2 = ObjCConfiguration(logLevel: 1, writeKey: "WRITE_KEY_2", sdkVersion: "some.version.2", sdkMetricsUrl: "some.url.com")
             .maxErrorsInBatch(11)
             .maxMetricsInBatch(13)
             .flushInterval(7)
@@ -98,14 +97,14 @@ final class ObjCTests: XCTestCase {
     }
     
     func test_ObjCMetricsClient() {
-        let configuration = ObjCConfiguration(logLevel: 0, writeKey: "WRITE_KEY", sdkVersion: "some.version")
+        let configuration = ObjCConfiguration(logLevel: 0, writeKey: "WRITE_KEY", sdkVersion: "some.version", sdkMetricsUrl: "sdk.metrics.url")
         let client = ObjCMetricsClient(configuration: configuration)
         
         XCTAssertNotNil(client)
     }
     
     func test_StatsCollection() {
-        let configuration = ObjCConfiguration(logLevel: 0, writeKey: "WRITE_KEY", sdkVersion: "some.version")
+        let configuration = ObjCConfiguration(logLevel: 0, writeKey: "WRITE_KEY", sdkVersion: "some.version", sdkMetricsUrl: "sdk.metrics.url")
         let client = ObjCMetricsClient(configuration: configuration)
         
         XCTAssertFalse(client.isErrorsCollectionEnabled)
