@@ -124,7 +124,7 @@ extension ServiceManager {
     func path(_ api: API) -> String {
         switch api {
         case .sdkMetrics:
-            return "/rsaMetrics"
+            return "rsaMetrics"
         }
     }
 }
