@@ -22,11 +22,7 @@ jobs:
         
       - name: Install xcpretty
         run: gem install xcpretty
-  
-      - name: Set up Ruby environment
-        run: |
-          gem install bundler
-
+        
       - name: Install Cocoapods
         run: gem install cocoapods
         
@@ -59,7 +55,4 @@ jobs:
         run: |
           sonar-scanner -Dsonar.host.url=https://sonarcloud.io
         
-      - name: Upload coverage reports to Codecov
-        uses: codecov/codecov-action@v3
-        env:
-          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+
