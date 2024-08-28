@@ -10,7 +10,7 @@ on:
 jobs:
   build:
     name: 'Tests & Coverage'
-    runs-on: macos-latest-large
+    runs-on: macos-latest
     env:
       BUILD_WRAPPER_OUT_DIR: build_wrapper_output_directory # Directory where build-wrapper output will be placed
     steps:
@@ -22,10 +22,10 @@ jobs:
         
       - name: Install xcpretty
         run: gem install xcpretty
-
-      - name: Install Rosetta
+  
+      - name: Set up Ruby environment
         run: |
-          softwareupdate --install-rosetta --agree-to-license
+          gem install bundler
 
       - name: Install Cocoapods
         run: gem install cocoapods
