@@ -23,6 +23,10 @@ jobs:
       - name: Install xcpretty
         run: gem install xcpretty
 
+      - name: Install Rosetta
+        run: |
+          softwareupdate --install-rosetta --agree-to-license
+
       - name: Install Cocoapods
         run: gem install cocoapods
         
