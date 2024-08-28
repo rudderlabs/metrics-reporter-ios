@@ -9,7 +9,6 @@ import Foundation
 
 struct Constants {
     struct Config {
-        static let SDKMETRICS_URL = "https://sdk-metrics.rudderstack.com"
         static let MAX_METRICS_IN_A_BATCH = 10
         static let MAX_ERRORS_IN_A_BATCH = 5
         static let FLUSH_INTERVAL = 30
