@@ -1,5 +1,5 @@
 PODS:
-  - MetricsReporter (1.1.1):
+  - MetricsReporter (1.2.1):
     - RSCrashReporter (= 1.0.1)
     - RudderKit (= 1.4.0)
   - RSCrashReporter (1.0.1)
@@ -20,10 +20,10 @@ EXTERNAL SOURCES:
     :path: "."
 
 SPEC CHECKSUMS:
-  MetricsReporter: d0ad4a52c6ae245b71190b632e89c547d05ae2d5
+  MetricsReporter: 99596ee5003c69949ed2f50acc34aee83c42f843
   RSCrashReporter: 6b8376ac729b0289ebe0908553e5f56d8171f313
   RudderKit: f272f9872183946452ac94cd7bb2244a71e6ca8f
 
 PODFILE CHECKSUM: 4a55181dcf11068d481028b936d656938169e63a
 
-COCOAPODS: 1.14.2
+COCOAPODS: 1.15.2

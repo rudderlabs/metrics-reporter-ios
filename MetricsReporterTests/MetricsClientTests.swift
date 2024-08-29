@@ -11,14 +11,14 @@ import XCTest
 final class MetricsClientTests: XCTestCase {
     
     func test_MetricsClient() {
-        let configuration = Configuration(logLevel: .none, writeKey: "WRITE_KEY", sdkVersion: "some.version")
+        let configuration = Configuration(logLevel: .none, writeKey: "WRITE_KEY", sdkVersion: "some.version", sdkMetricsUrl: "sdk.metrics.url")
         let client = MetricsClient(configuration: configuration)
         
         XCTAssertNotNil(client)
     }
     
     func test_Count() {
-        let configuration = Configuration(logLevel: .none, writeKey: "WRITE_KEY", sdkVersion: "some.version")
+        let configuration = Configuration(logLevel: .none, writeKey: "WRITE_KEY", sdkVersion: "some.version", sdkMetricsUrl: "sdk.metrics.url")
         let client = MetricsClient(configuration: configuration)
         client.isMetricsCollectionEnabled = true
         
@@ -36,7 +36,7 @@ final class MetricsClientTests: XCTestCase {
     }
     
     func test_Gauge() {
-        let configuration = Configuration(logLevel: .none, writeKey: "WRITE_KEY", sdkVersion: "some.version")
+        let configuration = Configuration(logLevel: .none, writeKey: "WRITE_KEY", sdkVersion: "some.version", sdkMetricsUrl: "sdk.metrics.url")
         let client = MetricsClient(configuration: configuration)
         client.isMetricsCollectionEnabled = true
         
@@ -54,7 +54,7 @@ final class MetricsClientTests: XCTestCase {
     }
     
     func test_StatsCollection() {
-        let configuration = Configuration(logLevel: .none, writeKey: "WRITE_KEY", sdkVersion: "some.version")
+        let configuration = Configuration(logLevel: .none, writeKey: "WRITE_KEY", sdkVersion: "some.version", sdkMetricsUrl: "sdk.metrics.url")
         let client = MetricsClient(configuration: configuration)
         
         XCTAssertFalse(client.isErrorsCollectionEnabled)

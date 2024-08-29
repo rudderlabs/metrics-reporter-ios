@@ -19,7 +19,7 @@ final class ServiceManagerTests: XCTestCase {
         configuration.protocolClasses = [MockURLProtocol.self]
         let urlSession = URLSession.init(configuration: configuration)
         
-        serviceManager = ServiceManager(urlSession: urlSession, configuration: Configuration(logLevel: .none, writeKey: "WRITE_KEY", sdkVersion: "some.version"))
+        serviceManager = ServiceManager(urlSession: urlSession, configuration: Configuration(logLevel: .none, writeKey: "WRITE_KEY", sdkVersion: "some.version", sdkMetricsUrl: "sdk.metrics.url"))
         promise = expectation(description: "Expectation")
     }
 
