@@ -78,7 +78,7 @@ jobs:
 
       - name: Push new version in release branch & tag
         run: |
-          git push
+          git push --follow-tags
 
       - name: Create pull request into master
         uses: repo-sync/pull-request@v2
@@ -88,4 +88,4 @@ jobs:
           github_token: ${{ secrets.PAT }}
           pr_title: "chore(release): pulling ${{ steps.create-release.outputs.branch_name }} into master"
           pr_body: ":crown: *An automated PR*\n\n${{ steps.finish-release.outputs.commit_summary }}"
-          pr_reviewer: 'pallabmaiti'
+          pr_reviewer: "@rudderlabs/sdk-ios"
