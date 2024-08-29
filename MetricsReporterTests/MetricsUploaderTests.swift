@@ -17,7 +17,7 @@ final class MetricsUploaderTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        let metricConfiguration = Configuration(logLevel: .none, writeKey: "WRITE_KEY", sdkVersion: "some.version", maxErrorsInBatch: 1, maxMetricsInBatch: 1, flushInterval: 1)
+        let metricConfiguration = Configuration(logLevel: .none, writeKey: "WRITE_KEY", sdkVersion: "some.version", sdkMetricsUrl: "sdk.metrics.url", maxErrorsInBatch: 1, maxMetricsInBatch: 1, flushInterval: 1)
         database = {
             let db = openDatabase()
             return Database(database: db)

@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        let configuration = Configuration(logLevel: .debug, writeKey: "WRITE_KEY", sdkVersion: "1.3.3", maxMetricsInBatch: 1, flushInterval: 1)
+        let configuration = Configuration(logLevel: .debug, writeKey: "WRITE_KEY", sdkVersion: "1.3.3", sdkMetricsUrl: "SDK_Metrics_Url", maxMetricsInBatch: 1, flushInterval: 1)
         client = MetricsClient(configuration: configuration)
         client?.isMetricsCollectionEnabled = true
         client?.isErrorsCollectionEnabled = true

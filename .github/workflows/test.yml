@@ -10,7 +10,7 @@ on:
 jobs:
   build:
     name: 'Tests & Coverage'
-    runs-on: macos-latest
+    runs-on: macos-latest-large
     env:
       BUILD_WRAPPER_OUT_DIR: build_wrapper_output_directory # Directory where build-wrapper output will be placed
     steps:
@@ -22,7 +22,7 @@ jobs:
         
       - name: Install xcpretty
         run: gem install xcpretty
-
+        
       - name: Install Cocoapods
         run: gem install cocoapods
         
@@ -55,7 +55,4 @@ jobs:
         run: |
           sonar-scanner -Dsonar.host.url=https://sonarcloud.io
         
-      - name: Upload coverage reports to Codecov
-        uses: codecov/codecov-action@v3
-        env:
-          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+
