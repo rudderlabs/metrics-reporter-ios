@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0](https://github.com/rudderlabs/metrics-reporter-ios/compare/v1.3.0...v2.0.0) (2024-09-03)
+
+
+### ⚠ BREAKING CHANGES
+
+* Updated the existing constant URL
+
+### Features
+
+* change the existing constant url to receiving url from sdk initialisation ([6e2f97e](https://github.com/rudderlabs/metrics-reporter-ios/commit/6e2f97e601c0bfa2532613449a9b42f32cc7d7e8))
+
 ### [1.3.0](https://github.com/rudderlabs/metrics-reporter-ios/compare/v1.2.1...v1.3.0) (2024-08-29)
 
 ### [1.2.1](https://github.com/rudderlabs/metrics-reporter-ios/compare/v1.2.0...v1.2.1) (2024-01-03)
