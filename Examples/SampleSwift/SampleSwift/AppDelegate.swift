@@ -26,6 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             client?.process(metric: countMetric)
         }
         
+        
         return true
     }
 
