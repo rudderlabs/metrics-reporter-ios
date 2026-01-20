@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.1](https://github.com/rudderlabs/metrics-reporter-ios/compare/v2.0.0...v2.0.1) (2026-01-20)
+
+
+### Bug Fixes
+
+* update license to Elastic-2.0 and correct file reference ([#55](https://github.com/rudderlabs/metrics-reporter-ios/issues/55)) ([c9ffb79](https://github.com/rudderlabs/metrics-reporter-ios/commit/c9ffb794c69e9183a4dcbe9c7c99232267e9070c))
+
 ## [2.0.0](https://github.com/rudderlabs/metrics-reporter-ios/compare/v1.2.1...v2.0.0) (2024-09-03)
 
 

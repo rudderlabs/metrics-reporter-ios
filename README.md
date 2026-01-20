@@ -21,7 +21,3 @@
 # Metrics Reporter
 
 This SDK for capturing RudderStack iOS SDK metrics.
-
-## License
-
-The RudderStack **Metrics Reporter** is released under the [**MIT License**](https://opensource.org/licenses/MIT).
