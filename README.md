@@ -20,4 +20,8 @@
 
 # Metrics Reporter
 
+> **⚠️ Deprecation Notice**
+>
+> This repository is no longer actively maintained. It will not receive new features, bug fixes, or security updates, and is scheduled to be sunset in the near future.
+
 This SDK for capturing RudderStack iOS SDK metrics.
